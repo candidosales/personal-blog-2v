@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Card from "../components/Card.astro";
+
+const projects = [
+  {
+    title: "Test",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+  },
+  {
+    title: "Test",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+  },
+  {
+    title: "Test",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+  },
+  {
+    title: "Test",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+  },
+];
+---
+
+<Layout title="Candido Sales - Developer">
+  <main class="relative pt-6 pb-16 sm:pb-24 mx-auto max-w-7xl">
+    <Header />
+    <Hero />
+
+    <div class="mt-16 mb-16 px-4 sm:mt-24">
+      <h2 class="text-2xl">Portfolio</h2>
+      <p class="text-md mb-8">
+        Some open source projects that I've built and maintain
+      </p>
+      <div
+        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
+      >
+        {
+          projects.map((project) => (
+            <Card
+              title={project.title}
+              href={project.href}
+              image={project.image}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
