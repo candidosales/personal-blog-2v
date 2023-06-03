@@ -1,26 +1,79 @@
 ---
 export interface Props {
   title: string;
-  image: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
   href: string;
+  techs: Array<{ icon: string; name: string }>;
 }
 
-const { href, title, image } = Astro.props;
+const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
 ---
 
-<div class="space-y-4">
-  <div class="aspect-w-3 aspect-h-2">
-    <img
-      class="object-cover shadow-lg rounded-lg"
-      src={"https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"}
-      alt=""
-    />
-  </div>
+<style lang="scss">
+  .card {
+    &:hover {
+      .techs {
+        opacity: 1;
+        top: 0px;
+      }
+      a {
+        --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+          0 4px 6px -4px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+          var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+      }
+    }
+  }
+  .techs {
+    position: absolute;
+    opacity: 0;
+    top: 10px;
+    transition: all 150ms ease-in-out;
+  }
 
-  <div class="space-y-2">
-    <div class="text-lg leading-6 font-medium space-y-1">
+  .card {
+    a {
+      transition: all 150ms ease-in-out;
+    }
+  }
+</style>
+<div class="space-y-4 card">
+  <a
+    href={href}
+    title={title}
+    target="_blank"
+    class="block bg-slate-200 rounded-2xl h-72 relative overflow-hidden"
+  >
+    <img
+      class="object-cover shadow-lg rounded-2xl absolute top-1/4 left-8"
+      height="800"
+      src={imageUrl}
+      alt={imageAlt}
+    />
+  </a>
+
+  <div class="space-y-2 relative">
+    <div class="text-lg leading-6 font-normal space-y-1 mb-4">
       <h3>{title}</h3>
-      <p class="text-indigo-600">{"Test"}</p>
+      <p class="text-sm font-normal text-slate-400">{description}</p>
+    </div>
+    <div class="relative h-6">
+      <div class="flex techs">
+        {
+          techs.map((t) => (
+            <img
+              class="mr-2 h-6"
+              src={`/devicon/${t.icon}.svg`}
+              title={t.name}
+              alt={t.name}
+            />
+          ))
+        }
+      </div>
     </div>
   </div>
 </div>
