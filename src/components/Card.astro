@@ -1,4 +1,6 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 export interface Props {
   title: string;
   description: string;
@@ -48,9 +50,11 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
     target="_blank"
     class="block bg-slate-200 rounded-2xl h-72 relative overflow-hidden"
   >
-    <img
+    <Image
       class="object-cover shadow-lg rounded-2xl absolute top-1/4 left-8"
-      height="800"
+      height={400}
+      width={800}
+      fit="cover"
       src={imageUrl}
       alt={imageAlt}
     />
