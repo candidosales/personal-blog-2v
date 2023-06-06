@@ -1,11 +1,3 @@
----
-export interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
----
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,9 +6,45 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
+    <div class="topbar-blur" aria-hidden="true"></div>
     <slot />
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+    ></script>
+    <script type="text/javascript">
+      AOS.init();
+    </script>
   </body>
 </html>
+<style>
+  :root {
+    --body-margin-left: max(24px, env(safe-area-inset-left));
+    --body-margin-right: max(24px, env(safe-area-inset-right));
+  }
+  .topbar-blur {
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+    --h: min(96px, 128px);
+    position: sticky;
+    width: calc(100% + var(--body-margin-left) + var(--body-margin-right));
+    margin-left: calc(-1 * var(--body-margin-left));
+    height: var(--h);
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    opacity: 0.95;
+    mask-image: linear-gradient(to bottom, #000 25%, transparent);
+  }
+  .topbar-blur:first-child {
+    margin-bottom: calc(-1 * var(--h));
+    top: 0;
+  }
+  .topbar-blur:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, white, transparent);
+  }
+</style>

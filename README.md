@@ -9,6 +9,8 @@ Inspired by: https://14habits.com/
 - ✅ [Astro/Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/);
 - ✅ [Astro/Image](https://docs.astro.build/en/guides/integrations-guide/image/) with AVIF format;
 - (Performance Optimization Strategy)[https://paper.dropbox.com/doc/Performance-Optimization-Strategy-in-2023--B5jjdEwca8NURASq1CAAnSQVAg-qWcr7orx2cEWHpLqoLeTC]
+- ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
+- ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
 
 ## 🧞 Commands
 
