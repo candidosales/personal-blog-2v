@@ -1,9 +1,9 @@
 export const portfolio = [
   {
-    imageUrl: "/portfolio/material-time-picker.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Material Time Picker",
     title: "Material Time Picker",
-    description: "A simple time picker component using Angular Material.",
+    description: "A simple time picker component using Angular Material",
     url: "https://github.com/candidosales/material-time-picker",
     techs: [
       {
@@ -17,10 +17,10 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/svelte-google-translate.jpg",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Svelte Google Translate",
     title: "Svelte Google Translate",
-    description: "Google Translate component for Svelte.",
+    description: "Google Translate component for Svelte",
     url: "https://github.com/candidosales/svelte-google-translate",
     techs: [
       {
@@ -34,7 +34,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/format-code.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Format Code",
     title: "Format Code",
     description:
@@ -60,7 +60,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/landing-page-book-2v.jpg",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Landing Page Book 2v",
     title: "Landing Page Book 2v",
     description:
@@ -94,9 +94,9 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/figma-plugin-svelte-vite.png",
-    imageAlt: "Figma Plugin + Svelte + Vite + Typescript    ",
-    title: "Figma Plugin + Svelte + Vite + Typescript",
+    imageUrl: "/mock-2v.png",
+    imageAlt: "Figma plugin boilerplate",
+    title: "Figma plugin boilerplate",
     description:
       "A boilerplate for creating Figma plugins with Svelte, Vite and Typescript",
     url: "https://github.com/candidosales/figma-plugin-svelte-vite",
@@ -120,11 +120,11 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/dependency-report-optimized.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Dependencies report",
     title: "Dependencies report",
     description:
-      "Dependencies report aims to help analyze the consistency of the dependencies in your company's frontend projects.",
+      "Analyze the consistency of the dependencies in your company's frontend projects",
     url: "https://github.com/candidosales/dependency-report",
     techs: [
       {
@@ -146,10 +146,10 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/cloud-function-go.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "API in GO to create Cloud Function",
     title: "API in GO to create Cloud Function",
-    description: "🐹 An API for deploying Google Cloud Functions in Go.",
+    description: "🐹 An API for deploying Google Cloud Functions in Go",
     url: "https://github.com/candidosales/cloud-function-go",
     techs: [
       {
@@ -163,7 +163,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/landing-page-book-1v.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Landing Page Book 1v",
     title: "Landing Page Book 1v",
     description:
@@ -189,7 +189,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/personal-blog.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Personal Portfolio",
     title: "Personal Portfolio",
     description: "Landing page for your personal portfolio",
@@ -222,7 +222,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/empresas-angular.png",
+    imageUrl: "/mock-2v.png",
     imageAlt: "Empresas que usam Angular no Brasil",
     title: "Empresas que usam Angular no Brasil",
     description:

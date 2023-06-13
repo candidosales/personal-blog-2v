@@ -20,6 +20,10 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         opacity: 1;
         top: 0px;
       }
+      .card-button {
+        opacity: 1;
+        bottom: 32px;
+      }
       a {
         --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
           0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -34,44 +38,50 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
     position: absolute;
     opacity: 0;
     top: 10px;
-    transition: all 150ms ease-in-out;
+    transition: all 300ms ease-in-out;
+  }
+  .card-button {
+    opacity: 0;
+    bottom: 0;
+    transition: all 300ms ease-in-out 0.2s;
   }
 
   .card {
     a {
-      transition: all 150ms ease-in-out;
+      transition: all 300ms ease-in-out;
     }
   }
 </style>
-<div class="space-y-4 card">
+<div class="card relative">
   <a
     href={href}
     title={title}
     target="_blank"
-    class="block bg-slate-200 rounded-2xl h-72 relative overflow-hidden"
+    class="block bg-slate-200 rounded-3xl h-420px relative overflow-hidden cursor-pointer"
   >
     <Image
-      class="object-cover shadow-lg rounded-2xl absolute top-1/4 left-8"
-      height={400}
-      width={800}
-      fit="cover"
+      class="object-cover"
+      height={625}
+      width={500}
+      aspectRatio={16 / 9}
       format="avif"
+      fit="fill"
       src={imageUrl}
       alt={imageAlt}
     />
   </a>
 
-  <div class="space-y-2 relative">
-    <div class="text-lg leading-6 font-normal space-y-1 mb-4">
+  <div class="absolute top-8 left-8 max-w-xs">
+    <div class="text-lg leading-6 font-medium space-y-1 mb-4">
       <h3>{title}</h3>
-      <p class="text-sm font-normal text-slate-400">{description}</p>
+      <p class="text-sm font-normal">{description}</p>
     </div>
     <div class="relative h-6">
       <div class="flex techs">
         {
           techs.map((t) => (
             <img
-              class="mr-2 h-6"
+              class="mr-2 h-4"
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
@@ -80,5 +90,18 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         }
       </div>
     </div>
+  </div>
+  <div class="absolute right-8 card-button">
+    <a
+      class="bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-full py-3 px-8 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
+      href="#"
+      >Check it out
+      <img
+        class="ml-2 text-white"
+        src="https://uploads-ssl.webflow.com/60c5f64abe141da7260da0b9/60ca1816e0cff7af54bdd831_arrow-right-circle.svg"
+        loading="lazy"
+        alt="Arrow right"
+      /></a
+    >
   </div>
 </div>
