@@ -6,6 +6,10 @@ import Card from "../components/Card.astro";
 import { AstroSeo } from "@astrolib/seo";
 
 import { portfolio } from "../data/portfolio";
+import { extras } from "../data/extras";
+
+import TitleSection from "../components/TitleSection.astro";
+import Quote from "../components/Quote.astro";
 ---
 
 <AstroSeo
@@ -49,16 +53,10 @@ import { portfolio } from "../data/portfolio";
     <Hero />
 
     <div class="mt-16 mb-16 px-4 sm:mt-24">
-      <h2 class="text-2xl" data-aos="fade-up" data-aos-duration="1000">
-        Portfolio
-      </h2>
-      <p
-        class="text-md text-slate-500 mb-8"
-        data-aos="fade-up"
-        data-aos-duration="1500"
-      >
-        Some open source projects that I've built and maintain
-      </p>
+      <TitleSection
+        title={"Portfolio"}
+        subtitle={"Some open source projects that I've built and maintain"}
+      />
       <div
         class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
         data-aos="fade-up"
@@ -77,12 +75,29 @@ import { portfolio } from "../data/portfolio";
           ))
         }
       </div>
-
-      <h2 class="text-2xl">Extras</h2>
-      <p class="text-md text-slate-400 mb-8">
-        Other projects that I develop in my spare time to practice new resources
-        and technologies
-      </p>
+      <TitleSection
+        title={"Extras"}
+        subtitle={"Other projects that I develop in my spare time to practice new resources and technologies"}
+      />
+      <div
+        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        {
+          extras.map((p) => (
+            <Card
+              title={p.title}
+              description={p.description}
+              href={p.url}
+              imageUrl={p.imageUrl}
+              imageAlt={p.imageAlt}
+              techs={p.techs}
+            />
+          ))
+        }
+      </div>
+      <Quote />
     </div>
   </main>
 </Layout>

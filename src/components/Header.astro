@@ -1,5 +1,18 @@
 ---
 import { Image } from "@astrojs/image/components";
+
+const menu = [
+  {
+    href: "/about",
+    label: "About",
+    targetBlank: false,
+  },
+  {
+    href: "https://store.candidosales.me",
+    label: "Store",
+    targetBlank: true,
+  },
+];
 ---
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-14">
@@ -25,7 +38,7 @@ import { Image } from "@astrojs/image/components";
         <div class="-mr-2 flex items-center md:hidden">
           <button
             type="button"
-            class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:text-slate-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             @click="toggle"
             @mousedown="if (open) $event.preventDefault()"
             aria-expanded="false"
@@ -52,13 +65,17 @@ import { Image } from "@astrojs/image/components";
       </div>
     </div>
     <div class="hidden md:flex md:space-x-10">
-      <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Work</a>
-
-      <a href="#" class="font-medium text-gray-500 hover:text-gray-900">About</a
-      >
-
-      <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Store</a
-      >
+      {
+        menu.map((m) => (
+          <a
+            href={m.href}
+            class="font-medium text-slate-500 hover:text-slate-900"
+            target={m.targetBlank ? "_blank" : ""}
+          >
+            {m.label}
+          </a>
+        ))
+      }
     </div>
     <div
       class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
@@ -66,7 +83,7 @@ import { Image } from "@astrojs/image/components";
       <span class="inline-flex">
         <a
           href="#"
-          class="inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-indigo-600"
+          class="inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-blue-600"
         >
           Let's talk
         </a>

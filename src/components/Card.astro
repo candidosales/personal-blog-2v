@@ -73,8 +73,8 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
 
   <div class="absolute top-8 left-8 max-w-xs">
     <div class="text-lg leading-6 font-medium space-y-1 mb-4">
-      <h3>{title}</h3>
-      <p class="text-sm font-normal">{description}</p>
+      <h3 class="text-slate-800">{title}</h3>
+      <p class="text-slate-800 text-sm font-normal">{description}</p>
     </div>
     <div class="relative h-6">
       <div class="flex techs">
@@ -93,15 +93,22 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
   </div>
   <div class="absolute right-8 card-button">
     <a
-      class="bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-full py-3 px-8 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
-      href="#"
+      class="bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
+      href={href}
+      title={title}
       >Check it out
-      <img
-        class="ml-2 text-white"
-        src="https://uploads-ssl.webflow.com/60c5f64abe141da7260da0b9/60ca1816e0cff7af54bdd831_arrow-right-circle.svg"
-        loading="lazy"
-        alt="Arrow right"
-      /></a
-    >
+
+      <svg
+        class="overflow-visible ml-3 text-slate-800 group-hover:text-slate-400 dark:text-slate-500 dark:group-hover:text-slate-400"
+        width="3"
+        height="6"
+        viewBox="0 0 3 6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"><path d="M0 0L3 3L0 6"></path></svg
+      >
+    </a>
   </div>
 </div>

@@ -1,0 +1,32 @@
+---
+import { Image } from "@astrojs/image/components";
+---
+
+<div class="mt-16 mb-16 mx-auto max-w-7xl px-4 sm:mt-24">
+    <div class="bg-slate-50 rounded-2xl p-6">
+        <figure>
+            <blockquote>
+                <p class="max-w-3xl mx-auto text-lg text-center">
+                    “Triumphing in life is not winning, it is getting up and
+                    starting over every time you fall”
+                </p>
+            </blockquote><figcaption
+                class="mt-6 flex items-center justify-center space-x-4 text-left"
+            >
+                <Image
+                    src="/jose-mujica-400.png"
+                    width={56}
+                    height={56}
+                    alt=""
+                    class="w-14 h-14 rounded-full"
+                    loading="lazy"
+                    decoding="async"
+                /><div>
+                    <div class="text-slate-900 font-semibold dark:text-white">
+                        José Mujica
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+    </div>
+</div>
