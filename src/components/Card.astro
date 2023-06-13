@@ -24,7 +24,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         opacity: 1;
         bottom: 32px;
       }
-      a {
+      a.card-link {
         --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
           0 4px 6px -4px rgb(0 0 0 / 0.1);
         --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
@@ -57,7 +57,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
     href={href}
     title={title}
     target="_blank"
-    class="block bg-slate-200 rounded-3xl h-420px relative overflow-hidden cursor-pointer"
+    class="card-link block bg-slate-200 rounded-3xl h-420px relative overflow-hidden cursor-pointer"
   >
     <Image
       class="object-cover"
