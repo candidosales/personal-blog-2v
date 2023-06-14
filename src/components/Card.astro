@@ -61,10 +61,8 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
   >
     <Image
       class="object-cover"
-      height={625}
-      width={500}
-      aspectRatio={16 / 9}
-      format="avif"
+      width={600}
+      height={751}
       fit="fill"
       src={imageUrl}
       alt={imageAlt}
@@ -81,7 +79,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         {
           techs.map((t) => (
             <img
-              class="mr-2 h-4"
+              class="mr-2 h-6"
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}

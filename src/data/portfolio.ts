@@ -1,6 +1,6 @@
 export const portfolio = [
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/material-time-picker.png",
     imageAlt: "Material Time Picker",
     title: "Material Time Picker",
     description: "A simple time picker component using Angular Material",
@@ -17,7 +17,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/svelte-google-translate-1.png",
     imageAlt: "Svelte Google Translate",
     title: "Svelte Google Translate",
     description: "Google Translate component for Svelte",
@@ -34,7 +34,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/format-code.png",
     imageAlt: "Format Code",
     title: "Format Code",
     description:
@@ -60,11 +60,11 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/landing-page-book-2v-1.png",
     imageAlt: "Landing Page Book 2v",
     title: "Landing Page Book 2v",
     description:
-      "Simple landing page to sell your book - Astro + Svelte + Tailwind",
+      "Landing page for advertising and sales of books to independent authors",
     url: "https://github.com/candidosales/landing-page-book-astro-svelte-tailwind",
     techs: [
       {
@@ -94,7 +94,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/figma-plugin-svelte-vite.png",
     imageAlt: "Figma plugin boilerplate",
     title: "Figma plugin boilerplate",
     description:
@@ -159,32 +159,6 @@ export const portfolio = [
       {
         icon: "google-cloud",
         name: "Google Cloud",
-      },
-    ],
-  },
-  {
-    imageUrl: "/mock-2v.png",
-    imageAlt: "Landing Page Book 1v",
-    title: "Landing Page Book 1v",
-    description:
-      "Landing page for advertising and sales of books to independent authors",
-    url: "https://github.com/candidosales/landing-page-book",
-    techs: [
-      {
-        icon: "sass",
-        name: "SASS",
-      },
-      {
-        icon: "bootstrap",
-        name: "Bootstrap",
-      },
-      {
-        icon: "webpack",
-        name: "Webpack",
-      },
-      {
-        icon: "netlify",
-        name: "Netlify",
       },
     ],
   },
