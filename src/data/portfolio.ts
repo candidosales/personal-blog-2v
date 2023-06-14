@@ -120,7 +120,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/dependency-report.png",
     imageAlt: "Dependencies report",
     title: "Dependencies report",
     description:
@@ -146,7 +146,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/portfolio/cloud-function-go-1.png",
     imageAlt: "API in GO to create Cloud Function",
     title: "API in GO to create Cloud Function",
     description: "🐹 An API for deploying Google Cloud Functions in Go",

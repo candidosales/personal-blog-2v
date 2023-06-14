@@ -34,7 +34,7 @@ export const extras = [
   //   ],
   // },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/extras/receituario-medico-2.png",
     imageAlt: "Receituário Médico SUS",
     title: "Receituário Médico SUS",
     description:
@@ -68,7 +68,7 @@ export const extras = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
+    imageUrl: "/extras/my-agenda-cultural.png",
     imageAlt: "Virada Cultural",
     title: "My Cultural Agenda",
     description:
