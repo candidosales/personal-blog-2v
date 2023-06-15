@@ -19,18 +19,12 @@
   </body>
 </html>
 <style>
-  :root {
-    --body-margin-left: max(24px, env(safe-area-inset-left));
-    --body-margin-right: max(24px, env(safe-area-inset-right));
-  }
   .topbar-blur {
     position: relative;
     user-select: none;
     pointer-events: none;
     --h: min(96px, 128px);
     position: sticky;
-    width: calc(100% + var(--body-margin-left) + var(--body-margin-right));
-    margin-left: calc(-1 * var(--body-margin-left));
     height: var(--h);
     z-index: 1;
     backdrop-filter: blur(5px);
