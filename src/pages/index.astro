@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Card from "../components/Card.astro";
 import { AstroSeo } from "@astrolib/seo";
@@ -11,6 +10,7 @@ import { volunteer } from "../data/volunteer";
 
 import TitleSection from "../components/TitleSection.astro";
 import Quote from "../components/Quote.astro";
+import Header from "../components/Header.svelte";
 ---
 
 <AstroSeo
@@ -49,8 +49,7 @@ import Quote from "../components/Quote.astro";
 />
 
 <Layout>
-  <Header />
-
+  <Header client:only="svelte" />
   <main class="relative pt-24 pb-16 sm:pb-24 mx-auto max-w-7xl">
     <Hero />
 
