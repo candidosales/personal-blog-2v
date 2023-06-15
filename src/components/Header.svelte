@@ -1,17 +1,35 @@
 <script lang="ts">
-  import { createSelect } from "@melt-ui/svelte";
-  const { trigger, menu } = createSelect();
+  import {
+    Drawer,
+    Button,
+    CloseButton,
+    Sidebar,
+    SidebarGroup,
+    SidebarItem,
+    SidebarWrapper,
+  } from "flowbite-svelte";
+  import { sineIn } from "svelte/easing";
+  import User from "./icons/User.svelte";
+  import Store from "./icons/Store.svelte";
+  let drawerHidden = true;
+  let transitionParams = {
+    x: -320,
+    duration: 200,
+    easing: sineIn,
+  };
 
   const menuItems = [
     {
       href: "/about",
       label: "About",
       targetBlank: false,
+      icon: User,
     },
     {
       href: "https://store.candidosales.me",
       label: "Store",
       targetBlank: true,
+      icon: Store,
     },
   ];
 </script>
@@ -20,7 +38,7 @@
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 mt-16">
     <nav
       class="w-full flex items-center justify-end sm:h-10"
-      aria-label="Global"
+      aria-label="navigation"
       data-aos="zoom-out-down"
       data-aos-duration="2000"
     >
@@ -37,12 +55,10 @@
             />
           </a>
           <div class="-mr-2 flex items-center md:hidden">
-            <button
-              type="button"
+            <Button
               class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:text-slate-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-              {...$trigger}
+              on:click={() => (drawerHidden = false)}
             >
-              <span class="sr-only">Open main menu</span>
               <svg
                 class="h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,17 +73,8 @@
                   stroke-width="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
-              </svg>
-            </button>
-            <ul class="menu w-36" {...$menu}>
-              {#each menuItems as m}
-                <li class="option">
-                  <a href={m.href} target={m.targetBlank ? "_blank" : ""}
-                    >{m.label}</a
-                  >
-                </li>
-              {/each}
-            </ul>
+              </svg></Button
+            >
           </div>
         </div>
       </div>
@@ -87,25 +94,35 @@
     </nav>
   </div>
 </div>
-
-<style lang="postcss">
-  .label {
-    @apply py-1 pl-4 pr-4 font-semibold capitalize text-neutral-800;
-  }
-  .menu {
-    @apply z-10 flex max-h-[300px] flex-col gap-2 overflow-y-auto;
-    @apply rounded-md bg-white p-1 lg:max-h-none;
-  }
-  .option {
-    @apply relative cursor-pointer rounded-md py-1 pl-8 pr-4 text-neutral-800;
-    @apply outline-none focus:bg-slate-100 focus:text-slate-700;
-  }
-  .trigger {
-    @apply flex h-10 w-[180px] items-center justify-between rounded-md bg-white px-3;
-    @apply py-2 text-slate-700 outline-none hover:opacity-75 focus:ring focus:ring-slate-400;
-  }
-  .check {
-    @apply absolute left-2 top-1/2 text-slate-500;
-    translate: 0 calc(-50% + 1px);
-  }
-</style>
+<Drawer
+  transitionType="fly"
+  {transitionParams}
+  bind:hidden={drawerHidden}
+  id="sidebar2"
+>
+  <div class="flex items-center">
+    <h5
+      id="drawer-navigation-label-3"
+      class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
+    >
+      Menu
+    </h5>
+    <CloseButton
+      on:click={() => (drawerHidden = true)}
+      class="mb-4 dark:text-white"
+    />
+  </div>
+  <Sidebar>
+    <SidebarWrapper divClass="overflow-y-auto py-4 rounded dark:bg-gray-800">
+      <SidebarGroup>
+        {#each menuItems as m}
+          <SidebarItem label={m.label} href={m.href}>
+            <svelte:fragment slot="icon">
+              <svelte:component this={m.icon} class="w-5 h-5 mr-2" />
+            </svelte:fragment>
+          </SidebarItem>
+        {/each}
+      </SidebarGroup>
+    </SidebarWrapper>
+  </Sidebar>
+</Drawer>
