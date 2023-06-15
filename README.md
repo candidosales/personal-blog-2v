@@ -7,6 +7,7 @@ Inspirations:
 - https://swissfolio.vercel.app/
   - https://twitter.com/mike_andreuzza/status/1665265318359449601
 - https://runway.com/
+- https://zenorocha.com/
 - https://twitter.com/ilyamiskov/status/1662168020410564623
 
 ## 🎯 Features

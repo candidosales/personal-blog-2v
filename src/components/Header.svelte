@@ -1,9 +1,17 @@
 <script lang="ts">
+  import Home from "./icons/Home.svelte";
+
   import User from "./icons/User.svelte";
   import Store from "./icons/Store.svelte";
   import MenuMobile from "./MenuMobile.svelte";
 
   const menuItems = [
+    {
+      href: "/",
+      label: "Home",
+      targetBlank: false,
+      icon: Home,
+    },
     {
       href: "/about",
       label: "About",
@@ -19,7 +27,7 @@
   ];
 </script>
 
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 mt-16">
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 mt-20">
   <nav
     class="w-full flex items-center justify-end sm:h-10"
     aria-label="navigation"

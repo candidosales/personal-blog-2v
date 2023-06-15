@@ -1,0 +1,43 @@
+---
+const links = [
+    {
+        href: "/contact",
+        label: "E-mail",
+        targetBlank: true,
+    },
+    {
+        href: "https://twitter.com/candidosales",
+        label: "Twitter",
+        targetBlank: true,
+    },
+    {
+        href: "https://github.com/candidosales",
+        label: "Github",
+        targetBlank: true,
+    },
+    {
+        href: "https://linkedin.com/in/candidosales",
+        label: "Linkedin",
+        targetBlank: true,
+    },
+    {
+        href: "https://adplist.org/mentors/candido-sales-gomes",
+        label: "Mentoring",
+        targetBlank: true,
+    },
+];
+---
+
+<footer class="w-full flex flex-row justify-center items-center lowercase">
+    {
+        links.map((l) => (
+            <a
+                class="m-4 text-blue-600"
+                href={l.href}
+                target={l.targetBlank ? "_blank" : ""}
+            >
+                {l.label}
+            </a>
+        ))
+    }
+</footer>
