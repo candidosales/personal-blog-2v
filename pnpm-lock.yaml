@@ -7,12 +7,15 @@ specifiers:
   '@astrojs/tailwind': ^3.1.3
   '@astrolib/seo': ^0.3.0
   '@melt-ui/svelte': ^0.8.2
+  '@popperjs/core': ^2.11.8
   astro: ^2.6.4
   astro-compress: ^1.1.47
+  flowbite: ^1.6.6
+  flowbite-svelte: ^0.38.2
   sass: ^1.63.3
   sharp: ^0.32.1
   svelte: ^3.59.1
-  svelte-headlessui: ^0.0.16
+  tailwind-merge: ^1.13.1
   tailwindcss: ^3.3.2
 
 dependencies:
@@ -22,12 +25,15 @@ dependencies:
   '@astrojs/tailwind': 3.1.3_ez5tr46f34xemqtmnzl54w7fmm
   '@astrolib/seo': 0.3.1_astro@2.6.4
   '@melt-ui/svelte': 0.8.2_svelte@3.59.1
+  '@popperjs/core': 2.11.8
   astro: 2.6.4_sass@1.63.4+sharp@0.32.1
   astro-compress: 1.1.47
+  flowbite: 1.6.6
+  flowbite-svelte: 0.38.2_svelte@3.59.1
   sass: 1.63.4
   sharp: 0.32.1
   svelte: 3.59.1
-  svelte-headlessui: 0.0.16
+  tailwind-merge: 1.13.1
   tailwindcss: 3.3.2
 
 packages:
@@ -737,6 +743,10 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       tslib: 2.5.3
+    dev: false
+
+  /@popperjs/core/2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
   /@proload/core/0.3.3:
@@ -1800,6 +1810,25 @@ packages:
       pkg-dir: 4.2.0
     dev: false
 
+  /flowbite-svelte/0.38.2_svelte@3.59.1:
+    resolution: {integrity: sha512-BmuGYHQrgwJzB3pgxhFPmJlVj4l+I4OW55v1LBTVJkgn+iiQhUA5voWTIst6aZRRBBX1zpVtKnfDUMG01GzxCQ==}
+    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+    peerDependencies:
+      svelte: ^3.55.1 || ^4.0.0
+    dependencies:
+      '@popperjs/core': 2.11.8
+      flowbite: 1.6.6
+      svelte: 3.59.1
+      tailwind-merge: 1.13.1
+    dev: false
+
+  /flowbite/1.6.6:
+    resolution: {integrity: sha512-T+IaFikHELo1PBKfT/axDqhAmKQLfm/dxVch2r07TZ+IcKwkorZjzwkVuw3OslTETniRIUf2qQvEhxk3bQCaew==}
+    dependencies:
+      '@popperjs/core': 2.11.8
+      mini-svg-data-uri: 1.4.4
+    dev: false
+
   /focus-trap/7.4.3:
     resolution: {integrity: sha512-BgSSbK4GPnS2VbtZ50VtOv1Sti6DIkj3+LkVjiWMNjLeAp1SH1UlLx3ULu/DCu4vq5R4/uvTm+zrvsMsuYmGLg==}
     dependencies:
@@ -2740,6 +2769,11 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /mini-svg-data-uri/1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
+    dev: false
+
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -3651,12 +3685,6 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
-  /svelte-headlessui/0.0.16:
-    resolution: {integrity: sha512-/jzHXYmVOEl/pI5PekjwwrZJTUBzasSYEAYt4gOxFf4g+3RoHv24NTlNryu+kkE5024ZZlyoeTwO3ClibMxIUA==}
-    dependencies:
-      svelte-transition: 0.0.7
-    dev: false
-
   /svelte-hmr/0.15.2_svelte@3.59.1:
     resolution: {integrity: sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -3664,10 +3692,6 @@ packages:
       svelte: ^3.19.0 || ^4.0.0-next.0
     dependencies:
       svelte: 3.59.1
-    dev: false
-
-  /svelte-transition/0.0.7:
-    resolution: {integrity: sha512-YMbl+eIkzeYKBz6E/I8KI8RMezhqB38t2B/Mx8BotmtiN+5wnKath7CWDc+8U9zKGJ/iUYHmx4MwQjIzo05nVg==}
     dev: false
 
   /svelte/3.59.1:
@@ -3709,6 +3733,10 @@ packages:
 
   /tabbable/6.1.2:
     resolution: {integrity: sha512-qCN98uP7i9z0fIS4amQ5zbGBOq+OSigYeGvPy7NDk8Y9yncqDZ9pRPgfsc2PJIVM9RrJj7GIfuRgmjoUU9zTHQ==}
+    dev: false
+
+  /tailwind-merge/1.13.1:
+    resolution: {integrity: sha512-tRtRN22TDokGi2TuYSvuHQuuW6BJ/zlUEG+iYpAQ9i66msc/0eU/+HPccbPnNNH0mCPp0Ob8thaC8Uy9CxHitQ==}
     dev: false
 
   /tailwindcss/3.3.2:
