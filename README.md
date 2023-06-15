@@ -1,6 +1,13 @@
-# Personal Blog 2v - Astro + Tailwind + Vercel Edge
+# Personal Blog 2v - Astro + Tailwind + Svelte
 
-Inspired by: https://14habits.com/
+Inspirations:
+
+- https://www.rachelhow.com/
+- https://paco.me/
+- https://swissfolio.vercel.app/
+  - https://twitter.com/mike_andreuzza/status/1665265318359449601
+- https://runway.com/
+- https://twitter.com/ilyamiskov/status/1662168020410564623
 
 ## 🎯 Features
 
@@ -11,6 +18,7 @@ Inspired by: https://14habits.com/
 - (Performance Optimization Strategy)[https://paper.dropbox.com/doc/Performance-Optimization-Strategy-in-2023--B5jjdEwca8NURASq1CAAnSQVAg-qWcr7orx2cEWHpLqoLeTC]
 - ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
+- ✅ [Svelte](https://svelte.dev/);
 
 ## 🧞 Commands
 
