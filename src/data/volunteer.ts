@@ -55,7 +55,7 @@ export const volunteer = [
     imageAlt: "Mapa Aborto Legal",
     title: "Mapa Aborto Legal",
     description:
-      "All about legal abortion in 🇧🇷 - What situations are allowed, what is needed, which hospitals to turn to and more information",
+      "All about legal abortion in 🇧🇷 - What situations are allowed, what is needed",
     url: "https://mapaabortolegal.org/",
     techs: [
       {

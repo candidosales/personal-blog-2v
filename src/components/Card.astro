@@ -17,10 +17,6 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
 <style lang="scss">
   .card {
     &:hover {
-      .techs {
-        opacity: 1;
-        top: 0px;
-      }
       .card-button {
         opacity: 1;
         bottom: 32px;
@@ -35,12 +31,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
       }
     }
   }
-  .techs {
-    position: absolute;
-    opacity: 0;
-    top: 10px;
-    transition: all 300ms ease-in-out;
-  }
+
   .card-button {
     opacity: 0;
     bottom: 0;
@@ -80,7 +71,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         {
           techs.map((t) => (
             <img
-              class="mr-2 h-6"
+              class="mr-2 h-4 md:h-5"
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
