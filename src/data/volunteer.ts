@@ -68,4 +68,18 @@ export const volunteer = [
       },
     ],
   },
+  {
+    imageUrl: "/volunteer/empresas-angular.png",
+    imageAlt: "Empresas que usam Angular no Brasil",
+    title: "Empresas que usam Angular no Brasil",
+    description:
+      "Repository of companies in 🇧🇷 that use Angular in their projects",
+    url: "https://github.com/candidosales/empresas-que-usam-angular-no-brasil",
+    techs: [
+      {
+        icon: "github",
+        name: "Github",
+      },
+    ],
+  },
 ];

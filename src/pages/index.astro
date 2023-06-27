@@ -78,28 +78,6 @@ import Footer from "../components/Footer.astro";
         }
       </div>
       <TitleSection
-        title={"Extras"}
-        subtitle={"In my free time, I work on various projects to explore new resources and technologies"}
-      />
-      <div
-        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
-        {
-          extras.map((p) => (
-            <Card
-              title={p.title}
-              description={p.description}
-              href={p.url}
-              imageUrl={p.imageUrl}
-              imageAlt={p.imageAlt}
-              techs={p.techs}
-            />
-          ))
-        }
-      </div>
-      <TitleSection
         title={"Volunteer"}
         subtitle={"I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability"}
       />
@@ -121,6 +99,29 @@ import Footer from "../components/Footer.astro";
           ))
         }
       </div>
+      <TitleSection
+        title={"Extras"}
+        subtitle={"In my free time, I work on various projects to explore new resources and technologies"}
+      />
+      <div
+        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        {
+          extras.map((p) => (
+            <Card
+              title={p.title}
+              description={p.description}
+              href={p.url}
+              imageUrl={p.imageUrl}
+              imageAlt={p.imageAlt}
+              techs={p.techs}
+            />
+          ))
+        }
+      </div>
+
       <Quote />
     </div>
     <Footer />

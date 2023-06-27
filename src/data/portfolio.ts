@@ -163,9 +163,9 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/mock-2v.png",
-    imageAlt: "Personal Portfolio",
-    title: "Personal Portfolio",
+    imageUrl: "/portfolio/personal-portfolio-1v.png",
+    imageAlt: "Personal Portfolio 1v",
+    title: "Personal Portfolio 1v",
     description: "Landing page for your personal portfolio",
     url: "https://github.com/candidosales/personal-blog",
     techs: [
@@ -192,20 +192,6 @@ export const portfolio = [
       {
         icon: "pwa",
         name: "PWA",
-      },
-    ],
-  },
-  {
-    imageUrl: "/mock-2v.png",
-    imageAlt: "Empresas que usam Angular no Brasil",
-    title: "Empresas que usam Angular no Brasil",
-    description:
-      "Repository of companies in 🇧🇷 that use Angular in their projects",
-    url: "https://github.com/candidosales/empresas-que-usam-angular-no-brasil",
-    techs: [
-      {
-        icon: "github",
-        name: "Github",
       },
     ],
   },
