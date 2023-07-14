@@ -22,7 +22,7 @@
 <div class="fixed w-full bottom-6 right-8 z-10 md:hidden">
   <div class="-mr-2 flex justify-end md:hidden">
     <Button
-      class="bg-slate-100/80 backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium text-slate-800 hover:text-slate-500  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+      class="bg-slate-100/80 backdrop-blur-md rounded-full border border-solid border-slate-200 px-4 py-3 inline-flex items-center justify-center font-medium text-slate-500 hover:text-slate-300  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
       on:click={() => (drawerHidden = false)}
     >
       Menu</Button

@@ -49,7 +49,7 @@
       </div>
     </div>
     <div
-      class="hidden md:flex bg-slate-100/80 px-2 rounded-full backdrop-blur-md"
+      class="hidden md:flex bg-slate-100/80 px-2 rounded-full backdrop-blur-md border border-solid border-slate-200"
     >
       {#each menuItems as m}
         <a

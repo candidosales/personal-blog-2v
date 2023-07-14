@@ -38,7 +38,7 @@ export const extras = [
     imageAlt: "Receituário Médico SUS",
     title: "Receituário Médico SUS",
     description:
-      "It helps doctors from the Brazilian public health system make medical prescriptions for free",
+      "It helps doctors from the Brazilian public health system make medical prescriptions",
     url: "https://receituariomedico.app/",
     techs: [
       {
