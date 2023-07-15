@@ -56,7 +56,7 @@ import Contact from "../components/Contact.svelte";
         data-aos-duration="2000"
       >
         {
-          portfolio.map((p) => (
+          portfolio.map((p, index) => (
             <Card
               title={p.title}
               description={p.description}
@@ -64,6 +64,7 @@ import Contact from "../components/Contact.svelte";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
+              loadingImage={index === 0 ? "eager" : "lazy"}
             />
           ))
         }
@@ -86,6 +87,7 @@ import Contact from "../components/Contact.svelte";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
+              loadingImage="lazy"
             />
           ))
         }
@@ -108,6 +110,7 @@ import Contact from "../components/Contact.svelte";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
+              loadingImage="lazy"
             />
           ))
         }

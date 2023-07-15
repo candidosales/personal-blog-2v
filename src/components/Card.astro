@@ -9,9 +9,18 @@ export interface Props {
   imageAlt: string;
   href: string;
   techs: Array<{ icon: string; name: string }>;
+  loadingImage: "lazy" | "eager";
 }
 
-const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
+const {
+  href,
+  title,
+  description,
+  imageUrl,
+  imageAlt,
+  techs,
+  loadingImage = "lazy",
+} = Astro.props;
 ---
 
 <style lang="scss">
@@ -61,6 +70,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
       aspectRatio={0.798934}
       alt={imageAlt}
       fit={"cover"}
+      loading={loadingImage}
     />
   </a>
 
