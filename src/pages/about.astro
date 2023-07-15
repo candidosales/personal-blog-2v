@@ -5,6 +5,7 @@ import Header from "../components/Header.svelte";
 import ArrowRight from "../components/icons/ArrowRight.svelte";
 import { AstroSeo } from "@astrolib/seo";
 import Contact from "../components/Contact.svelte";
+import Linkedin from "../components/icons/Linkedin.svelte";
 
 const experience = [
     {
@@ -95,8 +96,9 @@ const experience = [
             </div>
             <div class="space-y-4 text-slate-800 text-lg">
                 <p>
-                    <strong>Hey, I'm Candido Sales</strong>, I started as a
-                    software engineer back in 2011, working with PHP.
+                    <span class="font-medium">Hey, I'm Candido Sales</span>, I
+                    started as a software engineer back in 2011, working with
+                    PHP.
                 </p>
                 <p>
                     I'm originally from Brazil 🇧🇷, Piauí, and now living in
@@ -179,7 +181,7 @@ const experience = [
                 href="https://www.linkedin.com/in/candidosales/"
                 title="See more about my experiences in my Linkedin"
                 target="_blank"
-                >See more in my Linkedin
+                ><Linkedin class="h-4 w-4 mr-2" /> See more in my Linkedin
 
                 <ArrowRight class="overflow-visible ml-3 text-white" />
             </a>
