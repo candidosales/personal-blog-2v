@@ -21,6 +21,8 @@ Inspirations:
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
 - ✅ [Svelte 4](https://svelte.dev/);
 - ✅ [Performance Optimization Strategy](https://paper.dropbox.com/doc/Performance-Optimization-Strategy-in-2023--B5jjdEwca8NURASq1CAAnSQVAg-qWcr7orx2cEWHpLqoLeTC)
+- ✅ [Fontsource](https://docs.astro.build/en/guides/fonts/)
+- ✅ [Open Graph Image with Satori](https://github.com/vercel/satori)
 
 ## 🧞 Commands
 
