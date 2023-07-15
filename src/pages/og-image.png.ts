@@ -65,7 +65,7 @@ export const get: APIRoute = async function get({ params, request }) {
   const image = {
     type: "img",
     props: {
-      src: "https://www.candidosales.me/me-2.webp",
+      src: "https://www.candidosales.me/me-2.png",
       style: {
         display: "flex",
         flexDirection: "column",
