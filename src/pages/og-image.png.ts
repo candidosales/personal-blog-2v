@@ -8,6 +8,10 @@ export const get: APIRoute = async function get({ params, request }) {
     "./public/fonts/inter-latin-400-normal.ttf"
   );
 
+  const imageBase64 = (await fs.readFile("./public/me-2.png")).toString(
+    "base64"
+  );
+
   const pHello = {
     type: "p",
     props: {
@@ -63,17 +67,17 @@ export const get: APIRoute = async function get({ params, request }) {
   };
 
   const image = {
-    type: "img",
+    type: "div",
     props: {
-      src: "https://www.candidosales.me/me-2.png",
       style: {
-        display: "flex",
-        flexDirection: "column",
+        backgroundImage: `url('data:image/png;base64,${imageBase64}')`,
+        backgroundClip: "border-box",
+        backgroundSize: `250px 250px`,
         marginRight: 40,
         borderRadius: 200,
+        width: 250,
+        height: 250,
       },
-      width: 250,
-      height: 250,
     },
   };
 
