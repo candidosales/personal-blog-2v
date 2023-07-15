@@ -22,6 +22,14 @@ import "@fontsource-variable/inter";
     ></script>
     <script type="text/javascript">
       AOS.init();
+
+      try {
+        document.addEventListener("touchstart", onTouchStart, {
+          passive: true,
+        });
+      } catch (e) {
+        console.warn(e);
+      }
     </script>
     <style>
       body {
