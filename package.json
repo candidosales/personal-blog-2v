@@ -1,7 +1,10 @@
 {
   "name": "personal-blog-2v",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "private": false,
+  "author": "Candido Sales Gomes <candidosg@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
