@@ -7,30 +7,28 @@ import { Image } from "@astrojs/image/components";
     data-aos="fade-up"
     data-aos-duration="1500"
 >
-    <div class="bg-slate-100/80 backdrop-blur-md rounded-2xl p-6">
-        <figure>
-            <blockquote>
-                <p class="max-w-3xl mx-auto text-lg text-center text-slate-800">
+    <div class="p-6">
+        <div
+            class="flex flex-col md:flex-row mx-auto justify-center items-center"
+        >
+            <Image
+                src="/jose-mujica-400.png"
+                width={56}
+                height={56}
+                alt=""
+                class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
+                loading="lazy"
+                decoding="async"
+            />
+            <blockquote class="text-center md:text-left">
+                <div class="text-slate-500 dark:text-white mb-2 md:mb-0">
+                    José Mujica
+                </div>
+                <p class="max-w-3xl mx-auto text-lg font-medium text-slate-800">
                     “Triumphing in life is not winning, it is getting up and
                     starting over every time you fall”
                 </p>
-            </blockquote><figcaption
-                class="mt-6 flex items-center justify-center space-x-4 text-left"
-            >
-                <Image
-                    src="/jose-mujica-400.png"
-                    width={56}
-                    height={56}
-                    alt=""
-                    class="w-14 h-14 rounded-full"
-                    loading="lazy"
-                    decoding="async"
-                /><div>
-                    <div class="text-slate-500 dark:text-white">
-                        José Mujica
-                    </div>
-                </div>
-            </figcaption>
-        </figure>
+            </blockquote>
+        </div>
     </div>
 </div>
