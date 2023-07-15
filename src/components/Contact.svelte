@@ -6,6 +6,25 @@
   import Mail from "./icons/Mail.svelte";
   import Twitter from "./icons/Twitter.svelte";
 
+  export let place: "default" | "mobile" = "default";
+
+  let stylePlace = {
+    default:
+      "bg-slate-100/80 px-2 backdrop-blur-md border border-solid border-slate-200 rounded-full",
+    mobile: "w-full justify-between p-2",
+  };
+
+  let dataAosPlace = {
+    default: {
+      aos: "fade-up",
+      duration: 1500,
+    },
+    mobile: {
+      aos: "",
+      duration: 0,
+    },
+  };
+
   const links = [
     {
       href: "/contact",
@@ -42,17 +61,15 @@
 
 <footer
   class="w-full flex flex-row justify-center items-center lowercase"
-  data-aos="fade-up"
-  data-aos-duration="1500"
+  data-aos={dataAosPlace[place].aos}
+  data-aos-duration={dataAosPlace[place].duration}
 >
-  <div
-    class=" flex flex-row bg-slate-100/80 px-2 rounded-2xl md:rounded-full backdrop-blur-md border border-solid border-slate-200"
-  >
+  <div class={`flex flex-row ${stylePlace[place]}`}>
     {#each links as l}
-      <div class="m-4">
+      <div class={place === "mobile" ? "m-0" : "m-4"}>
         <TextLink href={l.href} title={l.label}
           ><div
-            class="w-5 h-5 md:w-4 md:h-4 mr-2 flex items-center align-middle text-blue-600 hover:text-blue-900"
+            class="w-5 h-5 md:w-4 md:h-4 mr-0 md:mr-2 flex items-center align-middle text-slate-500 hover:text-slate-800"
           >
             <svelte:component this={l.icon} />
           </div>

@@ -5,7 +5,7 @@ import TextLink from "../components/TextLink.svelte";
 import Layout from "../layouts/Layout.astro";
 import ArrowRight from "../components/icons/ArrowRight.svelte";
 import { AstroSeo } from "@astrolib/seo";
-import Footer from "../components/Footer.svelte";
+import Contact from "../components/Contact.svelte";
 
 const experience = [
     {
@@ -80,7 +80,7 @@ const experience = [
 
 <Layout>
     <Header client:only="svelte" />
-    <main class="relative pb-16 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
+    <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
         <h1
             class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
             data-aos="fade-up"
@@ -112,30 +112,34 @@ const experience = [
                     Kitchener 🇨🇦.
                 </p>
                 <p>
-                    Currently, I work at <TextLink
+                    Currently, I work at
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
                         href="https://www.cisco.com/"
-                        title="Visit Cisco"
-                        label="Cisco"
-                    />
+                        title="Visit Cisco">Cisco</a
+                    >
                     focused on building accessible, human-centred products.
                 </p>
 
                 <p>
-                    I have founded <TextLink
+                    I have founded
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
                         href="https://geleiatotal.com.br/"
-                        title="Visit Geleia Total"
-                        label="Geleia Total"
-                    /> and <TextLink
+                        title="Visit Geleia Total">Geleia Total</a
+                    >
+                    and <a
+                        class="underline underline-offset-4 after:content-['_↗']"
                         href="https://www.geleiaturismo.com/"
-                        title="Visit Geleia Turismo"
-                        label="Geleia Turismo"
-                    />. Moreover, I offer consulting services to both private
-                    and public entities. <TextLink
+                        title="Visit Geleia Turismo">Geleia Turismo</a
+                    >. Moreover, I offer consulting services to both private and
+                    public entities.
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
                         href="https://adplist.org/mentors/candido-sales-gomes"
-                        title="Visit my ADPList profile"
-                        label="Mentoring"
-                    /> individuals and assisting them in their IT careers brings
-                    me immense joy.
+                        title="Visit my ADPList profile">Mentoring</a
+                    > individuals and assisting them in their IT careers brings me
+                    immense joy.
                 </p>
                 <p>
                     I love open source and side projects. When I'm not working,
@@ -176,7 +180,7 @@ const experience = [
             }
         </div>
         <div
-            class="flex justify-center mt-10"
+            class="flex justify-center mt-10 mb-16"
             data-aos="fade-up"
             data-aos-duration="1500"
         >
@@ -189,6 +193,6 @@ const experience = [
                 <ArrowRight class="overflow-visible ml-3 text-white" />
             </a>
         </div>
-        <Footer />
+        <Contact />
     </main>
 </Layout>

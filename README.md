@@ -9,6 +9,7 @@ Inspirations:
 - https://runway.com/
 - https://zenorocha.com/
 - https://twitter.com/ilyamiskov/status/1662168020410564623
+- https://rauno.me/
 
 ## 🎯 Features
 

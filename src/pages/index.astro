@@ -11,7 +11,7 @@ import { volunteer } from "../data/volunteer";
 import TitleSection from "../components/TitleSection.astro";
 import Quote from "../components/Quote.astro";
 import Header from "../components/Header.svelte";
-import Footer from "../components/Footer.svelte";
+import Contact from "../components/Contact.svelte";
 ---
 
 <AstroSeo
@@ -51,7 +51,7 @@ import Footer from "../components/Footer.svelte";
 
 <Layout>
   <Header client:only="svelte" />
-  <main class="relative pb-16 sm:pb-24 mx-auto max-w-7xl">
+  <main class="relative pb-20 sm:pb-24 mx-auto max-w-7xl">
     <Hero />
 
     <div class="mt-16 mb-16 px-4 sm:mt-24">
@@ -124,6 +124,6 @@ import Footer from "../components/Footer.svelte";
 
       <Quote />
     </div>
-    <Footer />
+    <Contact />
   </main>
 </Layout>
