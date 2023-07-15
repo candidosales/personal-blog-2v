@@ -1,3 +1,7 @@
+---
+import { GoogleAnalytics } from "astro-google-analytics";
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +12,7 @@
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <GoogleAnalytics id="G-KF2R0QYPX7" />
   </head>
   <body>
     <div class="topbar-blur" aria-hidden="true"></div>
@@ -17,29 +22,29 @@
     <script type="text/javascript">
       AOS.init();
     </script>
+    <style>
+      .topbar-blur {
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+        --h: min(96px, 128px);
+        position: sticky;
+        height: var(--h);
+        z-index: 1;
+        backdrop-filter: blur(5px);
+        opacity: 0.95;
+        mask-image: linear-gradient(to bottom, #000 25%, transparent);
+      }
+      .topbar-blur:first-child {
+        margin-bottom: calc(-1 * var(--h));
+        top: 0;
+      }
+      .topbar-blur:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, white, transparent);
+      }
+    </style>
   </body>
 </html>
-<style>
-  .topbar-blur {
-    position: relative;
-    user-select: none;
-    pointer-events: none;
-    --h: min(96px, 128px);
-    position: sticky;
-    height: var(--h);
-    z-index: 1;
-    backdrop-filter: blur(5px);
-    opacity: 0.95;
-    mask-image: linear-gradient(to bottom, #000 25%, transparent);
-  }
-  .topbar-blur:first-child {
-    margin-bottom: calc(-1 * var(--h));
-    top: 0;
-  }
-  .topbar-blur:after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, white, transparent);
-  }
-</style>
