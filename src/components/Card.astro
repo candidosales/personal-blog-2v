@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 import ArrowRight from "./icons/ArrowRight.svelte";
 
 export interface Props {
@@ -55,7 +55,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
       data-aos="fade-up"
       data-aos-duration="700"
       src={imageUrl}
-      widths={[343, 382, 400]}
+      widths={[343, 382, 570]}
       aspectRatio={0.798934}
       alt={imageAlt}
       fit={"cover"}
@@ -78,6 +78,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
               alt={t.name}
               loading="lazy"
               height="20"
+              width="20"
             />
           ))
         }
