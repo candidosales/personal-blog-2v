@@ -12,12 +12,24 @@ export const volunteer = [
         name: "Svelte",
       },
       {
+        icon: "tailwind",
+        name: "Tailwind",
+      },
+      {
+        icon: "vercel",
+        name: "Vercel",
+      },
+      {
         icon: "meilisearch",
         name: "Meilisearch",
       },
       {
         icon: "strapi",
         name: "Strapi",
+      },
+      {
+        icon: "upstash",
+        name: "Upstash",
       },
       {
         icon: "render",

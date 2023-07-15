@@ -1,5 +1,4 @@
 <script lang="ts">
-  import TextLink from "./TextLink.svelte";
   import AdpList from "./icons/AdpList.svelte";
   import Github from "./icons/Github.svelte";
   import Linkedin from "./icons/Linkedin.svelte";
@@ -67,15 +66,19 @@
   <div class={`flex flex-row ${stylePlace[place]}`}>
     {#each links as l}
       <div class={place === "mobile" ? "m-0" : "m-4"}>
-        <TextLink href={l.href} title={l.label}
+        <a
+          class="no-underline hover:underline hover:underline-offset-4 flex flex-row align-middle items-center text-slate-500 hover:text-slate-800"
+          href={l.href}
+          title={l.label}
+          target="_blank"
           ><div
-            class="w-5 h-5 md:w-4 md:h-4 mr-0 md:mr-2 flex items-center align-middle text-slate-500 hover:text-slate-800"
+            class="w-5 h-5 md:w-4 md:h-4 mr-0 md:mr-2 flex items-center align-middle"
           >
             <svelte:component this={l.icon} />
           </div>
           <span class="hidden md:block after:content-['_↗']">
             {l.label}</span
-          ></TextLink
+          ></a
         >
       </div>
     {/each}

@@ -1,8 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
 import Header from "../components/Header.svelte";
-import TextLink from "../components/TextLink.svelte";
-import Layout from "../layouts/Layout.astro";
 import ArrowRight from "../components/icons/ArrowRight.svelte";
 import { AstroSeo } from "@astrolib/seo";
 import Contact from "../components/Contact.svelte";
@@ -152,7 +150,7 @@ const experience = [
             data-aos="fade-up"
             data-aos-duration="1500"
         >
-            Experience
+            Work experience
         </h2>
         <div
             class="lg:grid lg:grid-cols-4 lg:gap-6 mt-10 text-slate-800"
@@ -163,17 +161,16 @@ const experience = [
                 experience.map((e) => (
                     <>
                         <div class="col-span-1 mb-1 md:mb-8 flex flex-row md:flex-col items-center md:items-start">
-                            <h3 class="text-2xl mb-1 md:mb-4 mr-4">
-                                {e.company}
-                            </h3>
-                            <p class="text-slate-500 md:mb-1 mr-4">
+                            <p class="text-sm md:text-lg text-slate-500 md:mb-1 mr-4">
                                 {e.period}
                             </p>
-                            <p class="text-slate-500">{e.country}</p>
+                            <p class="text-slate-500" />
                         </div>
                         <div class="col-span-3 mb-8">
-                            <p class="text-lg md:text-2xl mb-4">{e.title}</p>
-                            <p>{e.description}</p>
+                            <h3 class="text-lg mb-1 font-medium">
+                                {e.company} {e.country}
+                            </h3>
+                            <p class="mb-4">{e.title}</p>
                         </div>
                     </>
                 ))
