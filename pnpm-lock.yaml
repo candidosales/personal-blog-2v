@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/image':
     specifier: ^0.17.2
     version: 0.17.2(astro@2.8.3)(sharp@0.32.3)
+  '@astrojs/partytown':
+    specifier: ^1.2.3
+    version: 1.2.3
   '@astrojs/sitemap':
     specifier: ^1.4.0
     version: 1.4.0
@@ -32,9 +35,6 @@ dependencies:
   astro-compress:
     specifier: ^1.1.49
     version: 1.1.49
-  astro-google-analytics:
-    specifier: ^1.0.3
-    version: 1.0.3
   flowbite:
     specifier: ^1.7.0
     version: 1.7.0
@@ -146,6 +146,13 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/partytown@1.2.3:
+    resolution: {integrity: sha512-EYdeFfSEe5RTQsz+6Mxb9JLJWztZEOw0yjAxoDbntCdTkxDCnIwqRAhUwftx+zWsh+JIw1hOkLRNN8QOmwBiqA==}
+    dependencies:
+      '@builder.io/partytown': 0.7.6
+      mrmime: 1.0.1
     dev: false
 
   /@astrojs/prism@2.1.2:
@@ -453,6 +460,11 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@builder.io/partytown@0.7.6:
+    resolution: {integrity: sha512-snXIGNiZpqjno3XYQN2lbBB+05hsQR/LSttbtIW1c0gmZ7Kh/DIo0YrxlDxCDulAMFPFM8J+4voLwvYepSj3sw==}
+    hasBin: true
     dev: false
 
   /@emmetio/abbreviation@2.3.3:
@@ -1012,10 +1024,6 @@ packages:
       sharp: 0.32.1
       svgo: 3.0.2
       terser: 5.18.2
-    dev: false
-
-  /astro-google-analytics@1.0.3:
-    resolution: {integrity: sha512-5bD7jA15yxVaUFVVEFG6KKMphYJ4AKP4+HSqCVBpTBnqh8LL0giTdAHpG9KJs3JaFbGQUTWP5Pqt8+twz7f55Q==}
     dev: false
 
   /astro@2.8.3(sass@1.63.6)(sharp@0.32.3):
@@ -2892,6 +2900,11 @@ packages:
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
+    dev: false
+
+  /mrmime@1.0.1:
+    resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
+    engines: {node: '>=10'}
     dev: false
 
   /ms@2.1.2:

@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.17.2",
+    "@astrojs/partytown": "^1.2.3",
     "@astrojs/sitemap": "^1.4.0",
     "@astrojs/svelte": "^3.1.0",
     "@astrojs/tailwind": "^4.0.0",
@@ -22,7 +23,6 @@
     "@popperjs/core": "^2.11.8",
     "astro": "^2.8.3",
     "astro-compress": "^1.1.49",
-    "astro-google-analytics": "^1.0.3",
     "flowbite": "^1.7.0",
     "flowbite-svelte": "^0.39.3",
     "sass": "^1.63.6",
