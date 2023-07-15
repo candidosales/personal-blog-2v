@@ -94,6 +94,23 @@ export const portfolio = [
     ],
   },
   {
+    imageUrl: "/portfolio/cloud-function-go-1.png",
+    imageAlt: "API in GO to create Cloud Function",
+    title: "API in GO to create Cloud Function",
+    description: "🐹 An API for deploying Google Cloud Functions in Go",
+    url: "https://github.com/candidosales/cloud-function-go",
+    techs: [
+      {
+        icon: "go",
+        name: "Go",
+      },
+      {
+        icon: "google-cloud",
+        name: "Google Cloud",
+      },
+    ],
+  },
+  {
     imageUrl: "/portfolio/figma-plugin-svelte-vite.png",
     imageAlt: "Figma plugin boilerplate",
     title: "Figma plugin boilerplate",
@@ -145,23 +162,7 @@ export const portfolio = [
       },
     ],
   },
-  {
-    imageUrl: "/portfolio/cloud-function-go-1.png",
-    imageAlt: "API in GO to create Cloud Function",
-    title: "API in GO to create Cloud Function",
-    description: "🐹 An API for deploying Google Cloud Functions in Go",
-    url: "https://github.com/candidosales/cloud-function-go",
-    techs: [
-      {
-        icon: "go",
-        name: "Go",
-      },
-      {
-        icon: "google-cloud",
-        name: "Google Cloud",
-      },
-    ],
-  },
+
   {
     imageUrl: "/portfolio/personal-portfolio-2v-1.png",
     imageAlt: "Personal Portfolio 2v",

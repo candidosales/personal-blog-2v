@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image, Picture } from "@astrojs/image/components";
 import ArrowRight from "./icons/ArrowRight.svelte";
 
 export interface Props {
@@ -51,15 +51,14 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
     target="_blank"
     class="card-link block bg-slate-200 rounded-3xl h-420px relative overflow-hidden cursor-pointer"
   >
-    <Image
+    <Picture
       data-aos="fade-up"
       data-aos-duration="700"
-      class="object-cover"
-      width={600}
-      height={751}
-      fit="fill"
       src={imageUrl}
+      widths={[343, 382, 400]}
+      aspectRatio={0.798934}
       alt={imageAlt}
+      fit={"cover"}
     />
   </a>
 
@@ -73,11 +72,12 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
         {
           techs.map((t) => (
             <img
-              class="mr-2 h-4 md:h-5"
+              class="mr-2 h-5"
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
               loading="lazy"
+              height="20"
             />
           ))
         }
