@@ -39,7 +39,7 @@
           <img
             height="64"
             width="64"
-            class="h-8 w-auto sm:h-10 rounded-full"
+            class="w-auto h-11 md:h-14 rounded-full"
             src="/me-2.webp"
             alt=""
           />
