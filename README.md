@@ -19,6 +19,7 @@ Inspirations:
 - ✅ [Astro/Image](https://docs.astro.build/en/guides/integrations-guide/image/) with AVIF format;
 - ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
+- ✅ [Astro/Partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/);
 - ✅ [Svelte 4](https://svelte.dev/);
 - ✅ [Performance Optimization Strategy](https://paper.dropbox.com/doc/Performance-Optimization-Strategy-in-2023--B5jjdEwca8NURASq1CAAnSQVAg-qWcr7orx2cEWHpLqoLeTC)
 - ✅ [Fontsource](https://docs.astro.build/en/guides/fonts/)

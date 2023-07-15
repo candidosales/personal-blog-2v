@@ -1,5 +1,4 @@
 ---
-import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter";
 ---
 
@@ -13,7 +12,17 @@ import "@fontsource-variable/inter";
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <GoogleAnalytics id="G-KF2R0QYPX7" />
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-KF2R0QYPX7");
+    </script>
   </head>
   <body>
     <div class="topbar-blur" aria-hidden="true"></div>
@@ -25,7 +34,6 @@ import "@fontsource-variable/inter";
     </script>
     <style>
       body {
-        /* font-family: "Inter Variable", sans-serif; */
         letter-spacing: -0.05em;
       }
       .topbar-blur {
