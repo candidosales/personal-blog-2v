@@ -31,8 +31,6 @@
   <nav
     class="w-full flex items-center justify-end sm:h-10"
     aria-label="navigation"
-    data-aos="zoom-out-down"
-    data-aos-duration="2000"
   >
     <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
       <div class="flex items-center justify-between w-full md:w-auto">
