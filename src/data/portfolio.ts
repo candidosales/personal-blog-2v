@@ -163,7 +163,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/personal-portfolio-2v.png",
+    imageUrl: "/portfolio/personal-portfolio-2v-1.png",
     imageAlt: "Personal Portfolio 2v",
     title: "Personal Portfolio 2v",
     description: "Landing page for your personal portfolio",
