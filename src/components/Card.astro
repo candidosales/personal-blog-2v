@@ -77,6 +77,7 @@ const { href, title, description, imageUrl, imageAlt, techs } = Astro.props;
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
+              loading="lazy"
             />
           ))
         }
