@@ -26,7 +26,7 @@
 
   const links = [
     {
-      href: "/contact",
+      href: "mailto:candidosg@gmail.com",
       label: "E-mail",
       targetBlank: true,
       icon: Mail,
@@ -67,7 +67,7 @@
     {#each links as l}
       <div class={place === "mobile" ? "m-0" : "m-4"}>
         <a
-          class="no-underline hover:underline hover:underline-offset-4 flex flex-row align-middle items-center text-slate-500 hover:text-slate-800"
+          class="no-underline hover:underline hover:underline-offset-4 flex flex-row align-middle items-center text-slate-600 hover:text-slate-800"
           href={l.href}
           title={l.label}
           target="_blank"

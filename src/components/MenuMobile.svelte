@@ -23,7 +23,7 @@
 <div class="fixed w-full bottom-6 right-8 z-10 md:hidden">
   <div class="-mr-2 flex justify-end md:hidden">
     <Button
-      class="bg-slate-100/80 backdrop-blur-md rounded-full border border-solid border-slate-200 px-4 py-3 inline-flex items-center justify-center font-medium text-slate-500 hover:text-slate-300  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 drop-shadow-xl"
+      class="bg-slate-100/80 backdrop-blur-md rounded-full border border-solid border-slate-200 px-4 py-3 inline-flex items-center justify-center font-medium text-slate-600 hover:text-slate-300  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 drop-shadow-xl"
       on:click={() => (drawerHidden = false)}
     >
       Menu</Button
@@ -40,7 +40,7 @@
   <div class="flex items-center">
     <h5
       id="drawer-navigation-label-3"
-      class="text-base font-medium text-slate-500"
+      class="text-base font-medium text-slate-600"
     >
       Menu
     </h5>
@@ -55,7 +55,7 @@
         <SidebarItem
           label={m.label}
           href={m.href}
-          aClass="flex items-center p-2 text-base font-normal text-slate-500 rounded-lg dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+          aClass="flex items-center p-2 text-base font-normal text-slate-600 rounded-lg dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
         >
           <svelte:fragment slot="icon">
             <svelte:component this={m.icon} class="w-5 h-5 mr-2" />

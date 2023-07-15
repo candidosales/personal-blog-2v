@@ -54,7 +54,7 @@
       {#each menuItems as m}
         <a
           href={m.href}
-          class="p-4 font-medium text-slate-500 hover:text-slate-900"
+          class="p-4 font-medium text-slate-600 hover:text-slate-900"
           target={m.targetBlank ? "_blank" : ""}
         >
           {m.label}
