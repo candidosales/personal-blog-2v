@@ -163,6 +163,31 @@ export const portfolio = [
     ],
   },
   {
+    imageUrl: "/portfolio/personal-portfolio-2v.png",
+    imageAlt: "Personal Portfolio 2v",
+    title: "Personal Portfolio 2v",
+    description: "Landing page for your personal portfolio",
+    url: "https://github.com/candidosales/personal-blog-2v",
+    techs: [
+      {
+        icon: "astro",
+        name: "Astro",
+      },
+      {
+        icon: "svelte",
+        name: "Svelte",
+      },
+      {
+        icon: "tailwind",
+        name: "Tailwind",
+      },
+      {
+        icon: "vercel",
+        name: "Vercel",
+      },
+    ],
+  },
+  {
     imageUrl: "/portfolio/personal-portfolio-1v.png",
     imageAlt: "Personal Portfolio 1v",
     title: "Personal Portfolio 1v",
