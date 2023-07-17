@@ -1,6 +1,48 @@
 export const portfolio = [
   {
-    imageUrl: "/portfolio/material-time-picker.png",
+    imageUrl: "/portfolio/cisco-chatgpt.png",
+    imageAlt: "Cisco ChatGPT Security Advisories",
+    title: "Cisco ChatGPT Security Advisories",
+    description:
+      "This is an AI chatbot that uses OpenAI and Security Advisories data to interact with the natural language",
+    url: "https://cisco-chat-frontend.vercel.app/",
+    techs: [
+      {
+        icon: "svelte",
+        name: "Svelte",
+      },
+      {
+        icon: "tailwind",
+        name: "Tailwind",
+      },
+      {
+        icon: "upstash",
+        name: "Upstash",
+      },
+      {
+        icon: "fastapi",
+        name: "FastAPI",
+      },
+      {
+        icon: "langchain",
+        name: "LangChain",
+      },
+      {
+        icon: "openai",
+        name: "OpenAI",
+      },
+      {
+        icon: "chromadb",
+        name: "ChromaDB",
+      },
+      {
+        icon: "modal",
+        name: "Modal",
+      },
+    ],
+  },
+  {
+    imageUrl: "/portfolio/material-time-picker-1.png",
     imageAlt: "Material Time Picker",
     title: "Material Time Picker",
     description: "A simple time picker component using Angular Material",

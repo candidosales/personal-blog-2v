@@ -4,6 +4,7 @@
   import User from "./icons/User.svelte";
   import Store from "./icons/Store.svelte";
   import MenuMobile from "./MenuMobile.svelte";
+  import PencilSquare from "./icons/PencilSquare.svelte";
 
   const menuItems = [
     {
@@ -11,6 +12,12 @@
       label: "Home",
       targetBlank: false,
       icon: Home,
+    },
+    {
+      href: "/blog",
+      label: "Blog",
+      targetBlank: false,
+      icon: PencilSquare,
     },
     {
       href: "/about",
