@@ -1,36 +1,35 @@
 ---
 import { AstroSeo } from "@astrolib/seo";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.svelte";
+import Header from "@components/Header.svelte";
 
-import { posts } from "../data/posts";
+import { posts } from "@data/posts";
 ---
 
 <AstroSeo
-    title="Blog | Candido Sales - Software Engineer"
-    description="A multidisciplinary engineer focusing on digital experiences"
-    canonical="https://candidosales.me"
-    openGraph={{
-        url: "https://candidosales.me",
-        title: "About | Candido Sales - Software Engineer",
-        description:
-            "A multidisciplinary engineer focusing on digital experiences",
-        images: [
-            {
-                url: "https://candidosales.me/og-image.png",
-                width: 1200,
-                height: 600,
-                alt: "Social open graph",
-                type: "image/png",
-            },
-        ],
-        site_name: "Candido Sales - Software Engineer",
-    }}
-    twitter={{
-        handle: "@candidosales",
-        site: "@candidosales",
-        cardType: "summary_large_image",
-    }}
+  title="Blog | Candido Sales - Software Engineer"
+  description="A multidisciplinary engineer focusing on digital experiences"
+  canonical="https://candidosales.me"
+  openGraph={{
+    url: "https://candidosales.me",
+    title: "About | Candido Sales - Software Engineer",
+    description: "A multidisciplinary engineer focusing on digital experiences",
+    images: [
+      {
+        url: "https://candidosales.me/og-image.png",
+        width: 1200,
+        height: 600,
+        alt: "Social open graph",
+        type: "image/png",
+      },
+    ],
+    site_name: "Candido Sales - Software Engineer",
+  }}
+  twitter={{
+    handle: "@candidosales",
+    site: "@candidosales",
+    cardType: "summary_large_image",
+  }}
 />
 <style lang="postcss">
     .card-link {
@@ -46,47 +45,47 @@ import { posts } from "../data/posts";
 </style>
 
 <Layout>
-    <Header client:only="svelte" />
-    <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
-        <h1
-            class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-        >
-            Blog
-        </h1>
-        <div
-            class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-        >
-            {
-                posts.map((p) => (
-                    <a
-                        href={p.href}
-                        title={p.title}
-                        target="_blank"
-                        class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg"
-                    >
-                        <div class="relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48">
-                            <div
-                                class={`relative w-full h-48 bg-cover bg-no-repeat`}
-                                style={`background-image: url(${p.imageUrl});`}
-                            />
-                        </div>
+  <Header client:only="svelte" />
+  <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
+    <h1
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
+      Blog
+    </h1>
+    <div
+      class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      {
+        posts.map((p) => (
+          <a
+            href={p.href}
+            title={p.title}
+            target="_blank"
+            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg"
+          >
+            <div class="relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48">
+              <div
+                class={`relative w-full h-48 bg-cover bg-no-repeat`}
+                style={`background-image: url(${p.imageUrl});`}
+              />
+            </div>
 
-                        <h3 class="text-slate-800 text-lg font-medium leading-6 mb-1 line-clamp-2">
-                            {p.title}
-                        </h3>
-                        <p class="text-slate-800/80 text-md font-normal mb-4 line-clamp-2">
-                            {p.description}
-                        </p>
-                        <p class="text-slate-800/80 text-xs font-normal">
-                            {new Date(p.publishDate).toLocaleDateString()}
-                        </p>
-                    </a>
-                ))
-            }
-        </div>
-    </main>
+            <h3 class="text-slate-800 text-lg font-medium leading-6 mb-1 line-clamp-2">
+              {p.title}
+            </h3>
+            <p class="text-slate-800/80 text-md font-normal mb-4 line-clamp-2">
+              {p.description}
+            </p>
+            <p class="text-slate-800/80 text-xs font-normal">
+              {new Date(p.publishDate).toLocaleDateString()}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </main>
 </Layout>

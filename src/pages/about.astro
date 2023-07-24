@@ -1,191 +1,188 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "@astrojs/image/components";
-import Header from "../components/Header.svelte";
-import ArrowRight from "../components/icons/ArrowRight.svelte";
+import Header from "@components/Header.svelte";
+import ArrowRight from "@components/icons/ArrowRight.svelte";
 import { AstroSeo } from "@astrolib/seo";
-import Contact from "../components/Contact.svelte";
-import Linkedin from "../components/icons/Linkedin.svelte";
+import Contact from "@components/Contact.svelte";
+import Linkedin from "@components/icons/Linkedin.svelte";
 
 const experience = [
-    {
-        company: "Cisco",
-        period: "Feb 2022 - 2023",
-        title: "Software Engineer",
-        country: "🇨🇦",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        company: "Vendasta",
-        period: "Sep 2019 - Feb 2022",
-        title: "Senior Software Engineer",
-        country: "🇨🇦",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        company: "GR1D",
-        period: "Dec 2017 - Sep 2019",
-        title: "Tech Lead / Senior Software Engineer",
-        country: "🇧🇷",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-        company: "VC+",
-        period: "Aug 2016 - Nov 2017",
-        title: "Co-founder, Android Developer and Frontend Developer",
-        country: "🇧🇷",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
+  {
+    company: "Cisco",
+    period: "Feb 2022 - 2023",
+    title: "Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: "Vendasta",
+    period: "Sep 2019 - Feb 2022",
+    title: "Senior Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: "GR1D",
+    period: "Dec 2017 - Sep 2019",
+    title: "Tech Lead / Senior Software Engineer",
+    country: "🇧🇷",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: "VC+",
+    period: "Aug 2016 - Nov 2017",
+    title: "Co-founder, Android Developer and Frontend Developer",
+    country: "🇧🇷",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
 ];
 ---
 
 <AstroSeo
-    title="About | Candido Sales - Software Engineer"
-    description="A multidisciplinary engineer focusing on digital experiences"
-    canonical="https://candidosales.me"
-    openGraph={{
-        url: "https://candidosales.me",
-        title: "About | Candido Sales - Software Engineer",
-        description:
-            "A multidisciplinary engineer focusing on digital experiences",
-        images: [
-            {
-                url: "https://candidosales.me/og-image.png",
-                width: 1200,
-                height: 600,
-                alt: "Social open graph",
-                type: "image/png",
-            },
-        ],
-        site_name: "Candido Sales - Software Engineer",
-    }}
-    twitter={{
-        handle: "@candidosales",
-        site: "@candidosales",
-        cardType: "summary_large_image",
-    }}
+  title="About | Candido Sales - Software Engineer"
+  description="A multidisciplinary engineer focusing on digital experiences"
+  canonical="https://candidosales.me"
+  openGraph={{
+    url: "https://candidosales.me",
+    title: "About | Candido Sales - Software Engineer",
+    description: "A multidisciplinary engineer focusing on digital experiences",
+    images: [
+      {
+        url: "https://candidosales.me/og-image.png",
+        width: 1200,
+        height: 600,
+        alt: "Social open graph",
+        type: "image/png",
+      },
+    ],
+    site_name: "Candido Sales - Software Engineer",
+  }}
+  twitter={{
+    handle: "@candidosales",
+    site: "@candidosales",
+    cardType: "summary_large_image",
+  }}
 />
 
 <Layout>
-    <Header client:only="svelte" />
-    <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
-        <h1
-            class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-        >
-            About
-        </h1>
-        <div
-            class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-        >
-            <div class="space-y-8 flex mb-8">
-                <Image
-                    class="rounded-3xl"
-                    alt="my photo"
-                    width={400}
-                    height={400}
-                    src="/me-500.png"
-                />
-            </div>
-            <div class="space-y-4 text-slate-800 text-lg">
-                <p>
-                    <span class="font-medium">Hey, I'm Candido Sales</span>, I
-                    started as a software engineer back in 2011, working with
-                    PHP.
-                </p>
-                <p>
-                    I'm originally from Brazil 🇧🇷, Piauí, and now living in
-                    Kitchener 🇨🇦.
-                </p>
-                <p>
-                    Currently, I work at
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href="https://www.cisco.com/"
-                        title="Visit Cisco">Cisco</a
-                    >
-                    focused on building accessible, human-centred products.
-                </p>
+  <Header client:only="svelte" />
+  <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
+    <h1
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
+      About
+    </h1>
+    <div
+      class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      <div class="space-y-8 flex mb-8">
+        <Image
+          class="rounded-3xl"
+          alt="my photo"
+          width={400}
+          height={400}
+          src="/me-500.png"
+        />
+      </div>
+      <div class="space-y-4 text-slate-800 text-lg">
+        <p>
+          <span class="font-medium">Hey, I'm Candido Sales</span>, I started as
+          a software engineer back in 2011, working with PHP.
+        </p>
+        <p>
+          I'm originally from Brazil 🇧🇷, Piauí, and now living in Kitchener 🇨🇦.
+        </p>
+        <p>
+          Currently, I work at
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://www.cisco.com/"
+            title="Visit Cisco">Cisco</a
+          >
+          focused on building accessible, human-centred products.
+        </p>
 
-                <p>
-                    I have founded
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href="https://geleiatotal.com.br/"
-                        title="Visit Geleia Total">Geleia Total</a
-                    >
-                    and <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href="https://www.geleiaturismo.com/"
-                        title="Visit Geleia Turismo">Geleia Turismo</a
-                    >. Moreover, I offer consulting services to both private and
-                    public entities.
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href="https://adplist.org/mentors/candido-sales-gomes"
-                        title="Visit my ADPList profile">Mentoring</a
-                    > individuals and assisting them in their IT careers brings me
-                    immense joy.
-                </p>
-                <p>
-                    I love open source and side projects. When I'm not working,
-                    I like cooking, playing games and hiking.
-                </p>
+        <p>
+          I have founded
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://geleiatotal.com.br/"
+            title="Visit Geleia Total">Geleia Total</a
+          >
+          and <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://www.geleiaturismo.com/"
+            title="Visit Geleia Turismo">Geleia Turismo</a
+          >. Moreover, I offer consulting services to both private and public
+          entities.
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://adplist.org/mentors/candido-sales-gomes"
+            title="Visit my ADPList profile">Mentoring</a
+          > individuals and assisting them in their IT careers brings me immense
+          joy.
+        </p>
+        <p>
+          I love open source and side projects. When I'm not working, I like
+          cooking, playing games and hiking.
+        </p>
+      </div>
+    </div>
+    <h2
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-20"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
+      Work experience
+    </h2>
+    <div
+      class="lg:grid lg:grid-cols-4 lg:gap-6 mt-10 text-slate-800"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      {
+        experience.map((e) => (
+          <>
+            <div class="col-span-1 mb-1 md:mb-8 flex flex-row md:flex-col items-center md:items-start">
+              <p class="text-sm md:text-lg text-slate-600 md:mb-1 mr-4">
+                {e.period}
+              </p>
+              <p class="text-slate-600" />
             </div>
-        </div>
-        <h2
-            class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-20"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-        >
-            Work experience
-        </h2>
-        <div
-            class="lg:grid lg:grid-cols-4 lg:gap-6 mt-10 text-slate-800"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-        >
-            {
-                experience.map((e) => (
-                    <>
-                        <div class="col-span-1 mb-1 md:mb-8 flex flex-row md:flex-col items-center md:items-start">
-                            <p class="text-sm md:text-lg text-slate-600 md:mb-1 mr-4">
-                                {e.period}
-                            </p>
-                            <p class="text-slate-600" />
-                        </div>
-                        <div class="col-span-3 mb-8 md:mb-4">
-                            <h3 class="text-lg mb-1 font-medium">
-                                {e.company} {e.country}
-                            </h3>
-                            <p class="mb-4">{e.title}</p>
-                        </div>
-                    </>
-                ))
-            }
-        </div>
-        <div
-            class="flex justify-center mt-10 mb-16"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-        >
-            <a
-                class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"
-                href="https://www.linkedin.com/in/candidosales/"
-                title="See more about my experiences in my Linkedin"
-                target="_blank"
-                ><Linkedin class="h-4 w-4 mr-2" /> See more in my Linkedin
+            <div class="col-span-3 mb-8 md:mb-4">
+              <h3 class="text-lg mb-1 font-medium">
+                {e.company} {e.country}
+              </h3>
+              <p class="mb-4">{e.title}</p>
+            </div>
+          </>
+        ))
+      }
+    </div>
+    <div
+      class="flex justify-center mt-10 mb-16"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+    >
+      <a
+        class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"
+        href="https://www.linkedin.com/in/candidosales/"
+        title="See more about my experiences in my Linkedin"
+        target="_blank"
+        ><Linkedin class="h-4 w-4 mr-2" /> See more in my Linkedin
 
-                <ArrowRight class="overflow-visible ml-3 text-white" />
-            </a>
-        </div>
-        <Contact />
-    </main>
+        <ArrowRight class="overflow-visible ml-3 text-white" />
+      </a>
+    </div>
+    <Contact />
+  </main>
 </Layout>
