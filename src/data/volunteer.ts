@@ -6,6 +6,7 @@ export const volunteer = [
     description:
       "Preserve and discover our Cuisine, History, Ecotourism in Piauí - 🇧🇷",
     url: "https://www.geleiaturismo.com/",
+    background: "bg-slate-100",
     techs: [
       {
         icon: "svelte",
@@ -43,6 +44,7 @@ export const volunteer = [
     title: "Geleia Total",
     description: "Promote the culture and art of the state of Piauí - 🇧🇷",
     url: "https://www.geleiatotal.com.br/",
+    background: "bg-slate-100",
     techs: [
       {
         icon: "wordpress",
@@ -69,6 +71,7 @@ export const volunteer = [
     description:
       "All about legal abortion in 🇧🇷 - What situations are allowed, what is needed",
     url: "https://mapaabortolegal.org/",
+    background: "bg-violet-100",
     techs: [
       {
         icon: "wordpress",
@@ -87,6 +90,7 @@ export const volunteer = [
     description:
       "Repository of companies in 🇧🇷 that use Angular in their projects",
     url: "https://github.com/candidosales/empresas-que-usam-angular-no-brasil",
+    background: "bg-red-100",
     techs: [
       {
         icon: "github",

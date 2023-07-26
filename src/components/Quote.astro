@@ -1,34 +1,58 @@
 ---
 import { Image } from "@astrojs/image/components";
+
+export interface Quote {
+  authorImage: string;
+  authorName: string;
+  quote: string;
+}
+
+const quotes: Quote[] = [
+  {
+    authorImage: "/jose-mujica-400.png",
+    authorName: "José Mujica",
+    quote:
+      "Triumphing in life is not winning, it is getting up and starting over every time you fall",
+  },
+  {
+    authorImage: "/rubem-alves.jpeg",
+    authorName: "Rubem Alves",
+    quote: "It is those who suffer who produce beauty, to stop suffering.",
+  },
+];
+
+function getRandomQuote(quotes: Quote[]) {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
+
+const quoteSelected = getRandomQuote(quotes);
 ---
 
 <div
-    class="my-16 mx-auto max-w-7xl"
-    data-aos="fade-up"
-    data-aos-duration="1500"
+  class="my-16 mx-auto max-w-7xl"
+  data-aos="fade-up"
+  data-aos-duration="1500"
 >
-    <div class="p-6">
-        <div
-            class="flex flex-col md:flex-row mx-auto justify-center items-center"
-        >
-            <Image
-                src="/jose-mujica-400.png"
-                width={56}
-                height={56}
-                alt=""
-                class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
-                loading="lazy"
-                decoding="async"
-            />
-            <blockquote class="text-center md:text-left">
-                <div class="text-slate-600 dark:text-white mb-2 md:mb-0">
-                    José Mujica
-                </div>
-                <p class="max-w-3xl mx-auto text-lg font-medium text-slate-800">
-                    “Triumphing in life is not winning, it is getting up and
-                    starting over every time you fall”
-                </p>
-            </blockquote>
+  <div class="p-6">
+    <div class="flex flex-col md:flex-row mx-auto justify-center items-center">
+      <Image
+        src={quoteSelected.authorImage}
+        width={56}
+        height={56}
+        alt=""
+        class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
+        loading="lazy"
+        decoding="async"
+      />
+      <blockquote class="text-center md:text-left">
+        <div class="text-slate-600 dark:text-white mb-2 md:mb-0">
+          {quoteSelected.authorName}
         </div>
+        <p class="max-w-3xl mx-auto text-lg font-medium text-slate-800">
+          “{quoteSelected.quote}”
+        </p>
+      </blockquote>
     </div>
+  </div>
 </div>

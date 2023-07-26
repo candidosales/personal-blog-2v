@@ -10,6 +10,7 @@ export interface Props {
   href: string;
   techs: Array<{ icon: string; name: string }>;
   loadingImage: "lazy" | "eager";
+  background: string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   imageAlt,
   techs,
   loadingImage = "lazy",
+  background = "bg-slate-200",
 } = Astro.props;
 ---
 
@@ -59,7 +61,7 @@ const {
     href={href}
     title={title}
     target="_blank"
-    class="card-link block bg-slate-200 rounded-3xl h-420px relative overflow-hidden cursor-pointer"
+    class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
   >
     <Picture
       data-aos="fade-up"
@@ -75,8 +77,8 @@ const {
     />
   </a>
 
-  <div class="absolute top-8 left-8 max-w-xs">
-    <div class="text-lg leading-6 font-medium space-y-1 mb-2 md:mb-4">
+  <div class="absolute top-6 left-6 max-w-xs">
+    <div class="text-lg leading-6 font-medium space-y-1 mb-2 md:mb-4 pr-6">
       <h3 class="text-slate-800">{title}</h3>
       <p class="text-slate-800/80 text-sm font-normal">{description}</p>
     </div>

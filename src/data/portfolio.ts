@@ -4,7 +4,7 @@ export const portfolio = [
     imageAlt: "Cisco ChatGPT Security Advisories",
     title: "Cisco ChatGPT Security Advisories",
     description:
-      "This is an AI chatbot that uses OpenAI and Security Advisories data to interact with the natural language",
+      "This is an AI chatbot that uses Security Advisories data to interact with the natural language",
     url: "https://cisco-chat-frontend.vercel.app/",
     techs: [
       {
@@ -40,6 +40,7 @@ export const portfolio = [
         name: "Modal",
       },
     ],
+    background: "bg-sky-100",
   },
   {
     imageUrl: "/portfolio/material-time-picker-1.png",
@@ -57,6 +58,7 @@ export const portfolio = [
         name: "NPM",
       },
     ],
+    background: "bg-blue-100",
   },
   {
     imageUrl: "/portfolio/svelte-google-translate-1.png",
@@ -74,6 +76,7 @@ export const portfolio = [
         name: "Google Translate",
       },
     ],
+    background: "bg-orange-100",
   },
   {
     imageUrl: "/portfolio/format-code.png",
@@ -100,6 +103,7 @@ export const portfolio = [
         name: "Webpack",
       },
     ],
+    background: "bg-blue-100",
   },
   {
     imageUrl: "/portfolio/landing-page-book-2v-1.png",
@@ -108,6 +112,7 @@ export const portfolio = [
     description:
       "Landing page for advertising and sales of books to independent authors",
     url: "https://github.com/candidosales/landing-page-book-astro-svelte-tailwind",
+    background: "bg-amber-100",
     techs: [
       {
         icon: "astro",
@@ -141,6 +146,7 @@ export const portfolio = [
     title: "API in GO to create Cloud Function",
     description: "🐹 An API for deploying Google Cloud Functions in Go",
     url: "https://github.com/candidosales/cloud-function-go",
+    background: "bg-sky-100",
     techs: [
       {
         icon: "go",
@@ -159,6 +165,7 @@ export const portfolio = [
     description:
       "A boilerplate for creating Figma plugins with Svelte, Vite and Typescript",
     url: "https://github.com/candidosales/figma-plugin-svelte-vite",
+    background: "bg-orange-100",
     techs: [
       {
         icon: "figma",
@@ -185,6 +192,7 @@ export const portfolio = [
     description:
       "Analyze the consistency of the dependencies in your company's frontend projects",
     url: "https://github.com/candidosales/dependency-report",
+    background: "bg-red-100",
     techs: [
       {
         icon: "angular",
@@ -204,13 +212,13 @@ export const portfolio = [
       },
     ],
   },
-
   {
     imageUrl: "/portfolio/personal-portfolio-2v-1.png",
     imageAlt: "Personal Portfolio 2v",
     title: "Personal Portfolio 2v",
     description: "Landing page for your personal portfolio",
     url: "https://github.com/candidosales/personal-blog-2v",
+    background: "bg-slate-100",
     techs: [
       {
         icon: "astro",
@@ -236,6 +244,7 @@ export const portfolio = [
     title: "Personal Portfolio 1v",
     description: "Landing page for your personal portfolio",
     url: "https://github.com/candidosales/personal-blog",
+    background: "bg-slate-100",
     techs: [
       {
         icon: "nextjs",
