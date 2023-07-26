@@ -40,6 +40,7 @@ export const extras = [
     description:
       "It helps doctors from the Brazilian public health system make medical prescriptions",
     url: "https://receituariomedico.app/",
+    background: "bg-teal-100",
     techs: [
       {
         icon: "nextjs",
@@ -74,6 +75,7 @@ export const extras = [
     description:
       "PWA website that helps you organize your agenda at large events",
     url: "https://carnaval-sp-ec736.web.app/",
+    background: "bg-blue-100",
     techs: [
       {
         icon: "angular",

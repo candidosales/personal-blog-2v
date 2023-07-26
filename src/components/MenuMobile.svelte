@@ -36,6 +36,7 @@
   bind:hidden={drawerHidden}
   placement="right"
   id="sidebar2"
+  divClass="overflow-y-auto z-50 p-4 bg-slate-100/90 backdrop-blur-md dark:bg-gray-800 w-80 fixed inset-y-0 right-0"
 >
   <div class="flex items-center">
     <h5
