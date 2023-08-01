@@ -43,6 +43,28 @@ export const portfolio = [
     background: "bg-sky-100",
   },
   {
+    imageUrl: "/portfolio/svelte-shopify-polaris-icons.png",
+    imageAlt: "Svelte Shopify Polaris Icons",
+    title: "Svelte Shopify Polaris Icons",
+    description: "A set of Shopify Polaris Icons to use in your Svelte project",
+    url: "https://github.com/candidosales/svelte-shopify-polaris-icons",
+    techs: [
+      {
+        icon: "svelte",
+        name: "Svelte",
+      },
+      {
+        icon: "tailwind",
+        name: "Tailwind",
+      },
+      {
+        icon: "npm",
+        name: "NPM",
+      },
+    ],
+    background: "bg-emerald-100",
+  },
+  {
     imageUrl: "/portfolio/material-time-picker-1.png",
     imageAlt: "Material Time Picker",
     title: "Material Time Picker",
