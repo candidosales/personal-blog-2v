@@ -47,7 +47,7 @@ export const portfolio = [
     imageAlt: "Svelte Shopify Polaris Icons",
     title: "Svelte Shopify Polaris Icons",
     description: "A set of Shopify Polaris Icons to use in your Svelte project",
-    url: "https://github.com/candidosales/svelte-shopify-polaris-icons",
+    url: "https://svelte-shopify-polaris-icons.vercel.app",
     techs: [
       {
         icon: "svelte",
