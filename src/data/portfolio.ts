@@ -43,7 +43,7 @@ export const portfolio = [
     background: "bg-sky-100",
   },
   {
-    imageUrl: "/portfolio/svelte-shopify-polaris-icons.png",
+    imageUrl: "/portfolio/svelte-shopify-polaris-icons-1.png",
     imageAlt: "Svelte Shopify Polaris Icons",
     title: "Svelte Shopify Polaris Icons",
     description: "A set of Shopify Polaris Icons to use in your Svelte project",
