@@ -21,14 +21,14 @@
     "@astrolib/seo": "^0.6.0",
     "@fontsource-variable/inter": "^5.0.8",
     "@popperjs/core": "^2.11.8",
-    "astro": "^2.10.5",
-    "astro-compress": "^2.0.5",
+    "astro": "^2.10.7",
+    "astro-compress": "^2.0.8",
     "flowbite": "^1.8.1",
     "flowbite-svelte": "^0.43.1",
     "sass": "^1.65.1",
-    "satori": "^0.10.2",
+    "satori": "^0.10.3",
     "sharp": "^0.32.4",
-    "svelte": "^4.1.2",
+    "svelte": "^4.2.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.3.3"
   }
