@@ -42,7 +42,7 @@ import Contact from "@components/Contact.svelte";
 
 <Layout>
   <Header client:only="svelte" />
-  <main class="relative pb-20 sm:pb-24 mx-auto max-w-7xl">
+  <main class="relative pb-36 mx-auto max-w-7xl">
     <Hero />
 
     <div class="my-16 px-4">
@@ -52,8 +52,6 @@ import Contact from "@components/Contact.svelte";
       />
       <div
         class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
-        data-aos="fade-up"
-        data-aos-duration="2000"
       >
         {
           portfolio.map((p, index) => (
@@ -76,8 +74,6 @@ import Contact from "@components/Contact.svelte";
       />
       <div
         class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
-        data-aos="fade-up"
-        data-aos-duration="2000"
       >
         {
           volunteer.map((p) => (
@@ -100,8 +96,6 @@ import Contact from "@components/Contact.svelte";
       />
       <div
         class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
-        data-aos="fade-up"
-        data-aos-duration="2000"
       >
         {
           extras.map((p) => (

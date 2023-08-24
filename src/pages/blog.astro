@@ -46,26 +46,20 @@ import { posts } from "@data/posts";
 
 <Layout>
   <Header client:only="svelte" />
-  <main class="relative pb-20 sm:pb-24 mx-auto max-w-5xl mt-16 mb-16 px-4">
+  <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
-      data-aos="fade-up"
-      data-aos-duration="1500"
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10 slide-fade-in"
     >
       Blog
     </h1>
-    <div
-      class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10"
-      data-aos="fade-up"
-      data-aos-duration="2000"
-    >
+    <div class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10">
       {
         posts.map((p) => (
           <a
             href={p.href}
             title={p.title}
             target="_blank"
-            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg"
+            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg  slide-fade-in"
           >
             <div class="relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48">
               <div

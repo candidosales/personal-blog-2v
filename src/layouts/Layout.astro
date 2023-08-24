@@ -10,11 +10,11 @@ import "@fontsource-variable/inter";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"
+    ></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -27,11 +27,6 @@ import "@fontsource-variable/inter";
   <body>
     <div class="topbar-blur" aria-hidden="true"></div>
     <slot />
-    <script type="text/javascript" src="https://unpkg.com/aos@next/dist/aos.js"
-    ></script>
-    <script type="text/javascript">
-      AOS.init();
-    </script>
     <style>
       body {
         letter-spacing: -0.05em;
@@ -57,6 +52,23 @@ import "@fontsource-variable/inter";
         position: absolute;
         inset: 0;
         background: linear-gradient(to bottom, white, transparent);
+      }
+
+      @keyframes slide-fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(10vh);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        :global(.slide-fade-in) {
+          view-timeline-name: --item-timeline;
+          animation: slide-fade-in both;
+          animation-timeline: --item-timeline;
+          animation-range: contain 0% contain 50%;
+          animation-duration: 300ms;
+        }
       }
     </style>
   </body>

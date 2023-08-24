@@ -13,17 +13,6 @@
     mobile: "w-full justify-between p-2",
   };
 
-  let dataAosPlace = {
-    default: {
-      aos: "fade-up",
-      duration: 1500,
-    },
-    mobile: {
-      aos: "",
-      duration: 0,
-    },
-  };
-
   const links = [
     {
       href: "mailto:candidosg@gmail.com",
@@ -59,9 +48,7 @@
 </script>
 
 <footer
-  class="w-full flex flex-row justify-center items-center lowercase"
-  data-aos={dataAosPlace[place].aos}
-  data-aos-duration={dataAosPlace[place].duration}
+  class="w-full flex flex-row justify-center items-center lowercase slide-fade-in"
 >
   <div class={`flex flex-row ${stylePlace[place]}`}>
     {#each links as l}

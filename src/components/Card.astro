@@ -56,7 +56,7 @@ const {
     }
   }
 </style>
-<div class="card relative">
+<div class="card relative slide-fade-in">
   <a
     href={href}
     title={title}
@@ -64,8 +64,6 @@ const {
     class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
   >
     <Picture
-      data-aos="fade-up"
-      data-aos-duration="700"
       src={imageUrl}
       height={493.67}
       width={394.66}
@@ -74,6 +72,7 @@ const {
       alt={imageAlt}
       fit={"cover"}
       loading={loadingImage}
+      class="w-full"
     />
   </a>
 
