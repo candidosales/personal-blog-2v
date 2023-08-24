@@ -1,19 +1,15 @@
 ---
 export interface Props {
-    title: string;
-    subtitle: string;
+  title: string;
+  subtitle: string;
 }
 
 const { title, subtitle } = Astro.props;
 ---
 
-<h2 class="text-2xl text-slate-800" data-aos="fade-up" data-aos-duration="1000">
-    {title}
+<h2 class="text-2xl text-slate-800 slide-fade-in">
+  {title}
 </h2>
-<p
-    class="text-md text-slate-600 mb-8"
-    data-aos="fade-up"
-    data-aos-duration="1500"
->
-    {subtitle}
+<p class="text-md text-slate-600 mb-8 slide-fade-in">
+  {subtitle}
 </p>
