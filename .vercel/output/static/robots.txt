@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://candidosales.me/sitemap-index.xml
