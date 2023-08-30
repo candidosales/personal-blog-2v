@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import ArrowRight from "./icons/ArrowRight.svelte";
 
 export interface Props {
@@ -63,14 +63,11 @@ const {
     target="_blank"
     class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
   >
-    <Picture
+    <Image
       src={imageUrl}
       height={493.67}
       width={394.66}
-      widths={[343, 382, 570]}
-      aspectRatio={0.798934}
       alt={imageAlt}
-      fit={"cover"}
       loading={loadingImage}
       class="w-full"
     />
