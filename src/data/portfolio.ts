@@ -101,7 +101,7 @@ export const portfolio = [
     background: "bg-orange-100",
   },
   {
-    imageUrl: "/portfolio/format-code.png",
+    imageUrl: "/portfolio/format-code-1.png",
     imageAlt: "Format Code",
     title: "Format Code",
     description:
@@ -181,7 +181,7 @@ export const portfolio = [
     ],
   },
   {
-    imageUrl: "/portfolio/figma-plugin-svelte-vite.png",
+    imageUrl: "/portfolio/figma-plugin-svelte-vite-1.png",
     imageAlt: "Figma plugin boilerplate",
     title: "Figma plugin boilerplate",
     description:
