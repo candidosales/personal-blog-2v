@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
 import Card from "@components/Card.astro";
-import { AstroSeo } from "@astrolib/seo";
 
 import { portfolio } from "@data/portfolio";
 import { extras } from "@data/extras";
@@ -12,36 +11,12 @@ import TitleSection from "@components/TitleSection.astro";
 import Quote from "@components/Quote.astro";
 import Header from "@components/Header.svelte";
 import Contact from "@components/Contact.svelte";
+
+const pageTitle = "Home";
 ---
 
-<AstroSeo
-  title="Candido Sales - Software Engineer"
-  description="A multidisciplinary engineer focusing on digital experiences"
-  canonical="https://candidosales.me"
-  openGraph={{
-    url: "https://candidosales.me",
-    title: "Candido Sales - Software Engineer",
-    description: "A multidisciplinary engineer focusing on digital experiences",
-    images: [
-      {
-        url: "https://candidosales.me/og-image.png",
-        width: 1200,
-        height: 600,
-        alt: "Social open graph",
-        type: "image/png",
-      },
-    ],
-    site_name: "Candido Sales - Software Engineer",
-  }}
-  twitter={{
-    handle: "@candidosales",
-    site: "@candidosales",
-    cardType: "summary_large_image",
-  }}
-/>
-
-<Layout>
-  <Header client:only="svelte" />
+<Layout pageTitle={pageTitle}>
+  <Header />
   <main class="relative pb-36 mx-auto max-w-7xl">
     <Hero />
 

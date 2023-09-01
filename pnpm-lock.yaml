@@ -23,9 +23,6 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^4.0.0
     version: 4.0.0(astro@3.0.2)
-  '@astrolib/seo':
-    specifier: ^0.6.0
-    version: 0.6.0(astro@3.0.2)
   '@fontsource-variable/inter':
     specifier: ^5.0.8
     version: 5.0.8
@@ -38,6 +35,9 @@ dependencies:
   astro-compress:
     specifier: ^2.0.14
     version: 2.0.14
+  astro-seo:
+    specifier: ^0.8.0
+    version: 0.8.0
   flowbite:
     specifier: ^1.8.1
     version: 1.8.1
@@ -217,14 +217,6 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
-    dev: false
-
-  /@astrolib/seo@0.6.0(astro@3.0.2):
-    resolution: {integrity: sha512-mJzvW2ApVVpoB3mVNB+I3wrloorkcypoA7kXQWl1F9vu6X9LRTP2sLdCrn8qkPnKdwgGfmqe/S4vqiW/eemaDg==}
-    peerDependencies:
-      astro: ^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0
-    dependencies:
-      astro: 3.0.2(sass@1.66.1)
     dev: false
 
   /@babel/code-frame@7.22.13:
@@ -1275,6 +1267,10 @@ packages:
       sharp: 0.32.5
       svgo: 3.0.2
       terser: 5.19.2
+    dev: false
+
+  /astro-seo@0.8.0:
+    resolution: {integrity: sha512-7gq6lhibCM8FuzZIJlbLLWP5EJ9KL2/4XqeFrAg9O6ZK2xMFxJ5ubKf+a0VJwwTu8W8Xr421CmpiXu6Hq7n/7Q==}
     dev: false
 
   /astro@3.0.2(sass@1.66.1):

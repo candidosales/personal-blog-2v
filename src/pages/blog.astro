@@ -1,36 +1,11 @@
 ---
-import { AstroSeo } from "@astrolib/seo";
 import Layout from "../layouts/Layout.astro";
 import Header from "@components/Header.svelte";
-
 import { posts } from "@data/posts";
+
+const pageTitle = "Blog";
 ---
 
-<AstroSeo
-  title="Blog | Candido Sales - Software Engineer"
-  description="A multidisciplinary engineer focusing on digital experiences"
-  canonical="https://candidosales.me"
-  openGraph={{
-    url: "https://candidosales.me",
-    title: "About | Candido Sales - Software Engineer",
-    description: "A multidisciplinary engineer focusing on digital experiences",
-    images: [
-      {
-        url: "https://candidosales.me/og-image.png",
-        width: 1200,
-        height: 600,
-        alt: "Social open graph",
-        type: "image/png",
-      },
-    ],
-    site_name: "Candido Sales - Software Engineer",
-  }}
-  twitter={{
-    handle: "@candidosales",
-    site: "@candidosales",
-    cardType: "summary_large_image",
-  }}
-/>
 <style lang="postcss">
     .card-link {
         @apply transition-all duration-300;
@@ -44,11 +19,11 @@ import { posts } from "@data/posts";
     }
 </style>
 
-<Layout>
-  <Header client:only="svelte" />
+<Layout pageTitle={pageTitle}>
+  <Header />
   <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10 slide-fade-in"
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
     >
       Blog
     </h1>
@@ -59,7 +34,7 @@ import { posts } from "@data/posts";
             href={p.href}
             title={p.title}
             target="_blank"
-            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg  slide-fade-in"
+            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg"
           >
             <div class="relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48">
               <div

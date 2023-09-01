@@ -1,20 +1,20 @@
 ---
 import "@fontsource-variable/inter";
+import { SEO } from "astro-seo";
+const { pageTitle } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"
-    ></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -23,6 +23,37 @@ import "@fontsource-variable/inter";
       gtag("js", new Date());
       gtag("config", "G-KF2R0QYPX7");
     </script>
+
+    <SEO
+      title={pageTitle}
+      titleTemplate="%s | Candido Sales - Software Engineer"
+      titleDefault="Candido Sales - Software Engineer"
+      description="A multidisciplinary engineer focusing on digital experiences"
+      canonical="https://candidosales.me"
+      openGraph={{
+        basic: {
+          title: "Candido Sales - Software Engineer",
+          type: "website",
+          image: "https://candidosales.me/og-image.png",
+          url: "https://candidosales.me",
+        },
+        image: {
+          url: "https://candidosales.me/og-image.png",
+          width: 1200,
+          height: 600,
+          alt: "Social open graph",
+          type: "image/png",
+        },
+      }}
+      twitter={{
+        creator: "@candidosales",
+        site: "@candidosales",
+        card: "summary_large_image",
+        title: "Candido Sales - Software Engineer",
+        description:
+          "A multidisciplinary engineer focusing on digital experiences",
+      }}
+    />
   </head>
   <body>
     <div class="topbar-blur" aria-hidden="true"></div>

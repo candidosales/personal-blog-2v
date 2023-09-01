@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import Header from "@components/Header.svelte";
 import ArrowRight from "@components/icons/ArrowRight.svelte";
-import { AstroSeo } from "@astrolib/seo";
 import Contact from "@components/Contact.svelte";
 import Linkedin from "@components/icons/Linkedin.svelte";
 
@@ -41,43 +40,19 @@ const experience = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
 ];
+
+const pageTitle = "About";
 ---
 
-<AstroSeo
-  title="About | Candido Sales - Software Engineer"
-  description="A multidisciplinary engineer focusing on digital experiences"
-  canonical="https://candidosales.me"
-  openGraph={{
-    url: "https://candidosales.me",
-    title: "About | Candido Sales - Software Engineer",
-    description: "A multidisciplinary engineer focusing on digital experiences",
-    images: [
-      {
-        url: "https://candidosales.me/og-image.png",
-        width: 1200,
-        height: 600,
-        alt: "Social open graph",
-        type: "image/png",
-      },
-    ],
-    site_name: "Candido Sales - Software Engineer",
-  }}
-  twitter={{
-    handle: "@candidosales",
-    site: "@candidosales",
-    cardType: "summary_large_image",
-  }}
-/>
-
-<Layout>
-  <Header client:only="svelte" />
+<Layout pageTitle={pageTitle}>
+  <Header />
   <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10 slide-fade-in"
+      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
     >
       About
     </h1>
-    <div class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10 slide-fade-in">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-6 mt-10">
       <div class="space-y-8 flex mb-8">
         <Image
           class="rounded-3xl"
@@ -102,7 +77,7 @@ const experience = [
             href="https://www.cisco.com/"
             title="Visit Cisco">Cisco</a
           >
-          focused on building accessible, human-centred products.
+           focused on building accessible, human-centred products.
         </p>
 
         <p>
@@ -112,7 +87,7 @@ const experience = [
             href="https://geleiatotal.com.br/"
             title="Visit Geleia Total">Geleia Total</a
           >
-          and <a
+           and <a
             class="underline underline-offset-4 after:content-['_↗']"
             href="https://www.geleiaturismo.com/"
             title="Visit Geleia Turismo">Geleia Turismo</a
