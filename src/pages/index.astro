@@ -16,7 +16,7 @@ const pageTitle = "Home";
 ---
 
 <Layout pageTitle={pageTitle}>
-  <Header />
+  <Header client:only="svelte" />
   <main class="relative pb-36 mx-auto max-w-7xl">
     <Hero />
 

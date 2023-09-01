@@ -47,9 +47,7 @@
   ];
 </script>
 
-<footer
-  class="w-full flex flex-row justify-center items-center lowercase slide-fade-in"
->
+<footer class="w-full flex flex-row justify-center items-center lowercase">
   <div class={`flex flex-row ${stylePlace[place]}`}>
     {#each links as l}
       <div class={place === "mobile" ? "m-0" : "m-4"}>
