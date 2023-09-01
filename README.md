@@ -1,5 +1,7 @@
 # Personal Blog 2v - Astro + Tailwind + Svelte
 
+![image](./docs/lighthouse-report.png)
+
 Inspirations:
 
 - https://www.rachelhow.com/
