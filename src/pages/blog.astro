@@ -13,8 +13,8 @@ const pageTitle = "Blog";
     }
 
     .card-link:hover {
-        @apply shadow-lg bg-slate-100/80;
-        @apply border border-solid border-slate-200;
+        @apply shadow-lg bg-blue-100/80;
+        @apply border border-solid border-blue-200;
         transform: scale(1.015);
     }
 </style>
@@ -23,7 +23,7 @@ const pageTitle = "Blog";
   <Header client:only="svelte" />
   <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10"
     >
       Blog
     </h1>
@@ -43,13 +43,13 @@ const pageTitle = "Blog";
               />
             </div>
 
-            <h3 class="text-slate-800 text-lg font-medium leading-6 mb-1 line-clamp-2">
+            <h3 class="text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2">
               {p.title}
             </h3>
-            <p class="text-slate-800/80 text-md font-normal mb-4 line-clamp-2">
+            <p class="text-blue-800/80 text-md font-normal mb-4 line-clamp-2">
               {p.description}
             </p>
-            <p class="text-slate-800/80 text-xs font-normal">
+            <p class="text-blue-800/80 text-xs font-normal">
               {new Date(p.publishDate).toLocaleDateString()}
             </p>
           </a>

@@ -24,6 +24,13 @@ const { pageTitle } = Astro.props;
       gtag("config", "G-KF2R0QYPX7");
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Inclusive+Sans&display=swap"
+      rel="stylesheet"
+    />
+
     <SEO
       title={pageTitle}
       titleTemplate="%s | Candido Sales - Software Engineer"
@@ -55,12 +62,15 @@ const { pageTitle } = Astro.props;
       }}
     />
   </head>
-  <body>
+  <body class="bg-orange-50">
     <div class="topbar-blur" aria-hidden="true"></div>
     <slot />
     <style>
       body {
         letter-spacing: -0.05em;
+      }
+      :global(h1, h2, h3) {
+        font-family: "Inclusive Sans", sans-serif;
       }
       .topbar-blur {
         position: relative;
@@ -82,7 +92,7 @@ const { pageTitle } = Astro.props;
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, white, transparent);
+        background: linear-gradient(to bottom, #fff8f1, transparent);
       }
 
       @keyframes slide-fade-in {
@@ -98,7 +108,7 @@ const { pageTitle } = Astro.props;
           animation: slide-fade-in both;
           animation-timeline: --item-timeline;
           animation-range: contain 0% contain 50%;
-          animation-duration: 300ms;
+          animation-duration: 700ms;
         }
       }
     </style>

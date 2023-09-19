@@ -48,7 +48,7 @@ const pageTitle = "About";
   <Header client:only="svelte" />
   <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-10"
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-900 sm:text-4xl mt-10"
     >
       About
     </h1>
@@ -62,7 +62,7 @@ const pageTitle = "About";
           src="/me-500.png"
         />
       </div>
-      <div class="space-y-4 text-slate-800 text-lg">
+      <div class="space-y-4 text-blue-800 text-lg">
         <p>
           <span class="font-medium">Hey, I'm Candido Sales</span>, I started as
           a software engineer back in 2011, working with PHP.
@@ -107,21 +107,21 @@ const pageTitle = "About";
       </div>
     </div>
     <h2
-      class="text-3xl leading-8 font-medium tracking-tight text-slate-800 sm:text-4xl mt-20 slide-fade-in"
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in"
     >
       Work experience
     </h2>
     <div
-      class="lg:grid lg:grid-cols-4 lg:gap-6 mt-10 text-slate-800 slide-fade-in"
+      class="lg:grid lg:grid-cols-4 lg:gap-6 mt-10 text-blue-800 slide-fade-in"
     >
       {
         experience.map((e) => (
           <>
             <div class="col-span-1 mb-1 md:mb-8 flex flex-row md:flex-col items-center md:items-start">
-              <p class="text-sm md:text-lg text-slate-600 md:mb-1 mr-4">
+              <p class="text-sm md:text-lg text-blue-600 md:mb-1 mr-4">
                 {e.period}
               </p>
-              <p class="text-slate-600" />
+              <p class="text-blue-600" />
             </div>
             <div class="col-span-3 mb-8 md:mb-4">
               <h3 class="text-lg mb-1 font-medium">
