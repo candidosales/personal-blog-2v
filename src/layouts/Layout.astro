@@ -62,12 +62,14 @@ const { pageTitle } = Astro.props;
       }}
     />
   </head>
-  <body class="bg-orange-50">
+  <body class="sun">
     <div class="topbar-blur" aria-hidden="true"></div>
     <slot />
     <style>
-      :global(body) {
+      body {
         letter-spacing: -0.05em;
+      }
+      :global(.sun) {
         background: rgb(255 248 241);
         background-image: url("sun-2.png");
         background-repeat: no-repeat;
