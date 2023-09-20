@@ -66,7 +66,7 @@ const { pageTitle } = Astro.props;
     <div class="topbar-blur" aria-hidden="true"></div>
     <slot />
     <style>
-      body {
+      :global(body) {
         letter-spacing: -0.05em;
         background: rgb(255 248 241);
         background-image: url("sun-2.png");
