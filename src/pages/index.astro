@@ -91,5 +91,22 @@ const pageTitle = "Home";
       <Quote />
     </div>
     <Contact />
+    <div class="light bg-orange-200 w-60 h-60 rounded-full"></div>
+    <div class="sun bg-red-600 w-20 h-20 rounded-full"></div>
+
+    <style>
+      .sun,
+      .light {
+        position: fixed;
+        bottom: -200px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        z-index: 0;
+      }
+
+      .light {
+        bottom: -300px;
+      }
+    </style>
   </main>
 </Layout>
