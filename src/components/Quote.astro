@@ -19,6 +19,11 @@ const quotes: Quote[] = [
     authorName: "Rubem Alves",
     quote: "It is those who suffer who produce beauty, to stop suffering.",
   },
+  {
+    authorImage: "/jota-mombaca.png",
+    authorName: "Jota Mombaça",
+    quote: "Escape only happens because it's impossible.",
+  },
 ];
 
 function getRandomQuote(quotes: Quote[]) {
@@ -41,11 +46,11 @@ const quoteSelected = getRandomQuote(quotes);
         loading="lazy"
         decoding="async"
       />
-      <blockquote class="text-center md:text-left">
-        <div class="text-slate-600 dark:text-white mb-2 md:mb-0">
+      <blockquote class="text-center md:text-left font-inclusive">
+        <p class="text-blue-800 dark:text-white mb-2 md:mb-0">
           {quoteSelected.authorName}
-        </div>
-        <p class="max-w-3xl mx-auto text-lg font-medium text-slate-800">
+        </p>
+        <p class="max-w-3xl mx-auto text-lg font-medium text-blue-600">
           “{quoteSelected.quote}”
         </p>
       </blockquote>

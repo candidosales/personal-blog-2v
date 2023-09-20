@@ -9,7 +9,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter Variable", "Inter", ...defaultTheme.fontFamily.sans],
+        inclusive: ["Inclusive Sans", "Inter", ...defaultTheme.fontFamily.sans],
+        calligraffitti: [
+          "'Calligraffitti', cursive",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
     },
   },

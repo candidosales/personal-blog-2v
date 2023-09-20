@@ -54,12 +54,12 @@
       </div>
     </div>
     <div
-      class="hidden md:flex bg-slate-100/80 px-2 rounded-full backdrop-blur-md border border-solid border-slate-200"
+      class="hidden md:flex bg-blue-100/80 px-2 rounded-full backdrop-blur-md border border-solid border-slate-200"
     >
       {#each menuItems as m}
         <a
           href={m.href}
-          class="p-4 font-medium text-slate-600 hover:text-slate-900"
+          class="p-4 font-medium text-blue-800 hover:text-blue-900"
           target={m.targetBlank ? "_blank" : ""}
         >
           {m.label}
@@ -69,3 +69,9 @@
   </nav>
 </div>
 <MenuMobile {menuItems} />
+
+<style lang="scss">
+  nav a {
+    font-family: "Inclusive Sans", sans-serif;
+  }
+</style>

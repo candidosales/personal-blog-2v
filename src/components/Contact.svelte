@@ -9,7 +9,7 @@
 
   let stylePlace = {
     default:
-      "bg-slate-100/80 px-2 backdrop-blur-md border border-solid border-slate-200 rounded-full",
+      "bg-blue-100/80 px-2 backdrop-blur-md border border-solid border-blue-200 rounded-full",
     mobile: "w-full justify-between p-2",
   };
 
@@ -52,7 +52,7 @@
     {#each links as l}
       <div class={place === "mobile" ? "m-0" : "m-4"}>
         <a
-          class="no-underline hover:underline hover:underline-offset-4 flex flex-row align-middle items-center text-slate-600 hover:text-slate-800"
+          class="font-inclusive no-underline hover:underline hover:underline-offset-4 flex flex-row align-middle items-center text-blue-800 hover:text-blue-900"
           href={l.href}
           title={l.label}
           target="_blank"
