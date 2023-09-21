@@ -39,7 +39,7 @@
     class="w-full flex items-center justify-end sm:h-10"
     aria-label="navigation"
   >
-    <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+    <div class="flex items-center flex-1">
       <div class="flex items-center justify-between w-full md:w-auto">
         <a href="/">
           <span class="sr-only">Candido Sales</span>
