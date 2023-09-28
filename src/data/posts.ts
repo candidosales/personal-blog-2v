@@ -58,7 +58,7 @@ export const posts = [
     title: "Como fiz o intercâmbio para o Canadá",
     description:
       "Vou contar a minha experiência de como me mudei para o Canadá",
-    href: "https://medium.com/@candidosales/como-consegui-uma-oferta-de-emprego-no-canad%C3%A1-d8d8e717a379",
+    href: "https://medium.com/@candidosales/como-fiz-o-interc%C3%A2mbio-para-o-canad%C3%A1-d8d5c2e11783",
     publishDate: "2019-08-18",
   },
 ];
