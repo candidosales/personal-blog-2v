@@ -1,69 +1,69 @@
 ---
-import "@fontsource-variable/inter";
-import { SEO } from "astro-seo";
+import '@fontsource-variable/inter';
+import { SEO } from 'astro-seo';
 const { pageTitle } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/png' href='/favicon.png' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='sitemap' href='/sitemap-index.xml' />
     <script
-      type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7"></script>
-    <script type="text/partytown">
+      type='text/partytown'
+      src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'></script>
+    <script type='text/partytown'>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-KF2R0QYPX7");
+      gtag('js', new Date());
+      gtag('config', 'G-KF2R0QYPX7');
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Inclusive+Sans&display=swap"
-      rel="stylesheet"
+      href='https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,300;1,6..72,400&display=swap'
+      rel='stylesheet'
     />
 
     <SEO
       title={pageTitle}
-      titleTemplate="%s | Candido Sales - Software Engineer"
-      titleDefault="Candido Sales - Software Engineer"
-      description="A multidisciplinary engineer focusing on digital experiences"
-      canonical="https://candidosales.me"
+      titleTemplate='%s | Candido Sales - Software Engineer'
+      titleDefault='Candido Sales - Software Engineer'
+      description='A multidisciplinary engineer focusing on digital experiences'
+      canonical='https://candidosales.me'
       openGraph={{
         basic: {
-          title: "Candido Sales - Software Engineer",
-          type: "website",
-          image: "https://candidosales.me/og-image.png",
-          url: "https://candidosales.me",
+          title: 'Candido Sales - Software Engineer',
+          type: 'website',
+          image: 'https://candidosales.me/og-image.png',
+          url: 'https://candidosales.me',
         },
         image: {
-          url: "https://candidosales.me/og-image.png",
+          url: 'https://candidosales.me/og-image.png',
           width: 1200,
           height: 600,
-          alt: "Social open graph",
-          type: "image/png",
+          alt: 'Social open graph',
+          type: 'image/png',
         },
       }}
       twitter={{
-        creator: "@candidosales",
-        site: "@candidosales",
-        card: "summary_large_image",
-        title: "Candido Sales - Software Engineer",
+        creator: '@candidosales',
+        site: '@candidosales',
+        card: 'summary_large_image',
+        title: 'Candido Sales - Software Engineer',
         description:
-          "A multidisciplinary engineer focusing on digital experiences",
+          'A multidisciplinary engineer focusing on digital experiences',
       }}
     />
   </head>
-  <body class="sun">
-    <div class="topbar-blur" aria-hidden="true"></div>
+  <body class='sun'>
+    <div class='topbar-blur' aria-hidden='true'></div>
     <slot />
     <style>
       body {
@@ -71,7 +71,7 @@ const { pageTitle } = Astro.props;
       }
       :global(.sun) {
         background: rgb(255 248 241);
-        background-image: url("/sun-2.png");
+        background-image: url('/sun-2.png');
         background-repeat: no-repeat;
         background-position: bottom;
         background-origin: content-box;
@@ -79,7 +79,7 @@ const { pageTitle } = Astro.props;
         background-attachment: scroll;
       }
       :global(h1, h2, h3) {
-        font-family: "Inclusive Sans", sans-serif;
+        font-family: 'Inclusive Sans', sans-serif;
       }
       .topbar-blur {
         position: relative;
@@ -98,7 +98,7 @@ const { pageTitle } = Astro.props;
         top: 0;
       }
       .topbar-blur:after {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0;
         background: linear-gradient(to bottom, #fff8f1, transparent);
