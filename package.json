@@ -18,19 +18,19 @@
     "@astrojs/sitemap": "^3.0.2",
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^5.0.2",
-    "@fontsource-variable/inter": "^5.0.13",
+    "@astrojs/vercel": "^5.1.0",
+    "@fontsource-variable/inter": "^5.0.15",
     "@popperjs/core": "^2.11.8",
-    "astro": "^3.3.2",
-    "astro-compress": "^2.0.15",
+    "astro": "^3.4.0",
+    "astro-compress": "^2.1.6",
     "astro-seo": "^0.8.0",
-    "flowbite": "^1.8.1",
+    "flowbite": "^2.0.0",
     "flowbite-svelte": "^0.44.18",
-    "sass": "^1.69.4",
+    "sass": "^1.69.5",
     "satori": "^0.10.9",
     "sharp": "^0.32.6",
     "svelte": "^4.2.2",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.5"
   }
 }
