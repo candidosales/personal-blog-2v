@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import ArrowRight from "./icons/ArrowRight.svelte";
+import { Image } from 'astro:assets';
+import ArrowRight from './icons/ArrowRight.svelte';
 
 export interface Props {
   title: string;
@@ -9,7 +9,7 @@ export interface Props {
   imageAlt: string;
   href: string;
   techs: Array<{ icon: string; name: string }>;
-  loadingImage: "lazy" | "eager";
+  loadingImage: 'lazy' | 'eager';
   background: string;
 }
 
@@ -20,12 +20,12 @@ const {
   imageUrl,
   imageAlt,
   techs,
-  loadingImage = "lazy",
-  background = "bg-slate-200",
+  loadingImage = 'lazy',
+  background = 'bg-slate-200',
 } = Astro.props;
 ---
 
-<style lang="scss">
+<style lang='scss'>
   .card {
     &:hover {
       .card-button {
@@ -56,11 +56,11 @@ const {
     }
   }
 </style>
-<div class="card relative slide-fade-in">
+<div class='card relative slide-fade-in'>
   <a
     href={href}
     title={title}
-    target="_blank"
+    target='_blank'
     class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
   >
     <Image
@@ -69,43 +69,43 @@ const {
       width={394.66}
       alt={imageAlt}
       loading={loadingImage}
-      class="w-full"
+      class='w-full'
     />
   </a>
 
-  <div class="absolute top-6 left-6 md:top-8 md:left-8 max-w-xs">
+  <div class='absolute top-6 left-6 md:top-8 md:left-8 max-w-xs'>
     <div
-      class="text-lg leading-6 font-medium space-y-1 mb-2 md:mb-4 pr-6 md:pr-8"
+      class='text-lg leading-6 font-medium space-y-1 mb-2 md:mb-4 pr-6 md:pr-8'
     >
-      <h3 class="text-slate-800">{title}</h3>
-      <p class="text-slate-800/80 text-sm font-normal">{description}</p>
+      <h3 class='text-slate-800'>{title}</h3>
+      <p class='text-slate-800/80 text-sm font-normal'>{description}</p>
     </div>
-    <div class="relative h-6">
-      <div class="flex techs">
+    <div class='relative h-6'>
+      <div class='flex techs'>
         {
           techs.map((t) => (
             <img
-              class="mr-2 h-5"
+              class='mr-2 h-5'
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
-              loading="lazy"
-              height="20"
-              width="20"
+              loading='lazy'
+              height='20'
+              width='20'
             />
           ))
         }
       </div>
     </div>
   </div>
-  <div class="absolute right-8 card-button">
+  <div class='absolute right-8 card-button'>
     <a
-      class="bg-slate-100 text-slate-800 hover:bg-slate-200 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 border border-solid border-slate-200 font-inclusive"
+      class='backdrop-blur-md bg-blue-100/80 text-blue-800 hover:text-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 border border-solid border-blue-200 font-inclusive cursor-pointer'
       href={href}
       title={title}
       >Check it out
 
-      <ArrowRight class="ml-3 overflow-visible" />
+      <ArrowRight class='ml-3 overflow-visible' />
     </a>
   </div>
 </div>
