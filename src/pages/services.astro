@@ -10,7 +10,7 @@ const services = [
   {
     iconUrl: '/services/wordpress.svg',
     cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
-    title: 'Sites & Portais em WordPress',
+    title: 'Sites e Portais em WordPress',
     description:
       'Eleve sua marca com sites e portais customizados. <br /> Meu portfólio inclui vários projetos que atraem milhares de visitas diariamente.',
   },
@@ -18,8 +18,7 @@ const services = [
     iconUrl: '/services/google-analytics.svg',
     cssClass: 'col-span-12 md:col-span-4 bg-google-analytics',
     title: 'Otimização com Google Analytics e Search',
-    description:
-      'Transforme sua presença online com a integração avançada e atraia o público certo.',
+    description: 'Transforme sua presença online e atraia o público certo.',
   },
   {
     iconUrl: '/services/retool.svg',
@@ -67,7 +66,7 @@ const services = [
               <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
                 {s.title}
               </h2>
-              <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+              <p class='text-sm md:text-base text-slate-800/80 pr-6'>
                 <Fragment set:html={s.description} />
               </p>
             </div>
