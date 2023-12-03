@@ -1,7 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import { SEO } from 'astro-seo';
-const { pageTitle } = Astro.props;
+const { pageTitle, noindex = false, nofollow = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -32,6 +32,8 @@ const { pageTitle } = Astro.props;
     />
 
     <SEO
+      noindex={noindex}
+      nofollow={nofollow}
       title={pageTitle}
       titleTemplate='%s | Candido Sales - Software Engineer'
       titleDefault='Candido Sales - Software Engineer'

@@ -2,16 +2,16 @@
 import Header from '@components/Header.svelte';
 import Layout from '../layouts/Layout.astro';
 import Contact from '@components/Contact.svelte';
-const pageTitle = 'Services';
+const pageTitle = 'Soluções digitais';
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} noindex={true} nofollow={true}>
   <Header client:only='svelte' />
   <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
     <h1
       class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
     >
-      Soluções digitais inovadoras
+      Soluções digitais
     </h1>
     <p
       class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600'
