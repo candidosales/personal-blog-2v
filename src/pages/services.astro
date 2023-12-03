@@ -80,7 +80,7 @@ const services = [
       <p
         class='md:w-3/4 mb-6 text-center text-md md:text-2xl text-blue-800 font-inclusive'
       >
-        <strong>Compromisso com a excelência</strong>: Soluções tecnológicas
+        <strong>Compromisso com a excelência</strong>: soluções tecnológicas
         customizadas para escalabilidade, performance e economia
       </p>
       <a
@@ -100,9 +100,26 @@ const services = [
   .bg-wordpress {
     background-image: url(/services/sites-portals-wordpress.png);
     background-repeat: no-repeat;
-    background-position: 50% 190px;
+    background-position: 50% bottom;
     background-size: contain;
   }
+  @media (min-width: 640px) {
+    .bg-wordpress {
+      background-position: 50% bottom;
+    }
+  }
+  @media (min-width: 768px) {
+    .bg-wordpress {
+      background-position: 50% 200px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bg-wordpress {
+      background-position: 50% 200px;
+    }
+  }
+
   .bg-google-analytics {
     background-image: url(/services/google-analytics-background.webp);
     background-repeat: no-repeat;
