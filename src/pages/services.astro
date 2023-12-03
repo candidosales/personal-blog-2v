@@ -2,7 +2,40 @@
 import Header from '@components/Header.svelte';
 import Layout from '../layouts/Layout.astro';
 import Contact from '@components/Contact.svelte';
+import ArrowRight from '@components/icons/ArrowRight.svelte';
+import Mail from '@components/icons/Mail.svelte';
 const pageTitle = 'Soluções digitais';
+
+const services = [
+  {
+    iconUrl: '/services/wordpress.svg',
+    cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
+    title: 'Sites & Portais em WordPress',
+    description:
+      'Eleve sua marca com sites e portais customizados. <br /> Meu portfólio inclui vários projetos que atraem milhares de visitas diariamente.',
+  },
+  {
+    iconUrl: '/services/google-analytics.svg',
+    cssClass: 'col-span-12 md:col-span-4 bg-google-analytics',
+    title: 'Otimização com Google Analytics e Search',
+    description:
+      'Transforme sua presença online com a integração avançada e atraia o público certo.',
+  },
+  {
+    iconUrl: '/services/retool.svg',
+    cssClass: 'col-span-12 md:col-span-6 bg-retool',
+    title: 'Integrações Eficientes com Retool',
+    description:
+      'Conexões entre sistemas, criação de dashboards para otimizar seus processos, aumentando a produtividade e a eficácia operacional.',
+  },
+  {
+    iconUrl: '/services/custom-scripts.svg',
+    cssClass: 'col-span-12 md:col-span-6 bg-custom-scripts',
+    title: 'Criação de Scripts Sob Medida',
+    description:
+      'Automatize processos, extraia dados online.<br /> Scripts personalizados para eficiência e economia de tempo.',
+  },
+];
 ---
 
 <Layout pageTitle={pageTitle} noindex={true} nofollow={true}>
@@ -22,101 +55,71 @@ const pageTitle = 'Soluções digitais';
     <div
       class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-16'
     >
-      <div
-        class='col-span-12 md:col-span-8 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
-      >
-        <div
-          class='flex flex-col relative h-[310px] md:h-[340px] overflow-hidden rounded-r-3xl'
-        >
-          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
-            <img src='/services/wordpress.svg' width='200' height='200' />
+      {
+        services.map((s) => (
+          <div
+            class={`${s.cssClass} bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150 slide-fade-in`}
+          >
+            <div class='flex flex-col relative h-[320px]'>
+              <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+                <img src={s.iconUrl} width='200' height='200' />
+              </div>
+              <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
+                {s.title}
+              </h2>
+              <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+                <Fragment set:html={s.description} />
+              </p>
+            </div>
           </div>
-          <h2 class='text-xl font-medium text-slate-800 mb-1'>
-            Sites & Portais em WordPress
-          </h2>
-          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
-            Eleve sua marca com sites e portais customizados. <br /> Meu
-            portfólio inclui vários projetos que atraem milhares de visitas
-            diariamente.
-          </p>
-          <img
-            class='rounded-xl absolute bottom-0 md:bottom-[-70px] drop-shadow-lg'
-            src='/services/sites-portals-wordpress.png'
-          />
-        </div>
-      </div>
-      <div
-        class='col-span-12 md:col-span-4 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
+        ))
+      }
+    </div>
+    <div
+      class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
+    >
+      <p
+        class='md:w-3/4 mb-6 text-center text-md md:text-2xl text-blue-800 font-inclusive'
       >
-        <div
-          class='flex flex-col relative h-[340px] overflow-hidden rounded-r-3xl'
-        >
-          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
-            <img
-              src='/services/google-analytics.svg'
-              width='200'
-              height='200'
-            />
-          </div>
-          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
-            Otimização com Google Analytics e Search
-          </h2>
-          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
-            Transforme sua presença online com a integração avançada e atraia o
-            público certo.
-          </p>
-          <img
-            class='rounded-xl absolute bottom-[-130px] right-[-20px] drop-shadow-lg'
-            src='/services/google-analytics-background.webp'
-          />
-        </div>
-      </div>
-      <div
-        class='col-span-12 md:col-span-6 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
-      >
-        <div
-          class='flex flex-col relative h-[340px] overflow-hidden rounded-r-3xl'
-        >
-          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
-            <img src='/services/retool.svg' width='200' height='200' />
-          </div>
-          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
-            Integrações Eficientes com Retool
-          </h2>
-          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
-            Conexões eficientes entre sistemas, criação de dashboards para
-            otimizar seus processos internos, aumentando a produtividade e a
-            eficácia operacional.
-          </p>
-          <img
-            class='rounded-xl absolute bottom-[-20px] md:bottom-[-100px] right-[-20px] w-[1200px] drop-shadow-lg'
-            src='/services/retool-background.jpg'
-          />
-        </div>
-      </div>
-      <div
-        class='col-span-12 md:col-span-6 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
-      >
-        <div
-          class='flex flex-col relative h-[320px] md:h-[340px] overflow-hidden rounded-r-3xl'
-        >
-          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
-            <img src='/services/custom-scripts.svg' width='200' height='200' />
-          </div>
-          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
-            Criação de Scripts Sob Medida
-          </h2>
-          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
-            Automatize processos, extraia dados online.<br /> Scripts
-            personalizados para eficiência e economia de tempo.
-          </p>
-          <img
-            class='rounded-xl absolute bottom-[-120px] md:bottom-[-200px] right-[-20px] drop-shadow-lg'
-            src='/services/custom-scripts.png'
-          />
-        </div>
-      </div>
+        <strong>Compromisso com a excelência</strong>: Soluções tecnológicas
+        customizadas para escalabilidade, performance e economia
+      </p>
+      <a
+        class='max:w- bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
+        href='mailto:candidosg@gmail.com'
+        title='Entre em contato por e-mail'
+        target='_blank'
+        ><Mail class='h-4 w-4 mr-2' /> Entre em contato
+
+        <ArrowRight class='overflow-visible ml-3 text-white' />
+      </a>
     </div>
     <Contact />
   </main>
 </Layout>
+<style>
+  .bg-wordpress {
+    background-image: url(/services/sites-portals-wordpress.png);
+    background-repeat: no-repeat;
+    background-position: 50% 190px;
+    background-size: contain;
+  }
+  .bg-google-analytics {
+    background-image: url(/services/google-analytics-background.webp);
+    background-repeat: no-repeat;
+    background-position: 100% 220px;
+    background-size: 90%;
+  }
+  .bg-retool {
+    background-image: url(/services/retool-background.jpg);
+    background-repeat: no-repeat;
+    background-position: 100% 220px;
+    background-size: 90%;
+  }
+  .bg-custom-scripts {
+    background-image: url(/services/custom-scripts.png);
+    background-repeat: no-repeat;
+    background-position: 100% 220px;
+    background-size: 90%;
+  }
+</style>
