@@ -1,0 +1,122 @@
+---
+import Header from '@components/Header.svelte';
+import Layout from '../layouts/Layout.astro';
+import Contact from '@components/Contact.svelte';
+const pageTitle = 'Services';
+---
+
+<Layout pageTitle={pageTitle}>
+  <Header client:only='svelte' />
+  <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+    <h1
+      class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+    >
+      Soluções digitais inovadoras
+    </h1>
+    <p
+      class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600'
+    >
+      Elevando sua presença online com serviços personalizados e eficientes
+    </p>
+
+    <div
+      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-16'
+    >
+      <div
+        class='col-span-12 md:col-span-8 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
+      >
+        <div
+          class='flex flex-col relative h-[300px] md:h-[340px] overflow-hidden rounded-r-3xl'
+        >
+          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+            <img src='/services/wordpress.svg' width='200' height='200' />
+          </div>
+          <h2 class='text-xl font-medium text-slate-800 mb-1'>
+            Sites & Portais em WordPress
+          </h2>
+          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+            Eleve sua marca com sites e portais customizados. <br /> Meu
+            portfólio inclui vários projetos que atraem milhares de visitas
+            diariamente.
+          </p>
+          <img
+            class='rounded-xl absolute bottom-0 md:bottom-[-70px] drop-shadow-lg'
+            src='/services/sites-portals-wordpress.png'
+          />
+        </div>
+      </div>
+      <div
+        class='col-span-12 md:col-span-4 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
+      >
+        <div
+          class='flex flex-col relative h-[340px] overflow-hidden rounded-r-3xl'
+        >
+          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+            <img
+              src='/services/google-analytics.svg'
+              width='200'
+              height='200'
+            />
+          </div>
+          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
+            Otimização com Google Analytics e Search
+          </h2>
+          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+            Transforme sua presença online com a integração avançada e atraia o
+            público certo.
+          </p>
+          <img
+            class='rounded-xl absolute bottom-[-130px] right-[-20px] drop-shadow-lg'
+            src='/services/google-analytics-background.webp'
+          />
+        </div>
+      </div>
+      <div
+        class='col-span-12 md:col-span-6 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
+      >
+        <div
+          class='flex flex-col relative h-[340px] overflow-hidden rounded-r-3xl'
+        >
+          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+            <img src='/services/retool.svg' width='200' height='200' />
+          </div>
+          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
+            Integrações Eficientes com Retool
+          </h2>
+          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+            Conexões eficientes entre sistemas, criação de dashboards para
+            otimizar seus processos internos, aumentando a produtividade e a
+            eficácia operacional.
+          </p>
+          <img
+            class='rounded-xl absolute bottom-[-60px] md:bottom-[-100px] right-[-40px] w-[1200px] drop-shadow-lg'
+            src='/services/retool-background.jpg'
+          />
+        </div>
+      </div>
+      <div
+        class='col-span-12 md:col-span-6 bg-slate-100 pl-6 pt-6 rounded-3xl hover:bg-slate-200 ease-in duration-150'
+      >
+        <div
+          class='flex flex-col relative h-[300px] md:h-[340px] overflow-hidden rounded-r-3xl'
+        >
+          <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+            <img src='/services/custom-scripts.svg' width='200' height='200' />
+          </div>
+          <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
+            Criação de Scripts Sob Medida
+          </h2>
+          <p class='text-sm md:text-md text-slate-800/80 pr-6'>
+            Automatize processos, extraia dados online.<br /> Scripts
+            personalizados para eficiência e economia de tempo.
+          </p>
+          <img
+            class='rounded-xl absolute bottom-[-120px] md:bottom-[-200px] right-[-40px] drop-shadow-lg'
+            src='/services/custom-scripts.png'
+          />
+        </div>
+      </div>
+    </div>
+    <Contact />
+  </main>
+</Layout>
