@@ -1,33 +1,33 @@
 <script lang="ts">
-  import Home from "./icons/Home.svelte";
+  import Home from './icons/Home.svelte';
 
-  import User from "./icons/User.svelte";
-  import Store from "./icons/Store.svelte";
-  import MenuMobile from "./MenuMobile.svelte";
-  import PencilSquare from "./icons/PencilSquare.svelte";
+  import User from './icons/User.svelte';
+  import Store from './icons/Store.svelte';
+  import MenuMobile from './MenuMobile.svelte';
+  import PencilSquare from './icons/PencilSquare.svelte';
 
   const menuItems = [
     {
-      href: "/",
-      label: "Home",
+      href: '/',
+      label: 'Home',
       targetBlank: false,
       icon: Home,
     },
     {
-      href: "/blog",
-      label: "Blog",
+      href: '/blog',
+      label: 'Blog',
       targetBlank: false,
       icon: PencilSquare,
     },
     {
-      href: "/about",
-      label: "About",
+      href: '/about',
+      label: 'About',
       targetBlank: false,
       icon: User,
     },
     {
-      href: "https://store.candidosales.me",
-      label: "Store",
+      href: 'https://store.candidosales.me',
+      label: 'Store',
       targetBlank: true,
       icon: Store,
     },
@@ -60,7 +60,7 @@
         <a
           href={m.href}
           class="p-4 font-medium text-blue-800 hover:text-blue-900"
-          target={m.targetBlank ? "_blank" : ""}
+          target={m.targetBlank ? '_blank' : ''}
         >
           {m.label}
         </a>
@@ -72,6 +72,6 @@
 
 <style lang="scss">
   nav a {
-    font-family: "Inclusive Sans", sans-serif;
+    font-family: 'Inclusive Sans', sans-serif;
   }
 </style>

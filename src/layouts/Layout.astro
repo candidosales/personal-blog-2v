@@ -1,6 +1,8 @@
 ---
 import '@fontsource-variable/inter';
 import { SEO } from 'astro-seo';
+import { ViewTransitions } from 'astro:transitions';
+
 const { pageTitle, noindex = false, nofollow = false } = Astro.props;
 ---
 
@@ -63,6 +65,7 @@ const { pageTitle, noindex = false, nofollow = false } = Astro.props;
           'A multidisciplinary engineer focusing on digital experiences',
       }}
     />
+    <ViewTransitions />
   </head>
   <body class='sun'>
     <div class='topbar-blur' aria-hidden='true'></div>

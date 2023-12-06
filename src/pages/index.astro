@@ -1,32 +1,32 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
-import Card from "@components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import Card from '@components/Card.astro';
 
-import { portfolio } from "@data/portfolio";
-import { extras } from "@data/extras";
-import { volunteer } from "@data/volunteer";
+import { portfolio } from '@data/portfolio';
+import { extras } from '@data/extras';
+import { volunteer } from '@data/volunteer';
 
-import TitleSection from "@components/TitleSection.astro";
-import Quote from "@components/Quote.astro";
-import Header from "@components/Header.svelte";
-import Contact from "@components/Contact.svelte";
+import TitleSection from '@components/TitleSection.astro';
+import Quote from '@components/Quote.astro';
+import Header from '@components/Header.svelte';
+import Contact from '@components/Contact.svelte';
 
-const pageTitle = "Home";
+const pageTitle = 'Home';
 ---
 
 <Layout pageTitle={pageTitle}>
-  <Header client:only="svelte" />
-  <main class="relative pb-36 mx-auto max-w-7xl">
+  <Header client:only='svelte' />
+  <main class='relative pb-36 mx-auto max-w-7xl'>
     <Hero />
 
-    <div class="my-16 px-4">
+    <div class='my-16 px-4'>
       <TitleSection
-        title={"Portfolio"}
-        subtitle={"Here are a few open source projects that I have created and continue to manage"}
+        title={'Portfolio'}
+        subtitle={'Here are a few open source projects that I have created and continue to manage'}
       />
       <div
-        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
+        class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
       >
         {
           portfolio.map((p, index) => (
@@ -37,18 +37,18 @@ const pageTitle = "Home";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
-              loadingImage={index === 0 ? "eager" : "lazy"}
+              loadingImage={index === 0 ? 'eager' : 'lazy'}
               background={p.background}
             />
           ))
         }
       </div>
       <TitleSection
-        title={"Volunteer"}
-        subtitle={"I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability"}
+        title={'Volunteer'}
+        subtitle={'I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability'}
       />
       <div
-        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
+        class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
       >
         {
           volunteer.map((p) => (
@@ -59,18 +59,18 @@ const pageTitle = "Home";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
-              loadingImage="lazy"
+              loadingImage='lazy'
               background={p.background}
             />
           ))
         }
       </div>
       <TitleSection
-        title={"Extras"}
-        subtitle={"In my free time, I work on various projects to explore new resources and technologies"}
+        title={'Extras'}
+        subtitle={'In my free time, I work on various projects to explore new resources and technologies'}
       />
       <div
-        class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16"
+        class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
       >
         {
           extras.map((p) => (
@@ -81,7 +81,7 @@ const pageTitle = "Home";
               imageUrl={p.imageUrl}
               imageAlt={p.imageAlt}
               techs={p.techs}
-              loadingImage="lazy"
+              loadingImage='lazy'
               background={p.background}
             />
           ))
@@ -91,8 +91,8 @@ const pageTitle = "Home";
       <Quote />
     </div>
     <Contact />
-    <div class="light bg-orange-200 w-60 h-60 rounded-full"></div>
-    <div class="sun bg-red-600 w-20 h-20 rounded-full"></div>
+    <div class='light bg-orange-200 w-60 h-60 rounded-full'></div>
+    <div class='sun bg-red-600 w-20 h-20 rounded-full'></div>
 
     <style>
       .sun,

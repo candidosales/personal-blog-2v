@@ -1,9 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "@components/Header.svelte";
-import { posts } from "@data/posts";
+import Layout from '../layouts/Layout.astro';
+import Header from '@components/Header.svelte';
+import { posts } from '@data/posts';
 
-const pageTitle = "Blog";
+const pageTitle = 'Blog';
 ---
 
 <style lang="postcss">
@@ -20,36 +20,37 @@ const pageTitle = "Blog";
 </style>
 
 <Layout pageTitle={pageTitle}>
-  <Header client:only="svelte" />
-  <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
+  <Header client:only='svelte' />
+  <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10"
+      class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+      transition:name='hero'
     >
       Blog
     </h1>
-    <div class="md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mt-10">
+    <div class='md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mt-10'>
       {
         posts.map((p) => (
           <a
             href={p.href}
             title={p.title}
-            target="_blank"
-            class="card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg"
+            target='_blank'
+            class='card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg'
           >
-            <div class="relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48">
+            <div class='relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48'>
               <div
                 class={`relative w-full h-48 bg-cover bg-no-repeat`}
                 style={`background-image: url(${p.imageUrl});`}
               />
             </div>
 
-            <h3 class="text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2">
+            <h3 class='text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2'>
               {p.title}
             </h3>
-            <p class="text-blue-800/80 text-md font-normal mb-4 line-clamp-2">
+            <p class='text-blue-800/80 text-md font-normal mb-4 line-clamp-2'>
               {p.description}
             </p>
-            <p class="text-blue-800/80 text-xs font-normal">
+            <p class='text-blue-800/80 text-xs font-normal'>
               {new Date(p.publishDate).toLocaleDateString()}
             </p>
           </a>
