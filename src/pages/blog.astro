@@ -28,7 +28,10 @@ const pageTitle = 'Blog';
     >
       Blog
     </h1>
-    <div class='md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mt-10'>
+    <div
+      class='md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mt-10'
+      transition:name='content'
+    >
       {
         posts.map((p) => (
           <a
