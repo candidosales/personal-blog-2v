@@ -18,7 +18,6 @@ Inspirations:
 - ✅ [Tailwind](https://tailwindcss.com/);
 - ✅ [Astro 4v](https://astro.build/);
 - ✅ [Astro/Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/);
-- ✅ [Astro/Image](https://docs.astro.build/en/guides/integrations-guide/image/) with AVIF format;
 - ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
 - ✅ [Astro/Partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/);
