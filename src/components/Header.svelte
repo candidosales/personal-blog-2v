@@ -68,7 +68,7 @@
     </div>
   </nav>
 </div>
-<MenuMobile {menuItems} />
+<MenuMobile {menuItems} client:load />
 
 <style lang="scss">
   nav a {

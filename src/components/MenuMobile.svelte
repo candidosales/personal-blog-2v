@@ -6,10 +6,10 @@
     Sidebar,
     SidebarGroup,
     SidebarItem,
-  } from "flowbite-svelte";
-  import { sineIn } from "svelte/easing";
-  import type { MenuItem } from "../env";
-  import Contact from "./Contact.svelte";
+  } from 'flowbite-svelte';
+  import { sineIn } from 'svelte/easing';
+  import type { MenuItem } from '../env';
+  import Contact from './Contact.svelte';
   let drawerHidden = true;
   let transitionParams = {
     x: 320,
@@ -37,6 +37,7 @@
   placement="right"
   id="sidebar2"
   divClass="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md dark:bg-gray-800 w-80 fixed inset-y-0 right-0"
+  client:load
 >
   <div class="flex items-center">
     <h5
@@ -72,9 +73,9 @@
     </SidebarGroup>
     <SidebarGroup
       border
-      borderClass={"pt-4 mt-4 border-t border-blue-200 dark:border-blue-700"}
+      borderClass={'pt-4 mt-4 border-t border-blue-200 dark:border-blue-700'}
     >
-      <Contact place={"mobile"} />
+      <Contact place={'mobile'} />
     </SidebarGroup>
   </Sidebar>
 </Drawer>
