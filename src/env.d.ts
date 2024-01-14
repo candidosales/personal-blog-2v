@@ -6,3 +6,10 @@ export interface MenuItem {
   targetBlank: boolean;
   icon: any;
 }
+
+export interface Service {
+  iconUrl: string;
+  cssClass: string;
+  title: string;
+  description: string;
+}
