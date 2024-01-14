@@ -3,9 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@data/*": ["src/data/*"]
+		"@assets/*": ["src/assets/*"],
+    	"@components/*": ["src/components/*"],
+    	"@data/*": ["src/data/*"],
+		"@layouts/*": ["src/layouts/*"],
+		"@i18n/*": ["src/i18n/*"]
     }
   }
 }

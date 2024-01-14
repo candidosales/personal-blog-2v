@@ -1,33 +1,34 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import compress from "astro-compress";
-import sitemap from "@astrojs/sitemap";
-import svelte from "@astrojs/svelte";
-import vercel from "@astrojs/vercel/serverless";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import compress from 'astro-compress';
+import sitemap from '@astrojs/sitemap';
+import svelte from '@astrojs/svelte';
+import vercel from '@astrojs/vercel/serverless';
 
-import partytown from "@astrojs/partytown";
+import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.candidosales.me/",
+  site: 'https://www.candidosales.me/',
   integrations: [
     tailwind(),
     compress(),
     sitemap({
       i18n: {
-        defaultLocale: "en",
-        locales: {
-          en: "en-US",
+        defaultLocale: 'en',
+        locales: ['en', 'pt-br'],
+        routing: {
+          prefixDefaultLocale: false,
         },
       },
     }),
     svelte(),
     partytown({
       config: {
-        forward: ["dataLayer.push"],
+        forward: ['dataLayer.push'],
       },
     }),
   ],
-  output: "server",
+  output: 'server',
   adapter: vercel(),
 });
