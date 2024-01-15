@@ -2,10 +2,11 @@
 import '@fontsource-variable/inter';
 import { SEO } from 'astro-seo';
 import { ViewTransitions } from 'astro:transitions';
-import { getLangFromUrl } from '@i18n/utils';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const { pageTitle, noindex = false, nofollow = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
@@ -39,13 +40,13 @@ const lang = getLangFromUrl(Astro.url);
       noindex={noindex}
       nofollow={nofollow}
       title={pageTitle}
-      titleTemplate='%s | Candido Sales - Software Engineer'
-      titleDefault='Candido Sales - Software Engineer'
-      description='A multidisciplinary engineer focusing on digital experiences'
+      titleTemplate=`%s | ${t('seo.title')}`
+      titleDefault={t('seo.title')}
+      description={t('seo.description')}
       canonical='https://candidosales.me'
       openGraph={{
         basic: {
-          title: 'Candido Sales - Software Engineer',
+          title: t('seo.title'),
           type: 'website',
           image: 'https://candidosales.me/og-image.png',
           url: 'https://candidosales.me',
@@ -62,9 +63,8 @@ const lang = getLangFromUrl(Astro.url);
         creator: '@candidosales',
         site: '@candidosales',
         card: 'summary_large_image',
-        title: 'Candido Sales - Software Engineer',
-        description:
-          'A multidisciplinary engineer focusing on digital experiences',
+        title: t('seo.title'),
+        description: t('seo.description'),
       }}
     />
     <ViewTransitions />

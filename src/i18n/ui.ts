@@ -7,6 +7,26 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
+    'seo.title': 'Candido Sales - Software Engineer',
+    'seo.description':
+      'A multidisciplinary engineer focusing on digital experiences',
+    'menu.home': 'Home',
+    'menu.blog': 'Blog',
+    'menu.about': 'About',
+    'menu.store': 'Store',
+    'hero.introduction': `Hello! I'm Candido Sales`,
+    'hero.title1': 'A multidisciplinary engineer focusing on',
+    'hero.title2': 'digital experiences',
+    portfolio: 'Portfolio',
+    'portfolio.subtitle':
+      'Here are a few open source projects that I have created and continue to manage',
+    volunteer: 'Volunteer',
+    'volunteer.subtitle':
+      'I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability',
+    extras: 'Extras',
+    'extras.subtitle':
+      'In my free time, I work on various projects to explore new resources and technologies',
+    'home.title': 'Home',
     'services.title': 'Digital solutions',
     'services.subtitle':
       'Enhancing your online presence with personalized and efficient services',
@@ -26,8 +46,35 @@ export const ui = {
     'services.4.title': 'Creation of tailor-made scripts',
     'services.4.description':
       'Automate processes, extract data online.<br /> Customized scripts for efficiency and time savings.',
+    'quote.joseMujica':
+      'Triumphing in life is not winning, it is getting up and starting over every time you fall.',
+    'quote.rubemAlves':
+      'It is those who suffer who produce beauty, to stop suffering.',
+    'quote.jotaMombaca': `Escape only happens because it's impossible.`,
+    'quote.fernandoPessoa':
+      'The right way to live is something we can teach only the dead.',
   },
   'pt-br': {
+    'seo.title': 'Cândido Sales - Engenheiro de Software',
+    'seo.description':
+      'Engenheiro multidisciplinar focado em experiências digitais',
+    'menu.home': 'Início',
+    'menu.blog': 'Blog',
+    'menu.about': 'Sobre',
+    'menu.store': 'Loja',
+    'hero.introduction': `Olá! Eu sou Cândido Sales`,
+    'hero.title1': 'Engenheiro multidisciplinar focado em',
+    'hero.title2': 'experiências digitais',
+    portfolio: 'Portfólio',
+    'portfolio.subtitle':
+      'Aqui são alguns projectos de código aberto que criei e continuo a manter',
+    volunteer: 'Voluntariado',
+    'volunteer.subtitle':
+      'Desenvolvo e mantenho voluntariamente projectos que estão de acordo com as minhas convicções em matéria de educação, cultura, arte, saúde pública e sustentabilidade',
+    extras: 'Extra',
+    'extras.subtitle':
+      'No meu tempo livre, trabalho em vários projectos para explorar novos recursos e tecnologias',
+    'home.title': 'Início',
     'services.title': 'Soluções digitais',
     'services.subtitle':
       'Elevando sua presença online com serviços personalizados e eficientes',
@@ -47,5 +94,12 @@ export const ui = {
     'services.4.title': 'Criação de Scripts Sob Medida',
     'services.4.description':
       'Automatize processos, extraia dados online.<br /> Scripts personalizados para eficiência e economia de tempo.',
+    'quote.joseMujica':
+      'Triunfar na vida não é ganhar, é se levantar e começar de novo cada vez que cai.',
+    'quote.rubemAlves':
+      'São os que sofrem que produzem a beleza, para deixar de sofrer.',
+    'quote.jotaMombaca': `A fuga só acontece porque é impossível.`,
+    'quote.fernandoPessoa':
+      'A maneira correta de viver é algo que só podemos ensinar aos mortos.',
   },
 } as const;

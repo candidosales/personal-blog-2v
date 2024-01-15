@@ -5,29 +5,31 @@
   import Store from './icons/Store.svelte';
   import MenuMobile from './MenuMobile.svelte';
   import PencilSquare from './icons/PencilSquare.svelte';
-
+  import { getLangFromUrl, useTranslations } from '@i18n/utils';
+  const lang = getLangFromUrl(new URL(window.location.href));
+  const t = useTranslations(lang);
   const menuItems = [
     {
       href: '/',
-      label: 'Home',
+      label: t('menu.home'),
       targetBlank: false,
       icon: Home,
     },
     {
       href: '/blog',
-      label: 'Blog',
+      label: t('menu.blog'),
       targetBlank: false,
       icon: PencilSquare,
     },
     {
       href: '/about',
-      label: 'About',
+      label: t('menu.about'),
       targetBlank: false,
       icon: User,
     },
     {
       href: 'https://store.candidosales.me',
-      label: 'Store',
+      label: t('menu.store'),
       targetBlank: true,
       icon: Store,
     },
