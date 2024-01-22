@@ -5,24 +5,30 @@
   import Store from './icons/Store.svelte';
   import MenuMobile from './MenuMobile.svelte';
   import PencilSquare from './icons/PencilSquare.svelte';
-  import { getLangFromUrl, useTranslations } from '@i18n/utils';
+  import {
+    getLangFromUrl,
+    useTranslations,
+    useTranslatedPath,
+  } from '@i18n/utils';
   const lang = getLangFromUrl(new URL(window.location.href));
   const t = useTranslations(lang);
+  const translatePath = useTranslatedPath(lang);
+
   const menuItems = [
     {
-      href: '/',
+      href: translatePath('/'),
       label: t('menu.home'),
       targetBlank: false,
       icon: Home,
     },
     {
-      href: '/blog',
+      href: translatePath('/blog'),
       label: t('menu.blog'),
       targetBlank: false,
       icon: PencilSquare,
     },
     {
-      href: '/about',
+      href: translatePath('/about'),
       label: t('menu.about'),
       targetBlank: false,
       icon: User,

@@ -4,6 +4,7 @@ export const languages = {
 };
 
 export const defaultLang = 'en';
+export const showDefaultLang = false;
 
 export const ui = {
   en: {
@@ -53,6 +54,23 @@ export const ui = {
     'quote.jotaMombaca': `Escape only happens because it's impossible.`,
     'quote.fernandoPessoa':
       'The right way to live is something we can teach only the dead.',
+    'about.title': 'About',
+    'about.piece1': `Hey, I'm Candido Sales!`,
+    'about.piece2':
+      'I started working as a software engineer in 2011, focusing on PHP.',
+    'about.piece3': `I'm originally from`,
+    'about.piece4': 'Brazil 🇧🇷, but now I live in',
+    'about.piece5': ', Canada 🇨🇦',
+    'about.piece6': 'Currently, I work at',
+    'about.piece7': `where I'm dedicated to building accessible and human-centred products.`,
+    'about.piece8': `In addition to that, I've founded`,
+    'about.and': 'and',
+    'about.piece9':
+      'and offer consulting services to private and public entities. One of my greatest joys is mentoring individuals and helping them with their IT careers through',
+    'about.piece10': `I'm a huge fan of`,
+    'about.piece11': `and side projects. When I'm not working, I enjoy cooking, playing games, reading non-tech books and hiking.`,
+    'about.title2': 'Work experience',
+    'about.seeMoreLinkedin': 'See more in my Linkedin',
   },
   'pt-br': {
     'seo.title': 'Cândido Sales - Engenheiro de Software',
@@ -101,5 +119,22 @@ export const ui = {
     'quote.jotaMombaca': `A fuga só acontece porque é impossível.`,
     'quote.fernandoPessoa':
       'A maneira correta de viver é algo que só podemos ensinar aos mortos.',
+    'about.title': 'Sobre',
+    'about.piece1': `Olá, Eu sou Cândido Sales!`,
+    'about.piece2':
+      'Comecei a trabalhar como engenheiro de software em 2011, com foco em PHP.',
+    'about.piece3': `Sou natural do`,
+    'about.piece4': 'Brasil 🇧🇷, mas agora vivo no',
+    'about.piece5': ', Canadá 🇨🇦',
+    'about.piece6': 'Atualmente, trabalho na',
+    'about.piece7': `onde me dedico a criar produtos acessíveis e centrados no ser humano.`,
+    'about.piece8': `Além disso, fundei`,
+    'about.and': 'e',
+    'about.piece9':
+      'e prestar serviços de consultoria a entidades públicas e privadas. Uma das minhas maiores alegrias é mentorar outras pessoas e ajudá-las nas suas carreiras de TI através de',
+    'about.piece10': `Sou um grande fã do`,
+    'about.piece11': `e de projetos paralelos. Quando não estou a trabalhar, gosto de cozinhar, jogar, ler livros não relacionados a tecnologia e fazer caminhadas.`,
+    'about.title2': 'Experiência profissional',
+    'about.seeMoreLinkedin': 'Veja mais no meu Linkedin',
   },
 } as const;

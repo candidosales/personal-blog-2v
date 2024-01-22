@@ -3,3 +3,12 @@ import PageIndex from '@components/PageIndex.astro';
 ---
 
 <PageIndex />
+<script>
+  if (navigator && navigator.language.includes('pt')) {
+    console.log('navigator.language', navigator.language);
+
+    if (window) {
+      window.location = '/pt-br';
+    }
+  }
+</script>
