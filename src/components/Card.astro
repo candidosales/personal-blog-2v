@@ -11,6 +11,7 @@ export interface Props {
   techs: Array<{ icon: string; name: string }>;
   loadingImage: 'lazy' | 'eager';
   background: string;
+  linkLabel: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   techs,
   loadingImage = 'lazy',
   background = 'bg-slate-200',
+  linkLabel = 'Check it out',
 } = Astro.props;
 ---
 
@@ -103,7 +105,7 @@ const {
       class='backdrop-blur-md bg-blue-100/80 text-blue-800 hover:text-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 border border-solid border-blue-200 font-inclusive cursor-pointer'
       href={href}
       title={title}
-      >Check it out
+      >{linkLabel}
 
       <ArrowRight class='ml-3 overflow-visible' />
     </a>

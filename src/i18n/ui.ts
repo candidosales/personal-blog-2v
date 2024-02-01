@@ -8,6 +8,7 @@ export const showDefaultLang = false;
 
 export const ui = {
   en: {
+    checkItOut: 'Check it out',
     'seo.title': 'Candido Sales - Software Engineer',
     'seo.description':
       'A multidisciplinary engineer focusing on digital experiences',
@@ -21,12 +22,60 @@ export const ui = {
     portfolio: 'Portfolio',
     'portfolio.subtitle':
       'Here are a few open source projects that I have created and continue to manage',
+    'portifolio.1.title': 'Cisco ChatGPT Security Advisories',
+    'portifolio.1.description':
+      'This is an AI chatbot that uses Security Advisories data to interact with the natural language',
+    'portifolio.2.title': 'Svelte Shopify Polaris Icons',
+    'portifolio.2.description':
+      'A set of Shopify Polaris Icons to use in your Svelte project',
+    'portifolio.3.title': 'Material Time Picker',
+    'portifolio.3.description':
+      'A simple time picker component using Angular Material',
+    'portifolio.4.title': 'Svelte Google Translate',
+    'portifolio.4.description': 'Google Translate component for Svelte',
+    'portifolio.5.title': 'Format Code',
+    'portifolio.5.description':
+      'A Figma plugin designed to allow you to format and syntax highlight code',
+    'portifolio.6.title': 'Landing Page Book 2v',
+    'portifolio.6.description':
+      'Landing page for advertising and sales of books to independent authors',
+    'portifolio.7.title': 'API in GO to create Cloud Function',
+    'portifolio.7.description':
+      '🐹 An API for deploying Google Cloud Functions in Go',
+    'portifolio.8.title': 'Figma plugin boilerplate',
+    'portifolio.8.description':
+      'A boilerplate for creating Figma plugins with Svelte, Vite and Typescript',
+    'portifolio.9.title': 'Dependencies report',
+    'portifolio.9.description': `Analyze the consistency of the dependencies in your company's frontend projects`,
+    'portifolio.10.title': 'Personal Portfolio 2v',
+    'portifolio.10.description': 'Landing page for your personal portfolio',
+    'portifolio.11.title': 'Personal Portfolio 1v',
+    'portifolio.11.description': 'Landing page for your personal portfolio',
+
     volunteer: 'Volunteer',
     'volunteer.subtitle':
       'I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability',
+    'volunteer.1.title': 'Tourism Piauí',
+    'volunteer.1.description':
+      'Preserve and discover our Cuisine, History, Ecotourism in Piauí - 🇧🇷',
+    'volunteer.2.title': 'Geleia Total',
+    'volunteer.2.description':
+      'Promote the culture and art of the state of Piauí - 🇧🇷',
+    'volunteer.3.title': 'Legal Abortion Map',
+    'volunteer.3.description':
+      'All about legal abortion in 🇧🇷 - What situations are allowed, what is needed',
+    'volunteer.4.title': 'Companies using Angular in Brazil',
+    'volunteer.4.description':
+      'Repository of companies in 🇧🇷 that use Angular in their projects',
     extras: 'Extras',
     'extras.subtitle':
       'In my free time, I work on various projects to explore new resources and technologies',
+    'extras.1.title': 'SUS Medical Prescription',
+    'extras.1.description':
+      'It helps doctors from the Brazilian public health system make medical prescriptions',
+    'extras.2.title': 'My Cultural Agenda',
+    'extras.2.description':
+      'PWA website that helps you organize your agenda at large events',
     'home.title': 'Home',
     'services.title': 'Digital solutions',
     'services.subtitle':
@@ -73,6 +122,7 @@ export const ui = {
     'about.seeMoreLinkedin': 'See more in my Linkedin',
   },
   'pt-br': {
+    checkItOut: 'Confira',
     'seo.title': 'Cândido Sales - Engenheiro de Software',
     'seo.description':
       'Engenheiro multidisciplinar focado em experiências digitais',
@@ -86,12 +136,61 @@ export const ui = {
     portfolio: 'Portfólio',
     'portfolio.subtitle':
       'Aqui são alguns projectos de código aberto que criei e continuo a manter',
+    'portifolio.1.title': 'Cisco ChatGPT Avisos de segurança',
+    'portifolio.1.description':
+      'Chatbot IA que utiliza os dados dos avisos de segurança para interagir com a linguagem natural',
+    'portifolio.2.title': 'Ícones Polaris Svelte Shopify',
+    'portifolio.2.description':
+      'Um conjunto de ícones Polaris do Shopify para utilizar no seu projeto Svelte',
+    'portifolio.3.title': 'Material Time Picker',
+    'portifolio.3.description':
+      'Um componente simples de seleção de tempo usando Angular Material',
+    'portifolio.4.title': 'Svelte Google Translate',
+    'portifolio.4.description': 'Componente do Google Translate para o Svelte',
+    'portifolio.5.title': 'Format Code',
+    'portifolio.5.description':
+      'Um plugin Figma concebido para lhe permitir formatar e realçar a sintaxe do código',
+    'portifolio.6.title': 'Landing Page Book 2v',
+    'portifolio.6.description':
+      'Landing page para publicidade e venda de livros a autores independentes',
+    'portifolio.7.title': 'API em GO para criar Cloud Function',
+    'portifolio.7.description':
+      '🐹 Uma API para implantar o Google Cloud Functions em Go',
+    'portifolio.8.title': 'Figma plugin boilerplate',
+    'portifolio.8.description':
+      'Um boilerplate para criar plugins Figma com Svelte, Vite e Typescript',
+    'portifolio.9.title': 'Relatório de dependências',
+    'portifolio.9.description': `Analise a consistência das dependências nos projectos front-end da sua empresa`,
+    'portifolio.10.title': 'Portfólio Pessoal 2v',
+    'portifolio.10.description':
+      'Projeto open source para seu portfólio pessoal',
+    'portifolio.11.title': 'Portfólio Pessoal 1v',
+    'portifolio.11.description':
+      'Projeto open source para seu portfólio pessoal',
     volunteer: 'Voluntariado',
     'volunteer.subtitle':
       'Desenvolvo e mantenho voluntariamente projectos que estão de acordo com as minhas convicções em matéria de educação, cultura, arte, saúde pública e sustentabilidade',
+    'volunteer.1.title': 'Turismo Piauí',
+    'volunteer.1.description':
+      'Preservar e descobra nossa Gastronomia, História, Ecoturismo no Piauí - 🇧🇷',
+    'volunteer.2.title': 'Geleia Total',
+    'volunteer.2.description':
+      'Promover a cultura e a arte do estado do Piauí - 🇧🇷',
+    'volunteer.3.title': 'Mapa do Aborto Legal',
+    'volunteer.3.description':
+      'Tudo sobre o aborto legal em 🇧🇷 - Quais situações são permitidas, o que é necessário',
+    'volunteer.4.title': 'Empresas que usam Angular no Brasil',
+    'volunteer.4.description':
+      'Repositório de empresas em 🇧🇷 que utilizam Angular em seus projetos',
     extras: 'Extra',
     'extras.subtitle':
       'No meu tempo livre, trabalho em vários projectos para explorar novos recursos e tecnologias',
+    'extras.1.title': 'Receituário Médico SUS',
+    'extras.1.description':
+      'Ajuda os médicos do sistema público de saúde brasileiro a fazer prescrições médicas',
+    'extras.2.title': 'Minha Agenda Cultural',
+    'extras.2.description':
+      'Site em PWA que ajuda a organizar a agenda em grandes eventos',
     'home.title': 'Início',
     'services.title': 'Soluções digitais',
     'services.subtitle':

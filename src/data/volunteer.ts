@@ -1,101 +1,100 @@
-export const volunteer = [
-  {
-    imageUrl: '/volunteer/turismo-piaui.png',
-    imageAlt: 'Turismo Piauí',
-    title: 'Turismo Piauí',
-    description:
-      'Preserve and discover our Cuisine, History, Ecotourism in Piauí - 🇧🇷',
-    url: 'https://www.turismopiaui.com/',
-    background: 'bg-amber-100',
-    techs: [
-      {
-        icon: 'svelte',
-        name: 'Svelte',
-      },
-      {
-        icon: 'tailwind',
-        name: 'Tailwind',
-      },
-      {
-        icon: 'vercel',
-        name: 'Vercel',
-      },
-      {
-        icon: 'meilisearch',
-        name: 'Meilisearch',
-      },
-      {
-        icon: 'strapi',
-        name: 'Strapi',
-      },
-      {
-        icon: 'upstash',
-        name: 'Upstash',
-      },
-      {
-        icon: 'render',
-        name: 'Render',
-      },
-    ],
-  },
-  {
-    imageUrl: '/volunteer/geleia-total.png',
-    imageAlt: 'Geleia Total',
-    title: 'Geleia Total',
-    description: 'Promote the culture and art of the state of Piauí - 🇧🇷',
-    url: 'https://www.geleiatotal.com.br/',
-    background: 'bg-slate-100',
-    techs: [
-      {
-        icon: 'wordpress',
-        name: 'Wordpress',
-      },
-      {
-        icon: 'php',
-        name: 'PHP',
-      },
-      {
-        icon: 'digitalocean',
-        name: 'Digital Ocean',
-      },
-      {
-        icon: 'pwa',
-        name: 'PWA',
-      },
-    ],
-  },
-  {
-    imageUrl: '/volunteer/mapa-aborto-legal.png',
-    imageAlt: 'Mapa Aborto Legal',
-    title: 'Mapa Aborto Legal',
-    description:
-      'All about legal abortion in 🇧🇷 - What situations are allowed, what is needed',
-    url: 'https://mapaabortolegal.org/',
-    background: 'bg-violet-100',
-    techs: [
-      {
-        icon: 'wordpress',
-        name: 'Wordpress',
-      },
-      {
-        icon: 'php',
-        name: 'PHP',
-      },
-    ],
-  },
-  {
-    imageUrl: '/volunteer/empresas-angular.png',
-    imageAlt: 'Empresas que usam Angular no Brasil',
-    title: 'Empresas que usam Angular no Brasil',
-    description:
-      'Repository of companies in 🇧🇷 that use Angular in their projects',
-    url: 'https://github.com/candidosales/empresas-que-usam-angular-no-brasil',
-    background: 'bg-red-100',
-    techs: [
-      {
-        icon: 'github',
-        name: 'Github',
-      },
-    ],
-  },
-];
+export const volunteerData = (t: any) => {
+  return [
+    {
+      imageUrl: '/volunteer/turismo-piaui.png',
+      imageAlt: t('volunteer.1.title'),
+      title: t('volunteer.1.title'),
+      description: t('volunteer.1.description'),
+      url: 'https://www.turismopiaui.com/',
+      background: 'bg-amber-100',
+      techs: [
+        {
+          icon: 'svelte',
+          name: 'Svelte',
+        },
+        {
+          icon: 'tailwind',
+          name: 'Tailwind',
+        },
+        {
+          icon: 'vercel',
+          name: 'Vercel',
+        },
+        {
+          icon: 'meilisearch',
+          name: 'Meilisearch',
+        },
+        {
+          icon: 'strapi',
+          name: 'Strapi',
+        },
+        {
+          icon: 'upstash',
+          name: 'Upstash',
+        },
+        {
+          icon: 'render',
+          name: 'Render',
+        },
+      ],
+    },
+    {
+      imageUrl: '/volunteer/geleia-total.png',
+      imageAlt: t('volunteer.2.title'),
+      title: t('volunteer.2.title'),
+      description: t('volunteer.2.description'),
+      url: 'https://www.geleiatotal.com.br/',
+      background: 'bg-slate-100',
+      techs: [
+        {
+          icon: 'wordpress',
+          name: 'Wordpress',
+        },
+        {
+          icon: 'php',
+          name: 'PHP',
+        },
+        {
+          icon: 'digitalocean',
+          name: 'Digital Ocean',
+        },
+        {
+          icon: 'pwa',
+          name: 'PWA',
+        },
+      ],
+    },
+    {
+      imageUrl: '/volunteer/mapa-aborto-legal.png',
+      imageAlt: t('volunteer.3.title'),
+      title: t('volunteer.3.title'),
+      description: t('volunteer.3.description'),
+      url: 'https://mapaabortolegal.org/',
+      background: 'bg-violet-100',
+      techs: [
+        {
+          icon: 'wordpress',
+          name: 'Wordpress',
+        },
+        {
+          icon: 'php',
+          name: 'PHP',
+        },
+      ],
+    },
+    {
+      imageUrl: '/volunteer/empresas-angular.png',
+      imageAlt: t('volunteer.4.title'),
+      title: t('volunteer.4.title'),
+      description: t('volunteer.4.description'),
+      url: 'https://github.com/candidosales/empresas-que-usam-angular-no-brasil',
+      background: 'bg-red-100',
+      techs: [
+        {
+          icon: 'github',
+          name: 'Github',
+        },
+      ],
+    },
+  ];
+};
