@@ -7,6 +7,8 @@ import { getLangFromUrl, useTranslations } from '@i18n/utils';
 const { pageTitle, noindex = false, nofollow = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -46,10 +48,12 @@ const t = useTranslations(lang);
       canonical='https://candidosales.me'
       openGraph={{
         basic: {
-          title: t('seo.title'),
+          title: pageTitle
+            ? `${pageTitle} | ${t('seo.title')}`
+            : t('seo.title'),
           type: 'website',
           image: 'https://candidosales.me/og-image.png',
-          url: 'https://candidosales.me',
+          url: `https://candidosales.me${currentPath}`,
         },
         image: {
           url: 'https://candidosales.me/og-image.png',
