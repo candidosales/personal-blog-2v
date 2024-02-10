@@ -1,5 +1,7 @@
 ---
-import '@fontsource-variable/inter';
+import '@fontsource/inclusive-sans';
+import '@fontsource-variable/newsreader';
+
 import { SEO } from 'astro-seo';
 import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
@@ -30,13 +32,6 @@ const currentPath = Astro.url.pathname;
       gtag('js', new Date());
       gtag('config', 'G-KF2R0QYPX7');
     </script>
-
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-    <link
-      href='https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,300;1,6..72,400&display=swap'
-      rel='stylesheet'
-    />
 
     <SEO
       noindex={noindex}
