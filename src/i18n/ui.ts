@@ -103,6 +103,8 @@ export const ui = {
     'quote.jotaMombaca': `Escape only happens because it's impossible.`,
     'quote.fernandoPessoa':
       'The right way to live is something we can teach only the dead.',
+    'quote.khalilGibran': `And your body is the harp of your soul, and it's up to you to make it play beautiful music or a mess of noise.`,
+    'quote.sobonfuSome': `It's never enough to say yes once.`,
     'about.title': 'About',
     'about.piece1': `Hey, I'm Candido Sales!`,
     'about.piece2':
@@ -218,6 +220,9 @@ export const ui = {
     'quote.jotaMombaca': `A fuga só acontece porque é impossível.`,
     'quote.fernandoPessoa':
       'A maneira correta de viver é algo que só podemos ensinar aos mortos.',
+    'quote.sobonfuSome': `Nunca é suficiente dizer sim uma única vez.`,
+    'quote.khalilGibran':
+      'E seu corpo é a harpa de sua alma, E cabe a você fazê-lo tocar uma linda música ou uma confusão de ruídos.',
     'about.title': 'Sobre',
     'about.piece1': `Olá, Eu sou Cândido Sales!`,
     'about.piece2':

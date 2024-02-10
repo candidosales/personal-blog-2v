@@ -32,6 +32,16 @@ const quotes: Quote[] = [
     authorName: 'Fernando Pessoa',
     quote: t('quote.fernandoPessoa'),
   },
+  {
+    authorImage: '/sobonfu-some.png',
+    authorName: 'Sobonfu Somé',
+    quote: t('quote.sobonfuSome'),
+  },
+  {
+    authorImage: '/khalil-gibran.png',
+    authorName: 'Khalil Gibran',
+    quote: t('quote.khalilGibran'),
+  },
 ];
 
 function getRandomQuote(quotes: Quote[]) {
@@ -44,7 +54,9 @@ const quoteSelected = getRandomQuote(quotes);
 
 <div class='my-16 mx-auto max-w-7xl slide-fade-in'>
   <div class='p-6'>
-    <div class='flex flex-col md:flex-row mx-auto justify-center items-center'>
+    <div
+      class='flex flex-col md:flex-row mx-auto justify-center items-center md:items-start'
+    >
       <Image
         src={quoteSelected.authorImage}
         width={56}
@@ -58,8 +70,10 @@ const quoteSelected = getRandomQuote(quotes);
         <p class='text-blue-800 dark:text-white mb-2 md:mb-0'>
           {quoteSelected.authorName}
         </p>
-        <p class='max-w-3xl mx-auto text-lg font-medium text-blue-600'>
-          “{quoteSelected.quote}”
+        <p
+          class='max-w-3xl mx-auto text-xl font-medium text-blue-600 max-w-[480px]'
+        >
+          “<Fragment set:html={quoteSelected.quote} />”
         </p>
       </blockquote>
     </div>
