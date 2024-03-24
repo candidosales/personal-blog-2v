@@ -38,12 +38,6 @@
       targetBlank: true,
       icon: Linkedin,
     },
-    {
-      href: 'https://adplist.org/mentors/candido-sales-gomes',
-      label: 'Mentoring',
-      targetBlank: true,
-      icon: AdpList,
-    },
   ];
 </script>
 

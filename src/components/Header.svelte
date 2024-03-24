@@ -5,6 +5,8 @@
   import Store from './icons/Store.svelte';
   import MenuMobile from './MenuMobile.svelte';
   import PencilSquare from './icons/PencilSquare.svelte';
+  import AdpList from './icons/AdpList.svelte';
+
   import {
     getLangFromUrl,
     useTranslations,
@@ -32,6 +34,12 @@
       label: t('menu.about'),
       targetBlank: false,
       icon: User,
+    },
+    {
+      href: 'https://adplist.org/mentors/candido-sales-gomes',
+      label: t('menu.mentorship'),
+      targetBlank: true,
+      icon: AdpList,
     },
     {
       href: 'https://store.candidosales.me',

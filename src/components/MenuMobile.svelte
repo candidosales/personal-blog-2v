@@ -60,7 +60,9 @@
         >
           <svelte:fragment slot="icon">
             <span class="text-blue-800">
-              <svelte:component this={m.icon} class="w-5 h-5 mr-2 " />
+              <div class="w-5 h-5 mr-2">
+                <svelte:component this={m.icon} />
+              </div>
             </span>
           </svelte:fragment>
           <svelte:fragment slot="subtext">
