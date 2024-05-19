@@ -48,7 +48,7 @@ const experience = [
     company: {
       name: 'VC+',
       image: '/companies/vc+.png',
-      url: '#',
+      url: '',
     },
     period: 'Aug 2016 - Nov 2017',
     title: 'Co-founder, Android Developer and Frontend Developer',
@@ -78,10 +78,11 @@ const t = useTranslations(lang);
       <div class='space-y-8 flex mb-8'>
         <Image
           class='rounded-3xl'
-          alt='my photo'
+          alt='Candido'
           width={400}
           height={400}
           src='/me-500.png'
+          loading={'eager'}
         />
       </div>
       <div class='space-y-4 text-blue-800 text-lg'>

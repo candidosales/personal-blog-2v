@@ -86,12 +86,12 @@ const {
       <div class='flex techs'>
         {
           techs.map((t) => (
-            <img
+            <Image
               class='mr-2 h-5'
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
-              loading='lazy'
+              loading='eager'
               height='20'
               width='20'
             />
