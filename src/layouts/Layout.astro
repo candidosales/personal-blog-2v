@@ -76,8 +76,13 @@ const currentPath = Astro.url.pathname;
         letter-spacing: -0.05em;
       }
       :global(.sun) {
-        background: rgb(255 248 241);
-        background-image: url('/sun-2.png');
+        background: linear-gradient(
+          0deg,
+          rgba(251, 191, 36, 1) 0%,
+          #fff8f1 23%,
+          #fff8f1 80%,
+          #ffedd5 100%
+        );
         background-repeat: no-repeat;
         background-position: bottom;
         background-origin: content-box;
@@ -122,7 +127,7 @@ const currentPath = Astro.url.pathname;
           view-timeline-name: --item-timeline;
           animation: slide-fade-in both;
           animation-timeline: --item-timeline;
-          animation-range: contain 0% contain 50%;
+          animation-range: 50vh 75vh;
           animation-duration: 700ms;
         }
       }
