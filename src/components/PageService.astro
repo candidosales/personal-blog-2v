@@ -37,7 +37,7 @@ const customers = [
     title: 'Sertão Online',
   },
   {
-    imageUrl: '/services/customers/diamond-telemedicina.avif',
+    imageUrl: '/services/customers/diamond-telemedicina.png',
     url: 'https://www.diamondtelemedicina.com.br/',
     title: 'Diamond Telemedicina',
   },
@@ -96,7 +96,7 @@ const services: Service[] = [
     </p>
 
     <div
-      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-40'
+      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-20 md:mb-32'
     >
       {
         services.map((s) => (
@@ -120,10 +120,10 @@ const services: Service[] = [
     </div>
 
     <div
-      class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
+      class='flex flex-col justify-center items-center mb-16 md:my-32 slide-fade-in'
     >
       <p
-        class='md:w-3/4 mb-8 text-center text-md md:text-2xl text-blue-800 font-inclusive'
+        class='md:w-3/4 mb-6 text-center text-md md:text-2xl text-blue-800 font-inclusive'
       >
         <Fragment set:html={t('services.subtitle.3')} />
       </p>
@@ -136,7 +136,7 @@ const services: Service[] = [
               class='partner mb-1 flex justify-center rounded-2xl p-4 align-middle md:mb-0 lg:mb-12 svelte-12m9kez'
             >
               <img
-                class='h-12'
+                class='h-8 md:h-12'
                 src={c.imageUrl}
                 alt={c.title}
                 loading='lazy'
