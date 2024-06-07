@@ -83,9 +83,10 @@ export const ui = {
       'Enhancing your online presence with personalized and efficient services',
     'services.subtitle.2':
       '<strong>Commitment to excellence</strong>: customized technological solutions for scalability, performance and economy',
+    'services.subtitle.3': '<strong>Together we achieve results</strong>',
     'services.contactMe': 'Contact me',
     'services.contactMeByEmail': 'Contact me by e-mail',
-    'services.1.title': 'WordPress Websites and Portals',
+    'services.1.title': 'Sites and Portals in WordPress or Liferay',
     'services.1.description':
       'Elevate your brand with customized websites and portals. <br /> My portfolio includes several projects that attract thousands of visits every day.',
     'services.2.title': 'Optimization with Google Analytics and Search',
@@ -201,9 +202,10 @@ export const ui = {
       'Elevando sua presença online com serviços personalizados e eficientes',
     'services.subtitle.2':
       '<strong>Compromisso com a excelência</strong>: soluções tecnológicas customizadas para escalabilidade, performance e economia',
+    'services.subtitle.3': '<strong>Juntos alcançamos resultados</strong>',
     'services.contactMe': 'Entre em contato',
     'services.contactMeByEmail': 'Entre em contato por e-mail',
-    'services.1.title': 'Sites e Portais em WordPress',
+    'services.1.title': 'Sites e Portais em WordPress ou Liferay',
     'services.1.description':
       'Eleve sua marca com sites e portais customizados. <br /> Meu portfólio inclui vários projetos que atraem milhares de visitas diariamente.',
     'services.2.title': 'Otimização com Google Analytics e Search',
