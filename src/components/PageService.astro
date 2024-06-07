@@ -10,9 +10,52 @@ import Header from './Header.svelte';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const customers = [
+  {
+    imageUrl: '/services/customers/unimed.webp',
+    url: 'https://www.unimed.coop.br/site/group/teresina/',
+    title: 'Unimed Teresina',
+  },
+  {
+    imageUrl: '/services/customers/artigo-19.png',
+    url: 'https://artigo19.org/',
+    title: 'Artigo 19',
+  },
+  {
+    imageUrl: '/services/customers/geleia-total.png',
+    url: 'https://www.geleiatotal.com.br/',
+    title: 'Geleia Total',
+  },
+  {
+    imageUrl: '/services/customers/bora-piaui.png',
+    url: 'https://www.borapiaui.org/',
+    title: 'Bora Piauí',
+  },
+  {
+    imageUrl: '/services/customers/sertao-online.png',
+    url: 'https://sertao.online/',
+    title: 'Sertão Online',
+  },
+  {
+    imageUrl: '/services/customers/diamond-telemedicina.avif',
+    url: 'https://www.diamondtelemedicina.com.br/',
+    title: 'Diamond Telemedicina',
+  },
+  {
+    imageUrl: '/services/customers/folha-piaui.png',
+    url: 'https://folhapiaui.com.br/',
+    title: 'Folha Piauí',
+  },
+  {
+    imageUrl: '/services/customers/sinapro-pi.png',
+    url: 'https://www.sinapropi.org/',
+    title: 'SINAPRO Piauí',
+  },
+];
+
 const services: Service[] = [
   {
-    iconUrl: '/services/wordpress.svg',
+    iconUrl: '/services/wordpress-liferay.svg',
     cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
     title: t('services.1.title'),
     description: t('services.1.description'),
@@ -40,7 +83,7 @@ const services: Service[] = [
 
 <Layout pageTitle={t('services.title')} noindex={true} nofollow={true}>
   <Header client:only='svelte' />
-  <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+  <main class='relative pb-36 mx-auto max-w-5xl my-16 px-4'>
     <h1
       class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
     >
@@ -53,7 +96,7 @@ const services: Service[] = [
     </p>
 
     <div
-      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-16'
+      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-40'
     >
       {
         services.map((s) => (
@@ -75,6 +118,36 @@ const services: Service[] = [
         ))
       }
     </div>
+
+    <div
+      class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
+    >
+      <p
+        class='md:w-3/4 mb-8 text-center text-md md:text-2xl text-blue-800 font-inclusive'
+      >
+        <Fragment set:html={t('services.subtitle.3')} />
+      </p>
+      <div class='grid grid-cols-2 grid-rows-1 md:grid-cols-4 slide-fade-in'>
+        {
+          customers.map((c) => (
+            <a
+              href={c.url}
+              title={c.title}
+              class='partner mb-1 flex justify-center rounded-2xl p-4 align-middle md:mb-0 lg:mb-12 svelte-12m9kez'
+            >
+              <img
+                class='h-12'
+                src={c.imageUrl}
+                alt={c.title}
+                loading='lazy'
+                fetchpriority='low'
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
     <div
       class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
     >
@@ -99,7 +172,7 @@ const services: Service[] = [
 </Layout>
 <style>
   .bg-wordpress {
-    background-image: url(/services/sites-portals-wordpress.png);
+    background-image: url(/services/sites-portals-wordpress-liferay.webp);
     background-repeat: no-repeat;
     background-position: 50% bottom;
     background-size: contain;
@@ -138,5 +211,12 @@ const services: Service[] = [
     background-repeat: no-repeat;
     background-position: 100% 220px;
     background-size: 90%;
+  }
+
+  .partner {
+    filter: grayscale(100%);
+    &:hover {
+      filter: none;
+    }
   }
 </style>
