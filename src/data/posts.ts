@@ -1,5 +1,14 @@
 export const posts = [
   {
+    imageUrl: "/articles/post-migrate-render-flyio.webp",
+    imageAlt: "Migrate Strapi from Render to Fly.io",
+    title: "Migrate Strapi from Render to Fly.io",
+    description:
+      "I was having cost issues with the Render server, and I can't reduce the server for small machines. Most of my users are from Brazil, so I moved my Strapi to Fly.io, which enables reduced costs.",
+    href: "https://dev.to/candidosales/migrate-strapi-from-render-to-flyio-lbi",
+    publishDate: "2024-08-01",
+  },
+  {
     imageUrl: "/articles/post-organize-figma.webp",
     imageAlt: "How to organize Figma files for developers",
     title: "How to organize Figma files for developers",
