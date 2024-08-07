@@ -26,7 +26,6 @@
     "astro-compress": "^2.3.0",
     "astro-seo": "^0.8.4",
     "crypto-js": "^4.2.0",
-    "fingerprintjs2": "^2.1.4",
     "flowbite": "^2.4.1",
     "flowbite-svelte": "^0.46.15",
     "sass": "^1.77.8",
