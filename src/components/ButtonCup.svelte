@@ -28,12 +28,12 @@
 
 <style>
   .bg-green-700 {
-    background-color: #15803d;
+    @apply bg-green-700;
   }
   .bg-yellow-700 {
-    background-color: #a16207;
+    @apply bg-yellow-700;
   }
   .bg-red-700 {
-    background-color: #b91c1c;
+    @apply bg-red-700;
   }
 </style>
