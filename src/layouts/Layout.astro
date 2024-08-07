@@ -6,7 +6,13 @@ import { SEO } from 'astro-seo';
 import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
-const { pageTitle, noindex = false, nofollow = false } = Astro.props;
+const {
+	pageTitle,
+	noindex = false,
+	nofollow = false,
+	withSun = true,
+	withTopBarBlur = true,
+} = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -15,117 +21,118 @@ const currentPath = Astro.url.pathname;
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/png' href='/favicon.png' />
-    <meta name='generator' content={Astro.generator} />
-    <link rel='sitemap' href='/sitemap-index.xml' />
-    <script
-      type='text/partytown'
-      src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'></script>
-    <script type='text/partytown'>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-KF2R0QYPX7');
-    </script>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/png' href='/favicon.png' />
+		<meta name='generator' content={Astro.generator} />
+		<link rel='sitemap' href='/sitemap-index.xml' />
+		<script
+			type='text/partytown'
+			src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'
+		></script>
+		<script type='text/partytown'>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-KF2R0QYPX7');
+		</script>
 
-    <SEO
-      noindex={noindex}
-      nofollow={nofollow}
-      title={pageTitle}
-      titleTemplate=`%s | ${t('seo.title')}`
-      titleDefault={t('seo.title')}
-      description={t('seo.description')}
-      canonical='https://candidosales.me'
-      openGraph={{
-        basic: {
-          title: pageTitle
-            ? `${pageTitle} | ${t('seo.title')}`
-            : t('seo.title'),
-          type: 'website',
-          image: 'https://candidosales.me/og-image.png',
-          url: `https://candidosales.me${currentPath}`,
-        },
-        image: {
-          url: 'https://candidosales.me/og-image.png',
-          width: 1200,
-          height: 600,
-          alt: 'Social open graph',
-          type: 'image/png',
-        },
-      }}
-      twitter={{
-        creator: '@candidosales',
-        site: '@candidosales',
-        card: 'summary_large_image',
-        title: t('seo.title'),
-        description: t('seo.description'),
-      }}
-    />
-    <ViewTransitions />
-  </head>
-  <body class='sun'>
-    <div class='topbar-blur' aria-hidden='true'></div>
-    <slot />
-    <style>
-      body {
-        letter-spacing: -0.05em;
-      }
-      :global(.sun) {
-        background: rgb(255 248 241);
-        background-image: url('/sun-2.png');
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-origin: content-box;
-        background-clip: content-box;
-        background-attachment: scroll;
-      }
-      :global(h1, h2, h3) {
-        font-family: 'Inclusive Sans', sans-serif;
-      }
-      .topbar-blur {
-        position: relative;
-        user-select: none;
-        pointer-events: none;
-        --h: min(96px, 128px);
-        position: sticky;
-        height: var(--h);
-        z-index: 1;
-        backdrop-filter: blur(5px);
-        opacity: 0.95;
-        mask-image: linear-gradient(to bottom, #000 25%, transparent);
-      }
-      .topbar-blur:first-child {
-        margin-bottom: calc(-1 * var(--h));
-        top: 0;
-      }
-      .topbar-blur:after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, #fff8f1, transparent);
-      }
+		<SEO
+			noindex={noindex}
+			nofollow={nofollow}
+			title={pageTitle}
+			titleTemplate=`%s | ${t('seo.title')}`
+			titleDefault={t('seo.title')}
+			description={t('seo.description')}
+			canonical='https://candidosales.me'
+			openGraph={{
+				basic: {
+					title: pageTitle
+						? `${pageTitle} | ${t('seo.title')}`
+						: t('seo.title'),
+					type: 'website',
+					image: 'https://candidosales.me/og-image.png',
+					url: `https://candidosales.me${currentPath}`,
+				},
+				image: {
+					url: 'https://candidosales.me/og-image.png',
+					width: 1200,
+					height: 600,
+					alt: 'Social open graph',
+					type: 'image/png',
+				},
+			}}
+			twitter={{
+				creator: '@candidosales',
+				site: '@candidosales',
+				card: 'summary_large_image',
+				title: t('seo.title'),
+				description: t('seo.description'),
+			}}
+		/>
+		<ViewTransitions />
+	</head>
+	<body class={withSun ? 'sun' : ''}>
+		{withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
+		<slot />
+		<style>
+			body {
+				letter-spacing: -0.05em;
+			}
+			:global(.sun) {
+				background: rgb(255 248 241);
+				background-image: url('/sun-2.png');
+				background-repeat: no-repeat;
+				background-position: bottom;
+				background-origin: content-box;
+				background-clip: content-box;
+				background-attachment: scroll;
+			}
+			:global(h1, h2, h3) {
+				font-family: 'Inclusive Sans', sans-serif;
+			}
+			.topbar-blur {
+				position: relative;
+				user-select: none;
+				pointer-events: none;
+				--h: min(96px, 128px);
+				position: sticky;
+				height: var(--h);
+				z-index: 1;
+				backdrop-filter: blur(5px);
+				opacity: 0.95;
+				mask-image: linear-gradient(to bottom, #000 25%, transparent);
+			}
+			.topbar-blur:first-child {
+				margin-bottom: calc(-1 * var(--h));
+				top: 0;
+			}
+			.topbar-blur:after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to bottom, #fff8f1, transparent);
+			}
 
-      @keyframes slide-fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(10vh);
-        }
-      }
+			@keyframes slide-fade-in {
+				from {
+					opacity: 0;
+					transform: translateY(10vh);
+				}
+			}
 
-      @media (prefers-reduced-motion: no-preference) {
-        :global(.slide-fade-in) {
-          view-timeline-name: --item-timeline;
-          animation: slide-fade-in both;
-          animation-timeline: --item-timeline;
-          animation-range: contain 0% contain 50%;
-          animation-duration: 700ms;
-        }
-      }
-    </style>
-  </body>
+			@media (prefers-reduced-motion: no-preference) {
+				:global(.slide-fade-in) {
+					view-timeline-name: --item-timeline;
+					animation: slide-fade-in both;
+					animation-timeline: --item-timeline;
+					animation-range: contain 0% contain 50%;
+					animation-duration: 700ms;
+				}
+			}
+		</style>
+	</body>
 </html>

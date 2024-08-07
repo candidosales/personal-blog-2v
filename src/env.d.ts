@@ -13,3 +13,14 @@ export interface Service {
   title: string;
   description: string;
 }
+
+export type Vote = {
+	[key: string] : string
+}
+
+export type VoteResult = {
+	ok: number;
+    uncertain: number;
+    stop: number;
+	total: number;
+}

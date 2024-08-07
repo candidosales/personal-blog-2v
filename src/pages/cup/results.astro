@@ -1,0 +1,14 @@
+---
+import Layout from '@layouts/Layout.astro';
+import ResultCup from '@components/ResultCup.svelte';
+
+const deleteR = Astro.url.searchParams.get('delete') || '';
+
+console.log('astro delete', deleteR);
+---
+
+<Layout pageTitle={'Resultados'} withSun={false} withTopBarBlur={false}>
+	<main class='relative pb-36 px-6 mx-auto max-w-7xl'>
+		<ResultCup client:load />
+	</main>
+</Layout>

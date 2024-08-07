@@ -1,5 +1,4 @@
 <script lang="ts">
-  import AdpList from './icons/AdpList.svelte';
   import Github from './icons/Github.svelte';
   import Linkedin from './icons/Linkedin.svelte';
   import Mail from './icons/Mail.svelte';
