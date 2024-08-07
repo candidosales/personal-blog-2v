@@ -1,7 +1,10 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import ButtonCup from './ButtonCup.svelte';
 
-  const buttons = [
+  const room = '0001';
+
+  let buttons = [
     {
       label: 'Estou ok',
       color: 'green',
@@ -35,11 +38,43 @@
 
       buttons[index].selected = true;
 
-      sendVote(buttons[index].value);
+      void sendVote(buttons[index].value);
     }
   }
 
-  function sendVote(value: string) {}
+  async function sendVote(value: string) {
+    const res = await fetch('/api/votes', {
+      method: 'POST',
+      body: JSON.stringify({
+        room,
+        value,
+      }),
+    });
+
+    const json = await res.json();
+    console.log('sendVote', json);
+
+    localStorage.setItem(`vote:${room}`, value);
+  }
+
+  function updateButton(value: string): void {
+    if (value) {
+      buttons.map((b) => {
+        if (b.value === value) {
+          b.selected = true;
+        }
+      });
+
+      buttons = [...buttons];
+    }
+  }
+
+  onMount(() => {
+    const currentVote = localStorage.getItem(`vote:${room}`);
+    if (currentVote) {
+      updateButton(currentVote);
+    }
+  });
 </script>
 
 <div class="cup-buttons h-screen flex flex-col justify-center">

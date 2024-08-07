@@ -16,7 +16,7 @@
 <div class="flex flex-col text-center mb-16">
   <button
     on:click={click}
-    class={`${selected ? `bg-${color}-500` : `bg-${color}-400`} hover:bg-${color}-700 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all`}
+    class={`${selected ? `bg-${color}-700` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal`}
   >
     {#if selected}
       <CheckmarkSolid class="mr-4 size-6 absolute" />
@@ -27,13 +27,13 @@
 </div>
 
 <style>
-  .bg-green-400 {
-    background-color: #4ade80;
+  .bg-green-700 {
+    background-color: #15803d;
   }
-  .bg-yellow-400 {
-    background-color: #facc15;
+  .bg-yellow-700 {
+    background-color: #a16207;
   }
-  .bg-red-400 {
-    background-color: #f87171;
+  .bg-red-700 {
+    background-color: #b91c1c;
   }
 </style>

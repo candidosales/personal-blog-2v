@@ -13,3 +13,7 @@ export interface Service {
   title: string;
   description: string;
 }
+
+export type Vote = {
+	[key: string] : string
+}
