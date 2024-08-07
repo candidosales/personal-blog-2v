@@ -41,9 +41,6 @@ dependencies:
   astro-seo:
     specifier: ^0.8.4
     version: 0.8.4(typescript@5.4.5)
-  crypto-js:
-    specifier: ^4.2.0
-    version: 4.2.0
   flowbite:
     specifier: ^2.4.1
     version: 2.4.1
@@ -68,11 +65,6 @@ dependencies:
   tailwindcss:
     specifier: ^3.4.7
     version: 3.4.7
-
-devDependencies:
-  '@types/crypto-js':
-    specifier: ^4.2.2
-    version: 4.2.2
 
 packages:
 
@@ -1262,10 +1254,6 @@ packages:
   /@types/cookie@0.6.0:
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
     dev: false
-
-  /@types/crypto-js@4.2.2:
-    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
-    dev: true
 
   /@types/css-tree@2.3.1:
     resolution: {integrity: sha512-3m636Jz4d9d+lHVMp6FNLsUWQrfOx1xpm1SBxPbQYSNNgXMe+XswcsDeo1ldyULiuzYyWKk1kmvkLTgNq+215Q==}
