@@ -13,7 +13,7 @@
   };
 </script>
 
-<div class="flex flex-col text-center mb-16">
+<div class="flex flex-col text-center mb-8 mt-8">
   <button
     on:click={click}
     class={`${selected ? `bg-${color}-700` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal`}

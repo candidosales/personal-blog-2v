@@ -3,8 +3,25 @@ import Layout from '@layouts/Layout.astro';
 import ButtonListCup from '@components/ButtonListCup.svelte';
 ---
 
-<Layout pageTitle={'O que você está achando?'} withSun={false}>
+<Layout
+	pageTitle={'O que você está achando?'}
+	withSun={false}
+	withTopBarBlur={false}
+>
 	<main class='relative pb-36 px-6 mx-auto max-w-7xl'>
 		<ButtonListCup client:load />
+		<p class='text-sm text-center'>
+			Inspirado por <a
+				class='text-blue-600'
+				href='https://x.com/jeremyphoward/status/1519517180660183040'
+				target='_blank'
+				title='Ideia de Jeremy Howard'>Jeremy Howard</a
+			> e <a
+				class='text-blue-600'
+				href='https://www.youtube.com/watch?v=lX0JEZ3Pgk4'
+				target='_blank'
+				title='Ideia de Dylan William'>Dylan Willian</a
+			>
+		</p>
 	</main>
 </Layout>

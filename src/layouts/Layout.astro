@@ -11,6 +11,7 @@ const {
 	noindex = false,
 	nofollow = false,
 	withSun = true,
+	withTopBarBlur = true,
 } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -75,7 +76,7 @@ const currentPath = Astro.url.pathname;
 		<ViewTransitions />
 	</head>
 	<body class={withSun ? 'sun' : ''}>
-		<div class='topbar-blur' aria-hidden='true'></div>
+		{withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
 		<slot />
 		<style>
 			body {

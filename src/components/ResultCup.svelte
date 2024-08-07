@@ -10,13 +10,15 @@
   let uncertainBarLabel: HTMLElement | undefined;
   let stopBarLabel: HTMLElement | undefined;
 
+  let count: VoteResult | undefined;
+
   async function result() {
     const res = await fetch('/api/result', {
       method: 'GET',
     });
 
-    const response = await res.json();
-    renderGraph(response);
+    count = await res.json();
+    renderGraph(count);
   }
 
   function renderGraph(counts: VoteResult) {
@@ -38,25 +40,40 @@
 
   onMount(() => {
     void result();
+
+    setInterval(() => {
+      void result();
+    }, 60000);
   });
 </script>
 
-<div class="bar-graph">
-  <div class="bar green-bar" bind:this={okBar}>
-    <div class="label">Ok</div>
-    <div class="value" bind:this={okBarLabel}>0</div>
+<div class="graph">
+  <div class="bar-graph mb-8">
+    <div class="bar green-bar" bind:this={okBar}>
+      <div class="label">Ok</div>
+      <div class="value" bind:this={okBarLabel}>0</div>
+    </div>
+    <div class="bar yellow-bar" bind:this={uncertainBar}>
+      <div class="label">Incerto</div>
+      <div class="value" bind:this={uncertainBarLabel}>0</div>
+    </div>
+    <div class="bar red-bar" bind:this={stopBar}>
+      <div class="label">Parar</div>
+      <div class="value" bind:this={stopBarLabel}>0</div>
+    </div>
   </div>
-  <div class="bar yellow-bar" bind:this={uncertainBar}>
-    <div class="label">Incerto</div>
-    <div class="value" bind:this={uncertainBarLabel}>0</div>
-  </div>
-  <div class="bar red-bar" bind:this={stopBar}>
-    <div class="label">Parar</div>
-    <div class="value" bind:this={stopBarLabel}>0</div>
-  </div>
+  <p class="text-sm text-center">
+    Total {count?.total}
+  </p>
 </div>
 
 <style lang="scss">
+  .graph {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .bar-graph {
     display: flex;
     align-items: flex-end;
