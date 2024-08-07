@@ -56,3 +56,13 @@ function countVotes(votes: Record<string, string>) {
 
     return counts;
 }
+
+
+export const DELETE: APIRoute = async function DELETE() {
+	await redis.hdel(HASHSET_KEY);
+
+	return new Response(JSON.stringify('deleted'), {
+		headers: { "content-type": "application/json" },
+		status: 200,
+	  });
+}

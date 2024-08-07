@@ -1,6 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import ButtonListCup from '@components/ButtonListCup.svelte';
+
+const ipAddress = Astro.clientAddress;
 ---
 
 <Layout
@@ -9,7 +11,7 @@ import ButtonListCup from '@components/ButtonListCup.svelte';
 	withTopBarBlur={false}
 >
 	<main class='relative pb-36 px-6 mx-auto max-w-7xl'>
-		<ButtonListCup client:load />
+		<ButtonListCup {ipAddress} client:load />
 		<p class='text-sm text-center'>
 			Inspirado por <a
 				class='text-blue-600'

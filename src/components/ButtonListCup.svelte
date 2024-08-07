@@ -3,6 +3,7 @@
   import ButtonCup from './ButtonCup.svelte';
 
   const room = '0001';
+  export let ipAddress: string;
 
   let buttons = [
     {
@@ -29,73 +30,74 @@
   ];
 
   let blockUser = false;
+  let fingerprint: string | undefined;
 
-  function getFingerprint() {
-    var fingerprint = [];
-    fingerprint.push({ key: 'user_agent', value: navigator.userAgent });
-    fingerprint.push({ key: 'language', value: navigator.language });
-    fingerprint.push({ key: 'pixel_ratio', value: window.devicePixelRatio });
-    fingerprint.push({
-      key: 'hardware_concurrency',
-      value: navigator.hardwareConcurrency,
-    });
-    fingerprint.push({
-      key: 'resolution',
-      value: [screen.width, screen.height],
-    });
-    fingerprint.push({
-      key: 'available_resolution',
-      value: [screen.availHeight, screen.availWidth],
-    });
-    fingerprint.push({
-      key: 'timezone_offset',
-      value: new Date().getTimezoneOffset(),
-    });
-    fingerprint.push({ key: 'session_storage', value: !window.sessionStorage });
-    fingerprint.push({ key: 'local_storage', value: !window.localStorage });
-    fingerprint.push({ key: 'indexed_db', value: !window.indexedDB });
-    fingerprint.push({ key: 'open_database', value: !window.openDatabase });
-    fingerprint.push({ key: 'navigator_platform', value: navigator.platform });
-    fingerprint.push({ key: 'navigator_oscpu', value: navigator.oscpu });
-    fingerprint.push({ key: 'do_not_track', value: navigator.doNotTrack });
-    fingerprint.push({ key: 'touch_support', value: navigator.maxTouchPoints });
+  async function getFingerprint() {
+    const fingerprint = {
+      userAgent: navigator.userAgent,
+      screenResolution: `${screen.width}x${screen.height}`,
+      colorDepth: screen.colorDepth,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language,
+      plugins: Array.from(navigator.plugins).map((p) => p.name),
+      canvas: await getCanvasFingerprint(),
+    };
 
-    fingerprint.push({ key: 'cookie_enabled', value: navigator.cookieEnabled });
+    return hashFingerprint(JSON.stringify(fingerprint));
+  }
 
-    var short_fingerprint = '';
-    for (let j = 0; j < fingerprint.length; j++) {
-      if (fingerprint[j].value) {
-        short_fingerprint += fingerprint[j].value
-          .toString()
-          .toLowerCase()
-          .substring(0, 1);
-      }
+  async function getCanvasFingerprint() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    if (ctx) {
+      ctx.textBaseline = 'top';
+      ctx.font = '14px Arial';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#f60';
+      ctx.fillRect(125, 1, 62, 20);
+      ctx.fillStyle = '#069';
+      ctx.fillText('portfolio-candido', 2, 15);
     }
+    return canvas.toDataURL();
+  }
 
-    short_fingerprint += fingerprint.length;
-    console.log('shortFingerprint', short_fingerprint);
+  async function hashFingerprint(fingerprint: string) {
+    const msgUint8 = new TextEncoder().encode(fingerprint);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+    return hashHex;
   }
 
   function vote(index: number) {
     if (buttons[index].selected == false) {
-      console.log('vote', index, buttons[index]);
-
       buttons.map((b) => {
         b.selected = false;
       });
 
       buttons[index].selected = true;
 
-      void sendVote(buttons[index].value);
+      if (fingerprint && ipAddress) {
+        void sendVote(buttons[index].value, fingerprint, ipAddress);
+      }
     }
   }
 
-  async function sendVote(value: string) {
-    const res = await fetch('/api/votes', {
+  async function sendVote(
+    value: string,
+    fingerprint: string,
+    ipAddress: string,
+  ) {
+    await fetch('/api/votes', {
       method: 'POST',
       body: JSON.stringify({
         room,
         value,
+        fingerprint,
+        ipAddress,
       }),
     });
     localStorage.setItem(`vote:${room}`, value);
@@ -142,7 +144,9 @@
       updateButton(currentVote);
     }
 
-    getFingerprint();
+    getFingerprint().then((hash) => {
+      fingerprint = hash;
+    });
 
     checkMultipleTabs();
   });
