@@ -1,13 +1,9 @@
 ---
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Layout from '@layouts/Layout.astro';
 import ButtonListCup from '@components/ButtonListCup.svelte';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
-<Layout pageTitle={t('home.title')}>
+<Layout pageTitle={'O que você está achando?'} withSun={false}>
 	<main class='relative pb-36 px-6 mx-auto max-w-7xl'>
 		<ButtonListCup client:load />
 	</main>
