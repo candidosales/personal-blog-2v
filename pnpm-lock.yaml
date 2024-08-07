@@ -59,6 +59,9 @@ dependencies:
   svelte:
     specifier: ^4.2.18
     version: 4.2.18
+  svelte-sonner:
+    specifier: ^0.3.27
+    version: 0.3.27(svelte@4.2.18)
   tailwind-merge:
     specifier: ^2.4.0
     version: 2.4.0
@@ -4551,6 +4554,14 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.18
+    dev: false
+
+  /svelte-sonner@0.3.27(svelte@4.2.18):
+    resolution: {integrity: sha512-+PvbuePNTyTNCepCWqKcFeu+Lo27yYuwfSc7zJvrWjCRMJrWAmccPg3j7jO1W13QoN3TySXU5Trb956VBQiM5Q==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
     dependencies:
       svelte: 4.2.18
     dev: false
