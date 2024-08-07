@@ -10,8 +10,15 @@ const token = import.meta.env.UPSTASH_REDIS_REST_TOKEN;
 const redis = new Redis({ url, token });
 
 
-export const GET: APIRoute = async function GET() {
-	let count = {};
+export const GET: APIRoute = async function GET({ url }) {
+
+	let count = { ok: 0, uncertain: 0, stop: 0, total: 0 };
+
+	if(url.searchParams.get('delete')) {
+		await redis.del(HASHSET_KEY);
+	}
+
+	
 	try {
 		const votes: Record<string, string> | null = await redis.hgetall(HASHSET_KEY);
 

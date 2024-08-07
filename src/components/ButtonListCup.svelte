@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import ButtonCup from './ButtonCup.svelte';
+  import { getFingerprint } from '@lib/helpers/fingerprint';
+  import { checkMultipleTabs } from '@lib/helpers/multiple-tabs';
 
   const room = '0001';
-  export let ipAddress: string;
 
   let buttons = [
     {
@@ -32,46 +33,6 @@
   let blockUser = false;
   let fingerprint: string | undefined;
 
-  async function getFingerprint() {
-    const fingerprint = {
-      userAgent: navigator.userAgent,
-      screenResolution: `${screen.width}x${screen.height}`,
-      colorDepth: screen.colorDepth,
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      language: navigator.language,
-      plugins: Array.from(navigator.plugins).map((p) => p.name),
-      canvas: await getCanvasFingerprint(),
-    };
-
-    return hashFingerprint(JSON.stringify(fingerprint));
-  }
-
-  async function getCanvasFingerprint() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
-    if (ctx) {
-      ctx.textBaseline = 'top';
-      ctx.font = '14px Arial';
-      ctx.textBaseline = 'alphabetic';
-      ctx.fillStyle = '#f60';
-      ctx.fillRect(125, 1, 62, 20);
-      ctx.fillStyle = '#069';
-      ctx.fillText('portfolio-candido', 2, 15);
-    }
-    return canvas.toDataURL();
-  }
-
-  async function hashFingerprint(fingerprint: string) {
-    const msgUint8 = new TextEncoder().encode(fingerprint);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray
-      .map((b) => b.toString(16).padStart(2, '0'))
-      .join('');
-    return hashHex;
-  }
-
   function vote(index: number) {
     if (buttons[index].selected == false) {
       buttons.map((b) => {
@@ -80,24 +41,19 @@
 
       buttons[index].selected = true;
 
-      if (fingerprint && ipAddress) {
-        void sendVote(buttons[index].value, fingerprint, ipAddress);
+      if (fingerprint) {
+        void sendVote(buttons[index].value, fingerprint);
       }
     }
   }
 
-  async function sendVote(
-    value: string,
-    fingerprint: string,
-    ipAddress: string,
-  ) {
+  async function sendVote(value: string, fingerprint: string) {
     await fetch('/api/votes', {
       method: 'POST',
       body: JSON.stringify({
         room,
         value,
         fingerprint,
-        ipAddress,
       }),
     });
     localStorage.setItem(`vote:${room}`, value);
@@ -115,29 +71,6 @@
     }
   }
 
-  function checkMultipleTabs() {
-    const channel = new BroadcastChannel('tab-candido-cup');
-    let isPrimaryTab = true;
-
-    channel.onmessage = function (event) {
-      if (event.data === 'new-tab') {
-        alert('Multiplas abas não são permitidas para votação');
-        isPrimaryTab = false;
-        blockUser = true;
-      }
-    };
-
-    window.addEventListener('load', () => {
-      channel.postMessage('new-tab');
-    });
-
-    window.addEventListener('unload', () => {
-      if (isPrimaryTab) {
-        channel.postMessage('tab-closed');
-      }
-    });
-  }
-
   onMount(() => {
     const currentVote = localStorage.getItem(`vote:${room}`);
     if (currentVote) {
@@ -148,7 +81,7 @@
       fingerprint = hash;
     });
 
-    checkMultipleTabs();
+    checkMultipleTabs(blockUser);
   });
 </script>
 

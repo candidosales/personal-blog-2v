@@ -13,7 +13,14 @@
   let count: VoteResult | undefined;
 
   async function result() {
-    const res = await fetch('/api/result', {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log('urlParams', urlParams.get('delete'));
+
+    const url = urlParams.get('delete')
+      ? `/api/result?delete=${urlParams.get('delete')}`
+      : '/api/result';
+
+    const res = await fetch(url, {
       method: 'GET',
     });
 
@@ -24,17 +31,17 @@
   function renderGraph(counts: VoteResult) {
     if (okBar && okBarLabel) {
       okBar.style.height = `${(counts.ok / counts.total) * 100}%`;
-      okBarLabel.textContent = `${counts.ok} (${((counts.ok / counts.total) * 100).toFixed(1)}%)`;
+      okBarLabel.textContent = `${counts.ok} (${((counts.ok / counts.total) * 100).toFixed()}%)`;
     }
 
     if (uncertainBar && uncertainBarLabel) {
       uncertainBar.style.height = `${(counts.uncertain / counts.total) * 100}%`;
-      uncertainBarLabel.textContent = `${counts.uncertain} (${((counts.uncertain / counts.total) * 100).toFixed(1)}%)`;
+      uncertainBarLabel.textContent = `${counts.uncertain} (${((counts.uncertain / counts.total) * 100).toFixed()}%)`;
     }
 
     if (stopBar && stopBarLabel) {
       stopBar.style.height = `${(counts.stop / counts.total) * 100}%`;
-      stopBarLabel.textContent = `${counts.stop} (${((counts.stop / counts.total) * 100).toFixed(1)}%)`;
+      stopBarLabel.textContent = `${counts.stop} (${((counts.stop / counts.total) * 100).toFixed()}%)`;
     }
   }
 

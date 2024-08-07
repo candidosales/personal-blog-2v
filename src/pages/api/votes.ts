@@ -1,7 +1,5 @@
 import { Redis } from "@upstash/redis";
 import type { APIRoute } from "astro";
-
-import md5 from 'crypto-js/md5';
 import type { Vote } from "src/env";
 
  
@@ -30,12 +28,10 @@ export const GET: APIRoute = async function GET() {
 }
 
 
-export const POST: APIRoute = async function POST({ request }) {
-	const data: { room: string, value: string, fingerprint: string, ipAddress: string } = await request.json();
+export const POST: APIRoute = async function POST({ request, clientAddress }) {
+	const data: { room: string, value: string, fingerprint: string } = await request.json();
 	
-	const fingerprintNetwork = md5(data.ipAddress ?? '').toString();
-
-	const key = `${data.room}:${data.fingerprint}-${fingerprintNetwork}`;
+	const key = `${data.room}:${data.fingerprint}-${clientAddress}`;
 
 	await redis.hset(HASHSET_KEY, {
 		[key]: data.value,
