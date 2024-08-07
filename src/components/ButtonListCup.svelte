@@ -3,6 +3,7 @@
   import ButtonCup from './ButtonCup.svelte';
   import { getFingerprint } from '@lib/helpers/fingerprint';
   import { checkMultipleTabs } from '@lib/helpers/multiple-tabs';
+  import { Toaster, toast } from 'svelte-sonner';
 
   const room = '0001';
 
@@ -48,7 +49,7 @@
   }
 
   async function sendVote(value: string, fingerprint: string) {
-    await fetch('/api/votes', {
+    const response = await fetch('/api/votes', {
       method: 'POST',
       body: JSON.stringify({
         room,
@@ -56,6 +57,9 @@
         fingerprint,
       }),
     });
+
+    toast.success('Voto registrado');
+
     localStorage.setItem(`vote:${room}`, value);
   }
 
@@ -98,3 +102,4 @@
     {/each}
   {/if}
 </div>
+<Toaster richColors position="bottom-center" />
