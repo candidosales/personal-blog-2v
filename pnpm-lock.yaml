@@ -73,9 +73,6 @@ devDependencies:
   '@types/crypto-js':
     specifier: ^4.2.2
     version: 4.2.2
-  '@types/fingerprintjs2':
-    specifier: ^2.0.0
-    version: 2.0.0
 
 packages:
 
@@ -1289,10 +1286,6 @@ packages:
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
-
-  /@types/fingerprintjs2@2.0.0:
-    resolution: {integrity: sha512-isSTwNnW5I6zGZnpkinmVcV9pJqr7cLELns+tXDYzskIOAb2J+iCQ0mQJ9bRjHJhZfdlTFXZoCYK9ZgT3oMWXQ==}
-    dev: true
 
   /@types/hast@3.0.2:
     resolution: {integrity: sha512-B5hZHgHsXvfCoO3xgNJvBnX7N8p86TqQeGKXcokW4XXi+qY4vxxPSFYofytvVmpFxzPv7oxDQzjg5Un5m2/xiw==}
