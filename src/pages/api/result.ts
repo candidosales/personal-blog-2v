@@ -11,18 +11,18 @@ const redis = new Redis({ url, token });
 
 
 export const GET: APIRoute = async function GET() {
-	let count = undefined;
+	let count = {};
 	try {
 		const votes: Record<string, string> | null = await redis.hgetall(HASHSET_KEY);
 
 		if (votes) {
 			count = countVotes(votes);
-			return new Response(JSON.stringify({ count }), {
+			return new Response(JSON.stringify({ ...count }), {
 				headers: { "content-type": "application/json" },
 				status: 200,
 			  });
 		} else {
-			return new Response(JSON.stringify({ count }), {
+			return new Response(JSON.stringify({ ...count }), {
 				headers: { "content-type": "application/json" },
 				status: 200,
 			  });
@@ -30,7 +30,7 @@ export const GET: APIRoute = async function GET() {
 		
 	} catch (error: unknown) {
 		console.error(`Error in /api GET method: ${error as string}`);
-		return new Response(JSON.stringify({ count }), {
+		return new Response(JSON.stringify({ ...count }), {
 		  headers: { "content-type": "application/json" },
 		  status: 200,
 		});

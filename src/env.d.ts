@@ -17,3 +17,10 @@ export interface Service {
 export type Vote = {
 	[key: string] : string
 }
+
+export type VoteResult = {
+	ok: number;
+    uncertain: number;
+    stop: number;
+	total: number;
+}

@@ -11,7 +11,9 @@ import partytown from '@astrojs/partytown';
 export default defineConfig({
   site: 'https://www.candidosales.me/',
   integrations: [
-    tailwind(),
+    tailwind({
+		nesting: true,
+	}),
     compress(),
     sitemap({
       i18n: {
