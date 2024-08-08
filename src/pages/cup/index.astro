@@ -4,25 +4,28 @@ import ButtonListCup from '@components/ButtonListCup.svelte';
 ---
 
 <Layout
-	pageTitle={'O que você está achando?'}
+	title={'O que você está achando da apresentação?'}
+	description={'Vote na opção que representa como você se sente'}
 	withSun={false}
 	withTopBarBlur={false}
 >
 	<main class='relative px-6 mx-auto max-w-7xl'>
-		<h1 class='text-center mt-4 text-lg'>O que você está achando?</h1>
+		<h1 class='text-center mt-8 text-xl font-bold'>
+			O que você está achando?
+		</h1>
 		<ButtonListCup client:load />
-		<p class='text-xs text-center'>
-			Inspirado por <a
-				class='text-blue-600'
-				href='https://x.com/jeremyphoward/status/1519517180660183040'
-				target='_blank'
-				title='Ideia de Jeremy Howard'>Jeremy Howard</a
-			> e <a
-				class='text-blue-600'
-				href='https://www.youtube.com/watch?v=lX0JEZ3Pgk4'
-				target='_blank'
-				title='Ideia de Dylan William'>Dylan Willian</a
-			>
-		</p>
 	</main>
+	<p class='text-xs text-center absolute bottom-0 w-full mb-8'>
+		Inspirado por <a
+			class='text-blue-600'
+			href='https://x.com/jeremyphoward/status/1519517180660183040'
+			target='_blank'
+			title='Ideia de Jeremy Howard'>Jeremy Howard</a
+		> e <a
+			class='text-blue-600'
+			href='https://www.youtube.com/watch?v=lX0JEZ3Pgk4'
+			target='_blank'
+			title='Ideia de Dylan William'>Dylan Willian</a
+		>
+	</p>
 </Layout>

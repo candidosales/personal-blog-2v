@@ -18,7 +18,7 @@
     {
       label: 'Não tenho certeza',
       color: 'yellow',
-      info: 'Estou tentando acompanhar, mas você poderia desacelerar um pouco ou revisar o conceito em que estamos',
+      info: 'Estou acompanhando, mas você poderia desacelerar um pouco ou revisar o conceito em que estamos',
       value: 'uncertain',
       selected: false,
     },
@@ -89,7 +89,7 @@
   });
 </script>
 
-<div class="cup-buttons h-[75lvh] grid grid-rows-3 place-items-center mt-4">
+<div class="cup-buttons h-[80svh] grid grid-rows-3 place-items-center mt-4">
   {#if !blockUser}
     {#each buttons as { label, color, info, selected }, index}
       <ButtonCup

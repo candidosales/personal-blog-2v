@@ -11,212 +11,214 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const customers = [
-  {
-    imageUrl: '/services/customers/unimed.webp',
-    url: 'https://www.unimed.coop.br/site/group/teresina/',
-    title: 'Unimed Teresina',
-  },
-  {
-    imageUrl: '/services/customers/artigo-19.png',
-    url: 'https://artigo19.org/',
-    title: 'Artigo 19',
-  },
-  {
-    imageUrl: '/services/customers/geleia-total.png',
-    url: 'https://www.geleiatotal.com.br/',
-    title: 'Geleia Total',
-  },
-  {
-    imageUrl: '/services/customers/bora-piaui.png',
-    url: 'https://www.borapiaui.org/',
-    title: 'Bora Piauí',
-  },
-  {
-    imageUrl: '/services/customers/sertao-online.png',
-    url: 'https://sertao.online/',
-    title: 'Sertão Online',
-  },
-  {
-    imageUrl: '/services/customers/diamond-telemedicina.png',
-    url: 'https://www.diamondtelemedicina.com.br/',
-    title: 'Diamond Telemedicina',
-  },
-  {
-    imageUrl: '/services/customers/folha-piaui.png',
-    url: 'https://folhapiaui.com.br/',
-    title: 'Folha Piauí',
-  },
-  {
-    imageUrl: '/services/customers/sinapro-pi.png',
-    url: 'https://www.sinapropi.org/',
-    title: 'SINAPRO Piauí',
-  },
+	{
+		imageUrl: '/services/customers/unimed.webp',
+		url: 'https://www.unimed.coop.br/site/group/teresina/',
+		title: 'Unimed Teresina',
+	},
+	{
+		imageUrl: '/services/customers/artigo-19.png',
+		url: 'https://artigo19.org/',
+		title: 'Artigo 19',
+	},
+	{
+		imageUrl: '/services/customers/geleia-total.png',
+		url: 'https://www.geleiatotal.com.br/',
+		title: 'Geleia Total',
+	},
+	{
+		imageUrl: '/services/customers/bora-piaui.png',
+		url: 'https://www.borapiaui.org/',
+		title: 'Bora Piauí',
+	},
+	{
+		imageUrl: '/services/customers/sertao-online.png',
+		url: 'https://sertao.online/',
+		title: 'Sertão Online',
+	},
+	{
+		imageUrl: '/services/customers/diamond-telemedicina.png',
+		url: 'https://www.diamondtelemedicina.com.br/',
+		title: 'Diamond Telemedicina',
+	},
+	{
+		imageUrl: '/services/customers/folha-piaui.png',
+		url: 'https://folhapiaui.com.br/',
+		title: 'Folha Piauí',
+	},
+	{
+		imageUrl: '/services/customers/sinapro-pi.png',
+		url: 'https://www.sinapropi.org/',
+		title: 'SINAPRO Piauí',
+	},
 ];
 
 const services: Service[] = [
-  {
-    iconUrl: '/services/wordpress-liferay.svg',
-    cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
-    title: t('services.1.title'),
-    description: t('services.1.description'),
-  },
-  {
-    iconUrl: '/services/google-analytics.svg',
-    cssClass: 'col-span-12 md:col-span-4 bg-google-analytics',
-    title: t('services.2.title'),
-    description: t('services.2.description'),
-  },
-  {
-    iconUrl: '/services/retool.svg',
-    cssClass: 'col-span-12 md:col-span-6 bg-retool',
-    title: t('services.3.title'),
-    description: t('services.3.description'),
-  },
-  {
-    iconUrl: '/services/custom-scripts.svg',
-    cssClass: 'col-span-12 md:col-span-6 bg-custom-scripts',
-    title: t('services.4.title'),
-    description: t('services.4.description'),
-  },
+	{
+		iconUrl: '/services/wordpress-liferay.svg',
+		cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
+		title: t('services.1.title'),
+		description: t('services.1.description'),
+	},
+	{
+		iconUrl: '/services/google-analytics.svg',
+		cssClass: 'col-span-12 md:col-span-4 bg-google-analytics',
+		title: t('services.2.title'),
+		description: t('services.2.description'),
+	},
+	{
+		iconUrl: '/services/retool.svg',
+		cssClass: 'col-span-12 md:col-span-6 bg-retool',
+		title: t('services.3.title'),
+		description: t('services.3.description'),
+	},
+	{
+		iconUrl: '/services/custom-scripts.svg',
+		cssClass: 'col-span-12 md:col-span-6 bg-custom-scripts',
+		title: t('services.4.title'),
+		description: t('services.4.description'),
+	},
 ];
 ---
 
-<Layout pageTitle={t('services.title')} noindex={true} nofollow={true}>
-  <Header client:only='svelte' />
-  <main class='relative pb-36 mx-auto max-w-5xl my-16 px-4'>
-    <h1
-      class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
-    >
-      {t('services.title')}
-    </h1>
-    <p
-      class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600'
-    >
-      {t('services.subtitle')}
-    </p>
+<Layout title={t('services.title')} noindex={true} nofollow={true}>
+	<Header client:only='svelte' />
+	<main class='relative pb-36 mx-auto max-w-5xl my-16 px-4'>
+		<h1
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+		>
+			{t('services.title')}
+		</h1>
+		<p
+			class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600'
+		>
+			{t('services.subtitle')}
+		</p>
 
-    <div
-      class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-20 md:mb-32'
-    >
-      {
-        services.map((s) => (
-          <div
-            class={`${s.cssClass} bg-blue-100/80 pl-6 pt-6 rounded-3xl hover:bg-blue-200 ease-in duration-150 border border-solid border-slate-200 slide-fade-in`}
-          >
-            <div class='flex flex-col relative h-[320px]'>
-              <div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
-                <img src={s.iconUrl} width='200' height='200' />
-              </div>
-              <h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
-                {s.title}
-              </h2>
-              <p class='text-sm md:text-base text-slate-800/80 pr-6'>
-                <Fragment set:html={s.description} />
-              </p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+		<div
+			class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-20 md:mb-32'
+		>
+			{
+				services.map((s) => (
+					<div
+						class={`${s.cssClass} bg-blue-100/80 pl-6 pt-6 rounded-3xl hover:bg-blue-200 ease-in duration-150 border border-solid border-slate-200 slide-fade-in`}
+					>
+						<div class='flex flex-col relative h-[320px]'>
+							<div class='h-12 w-12 bg-white rounded-xl p-2 mb-4'>
+								<img src={s.iconUrl} width='200' height='200' />
+							</div>
+							<h2 class='text-xl font-medium text-slate-800 mb-1 pr-6'>
+								{s.title}
+							</h2>
+							<p class='text-sm md:text-base text-slate-800/80 pr-6'>
+								<Fragment set:html={s.description} />
+							</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
 
-    <div
-      class='flex flex-col justify-center items-center mb-16 md:my-32 slide-fade-in'
-    >
-      <p
-        class='md:w-3/4 mb-6 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
-      >
-        <Fragment set:html={t('services.subtitle.3')} />
-      </p>
-      <div class='grid grid-cols-2 grid-rows-1 md:grid-cols-4 slide-fade-in'>
-        {
-          customers.map((c) => (
-            <a
-              href={c.url}
-              title={c.title}
-              class='partner mb-1 flex justify-center rounded-2xl p-4 align-middle md:mb-0 lg:mb-12 svelte-12m9kez'
-            >
-              <img
-                class='h-8 md:h-12'
-                src={c.imageUrl}
-                alt={c.title}
-                loading='lazy'
-                fetchpriority='low'
-              />
-            </a>
-          ))
-        }
-      </div>
-    </div>
+		<div
+			class='flex flex-col justify-center items-center mb-16 md:my-32 slide-fade-in'
+		>
+			<p
+				class='md:w-3/4 mb-6 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
+			>
+				<Fragment set:html={t('services.subtitle.3')} />
+			</p>
+			<div
+				class='grid grid-cols-2 grid-rows-1 md:grid-cols-4 slide-fade-in'
+			>
+				{
+					customers.map((c) => (
+						<a
+							href={c.url}
+							title={c.title}
+							class='partner mb-1 flex justify-center rounded-2xl p-4 align-middle md:mb-0 lg:mb-12 svelte-12m9kez'
+						>
+							<img
+								class='h-8 md:h-12'
+								src={c.imageUrl}
+								alt={c.title}
+								loading='lazy'
+								fetchpriority='low'
+							/>
+						</a>
+					))
+				}
+			</div>
+		</div>
 
-    <div
-      class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
-    >
-      <p
-        class='md:w-3/4 mb-6 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
-      >
-        <Fragment set:html={t('services.subtitle.2')} />
-      </p>
-      <a
-        class='bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
-        href='mailto:candidosg@gmail.com'
-        title={t('services.contactMeByEmail')}
-        target='_blank'
-        ><Mail class='h-4 w-4 mr-2' />
-        {t('services.contactMe')}
+		<div
+			class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'
+		>
+			<p
+				class='md:w-3/4 mb-6 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
+			>
+				<Fragment set:html={t('services.subtitle.2')} />
+			</p>
+			<a
+				class='bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
+				href='mailto:candidosg@gmail.com'
+				title={t('services.contactMeByEmail')}
+				target='_blank'
+				><Mail class='h-4 w-4 mr-2' />
+				{t('services.contactMe')}
 
-        <ArrowRight class='overflow-visible ml-3 text-white' />
-      </a>
-    </div>
-    <Contact />
-  </main>
+				<ArrowRight class='overflow-visible ml-3 text-white' />
+			</a>
+		</div>
+		<Contact />
+	</main>
 </Layout>
 <style>
-  .bg-wordpress {
-    background-image: url(/services/sites-portals-wordpress-liferay.webp);
-    background-repeat: no-repeat;
-    background-position: 50% bottom;
-    background-size: contain;
-  }
-  @media (min-width: 640px) {
-    .bg-wordpress {
-      background-position: 50% bottom;
-    }
-  }
-  @media (min-width: 768px) {
-    .bg-wordpress {
-      background-position: 50% 200px;
-    }
-  }
+	.bg-wordpress {
+		background-image: url(/services/sites-portals-wordpress-liferay.webp);
+		background-repeat: no-repeat;
+		background-position: 50% bottom;
+		background-size: contain;
+	}
+	@media (min-width: 640px) {
+		.bg-wordpress {
+			background-position: 50% bottom;
+		}
+	}
+	@media (min-width: 768px) {
+		.bg-wordpress {
+			background-position: 50% 200px;
+		}
+	}
 
-  @media (min-width: 1024px) {
-    .bg-wordpress {
-      background-position: 50% 200px;
-    }
-  }
+	@media (min-width: 1024px) {
+		.bg-wordpress {
+			background-position: 50% 200px;
+		}
+	}
 
-  .bg-google-analytics {
-    background-image: url(/services/google-analytics-background.webp);
-    background-repeat: no-repeat;
-    background-position: 100% 220px;
-    background-size: 90%;
-  }
-  .bg-retool {
-    background-image: url(/services/retool-background.jpg);
-    background-repeat: no-repeat;
-    background-position: 100% 220px;
-    background-size: 90%;
-  }
-  .bg-custom-scripts {
-    background-image: url(/services/custom-scripts.png);
-    background-repeat: no-repeat;
-    background-position: 100% 220px;
-    background-size: 90%;
-  }
+	.bg-google-analytics {
+		background-image: url(/services/google-analytics-background.webp);
+		background-repeat: no-repeat;
+		background-position: 100% 220px;
+		background-size: 90%;
+	}
+	.bg-retool {
+		background-image: url(/services/retool-background.jpg);
+		background-repeat: no-repeat;
+		background-position: 100% 220px;
+		background-size: 90%;
+	}
+	.bg-custom-scripts {
+		background-image: url(/services/custom-scripts.png);
+		background-repeat: no-repeat;
+		background-position: 100% 220px;
+		background-size: 90%;
+	}
 
-  .partner {
-    filter: grayscale(100%);
-    &:hover {
-      filter: none;
-    }
-  }
+	.partner {
+		filter: grayscale(100%);
+		&:hover {
+			filter: none;
+		}
+	}
 </style>

@@ -5,16 +5,17 @@ import '@fontsource-variable/newsreader';
 import { SEO } from 'astro-seo';
 import { ViewTransitions } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {
-	pageTitle,
+	title = t('seo.title'),
+	description = t('seo.description'),
 	noindex = false,
 	nofollow = false,
 	withSun = true,
 	withTopBarBlur = true,
 } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const currentPath = Astro.url.pathname;
 ---
@@ -43,15 +44,15 @@ const currentPath = Astro.url.pathname;
 		<SEO
 			noindex={noindex}
 			nofollow={nofollow}
-			title={pageTitle}
+			title={title}
 			titleTemplate=`%s | ${t('seo.title')}`
 			titleDefault={t('seo.title')}
-			description={t('seo.description')}
+			description={description}
 			canonical='https://candidosales.me'
 			openGraph={{
 				basic: {
-					title: pageTitle
-						? `${pageTitle} | ${t('seo.title')}`
+					title: title
+						? `${title} | ${t('seo.title')}`
 						: t('seo.title'),
 					type: 'website',
 					image: 'https://candidosales.me/og-image.png',
