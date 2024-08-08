@@ -22,9 +22,9 @@
   ];
 </script>
 
-<ul class="flex flex-row mt-3 md:mt-5">
+<ul class="flex flex-row mt-3 md:mt-5 gap-4">
   {#each social as s}
-    <li class="rounded-full p-2 bg-blue-50 mr-2">
+    <li class="rounded-full p-2 bg-blue-100/90">
       <a
         href={s.url}
         title={s.title}

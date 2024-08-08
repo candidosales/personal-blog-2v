@@ -7,7 +7,12 @@ const deleteR = Astro.url.searchParams.get('delete') || '';
 console.log('astro delete', deleteR);
 ---
 
-<Layout pageTitle={'Resultados'} withSun={false} withTopBarBlur={false}>
+<Layout
+	title={'Resultados'}
+	description={'Resultados da opinião sobre apresentação'}
+	withSun={false}
+	withTopBarBlur={false}
+>
 	<main class='relative px-6 mx-auto max-w-7xl'>
 		<ResultCup client:load />
 	</main>
