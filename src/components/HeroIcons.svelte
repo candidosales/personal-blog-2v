@@ -16,27 +16,23 @@
     },
     {
       url: 'mailto:candidosg@gmail.com',
-      title: 'Email',
+      title: 'e-mail',
       icon: Mail,
     },
   ];
 </script>
 
-<ul class="flex flex-row mt-5 md:mt-6 gap-4">
+<div class="flex flex-row mt-5 md:mt-6 gap-4">
   {#each social as s}
-    <li class="rounded-full p-2 bg-blue-100/90">
+    {#if s.icon}
       <a
         href={s.url}
         title={s.title}
         target="_blank"
-        class="flex w-4 h-4 md:w-6 md:h-6 text-blue-800"
+        class="flex text-blue-800 transition-colors p-2 bg-blue-100/80 hover:bg-blue-200 backdrop-blur-md border border-solid border-blue-200 rounded-full"
       >
-        {#if s.icon}
-          <svelte:component this={s.icon} />
-        {:else}
-          {s.title}
-        {/if}
+        <svelte:component this={s.icon} class="w-4 h-4 md:w-6 md:h-6" />
       </a>
-    </li>
+    {/if}
   {/each}
-</ul>
+</div>
