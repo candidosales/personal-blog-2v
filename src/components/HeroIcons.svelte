@@ -22,7 +22,7 @@
   ];
 </script>
 
-<ul class="flex flex-row mt-3 md:mt-5 gap-4">
+<ul class="flex flex-row mt-5 md:mt-6 gap-4">
   {#each social as s}
     <li class="rounded-full p-2 bg-blue-100/90">
       <a
