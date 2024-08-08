@@ -89,7 +89,7 @@
   });
 </script>
 
-<div class="cup-buttons h-[90vh] flex flex-col justify-center">
+<div class="cup-buttons h-[85vh] flex flex-col justify-center">
   {#if !blockUser}
     {#each buttons as { label, color, info, selected }, index}
       <ButtonCup

@@ -16,7 +16,7 @@
 <div class="flex flex-col text-center mb-8 mt-8">
   <button
     on:click={click}
-    class={`${selected ? `${color}-selected` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal`}
+    class={`${selected ? `${color}-selected` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal font-inclusive`}
   >
     {#if selected}
       <CheckmarkSolid class="mr-4 size-6 absolute" />
