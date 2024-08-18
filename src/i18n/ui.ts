@@ -14,6 +14,7 @@ export const ui = {
       'A multidisciplinary engineer focusing on digital experiences',
     'menu.home': 'Home',
     'menu.blog': 'Blog',
+	'menu.presentations': 'Presentations',
     'menu.about': 'About',
     'menu.mentorship': 'Mentorship',
     'menu.store': 'Store',
@@ -124,6 +125,7 @@ export const ui = {
     'about.piece11': `and side projects. When I'm not working, I enjoy cooking, playing games, reading non-tech books and hiking.`,
     'about.title2': 'Work experience',
     'about.seeMoreLinkedin': 'See more in my Linkedin',
+	'presentations.title': 'Presentations',
   },
   'pt-br': {
     checkItOut: 'Confira',
@@ -132,6 +134,7 @@ export const ui = {
       'Engenheiro multidisciplinar focado em experiências digitais',
     'menu.home': 'Início',
     'menu.blog': 'Blog',
+	'menu.presentations': 'Apresentações',
     'menu.about': 'Sobre',
     'menu.mentorship': 'Mentoria',
     'menu.store': 'Loja',
@@ -244,5 +247,6 @@ export const ui = {
     'about.piece11': `e de projetos paralelos. Quando não estou a trabalhar, gosto de cozinhar, jogar, ler livros não relacionados a tecnologia e fazer caminhadas.`,
     'about.title2': 'Experiência profissional',
     'about.seeMoreLinkedin': 'Veja mais no meu Linkedin',
+	'presentations.title': 'Apresentações',
   },
 } as const;

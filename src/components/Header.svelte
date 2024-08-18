@@ -12,6 +12,7 @@
     useTranslations,
     useTranslatedPath,
   } from '@i18n/utils';
+  import Presentation from './icons/Presentation.svelte';
   const lang = getLangFromUrl(new URL(window.location.href));
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
@@ -28,6 +29,12 @@
       label: t('menu.blog'),
       targetBlank: false,
       icon: PencilSquare,
+    },
+    {
+      href: translatePath('/presentations'),
+      label: t('menu.presentations'),
+      targetBlank: false,
+      icon: Presentation,
     },
     {
       href: translatePath('/about'),
