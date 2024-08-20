@@ -1,7 +1,9 @@
 export const posts = [
   {
-    imageUrl: "/articles/post-migrate-render-flyio.webp",
-    imageAlt: "Migrate Strapi from Render to Fly.io",
+	image: {
+		url: "/articles/post-migrate-render-flyio.webp",
+    	alt: "Migrate Strapi from Render to Fly.io",
+	},
     title: "Migrate Strapi from Render to Fly.io",
     description:
       "I was having cost issues with the Render server, and I can't reduce the server for small machines. Most of my users are from Brazil, so I moved my Strapi to Fly.io, which enables reduced costs.",
@@ -9,8 +11,10 @@ export const posts = [
     publishDate: "2024-08-01",
   },
   {
-    imageUrl: "/articles/post-organize-figma.webp",
-    imageAlt: "How to organize Figma files for developers",
+	image: {
+		url: "/articles/post-organize-figma.webp",
+    	alt: "How to organize Figma files for developers",
+	},
     title: "How to organize Figma files for developers",
     description:
       "I going to share a simple tip that I find recently that helps the productivity of our team",
@@ -18,8 +22,10 @@ export const posts = [
     publishDate: "2022-11-21",
   },
   {
-    imageUrl: "/articles/post-strapi-digital-ocean.webp",
-    imageAlt: "Deploying Strapi 4 to Digital Ocean App",
+	image: {
+		url: "/articles/post-strapi-digital-ocean.webp",
+    	alt: "Deploying Strapi 4 to Digital Ocean App",
+	},
     title: "Deploying Strapi 4 to Digital Ocean App",
     description:
       "Step by step on how to deploying Strapi 4 to Digital Ocean App",
@@ -27,16 +33,20 @@ export const posts = [
     publishDate: "2022-08-15",
   },
   {
-    imageUrl: "/articles/post-strapi-railway.webp",
-    imageAlt: "Deploying Strapi 4 to Railway",
+	image: {
+		url: "/articles/post-strapi-railway.webp",
+    	alt: "Deploying Strapi 4 to Railway",
+	},
     title: "Deploying Strapi 4 to Railway",
     description: "Step by step on how to deploying Strapi 4 to Railway",
     href: "https://dev.to/candidosales/deploying-strapi-4-to-railway-589b",
     publishDate: "2022-08-03",
   },
   {
-    imageUrl: "/articles/post-medicina.jpeg",
-    imageAlt: "O que a medicina pode aprender com a programação?",
+	image: {
+		url:  "/articles/post-medicina.jpeg",
+		alt: "O que a medicina pode aprender com a programação?",
+	},
     title: "O que a medicina pode aprender com a programação?",
     description:
       "Esse texto são apenas reflexões que foram geradas durante diálogos entre um engenheiro de software e uma médica.",
@@ -44,8 +54,10 @@ export const posts = [
     publishDate: "2022-05-01",
   },
   {
-    imageUrl: "/articles/post-1.png",
-    imageAlt: "How I got a job offer in Canada",
+	image: {
+		url: "/articles/post-1.png",
+		alt: "How I got a job offer in Canada",
+	},
     title: "How I got a job offer in Canada",
     description:
       "In this article, I’ll present the process I did to get the job offer through VanHack",
@@ -53,8 +65,10 @@ export const posts = [
     publishDate: "2019-08-26",
   },
   {
-    imageUrl: "/articles/post-2.png",
-    imageAlt: "Como consegui uma oferta de emprego no Canadá",
+	image: {
+		url: "/articles/post-2.png",
+    	alt: "Como consegui uma oferta de emprego no Canadá",
+	},
     title: "Como consegui uma oferta de emprego no Canadá",
     description:
       "Vou apresentar o processo que fiz para conseguir a oferta de emprego através da VanHack",
@@ -62,8 +76,10 @@ export const posts = [
     publishDate: "2019-08-18",
   },
   {
-    imageUrl: "/articles/post-3.png",
-    imageAlt: "Como fiz o intercâmbio para o Canadá",
+	image: {
+		url: "/articles/post-3.png",
+    	alt: "Como fiz o intercâmbio para o Canadá",
+	},
     title: "Como fiz o intercâmbio para o Canadá",
     description:
       "Vou contar a minha experiência de como me mudei para o Canadá",
