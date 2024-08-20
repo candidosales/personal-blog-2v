@@ -1,5 +1,3 @@
-// import * as crypto from 'crypto';
-
 export async function getFingerprint() {
     const fingerprint = {
       userAgent: navigator.userAgent,
