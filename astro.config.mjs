@@ -3,7 +3,10 @@ import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
-import vercel from '@astrojs/vercel/serverless';
+// import vercelServerless from '@astrojs/vercel/serverless';
+
+import vercelStatic from '@astrojs/vercel/static';
+
 
 import partytown from '@astrojs/partytown';
 
@@ -32,5 +35,5 @@ export default defineConfig({
     }),
   ],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercelStatic(),
 });
