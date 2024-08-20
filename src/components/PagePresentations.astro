@@ -6,6 +6,18 @@ import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+function isDateBeforeToday(dateString: string) {
+	// Convert the date string to a Date object
+	const inputDate = new Date(dateString);
+
+	// Get today's date without the time part
+	const today = new Date();
+	today.setHours(0, 0, 0, 0); // Set time to midnight for accurate comparison
+
+	// Check if the input date is less than today
+	return inputDate <= today;
+}
 ---
 
 <style lang="postcss">
@@ -35,40 +47,43 @@ const t = useTranslations(lang);
 			transition:name='content'
 		>
 			{
-				presentations.map((p) => (
-					<a
-						href={p.href}
-						title={p.title}
-						target='_blank'
-						class='card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg'
-					>
-						<div class='relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-60'>
-							<div
-								class={`relative w-full h-60 bg-cover bg-no-repeat`}
-								style={`background-image: url(${p.image.url});`}
-							/>
-						</div>
+				presentations.map(
+					(p) =>
+						isDateBeforeToday(p.publishDate) && (
+							<a
+								href={p.href}
+								title={p.title}
+								target='_blank'
+								class='card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-4 rounded-lg'
+							>
+								<div class='relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-60'>
+									<div
+										class={`relative w-full h-60 bg-cover bg-no-repeat`}
+										style={`background-image: url(${p.image.url});`}
+									/>
+								</div>
 
-						<h3 class='text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2'>
-							{p.title}
-						</h3>
-						<p class='text-blue-800/80 text-md font-normal mb-4 line-clamp-2'>
-							{p.description}
-						</p>
-						<div class='flex flex-row w-full justify-between'>
-							<p class='text-blue-800/80 text-xs font-normal'>
-								{new Date(p.publishDate).toLocaleDateString(
-									lang,
-								)}
-							</p>
-							{p.place?.name && (
-								<p class='text-blue-800/80 text-xs font-normal px-2 py-1 bg-blue-100 rounded-full'>
-									{p.place?.name}
+								<h3 class='text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2'>
+									{p.title}
+								</h3>
+								<p class='text-blue-800/80 text-md font-normal mb-4 line-clamp-2'>
+									{p.description}
 								</p>
-							)}
-						</div>
-					</a>
-				))
+								<div class='flex flex-row w-full justify-between'>
+									<p class='text-blue-800/80 text-xs font-normal'>
+										{new Date(
+											p.publishDate,
+										).toLocaleDateString(lang)}
+									</p>
+									{p.place?.name && (
+										<p class='text-blue-800/80 text-xs font-normal px-2 py-1 bg-blue-100 rounded-full'>
+											{p.place?.name}
+										</p>
+									)}
+								</div>
+							</a>
+						),
+				)
 			}
 		</div>
 	</main>
