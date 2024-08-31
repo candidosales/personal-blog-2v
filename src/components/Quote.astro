@@ -6,76 +6,81 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 export interface Quote {
-  authorImage: string;
-  authorName: string;
-  quote: string;
+	authorImage: string;
+	authorName: string;
+	quote: string;
 }
 
 const quotes: Quote[] = [
-  {
-    authorImage: '/jose-mujica-400.png',
-    authorName: 'José Mujica',
-    quote: t('quote.joseMujica'),
-  },
-  {
-    authorImage: '/rubem-alves.jpeg',
-    authorName: 'Rubem Alves',
-    quote: t('quote.rubemAlves'),
-  },
-  {
-    authorImage: '/jota-mombaca.png',
-    authorName: 'Jota Mombaça',
-    quote: t('quote.jotaMombaca'),
-  },
-  {
-    authorImage: '/fernando-pessoa.jpg',
-    authorName: 'Fernando Pessoa',
-    quote: t('quote.fernandoPessoa'),
-  },
-  {
-    authorImage: '/sobonfu-some.png',
-    authorName: 'Sobonfu Somé',
-    quote: t('quote.sobonfuSome'),
-  },
-  {
-    authorImage: '/khalil-gibran.png',
-    authorName: 'Khalil Gibran',
-    quote: t('quote.khalilGibran'),
-  },
+	{
+		authorImage: '/quotes/jose-mujica-400.webp',
+		authorName: 'José Mujica',
+		quote: t('quote.joseMujica'),
+	},
+	{
+		authorImage: '/quotes/rubem-alves.jpeg',
+		authorName: 'Rubem Alves',
+		quote: t('quote.rubemAlves'),
+	},
+	{
+		authorImage: '/quotes/jota-mombaca.webp',
+		authorName: 'Jota Mombaça',
+		quote: t('quote.jotaMombaca'),
+	},
+	{
+		authorImage: '/quotes/fernando-pessoa.jpg',
+		authorName: 'Fernando Pessoa',
+		quote: t('quote.fernandoPessoa'),
+	},
+	{
+		authorImage: '/quotes/sobonfu-some.webp',
+		authorName: 'Sobonfu Somé',
+		quote: t('quote.sobonfuSome'),
+	},
+	{
+		authorImage: '/quotes/khalil-gibran.webp',
+		authorName: 'Khalil Gibran',
+		quote: t('quote.khalilGibran'),
+	},
+	{
+		authorImage: '/quotes/yoda.webp',
+		authorName: 'Yoda',
+		quote: t('quote.yoda'),
+	},
 ];
 
 function getRandomQuote(quotes: Quote[]) {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[randomIndex];
+	const randomIndex = Math.floor(Math.random() * quotes.length);
+	return quotes[randomIndex];
 }
 
 const quoteSelected = getRandomQuote(quotes);
 ---
 
 <div class='my-16 mx-auto max-w-7xl slide-fade-in'>
-  <div class='p-6'>
-    <div
-      class='flex flex-col md:flex-row mx-auto justify-center items-center md:items-start'
-    >
-      <Image
-        src={quoteSelected.authorImage}
-        width={56}
-        height={56}
-        alt=''
-        class='w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4'
-        loading='lazy'
-        decoding='async'
-      />
-      <blockquote class='text-center md:text-left font-inclusive'>
-        <p class='text-blue-800 dark:text-white mb-2 md:mb-0'>
-          {quoteSelected.authorName}
-        </p>
-        <p
-          class='max-w-3xl mx-auto text-xl font-medium text-blue-600 max-w-[480px]'
-        >
-          “<Fragment set:html={quoteSelected.quote} />”
-        </p>
-      </blockquote>
-    </div>
-  </div>
+	<div class='p-6'>
+		<div
+			class='flex flex-col md:flex-row mx-auto justify-center items-center md:items-start'
+		>
+			<Image
+				src={quoteSelected.authorImage}
+				width={56}
+				height={56}
+				alt=''
+				class='w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4'
+				loading='lazy'
+				decoding='async'
+			/>
+			<blockquote class='text-center md:text-left font-inclusive'>
+				<p class='text-blue-800 dark:text-white mb-2 md:mb-0'>
+					{quoteSelected.authorName}
+				</p>
+				<p
+					class='max-w-3xl mx-auto text-xl font-medium text-blue-600 max-w-[480px]'
+				>
+					“<Fragment set:html={quoteSelected.quote} />”
+				</p>
+			</blockquote>
+		</div>
+	</div>
 </div>

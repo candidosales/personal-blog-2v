@@ -108,6 +108,7 @@ export const ui = {
       'The right way to live is something we can teach only the dead.',
     'quote.khalilGibran': `And your body is the harp of your soul, and it's up to you to make it play beautiful music or a mess of noise.`,
     'quote.sobonfuSome': `It's never enough to say yes once.`,
+	'quote.yoda': 'The greatest teacher, failure is. We are what they grow beyond. That is the true burden of all masters.',
     'about.title': 'About',
     'about.piece1': `Hey, I'm Candido Sales!`,
     'about.piece2':
@@ -230,6 +231,7 @@ export const ui = {
     'quote.sobonfuSome': `Nunca é suficiente dizer sim uma única vez.`,
     'quote.khalilGibran':
       'E seu corpo é a harpa de sua alma, E cabe a você fazê-lo tocar uma linda música ou uma confusão de ruídos.',
+	'quote.yoda': 'O maior professor, o fracasso é. Nós somos aquilo que eles superam. Esse é o verdadeiro fardo de todos os mestres.',
     'about.title': 'Sobre',
     'about.piece1': `Olá, Eu sou Cândido Sales!`,
     'about.piece2':

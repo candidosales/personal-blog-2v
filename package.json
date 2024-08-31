@@ -13,7 +13,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.1.1",
+    "@astrojs/partytown": "^2.1.2",
     "@astrojs/sitemap": "3.1.6",
     "@astrojs/svelte": "5.7.0",
     "@astrojs/tailwind": "5.1.0",
@@ -22,7 +22,7 @@
     "@fontsource/inclusive-sans": "^5.0.4",
     "@popperjs/core": "^2.11.8",
     "@upstash/redis": "^1.34.0",
-    "astro": "4.14.3",
+    "astro": "^4.15.1",
     "astro-compress": "^2.3.1",
     "astro-seo": "^0.8.4",
     "flowbite": "^2.5.1",
