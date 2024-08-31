@@ -43,6 +43,20 @@ export const presentations = [
   },
   {
     image: {
+      url: "/presentations/historias-aprendizados-piauiense.png",
+      alt: "Histórias e aprendizados de um piauiense",
+    },
+    title: "Histórias e aprendizados de um piauiense",
+    description:
+      "um pouco da minha história e quem sabe influenciar você a se manter e acreditar na carreira de tecnologia",
+    href: "https://docs.google.com/presentation/d/1q6RvtKjGOakY7esQyBUwQit4klgvNJMGyP8L-q7lhGQ/edit?usp=sharing",
+    publishDate: "2021-08-25",
+    place: {
+      name: "IFPI",
+    },
+  },
+  {
+    image: {
       url: "/presentations/vc+-app-seguro.jpg",
       alt: "Como tornar seguro um aplicativo mobile payment sem penalizar a experiência do usuário",
     },
