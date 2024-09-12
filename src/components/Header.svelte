@@ -13,6 +13,7 @@
     useTranslatedPath,
   } from '@i18n/utils';
   import Presentation from './icons/Presentation.svelte';
+  import Sparkles from './icons/Sparkles.svelte';
   const lang = getLangFromUrl(new URL(window.location.href));
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
@@ -23,6 +24,12 @@
       label: t('menu.home'),
       targetBlank: false,
       icon: Home,
+    },
+    {
+      href: translatePath('/ui-lab'),
+      label: t('menu.lab'),
+      targetBlank: false,
+      icon: Sparkles,
     },
     {
       href: translatePath('/blog'),

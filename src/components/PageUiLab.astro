@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.svelte';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { TrashAnimation } from './react/trash/TrashAnimation';
+import CardList from './react/card-list/CardList';
+import DynamicIsland from './react/dynamic-island/DynamicIsland';
+import Popover from './react/popover/Popover';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('lab.title')}>
+	<Header client:only='svelte' />
+	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+		<h1
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+			transition:name='hero'
+		>
+			{t('lab.title')}
+		</h1>
+		<p class='text-md md:text-lg text-blue-800 mb-8 slide-fade-in'>
+			{t('lab.subtitle')}
+		</p>
+		<div class='grid md:grid-cols-2 gap-6 mt-10'>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
+			>
+				<TrashAnimation client:only='react' />
+			</div>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
+			>
+				<DynamicIsland client:only='react' />
+			</div>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
+			>
+				<Popover client:only='react' />
+			</div>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
+			>
+				<CardList client:only='react' />
+			</div>
+		</div>
+	</main>
+</Layout>
