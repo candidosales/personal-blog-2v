@@ -1,0 +1,23 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.svelte';
+// import TrashAnimation from '@components/react/TrashAnimation';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { TrashAnimation1 } from './react/trash/Test';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={'UI Lab'}>
+	<Header client:only='svelte' />
+	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+		<h1
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-900 sm:text-4xl mt-10'
+			transition:name='hero'
+		>
+			UI Lab
+		</h1>
+		<TrashAnimation1 />
+	</main>
+</Layout>
