@@ -14,6 +14,7 @@ export const ui = {
       'A multidisciplinary engineer focusing on digital experiences',
     'menu.home': 'Home',
     'menu.blog': 'Blog',
+	'menu.lab': 'Lab',
 	'menu.presentations': 'Presentations',
     'menu.about': 'About',
     'menu.mentorship': 'Mentorship',
@@ -127,6 +128,8 @@ export const ui = {
     'about.title2': 'Work experience',
     'about.seeMoreLinkedin': 'See more in my Linkedin',
 	'presentations.title': 'Presentations',
+	'lab.title': 'Animations Lab',
+	'lab.subtitle': 'Some examples of my most recent animation studies using react, framer motion and tailwind.'
   },
   'pt-br': {
     checkItOut: 'Confira',
@@ -135,6 +138,7 @@ export const ui = {
       'Engenheiro multidisciplinar focado em experiências digitais',
     'menu.home': 'Início',
     'menu.blog': 'Blog',
+	'menu.lab': 'Laboratório',
 	'menu.presentations': 'Apresentações',
     'menu.about': 'Sobre',
     'menu.mentorship': 'Mentoria',
@@ -250,5 +254,7 @@ export const ui = {
     'about.title2': 'Experiência profissional',
     'about.seeMoreLinkedin': 'Veja mais no meu Linkedin',
 	'presentations.title': 'Apresentações',
+	'lab.title': 'Laboratório de Animações',
+	'lab.subtitle': 'Alguns exemplos dos meus estudos de animação mais recentes usando React, Framer Motion e Tailwind.'
   },
 } as const;

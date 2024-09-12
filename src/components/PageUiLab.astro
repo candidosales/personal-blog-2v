@@ -11,23 +11,17 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={'Animations Lab'}>
+<Layout title={t('lab.title')}>
 	<Header client:only='svelte' />
 	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
 		<h1
-			class='text-3xl leading-8 font-medium tracking-tight text-blue-900 sm:text-4xl mt-10'
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
 			transition:name='hero'
 		>
-			Animations Lab
+			{t('lab.title')}
 		</h1>
 		<p class='text-md md:text-lg text-blue-800 mb-8 slide-fade-in'>
-			Some examples of my most recent animation studies using <a
-				href='https://react.dev/'
-				target='_blank'>React</a
-			>, <a href='https://www.framer.com/motion/' target='_blank'
-				>Framer Motion</a
-			> and <a href='https://tailwindcss.com/' target='_blank'>Tailwind</a
-			>.
+			{t('lab.subtitle')}
 		</p>
 		<div class='grid md:grid-cols-2 gap-4 mt-10'>
 			<div
