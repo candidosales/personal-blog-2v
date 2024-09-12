@@ -23,24 +23,24 @@ const t = useTranslations(lang);
 		<p class='text-md md:text-lg text-blue-800 mb-8 slide-fade-in'>
 			{t('lab.subtitle')}
 		</p>
-		<div class='grid md:grid-cols-2 gap-4 mt-10'>
+		<div class='grid md:grid-cols-2 gap-6 mt-10'>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
 			>
 				<TrashAnimation client:only='react' />
 			</div>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
 			>
 				<DynamicIsland client:only='react' />
 			</div>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
 			>
 				<Popover client:only='react' />
 			</div>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
 			>
 				<CardList client:only='react' />
 			</div>
