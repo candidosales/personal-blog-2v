@@ -4,12 +4,14 @@ import Header from '@components/Header.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import { TrashAnimation } from './react/trash/TrashAnimation';
 import CardList from './react/card-list/CardList';
+import DynamicIsland from './react/dynamic-island/DynamicIsland';
+import Popover from './react/popover/Popover';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={'UI Lab'}>
+<Layout title={'Animations Lab'}>
 	<Header client:only='svelte' />
 	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
 		<h1
@@ -18,14 +20,33 @@ const t = useTranslations(lang);
 		>
 			Animations Lab
 		</h1>
-		<div class='grid md:grid-cols-2 gap-4'>
+		<p class='text-md md:text-lg text-blue-800 mb-8 slide-fade-in'>
+			Some examples of my most recent animation studies using <a
+				href='https://react.dev/'
+				target='_blank'>React</a
+			>, <a href='https://www.framer.com/motion/' target='_blank'
+				>Framer Motion</a
+			> and <a href='https://tailwindcss.com/' target='_blank'>Tailwind</a
+			>.
+		</p>
+		<div class='grid md:grid-cols-2 gap-4 mt-10'>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-md'
+				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
 			>
 				<TrashAnimation client:only='react' />
 			</div>
 			<div
-				class='h-[500px] items-center justify-center flex bg-white rounded-md'
+				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+			>
+				<DynamicIsland client:only='react' />
+			</div>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
+			>
+				<Popover client:only='react' />
+			</div>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white rounded-lg border border-gray-100 border-solid'
 			>
 				<CardList client:only='react' />
 			</div>
