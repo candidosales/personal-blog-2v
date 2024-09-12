@@ -2,8 +2,8 @@
 
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { TrashBack, TrashFront } from "./TrashAssets";
 import clsx from "clsx";
+import { TrashBack, TrashFront } from "./TrashAsssets";
 
 const IMAGES = ["japan", "jungle", "new-york", "desert"];
 
