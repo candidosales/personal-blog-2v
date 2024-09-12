@@ -47,6 +47,9 @@ dependencies:
   astro-seo:
     specifier: ^0.8.4
     version: 0.8.4(typescript@5.4.5)
+  clsx:
+    specifier: ^2.1.1
+    version: 2.1.1
   flowbite:
     specifier: ^2.5.1
     version: 2.5.1
