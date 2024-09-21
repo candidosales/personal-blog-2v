@@ -33,8 +33,8 @@ export const volunteerData = (t: any) => {
           name: 'Upstash',
         },
         {
-          icon: 'render',
-          name: 'Render',
+          icon: 'flyio',
+          name: 'Fly.io',
         },
       ],
     },
