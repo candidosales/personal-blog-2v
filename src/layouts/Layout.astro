@@ -80,25 +80,26 @@ const currentPath = Astro.url.pathname;
 		{withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
 		<!--Top Gradient -->
 		<div
-			class='rotate-3 absolute w-screen -inset-x-12 -top-12 h-12 bg-gradient-to-r from-sky-300 via-amber-300 to-red-500 blur-3xl'
+			class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
 		>
 		</div>
 		<!--Top Gradient -->
 
-		<!--Top Bottom -->
+		<!--Bottom Gradient -->
 		<div
-			class='rotate-3 fixed -inset-x-12 -bottom-6 h-12 bg-gradient-to-r from-red-300 to-orange-300 blur-3xl'
+			class='rotate-3 fixed -inset-x-12 -bottom-4 h-20 md:h-12 bg-gradient-to-r from-red-300 to-orange-300 blur-3xl'
 		>
 		</div>
-		<!--Top Bottom -->
+		<!--Bottom Gradient -->
 
 		<slot />
 		<style lang='scss'>
 			body {
 				letter-spacing: -0.05em;
+				--main-bg-color: #fff8f1; // Orange-50
 			}
 			:global(.sun) {
-				background: #fff7ed; // Orange-50
+				background: var(--main-bg-color);
 				background-image: url('/sun-2.png');
 				background-repeat: no-repeat;
 				background-position: bottom;
@@ -129,7 +130,11 @@ const currentPath = Astro.url.pathname;
 				content: '';
 				position: absolute;
 				inset: 0;
-				background: linear-gradient(to bottom, #fff8f1, transparent);
+				background: linear-gradient(
+					to bottom,
+					var(--main-bg-color),
+					transparent
+				);
 			}
 
 			@keyframes slide-fade-in {
