@@ -4,11 +4,25 @@ import PageIndex from '@components/PageIndex.astro';
 
 <PageIndex />
 <script>
-  if (navigator && navigator.language.includes('pt')) {
-    console.log('navigator.language', navigator.language);
+	if (navigator && navigator.language.includes('pt')) {
+		console.log('navigator.language', navigator.language);
 
-    if (window) {
-      window.location = '/pt-br';
-    }
-  }
+		if (window) {
+			window.location = '/pt-br';
+		}
+	}
+
+	// Display a custom message in the browser console
+	console.log(
+		'%c👋 Welcome to my portfolio!',
+		'color: rgb(28, 100, 242); font-size: 20px; font-weight: bold;',
+	);
+	console.log(
+		`%cI'm open to new opportunities 😃`,
+		'color: rgb(28, 100, 242); font-size: 20px; font-weight: bold;',
+	);
+	console.log(
+		`%cPlease feel free to contact me at https://www.linkedin.com/in/candidosales/`,
+		'color: rgb(28, 100, 242); font-size: 20px; font-weight: bold;',
+	);
 </script>
