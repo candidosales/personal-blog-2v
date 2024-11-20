@@ -61,7 +61,7 @@ export const posts = [
     title: "How I got a job offer in Canada",
     description:
       "In this article, I’ll present the process I did to get the job offer through VanHack",
-    href: "https://blog.usejournal.com/how-did-i-get-a-job-offer-in-canada-3351937653ad",
+    href: "https://medium.com/@candidosales/how-did-i-get-a-job-offer-in-canada-3351937653ad",
     publishDate: "2019-08-26",
   },
   {
