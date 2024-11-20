@@ -3,6 +3,7 @@
   import Linkedin from './icons/Linkedin.svelte';
   import Mail from './icons/Mail.svelte';
   import Twitter from './icons/Twitter.svelte';
+  import Bluesky from './icons/Bluesky.svelte';
 
   interface Props {
     place?: 'default' | 'mobile';
@@ -22,6 +23,12 @@
       label: 'E-mail',
       targetBlank: true,
       icon: Mail,
+    },
+    {
+      href: 'https://bsky.app/profile/candidosales.bsky.social',
+      label: 'Bluesky',
+      targetBlank: true,
+      icon: Bluesky,
     },
     {
       href: 'https://twitter.com/candidosales',
