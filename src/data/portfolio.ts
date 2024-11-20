@@ -139,10 +139,6 @@ export const portfolioData = (t: any) => {
           name: 'Astro',
         },
         {
-          icon: 'svelte',
-          name: 'Svelte',
-        },
-        {
           icon: 'tailwind',
           name: 'Tailwind',
         },
