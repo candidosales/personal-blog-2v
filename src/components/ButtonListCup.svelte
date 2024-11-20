@@ -7,7 +7,7 @@
 
   const room = '0001';
 
-  let buttons = [
+  let buttons = $state([
     {
       label: 'Estou ok',
       color: 'green',
@@ -29,7 +29,7 @@
       value: 'stop',
       selected: false,
     },
-  ];
+  ]);
 
   let blockUser = false;
   let fingerprint: string | undefined;

@@ -10,14 +10,18 @@
   import { sineIn } from 'svelte/easing';
   import type { MenuItem } from '../env';
   import Contact from './Contact.svelte';
-  let drawerHidden = true;
+  let drawerHidden = $state(true);
   let transitionParams = {
     x: 320,
     duration: 200,
     easing: sineIn,
   };
 
-  export let menuItems: MenuItem[] = [];
+  interface Props {
+    menuItems?: MenuItem[];
+  }
+
+  let { menuItems = [] }: Props = $props();
 </script>
 
 <div class="fixed w-full bottom-6 right-8 z-10 md:hidden">
@@ -58,18 +62,22 @@
           href={m.href}
           aClass="flex items-center p-2 font-normal text-blue-800 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-blue-700"
         >
-          <svelte:fragment slot="icon">
-            <span class="text-blue-800">
-              <div class="w-5 h-5 mr-2">
-                <svelte:component this={m.icon} />
-              </div>
-            </span>
-          </svelte:fragment>
-          <svelte:fragment slot="subtext">
-            <span class="text-blue-800 font-inclusive text-lg">
-              {m.label}
-            </span>
-          </svelte:fragment>
+          {#snippet icon()}
+                  
+              <span class="text-blue-800">
+                <div class="w-5 h-5 mr-2">
+                  <m.icon />
+                </div>
+              </span>
+            
+                  {/snippet}
+          {#snippet subtext()}
+                  
+              <span class="text-blue-800 font-inclusive text-lg">
+                {m.label}
+              </span>
+            
+                  {/snippet}
         </SidebarItem>
       {/each}
     </SidebarGroup>

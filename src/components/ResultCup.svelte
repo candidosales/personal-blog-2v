@@ -2,15 +2,15 @@
   import { onMount } from 'svelte';
   import type { VoteResult } from 'src/env';
 
-  let okBar: HTMLElement | undefined;
-  let uncertainBar: HTMLElement | undefined;
-  let stopBar: HTMLElement | undefined;
+  let okBar: HTMLElement | undefined = $state();
+  let uncertainBar: HTMLElement | undefined = $state();
+  let stopBar: HTMLElement | undefined = $state();
 
-  let okBarLabel: HTMLElement | undefined;
-  let uncertainBarLabel: HTMLElement | undefined;
-  let stopBarLabel: HTMLElement | undefined;
+  let okBarLabel: HTMLElement | undefined = $state();
+  let uncertainBarLabel: HTMLElement | undefined = $state();
+  let stopBarLabel: HTMLElement | undefined = $state();
 
-  let count: VoteResult | undefined;
+  let count: VoteResult | undefined = $state();
 
   async function result() {
     const urlParams = new URLSearchParams(window.location.search);

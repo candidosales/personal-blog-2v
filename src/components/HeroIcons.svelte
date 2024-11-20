@@ -31,7 +31,7 @@
         target="_blank"
         class="flex text-blue-800 transition-colors p-2 bg-blue-100/80 hover:bg-blue-200 backdrop-blur-md border border-solid border-blue-200 rounded-full"
       >
-        <svelte:component this={s.icon} class="w-4 h-4 md:w-6 md:h-6" />
+        <s.icon class="w-4 h-4 md:w-6 md:h-6" />
       </a>
     {/if}
   {/each}
