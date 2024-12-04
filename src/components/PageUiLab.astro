@@ -6,6 +6,7 @@ import { TrashAnimation } from './react/trash/TrashAnimation';
 import CardList from './react/card-list/CardList';
 import DynamicIsland from './react/dynamic-island/DynamicIsland';
 import Popover from './react/popover/Popover';
+import DynamicIslandWealthsimple from './react/dynamic-island-wealthsimple/DynamicIslandWealthsimple';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -24,6 +25,11 @@ const t = useTranslations(lang);
 			{t('lab.subtitle')}
 		</p>
 		<div class='grid md:grid-cols-2 gap-6 mt-10'>
+			<div
+				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
+			>
+				<DynamicIslandWealthsimple client:only='react' />
+			</div>
 			<div
 				class='h-[500px] items-center justify-center flex bg-white backdrop-blur-md rounded-lg border border-gray-100 border-solid'
 			>

@@ -2,19 +2,16 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Ring } from "./Ring";
-import { Timer } from "./Timer";
+import { TransactionPayment } from "./TransactionPayment";
 
-export default function DynamicIsland() {
+export default function DynamicIslandWealthsimple() {
 	const [view, setView] = useState("idle");
 	const [variantKey, setVariantKey] = useState("idle");
 
 	const content = useMemo(() => {
 		switch (view) {
-			case "ring":
-				return <Ring />;
-			case "timer":
-				return <Timer />;
+			case "transaction":
+				return <TransactionPayment amount={100.23} />;
 			case "idle":
 				return <div className="h-7" />;
 		}
@@ -76,7 +73,7 @@ export default function DynamicIsland() {
 					</AnimatePresence>
 				</div>
 				<div className="flex w-full justify-center gap-4">
-					{["idle", "ring", "timer"].map((v) => (
+					{["idle", "transaction"].map((v) => (
 						<button
 							type="button"
 							className="rounded-full capitalize w-32 h-10 bg-white px-2.5 py-1.5 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300/50 hover:bg-gray-50"
@@ -111,17 +108,17 @@ const ANIMATION_VARIANTS = {
 		scaleX: 0.9,
 		bounce: 0.5,
 	},
-	"timer-ring": {
+	"transaction-ring": {
 		scale: 0.7,
 		y: -7.5,
 		bounce: 0.35,
 	},
-	"ring-timer": {
+	"ring-transaction": {
 		scale: 1.4,
 		y: 7.5,
 		bounce: 0.35,
 	},
-	"timer-idle": {
+	"transaction-idle": {
 		scale: 0.7,
 		y: -7.5,
 		bounce: 0.3,
@@ -131,9 +128,9 @@ const ANIMATION_VARIANTS = {
 const BOUNCE_VARIANTS = {
 	idle: 0.5,
 	"ring-idle": 0.5,
-	"timer-ring": 0.35,
-	"ring-timer": 0.35,
-	"timer-idle": 0.3,
-	"idle-timer": 0.3,
+	"transaction-ring": 0.35,
+	"ring-transaction": 0.35,
+	"transaction-idle": 0.3,
+	"idle-transaction": 0.3,
 	"idle-ring": 0.5,
 };
