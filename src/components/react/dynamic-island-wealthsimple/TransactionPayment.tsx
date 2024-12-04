@@ -27,7 +27,7 @@ export function TransactionPayment({ amount }: { amount: number }) {
 				transition={{
 					type: "spring",
 				}}
-				initial={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
+				initial={{ opacity: 0, scale: 0.6, filter: "blur(4px)" }}
 				animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
 				exit={{ opacity: 0, scale: 0.25, filter: "blur(4px)" }}
 			/>
