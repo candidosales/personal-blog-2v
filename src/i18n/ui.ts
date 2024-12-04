@@ -129,7 +129,7 @@ export const ui = {
     'about.seeMoreLinkedin': 'See more in my Linkedin',
 	'presentations.title': 'Presentations',
 	'lab.title': 'Animations Lab',
-	'lab.subtitle': 'Some examples of my most recent animation studies using react, framer motion and tailwind.'
+	'lab.subtitle': 'Some examples of my most recent animation studies using React, Motion and Tailwind.'
   },
   'pt-br': {
     checkItOut: 'Confira',
@@ -255,6 +255,6 @@ export const ui = {
     'about.seeMoreLinkedin': 'Veja mais no meu Linkedin',
 	'presentations.title': 'Apresentações',
 	'lab.title': 'Laboratório de Animações',
-	'lab.subtitle': 'Alguns exemplos dos meus estudos de animação mais recentes usando React, Framer Motion e Tailwind.'
+	'lab.subtitle': 'Alguns exemplos dos meus estudos de animação mais recentes usando React, Motion e Tailwind.'
   },
 } as const;

@@ -59,7 +59,7 @@ export function TransactionPayment({ amount }: { amount: number }) {
 				<motion.p className="text-base font-normal">You paid</motion.p>
 				<NumberFlow
 					className="text-base font-normal"
-					style={{ fontFamily: 'Inter' }}
+					style={{ fontFamily: 'Arial' }}
 					animated={true}
 					value={amountDelay}
 					format={{ style: 'currency', currency: 'USD', trailingZeroDisplay: 'stripIfInteger' }}
