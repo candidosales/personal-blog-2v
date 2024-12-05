@@ -16,12 +16,12 @@ Inspirations:
 ## 🎯 Features
 
 - ✅ [Tailwind](https://tailwindcss.com/);
-- ✅ [Astro 4v](https://astro.build/);
+- ✅ [Astro 5v](https://astro.build/);
 - ✅ [Astro/Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/);
 - ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
 - ✅ [Astro/Partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/);
-- ✅ [Svelte 4](https://svelte.dev/);
+- ✅ [Svelte 5](https://svelte.dev/);
 - ✅ [i18n](https://docs.astro.build/en/guides/internationalization/);
 - ✅ [Performance Optimization Strategy](https://paper.dropbox.com/doc/Performance-Optimization-Strategy-in-2023--B5jjdEwca8NURASq1CAAnSQVAg-qWcr7orx2cEWHpLqoLeTC)
 - ✅ [Fontsource](https://docs.astro.build/en/guides/fonts/)
