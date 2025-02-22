@@ -102,11 +102,19 @@ const currentPath = Astro.url.pathname;
 				box-shadow: var(--shadow-lg);
 			}
 			@utility bg-blue-100/80 {
-				box-shadow: var(--shadow-lg);
+				background-color: color-mix(
+					in oklab,
+					var(--color-blue-100) 80%,
+					transparent
+				);
 			}
 
 			@utility border-blue-200 {
 				border-color: var(--color-blue-200);
+			}
+
+			@utility bg-slate-100 {
+				background-color: var(--color-slate-100);
 			}
 			body {
 				letter-spacing: -0.05em;

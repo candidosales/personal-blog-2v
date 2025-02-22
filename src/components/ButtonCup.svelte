@@ -13,7 +13,7 @@
     label = 'button',
     info = 'info',
     color = 'blue',
-    selected = false
+    selected = false,
   }: Props = $props();
 
   const dispatch = createEventDispatcher();
@@ -37,12 +37,12 @@
 
 <style lang="scss">
   .green-selected {
-    @apply bg-green-700;
+    background-color: var(--color-green-700);
   }
   .yellow-selected {
-    @apply bg-yellow-700;
+    background-color: var(--color-yellow-700);
   }
   .red-selected {
-    @apply bg-red-700;
+    background-color: var(--color-red-700);
   }
 </style>
