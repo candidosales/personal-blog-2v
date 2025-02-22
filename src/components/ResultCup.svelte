@@ -25,7 +25,9 @@
     });
 
     count = await res.json();
-    renderGraph(count);
+    if (count) {
+      renderGraph(count);
+    }
   }
 
   function renderGraph(counts: VoteResult) {
@@ -87,7 +89,11 @@
     height: 80vh;
     padding: 10px;
     box-sizing: border-box;
-    @apply bg-slate-100 rounded-md pb-10 pt-20 shadow-lg;
+    background-color: var(--color-slate-100);
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 16px;
+    padding-top: 32px;
   }
 
   .bar {
@@ -112,14 +118,14 @@
   }
 
   .green-bar {
-    @apply bg-green-500;
+    background-color: var(--color-green-500);
   }
 
   .yellow-bar {
-    @apply bg-yellow-500;
+    background-color: var(--color-yellow-500);
   }
 
   .red-bar {
-    @apply bg-red-500;
+    background-color: var(--color-red-500);
   }
 </style>

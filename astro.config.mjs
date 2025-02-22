@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel';
+import tailwindcss from "@tailwindcss/vite";
 
 import partytown from '@astrojs/partytown';
 
@@ -12,9 +12,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.candidosales.me/',
-	integrations: [tailwind({
-		nesting: true,
-	}), compress(), sitemap({
+	integrations: [compress(), sitemap({
 		i18n: {
 			defaultLocale: 'en',
 			locales: ['en', 'pt-br'],
@@ -29,4 +27,7 @@ export default defineConfig({
 	}), react()],
 	output: 'server',
 	adapter: vercel(),
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });

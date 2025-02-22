@@ -70,13 +70,13 @@
     aria-label="navigation"
   >
     <div class="flex items-center flex-1">
-      <div class="flex items-center justify-between w-full md:w-auto">
+      <div class="flex items-center justify-between h-[64px] w-full md:w-auto">
         <a href="/">
           <span class="sr-only">Candido Sales</span>
           <img
             height="64"
             width="64"
-            class="w-auto h-11 md:h-14 rounded-full"
+            class="w-auto h-11 md:h-14 rounded-full profile-image"
             src="/me-2.webp"
             alt=""
           />
@@ -84,7 +84,7 @@
       </div>
     </div>
     <div
-      class="hidden md:flex bg-blue-100/80 px-2 rounded-full backdrop-blur-md border border-solid border-slate-200"
+      class="hidden md:flex bg-blue-100/80 px-2 rounded-full backdrop-blur-md border border-solid border-slate-200 nav-desktop"
     >
       {#each menuItems as m}
         <a

@@ -1,9 +1,10 @@
 ---
+import '../styles/global.css';
 import '@fontsource/inclusive-sans';
 import '@fontsource-variable/newsreader';
 
 import { SEO } from 'astro-seo';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -74,7 +75,7 @@ const currentPath = Astro.url.pathname;
 				description: t('seo.description'),
 			}}
 		/>
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body class={withSun ? 'sun' : ''}>
 		{withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
@@ -93,12 +94,33 @@ const currentPath = Astro.url.pathname;
 		<!--Bottom Gradient -->
 
 		<slot />
-		<style lang='scss'>
+		<style lang='scss' is:global>
+			@utility border-orange-50 {
+				border-color: var(--color-orange-50);
+			}
+			@utility shadow-lg {
+				box-shadow: var(--shadow-lg);
+			}
+			@utility bg-blue-100/80 {
+				background-color: color-mix(
+					in oklab,
+					var(--color-blue-100) 80%,
+					transparent
+				);
+			}
+
+			@utility border-blue-200 {
+				border-color: var(--color-blue-200);
+			}
+
+			@utility bg-slate-100 {
+				background-color: var(--color-slate-100);
+			}
 			body {
 				letter-spacing: -0.05em;
 				--main-bg-color: #fff8f1; // Orange-50
 			}
-			:global(.sun) {
+			.sun {
 				background: var(--main-bg-color);
 				background-image: url('/sun-2.png');
 				background-repeat: no-repeat;
@@ -107,8 +129,21 @@ const currentPath = Astro.url.pathname;
 				background-clip: content-box;
 				background-attachment: scroll;
 			}
-			:global(h1, h2, h3) {
+			h1,
+			h2,
+			h3 {
 				font-family: 'Inclusive Sans', sans-serif;
+			}
+
+			.card-link {
+				@apply transition-all duration-300;
+				@apply border border-solid border-orange-50;
+			}
+
+			.card-link:hover {
+				@apply shadow-lg bg-blue-100/80;
+				@apply border border-solid border-blue-200;
+				transform: scale(1.015);
 			}
 			.topbar-blur {
 				position: relative;
