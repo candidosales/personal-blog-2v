@@ -120,7 +120,7 @@ const currentPath = Astro.url.pathname;
 				letter-spacing: -0.05em;
 				--main-bg-color: #fff8f1; // Orange-50
 			}
-			:global(.sun) {
+			.sun {
 				background: var(--main-bg-color);
 				background-image: url('/sun-2.png');
 				background-repeat: no-repeat;
@@ -129,7 +129,9 @@ const currentPath = Astro.url.pathname;
 				background-clip: content-box;
 				background-attachment: scroll;
 			}
-			:global(h1, h2, h3) {
+			h1,
+			h2,
+			h3 {
 				font-family: 'Inclusive Sans', sans-serif;
 			}
 
