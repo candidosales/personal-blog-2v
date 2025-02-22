@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+	--font-inclusive: 'Inclusive Sans', 'Inter', sans-serif;
+	--font-newsreader: 'Newsreader', serif;
+}

@@ -43,7 +43,7 @@
   divClass="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md dark:bg-gray-800 w-80 fixed inset-y-0 right-0"
   client:load
 >
-  <div class="flex items-center">
+  <div class="flex items-center w-full justify-between">
     <h5
       id="drawer-navigation-label-3"
       class="text-2xl font-medium text-blue-800 font-inclusive"
@@ -55,29 +55,23 @@
       class="mb-4 dark:text-white text-blue-800"
     />
   </div>
-  <Sidebar class="absolute bottom-4">
+  <Sidebar class="absolute bottom-4 w-[280px]">
     <SidebarGroup>
       {#each menuItems as m}
         <SidebarItem
           href={m.href}
-          aClass="flex items-center p-2 font-normal text-blue-800 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-blue-700"
+          class="flex items-center p-2 font-normal text-blue-800 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-blue-700"
         >
           {#snippet icon()}
-                  
-              <span class="text-blue-800">
-                <div class="w-5 h-5 mr-2">
-                  <m.icon />
-                </div>
-              </span>
-            
-                  {/snippet}
+            <div class="w-6 h-6 mr-2 text-blue-800">
+              <m.icon />
+            </div>
+          {/snippet}
           {#snippet subtext()}
-                  
-              <span class="text-blue-800 font-inclusive text-lg">
-                {m.label}
-              </span>
-            
-                  {/snippet}
+            <p class="text-blue-800 font-inclusive text-lg">
+              {m.label}
+            </p>
+          {/snippet}
         </SidebarItem>
       {/each}
     </SidebarGroup>
