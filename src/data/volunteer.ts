@@ -95,12 +95,12 @@ export const volunteerData = (t: any) => {
 					name: 'React',
 				},
 				{
-					icon: 'vercel',
-					name: 'Vercel',
-				},
-				{
 					icon: 'tailwind',
 					name: 'Tailwind',
+				},
+				{
+					icon: 'vercel',
+					name: 'Vercel',
 				},
 			],
 		},

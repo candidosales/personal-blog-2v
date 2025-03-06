@@ -47,7 +47,7 @@ export const extrasData = (t: any) => {
 					name: 'NextJS',
 				},
 				{
-					icon: 'chakra-ui',
+					icon: 'chakra-ui-3',
 					name: 'Chakra UI',
 				},
 				{
