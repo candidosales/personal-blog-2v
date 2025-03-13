@@ -13,6 +13,10 @@ export const volunteerData = (t: any) => {
 					name: 'Svelte',
 				},
 				{
+					icon: 'shadcn-svelte',
+					name: 'shadcn-svelte',
+				},
+				{
 					icon: 'tailwind',
 					name: 'Tailwind',
 				},
@@ -91,8 +95,12 @@ export const volunteerData = (t: any) => {
 			background: 'bg-slate-100',
 			techs: [
 				{
-					icon: 'react',
-					name: 'React',
+					icon: 'nextjs',
+					name: 'NextJS',
+				},
+				{
+					icon: 'shadcn',
+					name: 'shadcn/ui',
 				},
 				{
 					icon: 'tailwind',
