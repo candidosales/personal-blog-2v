@@ -40,7 +40,7 @@
   bind:hidden={drawerHidden}
   placement="right"
   id="sidebar2"
-  divClass="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md dark:bg-gray-800 w-80 fixed inset-y-0 right-0"
+  divClass="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 right-0"
   client:load
 >
   <div class="flex items-center w-full justify-between">
@@ -52,7 +52,7 @@
     </h5>
     <CloseButton
       on:click={() => (drawerHidden = true)}
-      class="mb-4 dark:text-white text-blue-800"
+      class="mb-4 text-blue-800"
     />
   </div>
   <Sidebar class="absolute bottom-4 w-[280px]">
@@ -60,7 +60,7 @@
       {#each menuItems as m}
         <SidebarItem
           href={m.href}
-          class="flex items-center p-2 font-normal text-blue-800 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-blue-700"
+          class="flex items-center p-2 font-normal text-blue-800 rounded-lg hover:bg-blue-100"
         >
           {#snippet icon()}
             <div class="w-6 h-6 mr-2 text-blue-800">
@@ -77,7 +77,7 @@
     </SidebarGroup>
     <SidebarGroup
       border
-      borderClass={'pt-4 mt-4 border-t border-blue-200 dark:border-blue-700'}
+      borderClass={'pt-4 mt-4 border-t border-blue-200'}
     >
       <Contact place={'mobile'} />
     </SidebarGroup>
