@@ -15,6 +15,21 @@ export const presentations = [
   },
   {
     image: {
+      url: "/presentations/dominando-angular-frontend.png",
+      alt: "Dominando o Angular para Frontends Corporativos: Uma Jornada na Cisco",
+    },
+    title:
+      "Dominando o Angular para Frontends Corporativos: Uma Jornada na Cisco",
+    description:
+      "Apresentação sobre como usamos o Angular nos sistemas da Cisco, as decisões de arquitetura, bibliotecas, como organizamos os times",
+    href: "https://docs.google.com/presentation/d/1oiLBXmukjzKL6nvO98YF6Ln3cA8fL4cGxt5qRPuwP7w/edit?usp=sharing",
+    publishDate: "2024-03-23",
+    place: {
+      name: "Gurupi",
+    },
+  },
+  {
+    image: {
       url: "/presentations/metodos-ageis.png",
       alt: "Métodos Ágeis e Scrum",
     },
