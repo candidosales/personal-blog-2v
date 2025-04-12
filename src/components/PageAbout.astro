@@ -8,66 +8,71 @@ import Linkedin from '@components/icons/Linkedin.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const experience = [
-	{
-		company: {
-			name: 'Wealthsimple',
-			image: '/companies/wealthsimple.jpg',
-			url: 'https://www.wealthsimple.com/',
-		},
-		period: 'Nov 2024 - Current',
-		title: 'Software Engineer',
-		country: '🇨🇦',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	},
-	{
-		company: {
-			name: 'Cisco',
-			image: '/companies/cisco.jpeg',
-			url: 'https://www.cisco.com/',
-		},
-		period: 'Feb 2022 - Oct 2024',
-		title: 'Senior Software Engineer',
-		country: '🇨🇦',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	},
-	{
-		company: {
-			name: 'Vendasta',
-			image: '/companies/vendasta.jpeg',
-			url: 'https://www.vendasta.com/',
-		},
-		period: 'Sep 2019 - Feb 2022',
-		title: 'Senior Software Engineer',
-		country: '🇨🇦',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	},
-	{
-		company: {
-			name: 'GR1D',
-			image: '/companies/gr1d.jpeg',
-			url: 'https://gr1d.io/',
-		},
-		period: 'Dec 2017 - Sep 2019',
-		title: 'Tech Lead / Senior Software Engineer',
-		country: '🇧🇷',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	},
-	{
-		company: {
-			name: 'VC+',
-			image: '/companies/vc+.png',
-			url: '',
-		},
-		period: 'Aug 2016 - Nov 2017',
-		title: 'Co-founder, Android Developer and Frontend Developer',
-		country: '🇧🇷',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-	},
+    {
+        company: {
+            name: 'Wealthsimple',
+            image: '/companies/wealthsimple.jpg',
+            url: 'https://www.wealthsimple.com/',
+        },
+        style: 'wealthsimple',
+        period: 'Nov 2024 - Current',
+        title: 'Software Engineer',
+        country: '🇨🇦',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+        company: {
+            name: 'Cisco',
+            image: '/companies/cisco.jpeg',
+            url: 'https://www.cisco.com/',
+        },
+        style: 'cisco',
+        period: 'Feb 2022 - Oct 2024',
+        title: 'Senior Software Engineer',
+        country: '🇨🇦',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+        company: {
+            name: 'Vendasta',
+            image: '/companies/vendasta.jpeg',
+            url: 'https://www.vendasta.com/',
+        },
+        style: 'vendasta',
+        period: 'Sep 2019 - Feb 2022',
+        title: 'Senior Software Engineer',
+        country: '🇨🇦',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+        company: {
+            name: 'GR1D',
+            image: '/companies/gr1d.jpeg',
+            url: 'https://gr1d.io/',
+        },
+        style: 'gr1d',
+        period: 'Dec 2017 - Sep 2019',
+        title: 'Tech Lead / Senior Software Engineer',
+        country: '🇧🇷',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+        company: {
+            name: 'VC+',
+            image: '/companies/vc+.png',
+            url: '',
+        },
+        style: 'vc',
+        period: 'Aug 2016 - Nov 2017',
+        title: 'Co-founder, Android Developer and Frontend Developer',
+        country: '🇧🇷',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
 ];
 
 const lang = getLangFromUrl(Astro.url);
@@ -75,156 +80,169 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t('about.title')}>
-	<Header client:only='svelte' />
-	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
-		<h1
-			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
-			transition:name='hero'
-		>
-			{t('about.title')}
-		</h1>
-		<div
-			class='gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10'
-			transition:name='content'
-		>
-			<div class='space-y-8 flex mb-8'>
-				<Image
-					class='rounded-3xl'
-					alt='Candido'
-					width={400}
-					height={400}
-					src='/me-500.png'
-					loading={'eager'}
-				/>
-			</div>
-			<div class='space-y-4 text-blue-800 text-lg'>
-				<p>
-					<span class='font-medium'>{t('about.piece1')}</span>
-					{t('about.piece2')}
-				</p>
-				<p>
-					{t('about.piece3')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://maps.app.goo.gl/M9ESxFyFXUvjkxqB7'
-						title='Visit Piauí in Brazil'
-						target='_blank'>Piauí</a
-					>, {t('about.piece4')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://maps.app.goo.gl/mGgasFJpVrqQQzF67'
-						title='Visit Kitchener in Canada'
-						target='_blank'>Kitchener</a
-					>{t('about.piece5')}.
-				</p>
-				<p>
-					{t('about.piece6')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://www.wealthsimple.com/'
-						title='Visit Wealthsimple'
-						target='_blank'>Wealthsimple</a
-					>
-					{t('about.piece7')}
-				</p>
+    <Header client:only='svelte' />
+    <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+        <h1
+            class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+            transition:name='hero'
+        >
+            {t('about.title')}
+        </h1>
+        <div
+            class='gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10'
+            transition:name='content'
+        >
+            <div class='space-y-8 flex mb-8'>
+                <Image
+                    class='rounded-3xl'
+                    alt='Candido'
+                    width={400}
+                    height={400}
+                    src='/me-500.png'
+                    loading={'eager'}
+                />
+            </div>
+            <div class='space-y-4 text-blue-800 text-lg'>
+                <p>
+                    <span class='font-medium'>{t('about.piece1')}</span>
+                    {t('about.piece2')}
+                </p>
+                <p>
+                    {t('about.piece3')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://maps.app.goo.gl/M9ESxFyFXUvjkxqB7'
+                        title='Visit Piauí in Brazil'
+                        target='_blank'>Piauí</a
+                    >, {t('about.piece4')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://maps.app.goo.gl/mGgasFJpVrqQQzF67'
+                        title='Visit Kitchener in Canada'
+                        target='_blank'>Kitchener</a
+                    >{t('about.piece5')}.
+                </p>
+                <p>
+                    {t('about.piece6')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://www.wealthsimple.com/'
+                        title='Visit Wealthsimple'
+                        target='_blank'>Wealthsimple</a
+                    >
+                    {t('about.piece7')}
+                </p>
 
-				<p>
-					{t('about.piece8')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://geleiatotal.com.br/'
-						title='Visit Geleia Total'
-						target='_blank'>Geleia Total</a
-					>
-					{t('about.and')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://www.turismopiaui.com/'
-						title='Visit Turismo Piauí'
-						target='_blank'>Turismo Piauí</a
-					>
-					{t('about.piece9')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://adplist.org/mentors/candido-sales-gomes'
-						title='Visit my ADPList profile'
-						target='_blank'>ADPList</a
-					>.
-				</p>
-				<p>
-					{t('about.piece10')}
-					<a
-						class="underline underline-offset-4 after:content-['_↗']"
-						href='https://github.com/candidosales'
-						title='Visit my Github profile'
-						target='_blank'>open-source</a
-					>
-					{t('about.piece11')}
-				</p>
-			</div>
-		</div>
-		<h2
-			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in'
-		>
-			{t('about.title2')}
-		</h2>
-		<div
-			class='md:grid md:grid-cols-4 lg:grid lg:grid-cols-4 gap-6 mt-10 text-blue-800 slide-fade-in'
-		>
-			{
-				experience.map((e) => (
-					<>
-						<div class='col-span-1 mb-1 md:mb-8 flex flex-row md:flex-col items-center md:items-start font-sans'>
-							<p class='text-sm md:text-lg text-blue-600 md:mb-1 mr-4'>
-								{e.period}
-							</p>
-						</div>
-						<div class='col-span-3 mb-8 md:mb-4 flex flex-row align-middle justify-start items-center'>
-							<a
-								href={e.company.url}
-								title={e.company.name}
-								target='_blank'
-								class='cursor-pointer mr-4 w-16 h-16'
-							>
-								<img
-									class='rounded-full'
-									src={e.company.image}
-									alt={e.company.name}
-									title={e.company.name}
-								/>
-							</a>
-							<div class='max-w-[240px] md:max-w-md lg:max-w-lg'>
-								<h3 class='text-lg font-medium font-sans'>
-									<span class='mr-2'>
-										<a
-											href={e.company.url}
-											title={e.company.name}
-											target='_blank'
-											class='cursor-pointer'
-										>
-											{e.company.name}
-										</a>
-									</span>{' '}
-									{e.country}
-								</h3>
-								<p class='break-words'>{e.title}</p>
-							</div>
-						</div>
-					</>
-				))
-			}
-		</div>
-		<div class='flex justify-center mt-10 mb-16 slide-fade-in'>
-			<a
-				class='max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
-				href='https://www.linkedin.com/in/candidosales/'
-				title='See more about my experiences in my Linkedin'
-				target='_blank'
-				><Linkedin class='h-4 w-4 mr-2' />{t('about.seeMoreLinkedin')}
+                <p>
+                    {t('about.piece8')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://geleiatotal.com.br/'
+                        title='Visit Geleia Total'
+                        target='_blank'>Geleia Total</a
+                    >
+                    {t('about.and')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://www.turismopiaui.com/'
+                        title='Visit Turismo Piauí'
+                        target='_blank'>Turismo Piauí</a
+                    >
+                    {t('about.piece9')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://adplist.org/mentors/candido-sales-gomes'
+                        title='Visit my ADPList profile'
+                        target='_blank'>ADPList</a
+                    >.
+                </p>
+                <p>
+                    {t('about.piece10')}
+                    <a
+                        class="underline underline-offset-4 after:content-['_↗']"
+                        href='https://github.com/candidosales'
+                        title='Visit my Github profile'
+                        target='_blank'>open-source</a
+                    >
+                    {t('about.piece11')}
+                </p>
+            </div>
+        </div>
+        <h2
+            class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in'
+        >
+            {t('about.title2')}
+        </h2>
+        <div
+            class='md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mt-10 text-blue-800 slide-fade-in'
+        >
+            {
+                experience.map((e) => (
+                    <>
+                        <div class='col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]'>
+                            <p class='opacity-70 text-md'>{e.period}</p>
+                        </div>
+                        <div class='col-span-4 mb-8 md:mb-0 flex flex-row align-middle justify-start items-center'>
+                            <p class='break-words  text-md'>{e.title} at</p>
+                            <a
+                                href={e.company.url}
+                                title={e.company.name}
+                                target='_blank'
+                                class={` text-md cursor-pointer ml-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium mr-2`}
+                            >
+                                <img
+                                    class='rounded-full w-6 h-6 mr-2'
+                                    src={e.company.image}
+                                    alt={e.company.name}
+                                    title={e.company.name}
+                                />
+                                {e.company.name}
+                            </a>
+                            {e.country}
+                        </div>
+                    </>
+                ))
+            }
+        </div>
+        <div class='flex justify-center mt-10 mb-16 slide-fade-in'>
+            <a
+                class='max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
+                href='https://www.linkedin.com/in/candidosales/'
+                title='See more about my experiences in my Linkedin'
+                target='_blank'
+                ><Linkedin class='h-4 w-4 mr-2' />{t('about.seeMoreLinkedin')}
 
-				<ArrowRight class='overflow-visible ml-3 text-white' />
-			</a>
-		</div>
-		<Contact />
-	</main>
+                <ArrowRight class='overflow-visible ml-3 text-white' />
+            </a>
+        </div>
+        <Contact />
+    </main>
 </Layout>
+
+<style lang='scss' is:global>
+    .wealthsimple {
+        border-color: var(--color-slate-200);
+        background-color: var(--color-slate-100);
+        color: var(--color-slate-700);
+    }
+    .vendasta {
+        border-color: var(--color-green-200);
+        background-color: var(--color-green-100);
+        color: var(--color-green-700);
+    }
+    .cisco {
+        border-color: var(--color-blue-200);
+        background-color: var(--color-blue-100);
+        color: var(--color-blue-700);
+    }
+    .gr1d {
+        border-color: var(--color-gray-200);
+        background-color: var(--color-gray-100);
+        color: var(--color-gray-700);
+    }
+    .vc {
+        border-color: var(--color-slate-200);
+        background-color: var(--color-slate-100);
+        color: var(--color-slate-700);
+    }
+</style>

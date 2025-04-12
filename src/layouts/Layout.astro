@@ -10,12 +10,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const {
-	title = t('seo.title'),
-	description = t('seo.description'),
-	noindex = false,
-	nofollow = false,
-	withSun = true,
-	withTopBarBlur = true,
+    title = t('seo.title'),
+    description = t('seo.description'),
+    noindex = false,
+    nofollow = false,
+    withSun = true,
+    withTopBarBlur = true,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -23,171 +23,175 @@ const currentPath = Astro.url.pathname;
 
 <!doctype html>
 <html lang={lang}>
-	<head>
-		<meta charset='UTF-8' />
-		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/png' href='/favicon.png' />
-		<meta name='generator' content={Astro.generator} />
-		<link rel='sitemap' href='/sitemap-index.xml' />
-		<script
-			type='text/partytown'
-			src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'
-		></script>
-		<script type='text/partytown'>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			gtag('config', 'G-KF2R0QYPX7');
-		</script>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width' />
+        <link rel='icon' type='image/png' href='/favicon.png' />
+        <meta name='generator' content={Astro.generator} />
+        <link rel='sitemap' href='/sitemap-index.xml' />
+        <script
+            type='text/partytown'
+            src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'
+        ></script>
+        <script type='text/partytown'>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-KF2R0QYPX7');
+        </script>
 
-		<SEO
-			noindex={noindex}
-			nofollow={nofollow}
-			title={title}
-			titleTemplate=`%s | ${t('seo.title')}`
-			titleDefault={t('seo.title')}
-			description={description}
-			canonical='https://candidosales.me'
-			openGraph={{
-				basic: {
-					title: title
-						? `${title} | ${t('seo.title')}`
-						: t('seo.title'),
-					type: 'website',
-					image: 'https://candidosales.me/og-image.png',
-					url: `https://candidosales.me${currentPath}`,
-				},
-				image: {
-					url: 'https://candidosales.me/og-image.png',
-					width: 1200,
-					height: 600,
-					alt: 'Social open graph',
-					type: 'image/png',
-				},
-			}}
-			twitter={{
-				creator: '@candidosales',
-				site: '@candidosales',
-				card: 'summary_large_image',
-				title: t('seo.title'),
-				description: t('seo.description'),
-			}}
-		/>
-		<ClientRouter />
-	</head>
-	<body class={withSun ? 'sun' : ''}>
-		{withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
-		<!--Top Gradient -->
-		<div
-			class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
-		>
-		</div>
-		<!--Top Gradient -->
+        <SEO
+            noindex={noindex}
+            nofollow={nofollow}
+            title={title}
+            titleTemplate=`%s | ${t('seo.title')}`
+            titleDefault={t('seo.title')}
+            description={description}
+            canonical='https://candidosales.me'
+            openGraph={{
+                basic: {
+                    title: title
+                        ? `${title} | ${t('seo.title')}`
+                        : t('seo.title'),
+                    type: 'website',
+                    image: 'https://candidosales.me/og-image.png',
+                    url: `https://candidosales.me${currentPath}`,
+                },
+                image: {
+                    url: 'https://candidosales.me/og-image.png',
+                    width: 1200,
+                    height: 600,
+                    alt: 'Social open graph',
+                    type: 'image/png',
+                },
+            }}
+            twitter={{
+                creator: '@candidosales',
+                site: '@candidosales',
+                card: 'summary_large_image',
+                title: t('seo.title'),
+                description: t('seo.description'),
+            }}
+        />
+        <ClientRouter />
+    </head>
+    <body class={withSun ? 'sun' : ''}>
+        {withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
+        <!--Top Gradient -->
+        <div
+            class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
+        >
+        </div>
+        <!--Top Gradient -->
 
-		<!--Bottom Gradient -->
-		<div
-			class='rotate-3 fixed -inset-x-12 -bottom-4 h-20 md:h-12 bg-gradient-to-r from-red-300 to-orange-300 blur-3xl'
-		>
-		</div>
-		<!--Bottom Gradient -->
+        <!--Bottom Gradient -->
+        <div
+            class='rotate-3 fixed -inset-x-12 -bottom-4 h-20 md:h-12 bg-gradient-to-r from-red-300 to-orange-300 blur-3xl'
+        >
+        </div>
+        <!--Bottom Gradient -->
 
-		<slot />
-		<style lang='scss' is:global>
-			@utility border-orange-50 {
-				border-color: var(--color-orange-50);
-			}
-			@utility shadow-lg {
-				box-shadow: var(--shadow-lg);
-			}
-			@utility bg-blue-100/80 {
-				background-color: color-mix(
-					in oklab,
-					var(--color-blue-100) 80%,
-					transparent
-				);
-			}
+        <slot />
+        <style lang='scss' is:global>
+            @utility border-orange-50 {
+                border-color: var(--color-orange-50);
+            }
+            @utility shadow-lg {
+                box-shadow: var(--shadow-lg);
+            }
+            @utility bg-blue-100/80 {
+                background-color: color-mix(
+                    in oklab,
+                    var(--color-blue-100) 80%,
+                    transparent
+                );
+            }
 
-			@utility border-blue-200 {
-				border-color: var(--color-blue-200);
-			}
+            @utility border-blue-200 {
+                border-color: var(--color-blue-200);
+            }
 
-			@utility bg-slate-100 {
-				background-color: var(--color-slate-100);
-			}
-			body {
-				letter-spacing: -0.05em;
-				--main-bg-color: #fff8f1; // Orange-50
-			}
-			.sun {
-				background: var(--main-bg-color);
-				background-image: url('/sun-2.png');
-				background-repeat: no-repeat;
-				background-position: bottom;
-				background-origin: content-box;
-				background-clip: content-box;
-				background-attachment: scroll;
-			}
-			h1,
-			h2,
-			h3 {
-				font-family: 'Inclusive Sans', sans-serif;
-			}
+            @utility bg-slate-100 {
+                background-color: var(--color-slate-100);
+            }
+            body {
+                letter-spacing: -0.05em;
+                --main-bg-color: #fff8f1; // Orange-50
+            }
+            .sun {
+                background: var(--main-bg-color);
+                background-image: url('/sun-2.png');
+                background-repeat: no-repeat;
+                background-position: bottom;
+                background-origin: content-box;
+                background-clip: content-box;
+                background-attachment: scroll;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: 'Inclusive Sans', sans-serif;
+            }
 
-			.card-link {
-				@apply transition-all duration-300;
-				@apply border border-solid border-orange-50;
-			}
+            .card-link {
+                @apply transition-all duration-300;
+                @apply border border-solid border-orange-50;
+            }
 
-			.card-link:hover {
-				@apply shadow-lg bg-blue-100/80;
-				@apply border border-solid border-blue-200;
-				transform: scale(1.015);
-			}
-			.topbar-blur {
-				position: relative;
-				user-select: none;
-				pointer-events: none;
-				--h: min(96px, 128px);
-				position: sticky;
-				height: var(--h);
-				z-index: 1;
-				backdrop-filter: blur(5px);
-				opacity: 0.95;
-				mask-image: linear-gradient(to bottom, #000 25%, transparent);
-			}
-			.topbar-blur:first-child {
-				margin-bottom: calc(-1 * var(--h));
-				top: 0;
-			}
-			.topbar-blur:after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background: linear-gradient(
-					to bottom,
-					var(--main-bg-color),
-					transparent
-				);
-			}
+            .card-link:hover {
+                @apply shadow-lg bg-blue-100/80;
+                @apply border border-solid border-blue-200;
+                transform: scale(1.015);
+            }
+            .topbar-blur {
+                position: relative;
+                user-select: none;
+                pointer-events: none;
+                --h: min(96px, 128px);
+                position: sticky;
+                height: var(--h);
+                z-index: 1;
+                backdrop-filter: blur(5px);
+                opacity: 0.95;
+                mask-image: linear-gradient(to bottom, #000 25%, transparent);
+            }
+            .topbar-blur:first-child {
+                margin-bottom: calc(-1 * var(--h));
+                top: 0;
+            }
+            .topbar-blur:after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to bottom,
+                    var(--main-bg-color),
+                    transparent
+                );
+            }
 
-			@keyframes slide-fade-in {
-				from {
-					opacity: 0;
-					transform: translateY(10vh);
-				}
-			}
+            @keyframes slide-fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(10vh);
+                }
+            }
 
-			@media (prefers-reduced-motion: no-preference) {
-				:global(.slide-fade-in) {
-					view-timeline-name: --item-timeline;
-					animation: slide-fade-in both;
-					animation-timeline: --item-timeline;
-					animation-range: contain 0% contain 50%;
-					animation-duration: 700ms;
-				}
-			}
-		</style>
-	</body>
+            @media (prefers-reduced-motion: no-preference) {
+                :global(.slide-fade-in) {
+                    view-timeline-name: --item-timeline;
+                    animation: slide-fade-in both;
+                    animation-timeline: --item-timeline;
+                    animation-range: contain 0% contain 50%;
+                    animation-duration: 700ms;
+                }
+            }
+
+            .wealthsimple {
+                @apply border border-solid bg-slate-100;
+            }
+        </style>
+    </body>
 </html>
