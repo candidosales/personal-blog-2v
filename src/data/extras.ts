@@ -51,12 +51,8 @@ export const extrasData = (t: any) => {
 					name: 'Chakra UI',
 				},
 				{
-					icon: 'supabase',
-					name: 'Supabase',
-				},
-				{
-					icon: 'upstash',
-					name: 'Upstash',
+					icon: 'meilisearch',
+					name: 'Meilisearch',
 				},
 				{
 					icon: 'vercel',
