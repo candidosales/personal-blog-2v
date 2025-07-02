@@ -206,9 +206,28 @@ const services: Service[] = [
 			width: 100%;
 		}
 	}
+
+    .bg-google-analytics {
+		background-image: url(/services/google-analytics-background.webp);
+		background-repeat: no-repeat;
+		background-position: 100% 220px;
+		background-size: 90%;
+	}
+	.bg-retool {
+		background-image: url(/services/retool-background.jpg);
+		background-repeat: no-repeat;
+		background-position: 100% 260px;
+		background-size: 90%;
+	}
+	.bg-custom-scripts {
+		background-image: url(/services/custom-scripts.png);
+		background-repeat: no-repeat;
+		background-position: 100% 220px;
+		background-size: 90%;
+	}
 	@media (min-width: 640px) {
 		.bg-wordpress {
-			background-position: 50% bottom;
+			background-position: 50% 180px;
 		}
 
         .bg-ai-tools {
@@ -217,6 +236,14 @@ const services: Service[] = [
             p {
                 width: 100%;
             }
+        }
+
+        .bg-retool, .bg-google-analytics {
+            background-position: 100% 190px;
+        }
+
+        .bg-custom-scripts {
+            background-position: 100% 190px;
         }
 	}
 	@media (min-width: 768px) {
@@ -232,6 +259,11 @@ const services: Service[] = [
                 width: 50%;
             }
         }
+
+        .bg-retool {
+            background-position: 100% 220px;
+            background-size: 90%;
+        }
 	}
 
 	@media (min-width: 1024px) {
@@ -243,27 +275,17 @@ const services: Service[] = [
             background-position: 100% 0;
 		    background-size: 60%;
             p {
-            width: 50%;
+                width: 50%;
+            }
         }
-	}
 
-	.bg-google-analytics {
-		background-image: url(/services/google-analytics-background.webp);
-		background-repeat: no-repeat;
-		background-position: 100% 220px;
-		background-size: 90%;
-	}
-	.bg-retool {
-		background-image: url(/services/retool-background.jpg);
-		background-repeat: no-repeat;
-		background-position: 100% 220px;
-		background-size: 90%;
-	}
-	.bg-custom-scripts {
-		background-image: url(/services/custom-scripts.png);
-		background-repeat: no-repeat;
-		background-position: 100% 220px;
-		background-size: 90%;
+        .bg-google-analytics {
+            background-position: 100% 220px;
+        }
+
+        .bg-retool {
+            background-position: 100% 190px;
+        }
 	}
 
 	.partner {
