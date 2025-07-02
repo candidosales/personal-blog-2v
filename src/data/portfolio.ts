@@ -131,7 +131,7 @@ export const portfolioData = (t: any) => {
 			imageAlt: t('portifolio.6.title'),
 			title: t('portifolio.6.title'),
 			description: t('portifolio.6.description'),
-			url: 'https://github.com/candidosales/landing-page-book-astro-svelte-tailwind',
+			url: 'https://github.com/candidosales/landing-page-book-astro-tailwind',
 			background: 'bg-amber-100',
 			techs: [
 				{
