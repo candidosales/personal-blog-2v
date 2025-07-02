@@ -6,7 +6,7 @@
   let { ...rest }: Props = $props();
 </script>
 
-<svg viewBox="0 0 24 24" fill="none" {...rest}>
+<svg viewBox="0 0 24 24" fill="none" width="100%" height="100%" {...rest}>
   <path
     fill="currentColor"
     d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"
