@@ -106,6 +106,9 @@ export const ui = {
     "services.4.title": "Creation of tailor-made scripts",
     "services.4.description":
       "Automate processes, extract data online.<br /> Customized scripts for efficiency and time savings.",
+    "services.5.title": "Custom AI Solutions & Platform Integration",
+    "services.5.description":
+      "Accelerate your workflows with intelligent automation that connects seamlessly with your existing platforms by integrating with OpenAI, Claude AI or Gemini.",
     "quote.joseMujica":
       "Triumphing in life is not winning, it is getting up and starting over every time you fall.",
     "quote.rubemAlves":
@@ -244,6 +247,9 @@ export const ui = {
     "services.4.title": "Criação de Scripts Sob Medida",
     "services.4.description":
       "Automatize processos, extraia dados online.<br /> Scripts personalizados para eficiência e economia de tempo.",
+    "services.5.title": "Soluções personalizadas de IA e integração de plataformas",
+    "services.5.description":
+      "Acelere seus fluxos de trabalho com automação inteligente que se conecta perfeitamente com suas plataformas integrando com OpenAI, Claude AI ou Gemini.",
     "quote.joseMujica":
       "Triunfar na vida não é ganhar, é se levantar e começar de novo cada vez que cai.",
     "quote.rubemAlves":

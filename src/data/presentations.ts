@@ -50,7 +50,7 @@ export const presentations = [
     title: "Simbiose da Administração com a Tecnologia",
     description:
       "Contar um pouco de como podemos relacionar a tecnologia na administração, como podemos tirar bons frutos dessa relação e um pouco do panorama da tecnologia",
-    href: "https://speakerdeck.com/candidosales/como-tornar-seguro-um-aplicativo-mobile-payment-sem-penalizar-a-experiencia-do-usuario",
+    href: "https://docs.google.com/presentation/d/1nONBxje6y-w0TSuTUS9l49eBGF7cLaH2HZitrzshXew/edit?usp=sharing",
     publishDate: "2021-11-01",
     place: {
       name: "UESPI",

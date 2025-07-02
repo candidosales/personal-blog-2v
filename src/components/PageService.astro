@@ -27,6 +27,16 @@ const customers = [
 		title: 'Geleia Total',
 	},
 	{
+		imageUrl: '/services/customers/consult-contabil.png',
+		url: 'https://consultcontabil.com/',
+		title: 'Consult Contabil',
+	},
+    {
+		imageUrl: '/services/customers/revgas.png',
+		url: 'https://revgas.com/',
+		title: 'RevGás',
+	},
+	{
 		imageUrl: '/services/customers/bora-piaui.png',
 		url: 'https://www.borapiaui.org/',
 		title: 'Bora Piauí',
@@ -54,6 +64,12 @@ const customers = [
 ];
 
 const services: Service[] = [
+	{
+		iconUrl: '/services/ai-tools.svg',
+		cssClass: 'col-span-12 md:col-span-12 bg-ai-tools',
+		title: t('services.5.title'),
+		description: t('services.5.description'),
+	},
 	{
 		iconUrl: '/services/wordpress-liferay.svg',
 		cssClass: 'col-span-12 md:col-span-8 bg-wordpress',
@@ -128,7 +144,7 @@ const services: Service[] = [
 				<Fragment set:html={t('services.subtitle.3')} />
 			</p>
 			<div
-				class='grid grid-cols-2 grid-rows-1 md:grid-cols-4 slide-fade-in'
+				class='grid grid-cols-2 grid-rows-1 md:grid-cols-3 slide-fade-in'
 			>
 				{
 					customers.map((c) => (
@@ -179,21 +195,56 @@ const services: Service[] = [
 		background-position: 50% bottom;
 		background-size: contain;
 	}
+
+    .bg-ai-tools {
+		background-image: url(/services/ai-convert.png);
+		background-repeat: no-repeat;
+		background-position: 100% 270px;
+		background-size: 100%;
+        height: 420px;
+		p {
+			width: 100%;
+		}
+	}
 	@media (min-width: 640px) {
 		.bg-wordpress {
 			background-position: 50% bottom;
 		}
+
+        .bg-ai-tools {
+            background-position: 50% bottom;
+
+            p {
+                width: 100%;
+            }
+        }
 	}
 	@media (min-width: 768px) {
 		.bg-wordpress {
 			background-position: 50% 200px;
 		}
+
+        .bg-ai-tools {
+            background-position: 100% bottom;
+		    background-size: 60%;
+            
+            h2,p {
+                width: 50%;
+            }
+        }
 	}
 
 	@media (min-width: 1024px) {
 		.bg-wordpress {
 			background-position: 50% 200px;
 		}
+
+        .bg-ai-tools {
+            background-position: 100% 0;
+		    background-size: 60%;
+            p {
+            width: 50%;
+        }
 	}
 
 	.bg-google-analytics {
