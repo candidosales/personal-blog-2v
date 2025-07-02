@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     Drawer,
-    Button,
     CloseButton,
     Sidebar,
     SidebarGroup,
@@ -26,21 +25,20 @@
 
 <div class="fixed w-full bottom-6 right-8 z-10 md:hidden">
   <div class="-mr-2 flex justify-end md:hidden">
-    <Button
+    <button
       class="text-md bg-blue-700 text-white backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 drop-shadow-xl font-inclusive"
       on:click={() => (drawerHidden = false)}
     >
-      Menu</Button
-    >
+      Menu
+    </button>
   </div>
 </div>
 <Drawer
-  transitionType="fly"
   {transitionParams}
   bind:hidden={drawerHidden}
   placement="right"
   id="sidebar2"
-  divClass="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 right-0"
+  class="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 right-0"
   client:load
 >
   <div class="flex items-center w-full justify-between">
@@ -75,10 +73,7 @@
         </SidebarItem>
       {/each}
     </SidebarGroup>
-    <SidebarGroup
-      border
-      borderClass={'pt-4 mt-4 border-t border-blue-200'}
-    >
+    <SidebarGroup border borderClass={'pt-4 mt-4 border-t border-blue-200'}>
       <Contact place={'mobile'} />
     </SidebarGroup>
   </Sidebar>
