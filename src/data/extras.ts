@@ -1,8 +1,10 @@
 export const extrasData = (t: any) => {
 	return [
 		// {
-		//   imageUrl: "/were-not-really-strangers.png",
-		//   imageAlt: "We're Not Really Strangers",
+		//   image: {
+		//     url: "/were-not-really-strangers.png",
+		//     alt: "We're Not Really Strangers",
+		//   },
 		//   title: "We're Not Really Strangers",
 		//   description:
 		//     "I ❤️ this game and wanted to create a possibility to play with my friends online and get to know each other even from a distance. (COVID tough times 😞)",
@@ -35,8 +37,10 @@ export const extrasData = (t: any) => {
 		//   ],
 		// },
 		{
-			imageUrl: '/extras/receituario-medico-2.png',
-			imageAlt: t('extras.1.title'),
+			image: {
+				url: '/extras/receituario-medico-2.png',
+				alt: t('extras.1.title'),
+			},
 			title: t('extras.1.title'),
 			description: t('extras.1.description'),
 			url: 'https://receituariomedico.app/',
@@ -65,8 +69,10 @@ export const extrasData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/extras/template-social-generator.png',
-			imageAlt: t('extras.2.title'),
+			image: {
+				url: '/extras/template-social-generator.png',
+				alt: t('extras.2.title'),
+			},
 			title: t('extras.2.title'),
 			description: t('extras.2.description'),
 			url: 'https://www.socialtemplates.online/',
@@ -91,8 +97,10 @@ export const extrasData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/extras/my-agenda-cultural.png',
-			imageAlt: t('extras.3.title'),
+			image: {
+				url: '/extras/my-agenda-cultural.png',
+				alt: t('extras.3.title'),
+			},
 			title: t('extras.3.title'),
 			description: t('extras.3.description'),
 			url: 'https://carnaval-sp-ec736.web.app/',

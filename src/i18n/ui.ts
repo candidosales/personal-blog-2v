@@ -73,6 +73,9 @@ export const ui = {
     "volunteer.5.title": "Companies using Angular in Brazil",
     "volunteer.5.description":
       "Repository of companies in 🇧🇷 that use Angular in their projects",
+    "volunteer.6.title": "Megui",
+    "volunteer.6.description":
+      "The mental health guide for you and your family",
     extras: "Extras",
     "extras.subtitle":
       "In my free time, I work on various projects to explore new resources and technologies",
@@ -214,6 +217,9 @@ export const ui = {
     "volunteer.5.title": "Empresas que usam Angular no Brasil",
     "volunteer.5.description":
       "Repositório de empresas em 🇧🇷 que utilizam Angular em seus projetos",
+    "volunteer.6.title": "Megui",
+    "volunteer.6.description":
+      "O guia de saúde mental para você e sua família",
     extras: "Extra",
     "extras.subtitle":
       "No meu tempo livre, trabalho em vários projectos para explorar novos recursos e tecnologias",

@@ -1,8 +1,10 @@
 export const portfolioData = (t: any) => {
 	return [
 		{
-			imageUrl: '/portfolio/cisco-chatgpt.avif',
-			imageAlt: t('portifolio.1.title'),
+			image: {
+				url: '/portfolio/cisco-chatgpt.avif',
+				alt: t('portifolio.1.title'),
+			},
 			title: t('portifolio.1.title'),
 			description: t('portifolio.1.description'),
 			url: 'https://cisco-chat-frontend.vercel.app/',
@@ -43,8 +45,10 @@ export const portfolioData = (t: any) => {
 			background: 'bg-sky-100',
 		},
 		{
-			imageUrl: '/portfolio/svelte-shopify-polaris-icons-1.avif',
-			imageAlt: t('portifolio.2.title'),
+			image: {
+				url: '/portfolio/svelte-shopify-polaris-icons-1.avif',
+				alt: t('portifolio.2.title'),
+			},
 			title: t('portifolio.2.title'),
 			description: t('portifolio.2.description'),
 			url: 'https://svelte-shopify-polaris-icons.vercel.app',
@@ -65,8 +69,10 @@ export const portfolioData = (t: any) => {
 			background: 'bg-emerald-100',
 		},
 		{
-			imageUrl: '/portfolio/material-time-picker-1.avif',
-			imageAlt: t('portifolio.3.title'),
+			image: {
+				url: '/portfolio/material-time-picker-1.avif',
+				alt: t('portifolio.3.title'),
+			},
 			title: t('portifolio.3.title'),
 			description: t('portifolio.3.description'),
 			url: 'https://github.com/candidosales/material-time-picker',
@@ -83,8 +89,10 @@ export const portfolioData = (t: any) => {
 			background: 'bg-blue-100',
 		},
 		{
-			imageUrl: '/portfolio/svelte-google-translate-1.avif',
-			imageAlt: t('portifolio.4.title'),
+			image: {
+				url: '/portfolio/svelte-google-translate-1.avif',
+				alt: t('portifolio.4.title'),
+			},
 			title: t('portifolio.4.title'),
 			description: t('portifolio.4.description'),
 			url: 'https://github.com/candidosales/svelte-google-translate',
@@ -101,8 +109,10 @@ export const portfolioData = (t: any) => {
 			background: 'bg-orange-100',
 		},
 		{
-			imageUrl: '/portfolio/format-code-1.avif',
-			imageAlt: t('portifolio.5.title'),
+			image: {
+				url: '/portfolio/format-code-1.avif',
+				alt: t('portifolio.5.title'),
+			},
 			title: t('portifolio.5.title'),
 			description: t('portifolio.5.description'),
 			url: 'https://www.figma.com/community/plugin/891351519501239645/Format-Code',
@@ -127,8 +137,10 @@ export const portfolioData = (t: any) => {
 			background: 'bg-blue-100',
 		},
 		{
-			imageUrl: '/portfolio/landing-page-book-2v-1.avif',
-			imageAlt: t('portifolio.6.title'),
+			image: {
+				url: '/portfolio/landing-page-book-2v-1.avif',
+				alt: t('portifolio.6.title'),
+			},
 			title: t('portifolio.6.title'),
 			description: t('portifolio.6.description'),
 			url: 'https://github.com/candidosales/landing-page-book-astro-tailwind',
@@ -157,8 +169,10 @@ export const portfolioData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/portfolio/cloud-function-go-1.avif',
-			imageAlt: t('portifolio.7.title'),
+			image: {
+				url: '/portfolio/cloud-function-go-1.avif',
+				alt: t('portifolio.7.title'),
+			},
 			title: t('portifolio.7.title'),
 			description: t('portifolio.7.description'),
 			url: 'https://github.com/candidosales/cloud-function-go',
@@ -175,8 +189,10 @@ export const portfolioData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/portfolio/figma-plugin-svelte-vite-1.avif',
-			imageAlt: t('portifolio.8.title'),
+			image: {
+				url: '/portfolio/figma-plugin-svelte-vite-1.avif',
+				alt: t('portifolio.8.title'),
+			},
 			title: t('portifolio.8.title'),
 			description: t('portifolio.8.description'),
 			url: 'https://github.com/candidosales/figma-plugin-svelte-vite',
@@ -201,8 +217,10 @@ export const portfolioData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/portfolio/dependency-report.avif',
-			imageAlt: t('portifolio.9.title'),
+			image: {
+				url: '/portfolio/dependency-report.avif',
+				alt: t('portifolio.9.title'),
+			},
 			title: t('portifolio.9.title'),
 			description: t('portifolio.9.description'),
 			url: 'https://github.com/candidosales/dependency-report',
@@ -227,8 +245,10 @@ export const portfolioData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/portfolio/personal-portfolio-2v-1.avif',
-			imageAlt: t('portifolio.10.title'),
+			image: {
+				url: '/portfolio/personal-portfolio-2v-1.avif',
+				alt: t('portifolio.10.title'),
+			},
 			title: t('portifolio.10.title'),
 			description: t('portifolio.10.description'),
 			url: 'https://github.com/candidosales/personal-blog-2v',
@@ -253,8 +273,10 @@ export const portfolioData = (t: any) => {
 			],
 		},
 		{
-			imageUrl: '/portfolio/personal-portfolio-1v.avif',
-			imageAlt: t('portifolio.11.title'),
+			image: {
+				url: '/portfolio/personal-portfolio-1v.avif',
+				alt: t('portifolio.11.title'),
+			},
 			title: t('portifolio.11.title'),
 			description: t('portifolio.11.description'),
 			url: 'https://github.com/candidosales/personal-blog',

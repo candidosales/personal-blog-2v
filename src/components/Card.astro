@@ -5,8 +5,10 @@ import ArrowRight from './icons/ArrowRight.svelte';
 export interface Props {
   title: string;
   description: string;
-  imageUrl: string;
-  imageAlt: string;
+  image: {
+    url: string;
+    alt: string;
+  };
   href: string;
   techs: Array<{ icon: string; name: string }>;
   loadingImage: 'lazy' | 'eager';
@@ -18,8 +20,7 @@ const {
   href,
   title,
   description,
-  imageUrl,
-  imageAlt,
+  image,
   techs,
   loadingImage = 'lazy',
   background = 'bg-slate-200',
@@ -66,10 +67,10 @@ const {
     class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
   >
     <Image
-      src={imageUrl}
+      src={image.url}
       height={493.67}
       width={394.66}
-      alt={imageAlt}
+      alt={image.alt}
       loading={loadingImage}
       class='w-full'
     />
