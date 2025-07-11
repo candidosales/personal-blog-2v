@@ -1,8 +1,38 @@
 export const volunteerData = (t: any) => {
     return [
         {
-            imageUrl: '/volunteer/turismo-piaui.webp',
-            imageAlt: t('volunteer.1.title'),
+            image: {
+                url: '/volunteer/megui.webp',
+                alt: t('volunteer.6.title'),
+            },
+            title: t('volunteer.6.title'),
+            description: t('volunteer.6.description'),
+            url: 'https://www.megui.app/',
+            background: 'bg-amber-100',
+            techs: [
+                {
+                    icon: 'react',
+                    name: 'React',
+                },
+                {
+                    icon: 'payloadcms',
+                    name: 'PayloadCMS',
+                },
+                {
+                    icon: 'flyio',
+                    name: 'Fly.io',
+                },
+                {
+                    icon: 'vercel',
+                    name: 'Vercel',
+                },
+            ],
+        },
+        {
+            image: {
+                url: '/volunteer/turismo-piaui.webp',
+                alt: t('volunteer.1.title'),
+            },
             title: t('volunteer.1.title'),
             description: t('volunteer.1.description'),
             url: 'https://www.turismopiaui.com/',
@@ -43,8 +73,10 @@ export const volunteerData = (t: any) => {
             ],
         },
         {
-            imageUrl: '/volunteer/geleia-total.webp',
-            imageAlt: t('volunteer.2.title'),
+            image: {
+                url: '/volunteer/geleia-total.webp',
+                alt: t('volunteer.2.title'),
+            },
             title: t('volunteer.2.title'),
             description: t('volunteer.2.description'),
             url: 'https://www.geleiatotal.com.br/',
@@ -69,8 +101,10 @@ export const volunteerData = (t: any) => {
             ],
         },
         {
-            imageUrl: '/volunteer/mapa-aborto-legal.png',
-            imageAlt: t('volunteer.3.title'),
+            image: {
+                url: '/volunteer/mapa-aborto-legal.png',
+                alt: t('volunteer.3.title'),
+            },
             title: t('volunteer.3.title'),
             description: t('volunteer.3.description'),
             url: 'https://mapaabortolegal.org/',
@@ -87,8 +121,10 @@ export const volunteerData = (t: any) => {
             ],
         },
         {
-            imageUrl: '/volunteer/celpip-countdown.png',
-            imageAlt: t('volunteer.4.title'),
+            image: {
+                url: '/volunteer/celpip-countdown.png',
+                alt: t('volunteer.4.title'),
+            },
             title: t('volunteer.4.title'),
             description: t('volunteer.4.description'),
             url: 'https://celpip-speaking-timer.vercel.app/',
@@ -113,8 +149,10 @@ export const volunteerData = (t: any) => {
             ],
         },
         {
-            imageUrl: '/volunteer/empresas-angular.png',
-            imageAlt: t('volunteer.5.title'),
+            image: {
+                url: '/volunteer/empresas-angular.png',
+                alt: t('volunteer.5.title'),
+            },
             title: t('volunteer.5.title'),
             description: t('volunteer.5.description'),
             url: 'https://github.com/candidosales/empresas-que-usam-angular-no-brasil',
