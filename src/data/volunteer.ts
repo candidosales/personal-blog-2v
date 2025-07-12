@@ -15,6 +15,10 @@ export const volunteerData = (t: any) => {
                     name: 'React',
                 },
                 {
+                    icon: 'expo',
+                    name: 'Expo',
+                },
+                {
                     icon: 'payloadcms',
                     name: 'PayloadCMS',
                 },
