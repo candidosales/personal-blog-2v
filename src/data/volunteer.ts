@@ -30,6 +30,10 @@ export const volunteerData = (t: any) => {
                     icon: 'vercel',
                     name: 'Vercel',
                 },
+                {
+                    icon: 'posthog',
+                    name: 'PostHog',
+                },
             ],
         },
         {
