@@ -55,12 +55,6 @@
       targetBlank: true,
       icon: AdpList,
     },
-    {
-      href: 'https://store.candidosales.me',
-      label: t('menu.store'),
-      targetBlank: true,
-      icon: Store,
-    },
   ];
 </script>
 
