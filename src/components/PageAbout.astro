@@ -10,12 +10,25 @@ import { getLangFromUrl, useTranslations } from '@i18n/utils';
 const experience = [
     {
         company: {
+            name: 'Smile.io',
+            image: '/companies/smileio.png',
+            url: 'https://www.smile.io/',
+        },
+        style: 'smileio',
+        period: 'Sep 2025 - Current',
+        title: 'Senior Software Engineer',
+        country: '🇨🇦',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+        company: {
             name: 'Wealthsimple',
             image: '/companies/wealthsimple.jpg',
             url: 'https://www.wealthsimple.com/',
         },
         style: 'wealthsimple',
-        period: 'Nov 2024 - Current',
+        period: 'Nov 2024 - Jul 2025',
         title: 'Intermediate Software Engineer',
         country: '🇨🇦',
         description:
@@ -111,9 +124,9 @@ const t = useTranslations(lang);
                     {t('about.piece6')}
                     <a
                         class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://www.wealthsimple.com/'
-                        title='Visit Wealthsimple'
-                        target='_blank'>Wealthsimple</a
+                        href='https://www.smile.io/'
+                        title='Visit Smile.io'
+                        target='_blank'>Smile.io</a
                     >
                     {t('about.piece7')}
                 </p>
@@ -168,7 +181,9 @@ const t = useTranslations(lang);
                             <p class='opacity-70 text-md'>{e.period}</p>
                         </div>
                         <div class='col-span-4 mb-8 md:mb-0 flex flex-row align-middle justify-start items-center'>
-                            <p class='break-words  text-md'>{e.title} at</p>
+                            <p class='break-words text-md max-w-lg flex-1'>
+                                {e.title} at
+                            </p>
                             <a
                                 href={e.company.url}
                                 title={e.company.name}
@@ -229,5 +244,10 @@ const t = useTranslations(lang);
         border-color: var(--color-slate-200);
         background-color: var(--color-slate-100);
         color: var(--color-slate-700);
+    }
+    .smileio {
+        border-color: var(--color-yellow-200);
+        background-color: var(--color-yellow-100);
+        color: var(--color-yellow-700);
     }
 </style>
