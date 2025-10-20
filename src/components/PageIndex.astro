@@ -8,7 +8,7 @@ import { extrasData } from '@data/extras';
 import { volunteerData } from '@data/volunteer';
 
 import TitleSection from '@components/TitleSection.astro';
-import Quote from '@components/Quote.astro';
+import Quotes from '@components/Quotes.astro';
 import Contact from '@components/Contact.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Header from './Header.svelte';
@@ -91,7 +91,7 @@ const extras = extrasData(t);
 				}
 			</div>
 
-			<Quote />
+			<Quotes />
 		</div>
 		<Contact />
 		<div class='light bg-orange-200 w-60 h-60 rounded-full'></div>

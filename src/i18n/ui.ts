@@ -128,6 +128,7 @@ export const ui = {
         "quote.aiWeiwei": "If you look away, you're complicit.",
         "quote.malcomX":
             "If you aren't careful, the newspapers will have you hating the people who are being oppressed and loving the people who are doing the oppressing.",
+        "quote.anthonyBourdain": "It seems that the more places I see, the bigger I realize the world to be. The more I realize how relatively little I know of it, how many places I have still to go, how much more there is to learn. Maybe that’s enlightenment enough, to know that there is no final resting place of the mind, no moment of smug clarity. Perhaps wisdom, at least for me, means realizing how small I am, and unwise, and how far I have yet to go.",
         "about.title": "About",
         "about.piece1": `Hey, I'm Candido Sales, half Brazilian 🇧🇷 and half Canadian 🇨🇦.`,
         "about.piece2":
@@ -270,6 +271,7 @@ export const ui = {
         "quote.aiWeiwei": "Se você desviar o olhar, você é conivente.",
         "quote.malcomX":
             "Se você não tomar cuidado, os jornais farão com que você odeie as pessoas que estão sendo oprimidas e ame as pessoas que estão oprimindo.",
+        "quote.anthonyBourdain": "Parece que quanto mais lugares vejo, mais percebo que o mundo é grande. Quanto mais percebo o quão pouco sei sobre ele, quantos lugares ainda tenho para visitar, quanto mais tenho para aprender. Talvez isso seja iluminação suficiente, saber que não há um lugar de descanso final para a mente, nenhum momento de clareza presunçosa. Talvez sabedoria, pelo menos para mim, signifique perceber o quão pequeno e sem sabedoria eu sou, e o quanto ainda tenho que percorrer.",
         "about.title": "Sobre",
         "about.piece1": `Olá, Eu sou Cândido Sales, metade brasileiro 🇧🇷 e metade canadense 🇨🇦!`,
         "about.piece2":

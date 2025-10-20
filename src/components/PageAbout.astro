@@ -6,6 +6,7 @@ import ArrowRight from '@components/icons/ArrowRight.svelte';
 import Contact from '@components/Contact.svelte';
 import Linkedin from '@components/icons/Linkedin.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import { Fragment } from 'astro/runtime/server/index.js';
 
 const experience = [
     {
@@ -215,6 +216,33 @@ const t = useTranslations(lang);
                 <ArrowRight class='overflow-visible ml-3 text-white' />
             </a>
         </div>
+        <div class="my-16 mx-auto max-w-7xl slide-fade-in">
+    <div class="p-6">
+        <div
+            class="flex flex-col md:flex-row mx-auto justify-center items-center md:items-start"
+        >
+            <Image
+                src="/quotes/anthony-bourdain.webp"
+                width={56}
+                height={56}
+                alt=""
+                class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
+                loading="lazy"
+                decoding="async"
+            />
+            <blockquote class="text-center md:text-left font-inclusive">
+                <p class="text-blue-800 mb-2 md:mb-0">
+                    Anthony Bourdain
+                </p>
+                <p
+                    class=" max-w-[480px] mx-auto text-xl font-medium text-blue-600"
+                >
+                    “<Fragment set:html={t("quote.anthonyBourdain")} />”
+                </p>
+            </blockquote>
+        </div>
+    </div>
+</div>
         <Contact />
     </main>
 </Layout>
