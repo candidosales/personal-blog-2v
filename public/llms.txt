@@ -1,0 +1,91 @@
+# Candido Sales - Software Engineer
+
+> A multidisciplinary engineer focusing on digital experiences
+
+## Site Information
+
+- **URL**: https://www.candidosales.me/
+- **Owner**: Candido Sales
+- **Type**: Personal Portfolio & Blog
+- **Focus**: Software Engineering, Open Source, Volunteer Projects
+
+## About
+
+Candido Sales is a software engineer who creates open source projects and provides consulting services. He is the founder of Geleia Total and Turismo Piauí. He mentors individuals in IT careers through ADPList.
+
+## Main Sections
+
+### Portfolio
+https://www.candidosales.me/
+
+Open source projects created and maintained:
+
+- **Cisco ChatGPT Security Advisories**: AI chatbot using Security Advisories data for natural language interaction
+- **Svelte Shopify Polaris Icons**: Set of Shopify Polaris Icons for Svelte projects
+- **Material Time Picker**: Time picker component using Angular Material
+- **Svelte Google Translate**: Google Translate component for Svelte
+- **Format Code**: Figma plugin for code formatting and syntax highlighting
+- **Landing Page Book 2v**: Landing page for advertising and sales of books to independent authors
+- **API in GO to create Cloud Function**: API for deploying Google Cloud Functions in Go
+- **Figma plugin boilerplate**: Boilerplate for creating Figma plugins with Svelte, Vite and TypeScript
+- **Dependencies report**: Tool to analyze consistency of dependencies in frontend projects
+- **Personal Portfolio 2v**: Landing page for personal portfolio
+- **Personal Portfolio 1v**: Landing page for personal portfolio
+
+### Volunteer
+https://www.candidosales.me/
+
+Projects aligned with beliefs in education, culture, art, public health, and sustainability:
+
+- **Megui**: Mental health guide for individuals and families
+- **Tourism Piauí**: Platform to preserve and discover Cuisine, History, and Ecotourism in Piauí, Brazil
+- **Geleia Total**: Platform to promote the culture and art of the state of Piauí, Brazil
+- **Legal Abortion Map**: Information about legal abortion in Brazil - situations allowed and requirements
+- **CELPIP Speaking Countdown**: Training tool for CELPIP speaking test
+- **Companies using Angular in Brazil**: Repository of Brazilian companies using Angular in their projects
+
+### Extras
+https://www.candidosales.me/
+
+Various projects exploring new resources and technologies:
+
+- **SUS Medical Prescription**: Tool to help doctors from Brazilian public health system make medical prescriptions
+- **Social template**: Tool to generate images for Instagram and Facebook from links
+- **My Cultural Agenda**: PWA website to help organize agendas at large events
+
+### About
+https://www.candidosales.me/about
+
+Background information about Candido Sales, his work, and his consulting services.
+
+### Blog
+https://www.candidosales.me/blog
+
+Blog posts about software engineering and technology.
+
+## Technologies
+
+- Svelte
+- Angular
+- TypeScript
+- Go
+- Google Cloud Functions
+- Figma Plugins
+- PWA (Progressive Web Apps)
+- AI/ChatGPT
+
+## Contact & Social
+- **LinkedIn**: https://www.linkedin.com/in/candidosales/
+- **GitHub**: https://github.com/candidosales
+- **Twitter**: https://twitter.com/candidosales
+- **ADPList**: https://adplist.org/mentors/candido-sales-gomes
+
+For collaboration opportunities, consulting inquiries, or mentorship through ADPList.
+
+## Special Note
+
+Candido Sales has a strong focus on:
+- Open source development
+- Social impact projects (health, culture, education)
+- Brazilian technology and culture
+- Mentoring and helping others in IT careers
