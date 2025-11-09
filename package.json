@@ -30,7 +30,7 @@
         "astro-seo": "^0.8.4",
         "clsx": "^2.1.1",
         "flowbite": "^3.1.2",
-        "flowbite-svelte": "1.18.0",
+        "flowbite-svelte": "1.9.0",
         "motion": "^12.23.24",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
