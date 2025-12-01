@@ -129,6 +129,7 @@ export const ui = {
         "quote.malcomX":
             "If you aren't careful, the newspapers will have you hating the people who are being oppressed and loving the people who are doing the oppressing.",
         "quote.anthonyBourdain": "It seems that the more places I see, the bigger I realize the world to be. The more I realize how relatively little I know of it, how many places I have still to go, how much more there is to learn. Maybe that’s enlightenment enough, to know that there is no final resting place of the mind, no moment of smug clarity. Perhaps wisdom, at least for me, means realizing how small I am, and unwise, and how far I have yet to go.",
+        "quote.carlSagan": "We are like butterflies who flutter for a day and think it is forever.",
         "about.title": "About",
         "about.piece1": `Hey, I'm Candido Sales, half Brazilian 🇧🇷 and half Canadian 🇨🇦.`,
         "about.piece2":
@@ -266,6 +267,7 @@ export const ui = {
             "E seu corpo é a harpa de sua alma, E cabe a você fazê-lo tocar uma linda música ou uma confusão de ruídos.",
         "quote.yoda":
             "O maior professor, o fracasso é. Nós somos aquilo que eles superam. Esse é o verdadeiro fardo de todos os mestres.",
+        "quote.carlSagan": "Somos como borboletas que voam por um dia e pensam que será para sempre.",
         "quote.alexandrePatricio":
             "Quem nunca para, nunca se escuta. Quem nunca se escuta, nunca se encontra.",
         "quote.aiWeiwei": "Se você desviar o olhar, você é conivente.",
