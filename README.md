@@ -41,6 +41,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npx @astrojs/upgrade`    | Astro upgrade                                    |
 
+## Env Variables
+
+To use Google Tag Manager, create a `.env` file in the root of the project based on the `.env.example` file and add your GTM ID:
+
+```
+PUBLIC_GTM_ID=G-XXXXXXX
+```
+
 ## 👍 Contribute
 
 If you want to say thank you and/or support the active development this project:

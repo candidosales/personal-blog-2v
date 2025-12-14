@@ -31,15 +31,18 @@ const currentPath = Astro.url.pathname;
         <link rel='sitemap' href='/sitemap-index.xml' />
         <script
             type='text/partytown'
-            src='https://www.googletagmanager.com/gtag/js?id=G-KF2R0QYPX7'
+            src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GTM_ID}`}
         ></script>
-        <script type='text/partytown'>
+        <script
+            type='text/partytown'
+            define:vars={{ gtmId: import.meta.env.PUBLIC_GTM_ID }}
+        >
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
             gtag('js', new Date());
-            gtag('config', 'G-KF2R0QYPX7');
+            gtag('config', gtmId);
         </script>
 
         <SEO
