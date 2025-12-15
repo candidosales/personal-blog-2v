@@ -1,41 +1,37 @@
 export const extrasData = (t: any) => {
     return [
-        // {
-        //   image: {
-        //     url: "/were-not-really-strangers.png",
-        //     alt: "We're Not Really Strangers",
-        //   },
-        //   title: "We're Not Really Strangers",
-        //   description:
-        //     "I ❤️ this game and wanted to create a possibility to play with my friends online and get to know each other even from a distance. (COVID tough times 😞)",
-        //   url: "https://wnrs.app/",
-        //   techs: [
-        //     {
-        //       icon: "nextjs",
-        //       name: "NextJS",
-        //     },
-        //     {
-        //       icon: "react",
-        //       name: "React",
-        //     },
-        //     {
-        //       icon: "chakra-ui",
-        //       name: "Chakra UI",
-        //     },
-        //     {
-        //       icon: "sass",
-        //       name: "SASS",
-        //     },
-        //     {
-        //       icon: "vercel",
-        //       name: "Vercel",
-        //     },
-        //     {
-        //       icon: "pwa",
-        //       name: "PWA",
-        //     },
-        //   ],
-        // },
+        {
+          image: {
+            url: "/extras/do-you-know-yourself.webp",
+            alt: "Do you know yourself",
+          },
+          title: "Do you know yourself",
+          description:
+            "A new way to explore self-knowledge through interactive questionnaires.",
+          url: "https://dyky.app/",
+          techs: [
+            {
+              icon: "nextjs",
+              name: "NextJS",
+            },
+            {
+              icon: "react",
+              name: "React",
+            },
+            {
+              icon: "chakra-ui-3",
+              name: "Chakra UI",
+            },
+            {
+              icon: "sass",
+              name: "SASS",
+            },
+            {
+              icon: "vercel",
+              name: "Vercel",
+            },
+          ],
+        },
         {
             image: {
                 url: '/extras/receituario-medico-2.png',
