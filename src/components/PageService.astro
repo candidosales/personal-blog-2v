@@ -64,6 +64,12 @@ const customers = [
 ];
 
 const services: Service[] = [
+    {
+		iconUrl: '/services/data-engineer-tools.svg',
+		cssClass: 'col-span-12 md:col-span-12 bg-data-engineer',
+		title: t('services.6.title'),
+		description: t('services.6.description'),
+	},
 	{
 		iconUrl: '/services/ai-tools.svg',
 		cssClass: 'col-span-12 md:col-span-12 bg-ai-tools',
@@ -196,7 +202,7 @@ const services: Service[] = [
 		background-size: contain;
 	}
 
-    .bg-ai-tools {
+    .bg-ai-tools, .bg-data-engineer {
 		background-image: url(/services/ai-convert.png);
 		background-repeat: no-repeat;
 		background-position: 100% 270px;
@@ -205,6 +211,10 @@ const services: Service[] = [
 		p {
 			width: 100%;
 		}
+	}
+
+    .bg-data-engineer {
+		background-image: url(/services/data-engineer.png);
 	}
 
     .bg-google-analytics {
@@ -230,7 +240,7 @@ const services: Service[] = [
 			background-position: 50% 180px;
 		}
 
-        .bg-ai-tools {
+        .bg-ai-tools, .bg-data-engineer {
             background-position: 50% bottom;
 
             p {
@@ -251,7 +261,7 @@ const services: Service[] = [
 			background-position: 50% 200px;
 		}
 
-        .bg-ai-tools {
+        .bg-ai-tools, .bg-data-engineer {
             background-position: 100% bottom;
 		    background-size: 60%;
             
@@ -271,7 +281,7 @@ const services: Service[] = [
 			background-position: 50% 200px;
 		}
 
-        .bg-ai-tools {
+        .bg-ai-tools, .bg-data-engineer {
             background-position: 100% 0;
 		    background-size: 60%;
             p {

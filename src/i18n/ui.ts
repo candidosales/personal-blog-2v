@@ -112,6 +112,9 @@ export const ui = {
         "services.5.title": "Custom AI Solutions & Platform Integration",
         "services.5.description":
             "Accelerate your workflows with intelligent automation that connects seamlessly with your existing platforms by integrating with OpenAI, Claude AI or Gemini.",
+        "services.6.title": "Fast, reliable data when you need it",
+        "services.6.description":
+            "Complete data engineering solutions with a modern stack (DltHub, DBT, Prefect, ClickHouse, etc). Automated pipelines that transform raw information into actionable insights with speed and quality.",
         "quote.joseMujica":
             "Triumphing in life is not winning, it is getting up and starting over every time you fall.",
         "quote.rubemAlves":
@@ -255,6 +258,9 @@ export const ui = {
         "services.5.title": "Soluções personalizadas de IA e integração de plataformas",
         "services.5.description":
             "Acelere seus fluxos de trabalho com automação inteligente que se conecta perfeitamente com suas plataformas integrando com OpenAI, Claude AI ou Gemini.",
+        "services.6.title": "Dados rápidos e confiáveis quando você precisa",
+        "services.6.description":
+            "Soluções completas de engenharia de dados com stack moderno (DltHub, DBT, Prefect, ClickHouse e etc). Pipelines automatizados que transformam informação bruta em insights acionáveis com velocidade e qualidade.",
         "quote.joseMujica":
             "Triunfar na vida não é ganhar, é se levantar e começar de novo cada vez que cai.",
         "quote.rubemAlves":
