@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 @theme {
 	--font-inclusive: 'Inclusive Sans', 'Inter', sans-serif;

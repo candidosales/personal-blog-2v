@@ -1,10 +1,54 @@
 ---
-const { frontmatter } = Astro.props;
+import BaseLayout from './Layout.astro';
+import Header from '@components/Header.svelte';
+
+const { frontmatter, headings } = Astro.props;
 ---
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-<p><em>{frontmatter.description}</em></p>
-<p>Written by {frontmatter.author}</p>
-<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-<slot />
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <Header client:only='svelte' />
+  <main class='relative pb-36 mx-auto prose prose-h1:font-medium prose-h1:mb-2 lg:prose-xl mt-16 mb-16 px-4'>
+    <header class='mb-8'>
+      <h1 class='text-balance mb-0'>{frontmatter.title}</h1>
+      <div class='text-base'>
+        <time datetime={frontmatter.pubDate.toString()}
+          >{frontmatter.pubDate.toString().slice(0, 10)}</time
+        > by <span>{frontmatter.author}</span>
+      </div>
+    </header>
+    <nav id='contents' class='p-4 mb-2 text-sm bg-white/40 
+    prose-h3:mt-0 prose-h3:text-base  prose-h3:text-slate-600
+    prose-a:no-underline
+    rounded-lg'>
+      <h3 class='mb-1/12 mt-0'>Contents</h3>
+      <ul>
+        {
+          headings.map((heading) => (
+            <li>
+              <a
+                href={`#${heading.slug}`}
+                class='py-v1/12 hover:text-theme-text-sec block'
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <article
+      class='dark:prose-invert
+            prose-slate
+            prose-a:text-blue-600 
+            prose-p:text-justify prose-p:leading-6
+            prose-img:rounded-xl'
+    >
+      <img
+        src={frontmatter.image.url}
+        width='300'
+        alt={frontmatter.image.alt}
+      />
+      <slot />
+    </article>
+  </main>
+</BaseLayout>
