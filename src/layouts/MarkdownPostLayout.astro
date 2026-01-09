@@ -40,8 +40,11 @@ const { frontmatter, headings } = Astro.props;
       class='
             prose-slate
             prose-a:text-blue-600 
-            prose-p:text-justify prose-p:leading-6
-            prose-img:rounded-xl'
+            prose-p:text-justify prose-p:leading-6 prose-p:text-base
+            prose-img:rounded-xl
+            prose-code:text-sm
+            prose-pre:leading-6 prose-pre:mt-0
+            prose-h2:mb-4'
     >
       <img
         src={frontmatter.image.url}

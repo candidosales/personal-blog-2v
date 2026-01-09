@@ -8,7 +8,7 @@
 
 @layer base {
 	.prose code {
-		@apply bg-slate-100 text-red-600! px-1.5 py-1 rounded font-mono! font-medium! text-[0.9em]!;
+		@apply bg-slate-100 text-red-600! px-1.5 py-1 rounded font-mono! font-medium!;
 	}
 
 	.prose code::before,
