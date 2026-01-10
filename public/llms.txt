@@ -20,7 +20,6 @@ https://www.candidosales.me/
 
 Open source projects created and maintained:
 
-- **Cisco ChatGPT Security Advisories**: AI chatbot using Security Advisories data for natural language interaction
 - **Svelte Shopify Polaris Icons**: Set of Shopify Polaris Icons for Svelte projects
 - **Material Time Picker**: Time picker component using Angular Material
 - **Svelte Google Translate**: Google Translate component for Svelte
