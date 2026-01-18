@@ -487,11 +487,20 @@ Você pode acessar a interface do ClickHouse UI em `http://localhost:5521` para 
 
 Existem outras ferramentas de orquestração como [Dagster](https://dagster.io/) ou [Airflow](https://airflow.apache.org/), mas escolhi o Prefect por sua simplicidade e facilidade de uso, além de sua execução ser realizada no próprio code base.
 
-Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), mas escolhi o DLT, pois oferece uma abordagem moderna e eficiente, especialmente quando combinado com o ClickHouse, que é conhecido por sua velocidade e capacidade de lidar com grandes volumes de dados.
+Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), mas escolhi o DLT, pois oferece uma abordagem moderna, eficiente e utiliza [Apache Arrow](https://dlthub.com/blog/how-dlt-uses-apache-arrow), especialmente quando combinado com o ClickHouse, que é conhecido por sua velocidade e capacidade de lidar com grandes volumes de dados.
 
-Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust, mas ainda está em fase beta e não possui suporte para MS SQL Server, então optei pelo Dbt tradicional.
+Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust e que utiliza [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), mas ainda está em fase beta e não possui suporte para MS SQL Server, então optei pelo Dbt tradicional.
 
+[Apache Arrow](https://arrow.apache.org/) é uma tecnologia poderosa que está ganhando cada vez mais espaço no ecossistema de dados, e é interessante ver como ela está sendo integrada em várias ferramentas modernas de engenharia de dados. The 
+
+O formato Arrow é uma maneira melhor de representar dados tabulares na memória do que objetos nativos do Python (lista de dicionários). Ele permite descarregar o processamento para a biblioteca C++ rápida do Arrow e evita o processamento de linhas uma a uma. Se você se interessa em entender mais sobre, recomendo esse [vídeo](https://www.youtube.com/watch?v=Hyh6QamL-Zo).
 
 ## Referências:
 
 - https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17 
+- https://www.youtube.com/watch?v=OLXkGB7krGo
+- https://docs.getdbt.com/docs/build/documentation
+- https://dlthub.com/docs/intro
+- https://dlthub.com/blog/dlt-segment-migration
+- https://www.prefect.io/blog/hidden-costs-apache-airflow
+- https://www.prefect.io/blog/airflow-local-development
