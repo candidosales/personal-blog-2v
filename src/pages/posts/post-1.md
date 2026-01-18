@@ -196,6 +196,108 @@ Vou pode testar se o projeto Dbt está funcionando corretamente executando o com
 uv run dbt debug
 ```
 
+### Configurar os Dbt models
+
+Vou criar os modelos Dbt para transformar os dados. Crio as pastas e arquivos necessários dentro da pasta `nyc_taxi/nyc_taxi_dbt/models/`:
+
+- staging/
+  - sources.yml
+  - stg_nyctaxi_sample.sql
+- marts/
+  - fact_nyctaxi_trips.sql
+
+O arquivo `sources.yml` define a fonte de dados:
+
+```yaml
+version: 2
+
+sources:
+  - name: clickhouse_staging
+    database: nyc_taxi
+    tables:
+      - name: nyctaxi_sample
+        identifier: nyc_taxi_staging___nyctaxi_sample
+```
+
+O arquivo `stg_nyctaxi_sample.sql` cria a tabela de staging:
+
+```sql
+{{ config(materialized='view') }}
+
+with source as (
+    select * from {{ source('clickhouse_staging', 'nyctaxi_sample') }}
+),
+
+renamed as (
+    select
+        medallion,
+        hack_license,
+        vendor_id,
+        rate_code,
+        store_and_fwd_flag,
+        pickup_datetime,
+        dropoff_datetime,
+        passenger_count,
+        trip_time_in_secs,
+        trip_distance,
+        pickup_longitude,
+        pickup_latitude,
+        dropoff_longitude,
+        dropoff_latitude,
+        payment_type,
+        fare_amount,
+        surcharge,
+        mta_tax,
+        tolls_amount,
+        total_amount,
+        tip_amount,
+        tipped,
+        tip_class,
+        _dlt_load_id,
+        _dlt_id
+    from source
+)
+
+select * from renamed
+```
+
+O arquivo `fact_nyctaxi_trips.sql` cria a tabela fato:
+
+```sql
+{{ config(
+    materialized='incremental',
+    engine='ReplacingMergeTree',
+    order_by=['medallion', 'hack_license', 'pickup_datetime'],
+    unique_key='_dlt_id',
+    incremental_strategy='append'
+) }}
+
+-- ReplacingMergeTree handles duplicates automatically based on the ORDER BY keys
+-- when merges happen. In dbt-clickhouse, 'incremental' with 'append' is often used
+-- with ReplacingMergeTree to let the engine handle deduplication.
+
+with staging as (
+    select * from {{ ref('stg_nyctaxi_sample') }}
+    {% if is_incremental() %}
+    where pickup_datetime > (select max(pickup_datetime) from {{ this }})
+    {% endif %}
+)
+
+select * from staging
+```
+
+A razão de usar o `ReplacingMergeTree` é que ele permite que o ClickHouse gerencie automaticamente a substituição de registros duplicados com base na chave primária definida (neste caso, `medallion`, `hack_license` e `pickup_datetime`). Isso é especialmente útil para cenários de carga incremental, onde novos dados podem conter atualizações ou correções para registros existentes.
+
+Além disso dividi em staging e marts para seguir as boas práticas de organização de projetos Dbt, onde os dados brutos são primeiro carregados em tabelas de staging antes de serem transformados em tabelas fato ou dimensão.
+
+Então, ilustrando o fluxo de dados, seria:
+
+```mermaid
+graph LR
+    A[Raw Data in ClickHouse] --> B[Staging Table: stg_nyctaxi_sample]
+    B --> C[Fact Table: fact_nyctaxi_trips]
+```
+
 ### Configurar o Docker Compose para ClickHouse e Prefect
 
 Agora vou adicionar os serviços do ClickHouse e do Prefect no arquivo `docker-compose.yml`:
