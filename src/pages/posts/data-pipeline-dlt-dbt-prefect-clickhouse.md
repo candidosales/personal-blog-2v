@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My First Blog Post'
+title: 'Data pipeline com DLT, Dbt, Prefect e ClickHouse'
 pubDate: 2022-07-01
 author: 'Candido Gomes'
 image:
@@ -13,38 +13,13 @@ Ultimamente venho estudando sobre Data Engineering e Data Pipelines. Achei inter
 
 Onde quis fazer uma prova de conceito de uma pipeline de dados simples, mas que pudesse ser facilmente replicada em qualquer ambiente usando Docker, onde pudesse subir todo o ambiente usando Docker compose e que trouxesse conceitos de engenheria de software usando Dbt.
 
+Além disso, um dos príncipios dessa arquitetura é custo, então pesquisei as que oferecerem a maior simplicidade e menor custo possível, assim quis usar o Prefect como orquestrador da pipeline, Dlt e o ClickHouse como data warehouse para armazenar os dados transformados.
+
 Para tornar um pouco mais desafiador, quis fazer a ingestão de dados de banco MS SQL Server, que é um banco de dados que não costumo trabalhar no dia a dia, e o dataset seria sobre o táxi de Nova York, que é um dataset público e bem conhecido na comunidade de dados.
 
 A arquitetura da solução ficou assim:
 
-```mermaid
-graph LR
-    subgraph "Source (OLTP)"
-        SS[SQL Server]
-    end
-
-    subgraph "Ingestion (EL)"
-        DLT[DLT - Data Load Tool]
-    end
-
-    subgraph "Warehouse (OLAP)"
-        CH[ClickHouse]
-    end
-
-    subgraph "Transformation (T)"
-        DBT[dbt - Data Build Tool]
-    end
-
-    subgraph "Orchestration"
-        PF[Prefect]
-    end
-
-    SS --> DLT
-    DLT --> CH
-    CH <--> DBT
-    PF --> DLT
-    PF --> DBT
-```
+![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.png)
 
 ## Criar o ambiente com Docker Compose
 
@@ -200,11 +175,17 @@ uv run dbt debug
 
 Vou criar os modelos Dbt para transformar os dados. Crio as pastas e arquivos necessários dentro da pasta `nyc_taxi/nyc_taxi_dbt/models/`:
 
-- staging/
-  - sources.yml
-  - stg_nyctaxi_sample.sql
-- marts/
-  - fact_nyctaxi_trips.sql
+```bash
+data-engineer/
+├── nyc_taxi/
+│   └── nyc_taxi_dbt/   # dbt project
+│       └── models/     # SQL Transformation models
+│           ├── staging/
+│           │   ├── sources.yml
+│           │   └── stg_nyctaxi_sample.sql
+│           └── marts/
+│               └── fact_nyctaxi_trips.sql
+```
 
 O arquivo `sources.yml` define a fonte de dados:
 
@@ -290,12 +271,20 @@ A razão de usar o `ReplacingMergeTree` é que ele permite que o ClickHouse gere
 
 Além disso dividi em staging e marts para seguir as boas práticas de organização de projetos Dbt, onde os dados brutos são primeiro carregados em tabelas de staging antes de serem transformados em tabelas fato ou dimensão.
 
+Se você quiser mais sobre estratégias de modelagem como dimensões e fatos, você pode ler esse [artigo](https://www.montecarlodata.com/blog-fact-vs-dimension-tables-in-data-warehousing-explained/).
+
 Então, ilustrando o fluxo de dados, seria:
 
 ```mermaid
 graph LR
-    A[Raw Data in ClickHouse] --> B[Staging Table: stg_nyctaxi_sample]
-    B --> C[Fact Table: fact_nyctaxi_trips]
+    A[Raw Data in ClickHouse] --> B[StagingTable: stg_nyctaxi_sample]
+    B --> C[FactTable: fact_nyctaxi_trips]
+```
+
+Com isso finalizo a configuração do Dbt. Podemos testar os modelos executando o comando:
+
+```bash
+uv run dbt run
 ```
 
 ### Configurar o Docker Compose para ClickHouse e Prefect
@@ -332,6 +321,12 @@ volumes:
   sqlserverdata:
   clickhousedata:
   prefectdata:
+```
+
+Vamos subir os containers do ClickHouse e do Prefect:
+
+```bash
+docker-compose up -d clickhouse prefect
 ```
 
 ### Criar o fluxo de orquestração com Prefect
@@ -427,6 +422,75 @@ def load_sql_server_to_clickhouse():
 if __name__ == "__main__":
     load_sql_server_to_clickhouse()
 ```
+
+Com isso vamos executar o fluxo de orquestração dentro da pasta `nyc_taxi` onde contém o ambiente virtual do UV:
+
+```bash
+cd nyc_taxi 
+uv run python main_flow.py
+```
+Você pode monitorar a execução do fluxo acessando o dashboard do Prefect em `http://localhost:4200`.
+
+![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.png)
+
+![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.png)
+
+Nos logs do fluxo você verá as etapas de extração, transformação e carregamento dos dados:
+
+![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.png)
+
+Você pode verificar os dados carregados no ClickHouse usando o cliente web em `http://localhost:8123` ou qualquer ferramenta de consulta SQL compatível com ClickHouse.
+
+Aqui você pode ver a tabela fato `fact_nyctaxi_trips` criada no ClickHouse:
+![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.png)
+
+## Configurar Clickhouse UI
+
+Para facilitar a visualização dos dados no ClickHouse, você pode usar o [ClickHouse UI](https://github.com/caioricciuti/ch-ui).
+
+Vamos adicionar o serviço do ClickHouse UI no arquivo `docker-compose.yml`:
+
+```yaml
+  ch-ui:
+    image: ghcr.io/caioricciuti/ch-ui:latest
+    restart: always
+    ports:
+      - '5521:5521'
+    environment:
+      # Core ClickHouse Configuration
+      VITE_CLICKHOUSE_URL: 'http://localhost:8123'
+      VITE_CLICKHOUSE_USER: 'default'
+      VITE_CLICKHOUSE_PASS: 'password'
+
+      # Optional: Advanced Features
+      VITE_CLICKHOUSE_USE_ADVANCED: 'false'
+      VITE_CLICKHOUSE_CUSTOM_PATH: ''
+      VITE_CLICKHOUSE_REQUEST_TIMEOUT: '30000'
+
+      # Optional: Reverse Proxy Support
+      VITE_BASE_PATH: '/'
+```
+
+Em seguida, subo o container do ClickHouse UI:
+
+```bash
+docker-compose up -d ch-ui
+```
+
+Você pode acessar a interface do ClickHouse UI em `http://localhost:5521` para explorar os dados carregados. Na imagem abaixo você pode ver que fiz uma consulta na tabela fato `fact_nyctaxi_trips` para contar todas as viagens registradas e levou apenas 1.18ms onde temo 1.703.957 registros carregados. É muito rápido!:
+
+![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.png)
+
+## Conclusão
+
+É muito gratificante ver como todas essas ferramentas podem trabalhar juntas para criar uma pipeline de dados eficiente e escalável. O uso do DLT para ingestão, Dbt para transformação, Prefect para orquestração e ClickHouse como data warehouse proporciona uma solução robusta e de alto desempenho, que pode ser facilmente replicada em diferentes ambientes graças ao Docker Compose.
+
+Existem outras ferramentas de orquestração como [Dagster](https://dagster.io/) ou [Airflow](https://airflow.apache.org/), mas escolhi o Prefect por sua simplicidade e facilidade de uso, além de sua execução ser realizada no próprio code base.
+
+Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), mas escolhi o DLT, pois oferece uma abordagem moderna e eficiente, especialmente quando combinado com o ClickHouse, que é conhecido por sua velocidade e capacidade de lidar com grandes volumes de dados.
+
+Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust, mas ainda está em fase beta e não possui suporte para MS SQL Server, então optei pelo Dbt tradicional.
+
 
 ## Referências:
 
