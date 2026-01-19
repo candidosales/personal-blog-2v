@@ -63,3 +63,11 @@ const lang = getLangFromUrl(Astro.url);
     </article>
   </main>
 </BaseLayout>
+
+<style is:global>
+    .expressive-code .frame.has-title:not(.is-terminal) .title.file-icon {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+</style>

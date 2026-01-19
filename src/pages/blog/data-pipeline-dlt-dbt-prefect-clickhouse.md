@@ -20,13 +20,13 @@ To make it a bit more challenging, I wanted to ingest data from an MS SQL Server
 
 The solution's architecture looks like this:
 
-![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.png)
+![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.webp)
 
 ## Create the environment with Docker Compose
 
 The first step is to create the environment with Docker Compose, where I will start the source database. I created the `docker-compose.yml` file in the root folder of the project with the following content:
 
-```yaml
+```yaml title="docker-compose.yml"
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -113,7 +113,7 @@ dbt init nyc_taxi_dbt
 
 Meu arquivo `dbt_project.yml` ficou assim:
 
-```yaml
+```yaml title="dbt_project.yml"
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -152,7 +152,7 @@ models:
 
 I configure the `~/.dbt/profiles.yml` file to connect to ClickHouse:
 
-```yaml
+```yaml title="profiles.yml"
 nyc_taxi_clickhouse:
   target: dev
   outputs:
@@ -190,7 +190,7 @@ data-engineer/
 
 The `sources.yml` file defines the data source:
 
-```yaml
+```yaml title="sources.yml"
 version: 2
 
 sources:
@@ -203,7 +203,7 @@ sources:
 
 The `stg_nyctaxi_sample.sql` file creates the staging table:
 
-```sql
+```sql title="stg_nyctaxi_sample.sql"
 {{ config(materialized='view') }}
 
 with source as (
@@ -290,7 +290,7 @@ uv run dbt run
 
 Now I will add the ClickHouse and Prefect services to the `docker-compose.yml` file:
 
-```yaml
+```yaml title="docker-compose.yml"
 services:
   sqlserver: # Below the already created SQL Server service
   clickhouse:
@@ -332,7 +332,7 @@ docker-compose up -d clickhouse prefect
 
 Now I will create the orchestration flow using Prefect. I create the `main_flow.py` file inside the `nyc_taxi` folder with the following content:
 
-```python
+```python title="main_flow.py"
 import logging
 from prefect import flow, task
 from extract_sqlserver import load_sql_server_to_clickhouse
@@ -381,7 +381,7 @@ if __name__ == "__main__":
 
 Next, I create the `extract_sqlserver.py` file with the logic to extract data from SQL Server to ClickHouse:
 
-```python
+```python title="extract_sqlserver.py"
 
 import logging
 import dlt
@@ -430,18 +430,18 @@ uv run python main_flow.py
 ```
 You can monitor the flow execution by accessing the Prefect dashboard at `http://localhost:4200`.
 
-![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.png)
+![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
 
-![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.png)
+![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.webp)
 
 In the flow logs, you will see the data extraction, transformation, and loading steps:
 
-![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.png)
+![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.webp)
 
 You can check the data loaded into ClickHouse using the web client at `http://localhost:8123` or any SQL query tool compatible with ClickHouse.
 
 Here you can see the fact table `fact_nyctaxi_trips` created in ClickHouse:
-![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.png)
+![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.webp)
 
 ## Configure ClickHouse UI
 
@@ -449,7 +449,7 @@ To facilitate data visualization in ClickHouse, you can use [ClickHouse UI](http
 
 Let's add the ClickHouse UI service to the `docker-compose.yml` file:
 
-```yaml
+```yaml title="docker-compose.yml"
   ch-ui:
     image: ghcr.io/caioricciuti/ch-ui:latest
     restart: always
@@ -478,7 +478,7 @@ docker-compose up -d ch-ui
 
 You can access the ClickHouse UI interface at `http://localhost:5521` to explore the loaded data. In the image below, you can see that I ran a query on the `fact_nyctaxi_trips` fact table to count all recorded trips, and it took only 1.18ms for the 1,703,957 records loaded. It's very fast!:
 
-![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.png)
+![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.webp)
 
 ## Conclusion
 
