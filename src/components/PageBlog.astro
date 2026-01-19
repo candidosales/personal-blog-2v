@@ -7,14 +7,14 @@ import { getLangFromUrl } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 
-const mdPosts =
-	lang === 'pt-br'
-		? await Astro.glob('../pages/pt-br/blog/*.md')
-		: await Astro.glob('../pages/blog/*.md');
+const mdPostsEn = import.meta.glob('../pages/blog/*.md', { eager: true });
+const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.md', { eager: true });
+
+const mdPosts = Object.values(lang === 'pt-br' ? mdPostsPt : mdPostsEn);
 
 const allPosts = [
 	...posts,
-	...mdPosts.map((post) => ({
+	...mdPosts.map((post: any) => ({
 		title: post.frontmatter.title,
 		description: post.frontmatter.description || '',
 		href: post.url,
