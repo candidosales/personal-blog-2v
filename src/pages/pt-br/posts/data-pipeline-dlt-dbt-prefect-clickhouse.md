@@ -5,7 +5,7 @@ pubDate: 2026-01-19
 author: 'Candido Gomes'
 description: 'Ultimamente, tenho estudado Engenharia de Dados e Pipelines de Dados. Achei que seria interessante compartilhar um pouco do que estou aprendendo.'
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
+    url: '/blog/data-pipeline-dlt-dbt-prefect-clickhouse/thumbnail.webp'
     alt: 'Pipeline da dados usando Dlthub, Dbt, Prefect e Clickhouse'
 tags: ["dlthub", "dbt", "prefect", "clickhouse", "data engineering", "data pipeline"]
 ---

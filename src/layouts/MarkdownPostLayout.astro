@@ -24,6 +24,11 @@ const lang = getLangFromUrl(Astro.url);
         > by <span>{frontmatter.author}</span>
       </div>
     </header>
+    <img
+        class='rounded-xl mb-8 w-full h-auto'
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+      />
     <nav id='contents' class='p-4 mb-2 text-sm bg-white/40 
     prose-h3:mt-0 prose-h3:text-base  prose-h3:text-slate-600
     prose-a:no-underline
@@ -54,11 +59,6 @@ const lang = getLangFromUrl(Astro.url);
             prose-pre:leading-6 prose-pre:mt-0
             prose-h2:mb-4'
     >
-      <img
-        src={frontmatter.image.url}
-        width='300'
-        alt={frontmatter.image.alt}
-      />
       <slot />
     </article>
   </main>
