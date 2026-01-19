@@ -58,9 +58,13 @@ function isDateBeforeToday(dateString: string) {
 								</p>
 								<div class='flex flex-row w-full justify-between'>
 									<p class='text-blue-800/80 text-xs font-normal'>
-										{new Date(
-											p.publishDate,
-										).toLocaleDateString(lang)}
+										{
+											new Date(p.publishDate).toLocaleDateString(lang, {
+												year: 'numeric',
+												month: 'short',
+												day: 'numeric',
+											})
+										}
 									</p>
 									{p.place?.name && (
 										<p class='text-blue-800/80 text-xs font-normal px-2 py-1 bg-blue-100 rounded-full'>

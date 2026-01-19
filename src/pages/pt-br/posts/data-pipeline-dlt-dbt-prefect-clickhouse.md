@@ -1,29 +1,29 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-title: 'Data pipeline with DLT, dbt, Prefect, and ClickHouse'
+layout: ../../../layouts/MarkdownPostLayout.astro
+title: 'Data pipeline com DLT, Dbt, Prefect e ClickHouse'
 pubDate: 2022-07-01
 author: 'Candido Gomes'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'Data pipeline using Dlthub, dbt, Prefect and Clickhouse'
+    alt: 'Pipeline da dados usando Dlthub, Dbt, Prefect e Clickhouse'
 tags: ["dlthub", "dbt", "prefect", "clickhouse", "data engineering", "data pipeline"]
 ---
 
-Lately, I've been studying Data Engineering and Data Pipelines. I thought it would be interesting to share a bit of what I'm learning.
+Ultimamente venho estudando sobre Data Engineering e Data Pipelines. Achei interessante compartilhar um pouco do que ando aprendendo.
 
-I wanted to create a simple proof of concept for a data pipeline that could be easily replicated in any environment using Docker, where I could set up the entire environment using Docker Compose and incorporate software engineering concepts using dbt.
+Onde quis fazer uma prova de conceito de uma pipeline de dados simples, mas que pudesse ser facilmente replicada em qualquer ambiente usando Docker, onde pudesse subir todo o ambiente usando Docker compose e que trouxesse conceitos de engenheria de software usando Dbt.
 
-Furthermore, one of the principles of this architecture is cost, so I researched those that offered the greatest simplicity and lowest possible cost. Thus, I chose to use Prefect as the pipeline orchestrator, dlt, and ClickHouse as the data warehouse to store the transformed data.
+Além disso, um dos príncipios dessa arquitetura é custo, então pesquisei as que oferecerem a maior simplicidade e menor custo possível, assim quis usar o Prefect como orquestrador da pipeline, Dlt e o ClickHouse como data warehouse para armazenar os dados transformados.
 
-To make it a bit more challenging, I wanted to ingest data from an MS SQL Server database, which is a database I don't usually work with day-to-day. The dataset would be about New York taxis, which is a public and well-known dataset in the data community.
+Para tornar um pouco mais desafiador, quis fazer a ingestão de dados de banco MS SQL Server, que é um banco de dados que não costumo trabalhar no dia a dia, e o dataset seria sobre o táxi de Nova York, que é um dataset público e bem conhecido na comunidade de dados.
 
-The solution's architecture looks like this:
+A arquitetura da solução ficou assim:
 
 ![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.png)
 
-## Create the environment with Docker Compose
+## Criar o ambiente com Docker Compose
 
-The first step is to create the environment with Docker Compose, where I will start the source database. I created the `docker-compose.yml` file in the root folder of the project with the following content:
+Primeiro passo é criar o ambiente com Docker Compose, onde vou subir o banco de dados de origem. Criei o arquivo `docker-compose.yml` na pasta raiz do seu projeto com o seguinte conteúdo:
 
 ```yaml
 services:
@@ -39,35 +39,35 @@ services:
       - sqlserverdata:/var/opt/mssql
 ```
 
-Then I initialize the container:
+Em seguida inicializo o container:
 
 ```bash
 docker-compose up -d
 ```
 
-### Import data into SQL Server
+### Importar os dados no SQL Server
 
-I downloaded the data from the [NYC Taxi & Limousine Commission (TLC) Trip Record Data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) through this [link](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak), and saved the file in the `dataset` folder of my project.
+Fiz o download dos dados do [NYC Taxi & Limousine Commission (TLC) Trip Record Data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) através desse [link](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak), e salvei o arquivo na pasta `dataset` do meu projeto.
 
 
-To import the `.bak` backup file into the SQL Server container, I use the following command:
+Para importar o arquivo de backup `.bak` para dentro do container do SQL Server, uso o seguinte comando:
 
 ```bash
 docker cp ./dataset/NYCTaxi_Sample.bak sqlserver:/var/opt/mssql/data/NYCTaxi_Sample.bak
 ```
 
-Next, I execute the database restore command:
+Em seguida, executo o comando de restauração do banco de dados:
 ```bash
 docker exec -it sqlserver /opt/mssql-tools18/bin/sqlcmd \
    -S localhost -U sa -P 'YourStrong!Passw0rd' -C \
    -Q 'RESTORE DATABASE NYCTaxi_Sample FROM DISK = "/var/opt/mssql/data/NYCTaxi_Sample.bak" WITH MOVE "NYCTaxi_Sample" TO "/var/opt/mssql/data/NYCTaxi_Sample.mdf", MOVE "NYCTaxi_Sample_log" TO "/var/opt/mssql/data/NYCTaxi_Sample_log.ldf"'
 ```
 
-### Create project structure
+### Criar estrutura do projeto
 
-Now that the database is ready, I will create the project structure with the tools I will use: DLT, ClickHouse, dbt, and Prefect.
+Agora que o banco de dados está pronto, vou criar a estrutura do projeto com as ferramentas que vou utilizar: DLT, ClickHouse, Dbt e Prefect.
 
-First, I organize the project folder structure:
+Primeiro organizo a estrutura de pastas do projeto:
 
 ```bash
 data-engineer/
@@ -81,27 +81,27 @@ data-engineer/
 └── docker-compose.yaml # Infrastructure definition
 ```
 
-Inside the `nyc_taxi` folder, I create the Python virtual environment and install the necessary dependencies using [UV](https://docs.astral.sh/uv/). UV is a dependency and virtual environment management tool for Python projects built in Rust (I highly recommend checking it out).
+Dentro da pasta `nyc_taxi`, crio o ambiente virtual do Python e instalo as dependências necessárias usando [UV](https://docs.astral.sh/uv/). O UV é uma ferramenta de gerenciamento de dependências e ambientes virtuais para projetos Python construída em Rust (recomendo você conhecer).
 
 ```bash
 brew install uv
 ```
 
-Then, I initialize the UV environment:
+Em seguida, inicializo o ambiente UV:
 
 ```bash
 uv init nyc_taxi
 ```
 
-I add the project dependencies:
+Adiciono as dependências do projeto:
 
 ```bash
 uv add dbt-core dbt-sqlserver dbt-clickhouse prefect prefect-client
 ```
 
-Next, create the dbt project:
+Em seguida, criar o projeto Dbt:
 
-### Configure dbt
+### Configurar o Dbt
 
 O Dbt (Data Build Tool) é uma ferramenta de transformação de dados que permite aos engenheiros de dados e analistas transformar, testar e documentar dados em seus armazéns de dados. Para criar o projeto Dbt, navego até a pasta `nyc_taxi` e executo o comando:
 
@@ -149,7 +149,7 @@ models:
       +materialized: view
 ```
 
-I configure the `~/.dbt/profiles.yml` file to connect to ClickHouse:
+Configuro o arquivo `~/.dbt/profiles.yml` para conectar no ClickHouse:
 
 ```yaml
 nyc_taxi_clickhouse:
@@ -165,15 +165,15 @@ nyc_taxi_clickhouse:
       threads: 4
 ```
 
-You can test if the dbt project is working correctly by running the command:
+Vou pode testar se o projeto Dbt está funcionando corretamente executando o comando:
 
 ```bash
 uv run dbt debug
 ```
 
-### Configure dbt models
+### Configurar os Dbt models
 
-I will create the dbt models to transform the data. I create the necessary folders and files inside the `nyc_taxi/nyc_taxi_dbt/models/` folder:
+Vou criar os modelos Dbt para transformar os dados. Crio as pastas e arquivos necessários dentro da pasta `nyc_taxi/nyc_taxi_dbt/models/`:
 
 ```bash
 data-engineer/
@@ -187,7 +187,7 @@ data-engineer/
 │               └── fact_nyctaxi_trips.sql
 ```
 
-The `sources.yml` file defines the data source:
+O arquivo `sources.yml` define a fonte de dados:
 
 ```yaml
 version: 2
@@ -200,7 +200,7 @@ sources:
         identifier: nyc_taxi_staging___nyctaxi_sample
 ```
 
-The `stg_nyctaxi_sample.sql` file creates the staging table:
+O arquivo `stg_nyctaxi_sample.sql` cria a tabela de staging:
 
 ```sql
 {{ config(materialized='view') }}
@@ -242,7 +242,7 @@ renamed as (
 select * from renamed
 ```
 
-The `fact_nyctaxi_trips.sql` file creates the fact table:
+O arquivo `fact_nyctaxi_trips.sql` cria a tabela fato:
 
 ```sql
 {{ config(
@@ -267,13 +267,13 @@ with staging as (
 select * from staging
 ```
 
-The reason for using `ReplacingMergeTree` is that it allows ClickHouse to automatically manage the replacement of duplicate records based on the defined primary key (in this case, `medallion`, `hack_license`, and `pickup_datetime`). This is especially useful for incremental load scenarios where new data might contain updates or corrections for existing records.
+A razão de usar o `ReplacingMergeTree` é que ele permite que o ClickHouse gerencie automaticamente a substituição de registros duplicados com base na chave primária definida (neste caso, `medallion`, `hack_license` e `pickup_datetime`). Isso é especialmente útil para cenários de carga incremental, onde novos dados podem conter atualizações ou correções para registros existentes.
 
-Additionally, I split it into staging and marts to follow the best practices of dbt project organization, where raw data is first loaded into staging tables before being transformed into fact or dimension tables.
+Além disso dividi em staging e marts para seguir as boas práticas de organização de projetos Dbt, onde os dados brutos são primeiro carregados em tabelas de staging antes de serem transformados em tabelas fato ou dimensão.
 
-If you want to learn more about modeling strategies like dimensions and facts, you can read this [article](https://www.montecarlodata.com/blog-fact-vs-dimension-tables-in-data-warehousing-explained/).
+Se você quiser mais sobre estratégias de modelagem como dimensões e fatos, você pode ler esse [artigo](https://www.montecarlodata.com/blog-fact-vs-dimension-tables-in-data-warehousing-explained/).
 
-So, illustrating the data flow, it would be:
+Então, ilustrando o fluxo de dados, seria:
 
 ```mermaid
 graph LR
@@ -281,19 +281,19 @@ graph LR
     B --> C[FactTable: fact_nyctaxi_trips]
 ```
 
-With this, I finish the dbt configuration. We can test the models by running the command:
+Com isso finalizo a configuração do Dbt. Podemos testar os modelos executando o comando:
 
 ```bash
 uv run dbt run
 ```
 
-### Configure Docker Compose for ClickHouse and Prefect
+### Configurar o Docker Compose para ClickHouse e Prefect
 
-Now I will add the ClickHouse and Prefect services to the `docker-compose.yml` file:
+Agora vou adicionar os serviços do ClickHouse e do Prefect no arquivo `docker-compose.yml`:
 
 ```yaml
 services:
-  sqlserver: # Below the already created SQL Server service
+  sqlserver: # Abaixo o serviço do SQL Server já criado
   clickhouse:
     image: clickhouse/clickhouse-server
     container_name: clickhouse
@@ -323,15 +323,15 @@ volumes:
   prefectdata:
 ```
 
-Let's start the ClickHouse and Prefect containers:
+Vamos subir os containers do ClickHouse e do Prefect:
 
 ```bash
 docker-compose up -d clickhouse prefect
 ```
 
-### Create the orchestration flow with Prefect
+### Criar o fluxo de orquestração com Prefect
 
-Now I will create the orchestration flow using Prefect. I create the `main_flow.py` file inside the `nyc_taxi` folder with the following content:
+Agora vou criar o fluxo de orquestração usando o Prefect. Crio o arquivo `main_flow.py` dentro da pasta `nyc_taxi` com o seguinte conteúdo:
 
 ```python
 import logging
@@ -380,7 +380,7 @@ if __name__ == "__main__":
 
 ```
 
-Next, I create the `extract_sqlserver.py` file with the logic to extract data from SQL Server to ClickHouse:
+Em seguida, crio o arquivo `extract_sqlserver.py` com a lógica de extração dos dados do SQL Server para o ClickHouse:
 
 ```python
 
@@ -423,32 +423,32 @@ if __name__ == "__main__":
     load_sql_server_to_clickhouse()
 ```
 
-With this, let's run the orchestration flow inside the `nyc_taxi` folder where the UV virtual environment is located:
+Com isso vamos executar o fluxo de orquestração dentro da pasta `nyc_taxi` onde contém o ambiente virtual do UV:
 
 ```bash
 cd nyc_taxi 
 uv run python main_flow.py
 ```
-You can monitor the flow execution by accessing the Prefect dashboard at `http://localhost:4200`.
+Você pode monitorar a execução do fluxo acessando o dashboard do Prefect em `http://localhost:4200`.
 
 ![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.png)
 
 ![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.png)
 
-In the flow logs, you will see the data extraction, transformation, and loading steps:
+Nos logs do fluxo você verá as etapas de extração, transformação e carregamento dos dados:
 
 ![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.png)
 
-You can check the data loaded into ClickHouse using the web client at `http://localhost:8123` or any SQL query tool compatible with ClickHouse.
+Você pode verificar os dados carregados no ClickHouse usando o cliente web em `http://localhost:8123` ou qualquer ferramenta de consulta SQL compatível com ClickHouse.
 
-Here you can see the fact table `fact_nyctaxi_trips` created in ClickHouse:
+Aqui você pode ver a tabela fato `fact_nyctaxi_trips` criada no ClickHouse:
 ![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.png)
 
-## Configure ClickHouse UI
+## Configurar Clickhouse UI
 
-To facilitate data visualization in ClickHouse, you can use [ClickHouse UI](https://github.com/caioricciuti/ch-ui).
+Para facilitar a visualização dos dados no ClickHouse, você pode usar o [ClickHouse UI](https://github.com/caioricciuti/ch-ui).
 
-Let's add the ClickHouse UI service to the `docker-compose.yml` file:
+Vamos adicionar o serviço do ClickHouse UI no arquivo `docker-compose.yml`:
 
 ```yaml
   ch-ui:
@@ -471,31 +471,31 @@ Let's add the ClickHouse UI service to the `docker-compose.yml` file:
       VITE_BASE_PATH: '/'
 ```
 
-Then, I start the ClickHouse UI container:
+Em seguida, subo o container do ClickHouse UI:
 
 ```bash
 docker-compose up -d ch-ui
 ```
 
-You can access the ClickHouse UI interface at `http://localhost:5521` to explore the loaded data. In the image below, you can see that I ran a query on the `fact_nyctaxi_trips` fact table to count all recorded trips, and it took only 1.18ms for the 1,703,957 records loaded. It's very fast!:
+Você pode acessar a interface do ClickHouse UI em `http://localhost:5521` para explorar os dados carregados. Na imagem abaixo você pode ver que fiz uma consulta na tabela fato `fact_nyctaxi_trips` para contar todas as viagens registradas e levou apenas 1.18ms onde temo 1.703.957 registros carregados. É muito rápido!:
 
 ![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.png)
 
-## Conclusion
+## Conclusão
 
-It is very rewarding to see how all these tools can work together to create an efficient and scalable data pipeline. The use of DLT for ingestion, dbt for transformation, Prefect for orchestration, and ClickHouse as a data warehouse provides a robust and high-performance solution that can be easily replicated in different environments thanks to Docker Compose.
+É muito gratificante ver como todas essas ferramentas podem trabalhar juntas para criar uma pipeline de dados eficiente e escalável. O uso do DLT para ingestão, Dbt para transformação, Prefect para orquestração e ClickHouse como data warehouse proporciona uma solução robusta e de alto desempenho, que pode ser facilmente replicada em diferentes ambientes graças ao Docker Compose.
 
-There are other orchestration tools like [Dagster](https://dagster.io/) or [Airflow](https://airflow.apache.org/), but I chose Prefect for its simplicity and ease of use, as well as its execution being carried out in the codebase itself.
+Existem outras ferramentas de orquestração como [Dagster](https://dagster.io/) ou [Airflow](https://airflow.apache.org/), mas escolhi o Prefect por sua simplicidade e facilidade de uso, além de sua execução ser realizada no próprio code base.
 
-Additionally, for data ingestion, there is [Airbyte](https://airbyte.com/), but I chose DLT because it offers a modern, efficient approach and utilizes [Apache Arrow](https://dlthub.com/blog/how-dlt-uses-apache-arrow), especially when combined with ClickHouse, which is known for its speed and ability to handle large volumes of data.
+Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), mas escolhi o DLT, pois oferece uma abordagem moderna, eficiente e utiliza [Apache Arrow](https://dlthub.com/blog/how-dlt-uses-apache-arrow), especialmente quando combinado com o ClickHouse, que é conhecido por sua velocidade e capacidade de lidar com grandes volumes de dados.
 
-Regarding dbt, I could have used [dbt fusion](https://github.com/dbt-labs/dbt-fusion), which is a new version developed in Rust that utilizes [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), but it is still in beta and does not have support for MS SQL Server, so I opted for traditional dbt.
+Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust e que utiliza [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), mas ainda está em fase beta e não possui suporte para MS SQL Server, então optei pelo Dbt tradicional.
 
-[Apache Arrow](https://arrow.apache.org/) is a powerful technology that is gaining more and more space in the data ecosystem, and it is interesting to see how it is being integrated into various modern data engineering tools.
+[Apache Arrow](https://arrow.apache.org/) é uma tecnologia poderosa que está ganhando cada vez mais espaço no ecossistema de dados, e é interessante ver como ela está sendo integrada em várias ferramentas modernas de engenharia de dados. The 
 
-The Arrow format is a better way to represent tabular data in memory than native Python objects (list of dictionaries). It allows offloading processing to Arrow's fast C++ library and avoids row-by-row processing. If you are interested in understanding more about it, I recommend this [video](https://www.youtube.com/watch?v=Hyh6QamL-Zo).
+O formato Arrow é uma maneira melhor de representar dados tabulares na memória do que objetos nativos do Python (lista de dicionários). Ele permite descarregar o processamento para a biblioteca C++ rápida do Arrow e evita o processamento de linhas uma a uma. Se você se interessa em entender mais sobre, recomendo esse [vídeo](https://www.youtube.com/watch?v=Hyh6QamL-Zo).
 
-## References:
+## Referências:
 
 - https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17 
 - https://www.youtube.com/watch?v=OLXkGB7krGo

@@ -1,8 +1,10 @@
 ---
 import BaseLayout from './Layout.astro';
 import Header from '@components/Header.svelte';
+import { getLangFromUrl } from '@i18n/utils';
 
 const { frontmatter, headings } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -12,7 +14,13 @@ const { frontmatter, headings } = Astro.props;
       <h1 class='text-balance mb-0'>{frontmatter.title}</h1>
       <div class='text-base'>
         <time datetime={frontmatter.pubDate.toString()}
-          >{frontmatter.pubDate.toString().slice(0, 10)}</time
+          >{
+            new Date(frontmatter.pubDate).toLocaleDateString(lang, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })
+          }</time
         > by <span>{frontmatter.author}</span>
       </div>
     </header>
