@@ -9,8 +9,8 @@ const lang = getLangFromUrl(Astro.url);
 
 const mdPosts =
 	lang === 'pt-br'
-		? await Astro.glob('../pages/pt-br/posts/*.md')
-		: await Astro.glob('../pages/posts/*.md');
+		? await Astro.glob('../pages/pt-br/blog/*.md')
+		: await Astro.glob('../pages/blog/*.md');
 
 const allPosts = [
 	...posts,

@@ -9,7 +9,7 @@ const lang = getLangFromUrl(Astro.url);
 
 <BaseLayout pageTitle={frontmatter.title}>
   <Header client:only='svelte' />
-  <main class='relative pb-36 mx-auto prose prose-h1:font-medium prose-h1:mb-2 lg:prose-xl mt-16 mb-16 px-4'>
+  <main class='relative pb-36 max-w-5xl mx-auto prose prose-h1:font-medium prose-h1:mb-2 mt-16 mb-16 px-4'>
     <header class='mb-8'>
       <h1 class='text-balance mb-0'>{frontmatter.title}</h1>
       <div class='text-base'>
@@ -53,7 +53,6 @@ const lang = getLangFromUrl(Astro.url);
       class='
             prose-slate
             prose-a:text-blue-600 
-            prose-p:text-justify prose-p:leading-6 prose-p:text-base
             prose-img:rounded-xl
             prose-code:text-sm
             prose-pre:leading-6 prose-pre:mt-0
