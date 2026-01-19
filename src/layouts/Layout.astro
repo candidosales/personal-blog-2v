@@ -12,11 +12,17 @@ const t = useTranslations(lang);
 const {
     title = t('seo.title'),
     description = t('seo.description'),
+    imageUrl = '/og-image.png',
     noindex = false,
     nofollow = false,
     withSun = true,
     withTopBarBlur = true,
 } = Astro.props;
+
+const host = 'https://candidosales.me';
+const formattedImageUrl = imageUrl.startsWith('http')
+    ? imageUrl
+    : `${host}${imageUrl}`;
 
 const currentPath = Astro.url.pathname;
 ---
@@ -59,11 +65,11 @@ const currentPath = Astro.url.pathname;
                         ? `${title} | ${t('seo.title')}`
                         : t('seo.title'),
                     type: 'website',
-                    image: 'https://candidosales.me/og-image.png',
+                    image: formattedImageUrl,
                     url: `https://candidosales.me${currentPath}`,
                 },
                 image: {
-                    url: 'https://candidosales.me/og-image.png',
+                    url: formattedImageUrl,
                     width: 1200,
                     height: 600,
                     alt: 'Social open graph',
@@ -74,8 +80,9 @@ const currentPath = Astro.url.pathname;
                 creator: '@candidosales',
                 site: '@candidosales',
                 card: 'summary_large_image',
-                title: t('seo.title'),
-                description: t('seo.description'),
+                title: title,
+                description: description,
+                image: formattedImageUrl,
             }}
         />
         <ClientRouter />

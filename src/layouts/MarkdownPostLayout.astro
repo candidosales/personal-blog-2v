@@ -5,11 +5,14 @@ import { getLangFromUrl } from '@i18n/utils';
 
 const { frontmatter, headings } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} imageUrl={frontmatter.image.url}>
   <Header client:only='svelte' />
-  <main class='relative pb-36 max-w-5xl mx-auto prose prose-h1:font-medium prose-h1:mb-2 mt-16 mb-16 px-4'>
+  <main
+    class='relative pb-36 max-w-5xl mx-auto prose prose-h1:font-medium prose-h1:mb-2 mt-16 mb-16 px-4'
+  >
     <header class='mb-8'>
       <h1 class='text-balance mb-0'>{frontmatter.title}</h1>
       <div class='text-base'>
@@ -25,14 +28,17 @@ const lang = getLangFromUrl(Astro.url);
       </div>
     </header>
     <img
-        class='rounded-xl mb-8 w-full h-auto'
-        src={frontmatter.image.url}
-        alt={frontmatter.image.alt}
-      />
-    <nav id='contents' class='p-4 mb-2 text-sm bg-white/40 
-    prose-h3:mt-0 prose-h3:text-base  prose-h3:text-slate-600
+      class='rounded-xl mb-8 w-full h-auto'
+      src={frontmatter.image.url}
+      alt={frontmatter.image.alt}
+    />
+    <nav
+      id='contents'
+      class='p-4 mb-2 text-sm bg-white/40
+    prose-h3:mt-0 prose-h3:text-base prose-h3:text-slate-600
     prose-a:no-underline
-    rounded-lg'>
+    rounded-lg'
+    >
       <h3 class='mb-1/12 mt-0'>Contents</h3>
       <ul>
         {
@@ -50,9 +56,8 @@ const lang = getLangFromUrl(Astro.url);
       </ul>
     </nav>
     <article
-      class='
-            prose-slate
-            prose-a:text-blue-600 
+      class='prose-slate
+            prose-a:text-blue-600
             prose-img:rounded-xl
             prose-code:text-sm
             prose-pre:leading-6 prose-pre:mt-0
@@ -65,9 +70,9 @@ const lang = getLangFromUrl(Astro.url);
 </BaseLayout>
 
 <style is:global>
-    .expressive-code .frame.has-title:not(.is-terminal) .title.file-icon {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
+  .expressive-code .frame.has-title:not(.is-terminal) .title.file-icon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 </style>
