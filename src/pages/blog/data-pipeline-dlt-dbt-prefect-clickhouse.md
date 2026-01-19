@@ -496,10 +496,17 @@ The Arrow format is a better way to represent tabular data in memory than native
 
 ## References:
 
-- https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17 
-- https://www.youtube.com/watch?v=OLXkGB7krGo
-- https://docs.getdbt.com/docs/build/documentation
-- https://dlthub.com/docs/intro
-- https://dlthub.com/blog/dlt-segment-migration
-- https://www.prefect.io/blog/hidden-costs-apache-airflow
-- https://www.prefect.io/blog/airflow-local-development
+- [NYC Taxi demo data for SQL Server Python and R tutorials
+](https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17)
+- [Code along - build an ELT Pipeline in 1 Hour (dbt, Snowflake, Airflow)
+](https://www.youtube.com/watch?v=OLXkGB7krGo)
+- [Dbt docs](https://docs.getdbt.com/docs/build/documentation)
+- [Dlthub docs](https://dlthub.com/docs/intro)
+- [Moving away from Segment to a cost-effective do-it-yourself event streaming pipeline with Cloud Pub/Sub and dlt.
+](https://dlthub.com/blog/dlt-segment-migration)
+- [The Hidden Costs of Running Apache Airflow
+](https://www.prefect.io/blog/hidden-costs-apache-airflow)
+- [Airflow Local Development Sucks
+](https://www.prefect.io/blog/airflow-local-development)
+- [Prefect docs](https://docs.prefect.io/)
+- [ClickHouse docs](https://clickhouse.com/docs/)
