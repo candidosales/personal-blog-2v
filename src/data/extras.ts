@@ -34,7 +34,7 @@ export const extrasData = (t: any) => {
         },
         {
             image: {
-                url: '/extras/receituario-medico-2.png',
+                url: '/extras/receituario-medico-2.webp',
                 alt: t('extras.1.title'),
             },
             title: t('extras.1.title'),
@@ -43,8 +43,8 @@ export const extrasData = (t: any) => {
             background: 'bg-teal-100',
             techs: [
                 {
-                    icon: 'nextjs',
-                    name: 'NextJS',
+                    icon: 'tanstack',
+                    name: 'TanStack',
                 },
                 {
                     icon: 'chakra-ui-3',
