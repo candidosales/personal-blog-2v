@@ -9,8 +9,6 @@ import partytown from '@astrojs/partytown';
 
 import react from '@astrojs/react';
 
-import mermaid from 'remark-mermaidjs';
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.candidosales.me/',
@@ -27,9 +25,6 @@ export default defineConfig({
 			forward: ['dataLayer.push'],
 		},
 	}), react()],
-	markdown: {
-		remarkPlugins: [mermaid],
-	},
 	output: 'server',
 	adapter: vercel(),
 	vite: {

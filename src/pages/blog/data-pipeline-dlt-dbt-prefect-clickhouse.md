@@ -276,10 +276,8 @@ If you want to learn more about modeling strategies like dimensions and facts, y
 
 So, illustrating the data flow, it would be:
 
-```mermaid
-graph LR
-    A[Raw Data in ClickHouse] --> B[StagingTable: stg_nyctaxi_sample]
-    B --> C[FactTable: fact_nyctaxi_trips]
+```bash
+[Raw Data in ClickHouse] --> [StagingTable: stg_nyctaxi_sample] --> [FactTable: fact_nyctaxi_trips]
 ```
 
 With this, I finish the dbt configuration. We can test the models by running the command:

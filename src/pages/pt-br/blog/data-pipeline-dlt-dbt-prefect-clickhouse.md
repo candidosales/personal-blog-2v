@@ -276,10 +276,8 @@ Se você quiser mais sobre estratégias de modelagem como dimensões e fatos, vo
 
 Então, ilustrando o fluxo de dados, seria:
 
-```mermaid
-graph LR
-    A[Raw Data in ClickHouse] --> B[StagingTable: stg_nyctaxi_sample]
-    B --> C[FactTable: fact_nyctaxi_trips]
+```bash
+[Raw Data in ClickHouse] --> [StagingTable: stg_nyctaxi_sample] --> [FactTable: fact_nyctaxi_trips]
 ```
 
 Com isso finalizo a configuração do Dbt. Podemos testar os modelos executando o comando:
