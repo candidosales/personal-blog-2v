@@ -10,7 +10,17 @@ const lang = getLangFromUrl(Astro.url);
 const mdPostsEn = import.meta.glob('../pages/blog/*.md', { eager: true });
 const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.md', { eager: true });
 
-const mdPosts = Object.values(lang === 'pt-br' ? mdPostsPt : mdPostsEn);
+const postsMap = lang === 'pt-br' ? mdPostsPt : mdPostsEn;
+const mdPosts = Object.entries(postsMap).map(([path, post]: [string, any]) => {
+	const url = path
+		.replace('../pages', '')
+		.replace('.md', '')
+		.replace('/index', '');
+	return {
+		...post,
+		url,
+	};
+});
 
 const allPosts = [
 	...posts,
