@@ -1,8 +1,9 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Data pipeline with DLT, dbt, Prefect, and ClickHouse'
-pubDate: 2022-07-01
+pubDate: 2026-01-19
 author: 'Candido Gomes'
+description: 'Lately, I have been studying Data Engineering and Data Pipelines. I thought it would be interesting to share a bit of what I am learning.'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'Data pipeline using Dlthub, dbt, Prefect and Clickhouse'

@@ -6,6 +6,25 @@ import { posts } from '@data/posts';
 import { getLangFromUrl } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+
+const mdPosts =
+	lang === 'pt-br'
+		? await Astro.glob('../pages/pt-br/posts/*.md')
+		: await Astro.glob('../pages/posts/*.md');
+
+const allPosts = [
+	...posts,
+	...mdPosts.map((post) => ({
+		title: post.frontmatter.title,
+		description: post.frontmatter.description || '',
+		href: post.url,
+		publishDate: post.frontmatter.pubDate,
+		image: post.frontmatter.image,
+	})),
+].sort(
+	(a, b) =>
+		new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),
+);
 ---
 
 <Layout title={'Blog'}>
@@ -22,11 +41,11 @@ const lang = getLangFromUrl(Astro.url);
 			transition:name='content'
 		>
 			{
-				posts.map((p) => (
+				allPosts.map((p) => (
 					<a
 						href={p.href}
 						title={p.title}
-						target='_blank'
+						target={p.href?.startsWith('http') ? '_blank' : '_self'}
 						class='card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-2 md:p-4 rounded-lg'
 					>
 						<div class='relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48'>
