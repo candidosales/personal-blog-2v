@@ -6,6 +6,35 @@ import { posts } from '@data/posts';
 import { getLangFromUrl } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+
+const mdPostsEn = import.meta.glob('../pages/blog/*.md', { eager: true });
+const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.md', { eager: true });
+
+const postsMap = lang === 'pt-br' ? mdPostsPt : mdPostsEn;
+const mdPosts = Object.entries(postsMap).map(([path, post]: [string, any]) => {
+	const url = path
+		.replace('../pages', '')
+		.replace('.md', '')
+		.replace('/index', '');
+	return {
+		...post,
+		url,
+	};
+});
+
+const allPosts = [
+	...posts,
+	...mdPosts.map((post: any) => ({
+		title: post.frontmatter.title,
+		description: post.frontmatter.description || '',
+		href: post.url,
+		publishDate: post.frontmatter.pubDate,
+		image: post.frontmatter.image,
+	})),
+].sort(
+	(a, b) =>
+		new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),
+);
 ---
 
 <Layout title={'Blog'}>
@@ -22,11 +51,11 @@ const lang = getLangFromUrl(Astro.url);
 			transition:name='content'
 		>
 			{
-				posts.map((p) => (
+				allPosts.map((p) => (
 					<a
 						href={p.href}
 						title={p.title}
-						target='_blank'
+						target={p.href?.startsWith('http') ? '_blank' : '_self'}
 						class='card-link block h-420px relative overflow-hidden cursor-pointer mb-8 p-2 md:p-4 rounded-lg'
 					>
 						<div class='relative rounded-lg overflow-hidden w-full mx-auto mb-4 h-48'>
@@ -43,7 +72,13 @@ const lang = getLangFromUrl(Astro.url);
 							{p.description}
 						</p>
 						<p class='text-blue-800/80 text-xs font-normal'>
-							{new Date(p.publishDate).toLocaleDateString(lang)}
+							{
+								new Date(p.publishDate).toLocaleDateString(lang, {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+								})
+							}
 						</p>
 					</a>
 				))

@@ -1,6 +1,18 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 @theme {
 	--font-inclusive: 'Inclusive Sans', 'Inter', sans-serif;
 	--font-newsreader: 'Newsreader', serif;
+}
+
+@layer base {
+	.prose code {
+		@apply bg-slate-100 text-red-600! px-1.5 py-1 rounded font-mono! font-medium!;
+	}
+
+	.prose code::before,
+	.prose code::after {
+		content: "" !important;
+	}
 }
