@@ -20,7 +20,7 @@ To make it a bit more challenging, I wanted to ingest data from an MS SQL Server
 
 The solution's architecture looks like this:
 
-![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.webp)
+![architecture](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.webp)
 
 ## Create the environment with Docker Compose
 
@@ -430,18 +430,18 @@ uv run python main_flow.py
 ```
 You can monitor the flow execution by accessing the Prefect dashboard at `http://localhost:4200`.
 
-![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
+![prefect-runs](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
 
-![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.webp)
+![prefect](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.webp)
 
 In the flow logs, you will see the data extraction, transformation, and loading steps:
 
-![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.webp)
+![running-pipeline](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.webp)
 
 You can check the data loaded into ClickHouse using the web client at `http://localhost:8123` or any SQL query tool compatible with ClickHouse.
 
 Here you can see the fact table `fact_nyctaxi_trips` created in ClickHouse:
-![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.webp)
+![clickhouse-running](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.webp)
 
 ## Configure ClickHouse UI
 
@@ -478,7 +478,7 @@ docker-compose up -d ch-ui
 
 You can access the ClickHouse UI interface at `http://localhost:5521` to explore the loaded data. In the image below, you can see that I ran a query on the `fact_nyctaxi_trips` fact table to count all recorded trips, and it took only 1.18ms for the 1,703,957 records loaded. It's very fast!:
 
-![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.webp)
+![clickhouse-ui](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.webp)
 
 ## Conclusion
 

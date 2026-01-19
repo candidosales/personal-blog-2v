@@ -20,7 +20,7 @@ Para tornar um pouco mais desafiador, quis fazer a ingestão de dados de banco M
 
 A arquitetura da solução ficou assim:
 
-![architecture](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.webp)
+![architecture](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/architecture.webp)
 
 ## Criar o ambiente com Docker Compose
 
@@ -430,18 +430,18 @@ uv run python main_flow.py
 ```
 Você pode monitorar a execução do fluxo acessando o dashboard do Prefect em `http://localhost:4200`.
 
-![prefect-runs](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
+![prefect-runs](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
 
-![prefect](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.webp)
+![prefect](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect.webp)
 
 Nos logs do fluxo você verá as etapas de extração, transformação e carregamento dos dados:
 
-![running-pipeline](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.webp)
+![running-pipeline](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/running-pipeline.webp)
 
 Você pode verificar os dados carregados no ClickHouse usando o cliente web em `http://localhost:8123` ou qualquer ferramenta de consulta SQL compatível com ClickHouse.
 
 Aqui você pode ver a tabela fato `fact_nyctaxi_trips` criada no ClickHouse:
-![clickhouse-running](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.webp)
+![clickhouse-running](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-running.webp)
 
 ## Configurar Clickhouse UI
 
@@ -478,7 +478,7 @@ docker-compose up -d ch-ui
 
 Você pode acessar a interface do ClickHouse UI em `http://localhost:5521` para explorar os dados carregados. Na imagem abaixo você pode ver que fiz uma consulta na tabela fato `fact_nyctaxi_trips` para contar todas as viagens registradas e levou apenas 1.18ms onde temo 1.703.957 registros carregados. É muito rápido!:
 
-![clickhouse-ui](/public/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.webp)
+![clickhouse-ui](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/clickhouse-ui.webp)
 
 ## Conclusão
 
