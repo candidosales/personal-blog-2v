@@ -2,8 +2,9 @@
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.svelte';
 import { getPostBySlug, getPosts, PAYLOAD_API_URL } from '@lib/payload';
-import { lexicalToHtml } from '@lib/payloadSerializer';
+import { lexicalToBlocks } from '@lib/payloadSerializer';
 import { getLangFromUrl } from '@i18n/utils';
+import { Code } from 'astro-expressive-code/components';
 
 export const prerender = true;
 
@@ -26,7 +27,7 @@ const imageUrl = post.meta?.image?.url
   ? `${PAYLOAD_API_URL}${post.meta.image.url}`
   : '';
 
-const contentHtml = lexicalToHtml(post.content, PAYLOAD_API_URL);
+const contentBlocks = lexicalToBlocks(post.content, PAYLOAD_API_URL);
 ---
 
 <Layout
@@ -80,8 +81,24 @@ const contentHtml = lexicalToHtml(post.content, PAYLOAD_API_URL);
     <article
       class='payload-content max-w-none prose prose-slate prose-a:text-blue-600 prose-img:rounded-xl'
       transition:name='content'
-      set:html={contentHtml}
-    />
+    >
+      {
+        contentBlocks.map((block) => {
+          if (block.type === 'code') {
+            return (
+              <div class='my-8'>
+                <Code
+                  code={block.code}
+                  lang={block.language}
+                  title={block.title}
+                />
+              </div>
+            );
+          }
+          return <div set:html={block.html} />;
+        })
+      }
+    </article>
   </main>
 </Layout>
 
@@ -89,6 +106,6 @@ const contentHtml = lexicalToHtml(post.content, PAYLOAD_API_URL);
   /* Match expressive-code and other global styles if needed */
   .payload-content pre {
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
   }
 </style>
