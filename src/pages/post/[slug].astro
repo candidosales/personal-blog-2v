@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.svelte';
-import { getPostBySlug, getPosts } from '@lib/payload';
-import { PayloadPostContent } from '@components/PayloadPostContent';
+import { getPostBySlug, getPosts, PAYLOAD_API_URL } from '@lib/payload';
+import { lexicalToHtml } from '@lib/payloadSerializer';
 import { getLangFromUrl } from '@i18n/utils';
 
 export const prerender = true;
@@ -22,11 +22,11 @@ if (!post) {
 }
 
 const lang = getLangFromUrl(Astro.url);
-const PAYLOAD_API_URL =
-  import.meta.env.PAYLOAD_API_URL || 'http://localhost:3000';
 const imageUrl = post.meta?.image?.url
   ? `${PAYLOAD_API_URL}${post.meta.image.url}`
   : '';
+
+const contentHtml = lexicalToHtml(post.content, PAYLOAD_API_URL);
 ---
 
 <Layout
@@ -80,13 +80,8 @@ const imageUrl = post.meta?.image?.url
     <article
       class='payload-content max-w-none prose prose-slate prose-a:text-blue-600 prose-img:rounded-xl'
       transition:name='content'
-    >
-      <PayloadPostContent
-        client:load
-        content={post.content}
-        apiUrl={PAYLOAD_API_URL}
-      />
-    </article>
+      set:html={contentHtml}
+    />
   </main>
 </Layout>
 
