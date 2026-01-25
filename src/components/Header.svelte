@@ -26,16 +26,16 @@
       icon: Home,
     },
     {
-      href: translatePath('/ui-lab'),
-      label: t('menu.lab'),
-      targetBlank: false,
-      icon: Sparkles,
-    },
-    {
       href: translatePath('/blog'),
       label: t('menu.blog'),
       targetBlank: false,
       icon: PencilSquare,
+    },
+    {
+      href: translatePath('/ui-lab'),
+      label: t('menu.lab'),
+      targetBlank: false,
+      icon: Sparkles,
     },
     {
       href: translatePath('/presentations'),
