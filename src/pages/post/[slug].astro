@@ -1,0 +1,111 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.svelte';
+import { getPostBySlug, getPosts, PAYLOAD_API_URL } from '@lib/payload';
+import { lexicalToBlocks } from '@lib/payloadSerializer';
+import { getLangFromUrl } from '@i18n/utils';
+import { Code } from 'astro-expressive-code/components';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post: any) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug as string);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const lang = getLangFromUrl(Astro.url);
+const imageUrl = post.meta?.image?.url
+  ? `${PAYLOAD_API_URL}${post.meta.image.url}`
+  : '';
+
+const contentBlocks = lexicalToBlocks(post.content, PAYLOAD_API_URL);
+---
+
+<Layout
+  title={post.title}
+  description={post.meta?.description}
+  imageUrl={imageUrl}
+>
+  <Header client:only='svelte' />
+  <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+    <header class='mb-12'>
+      <h1
+        class='text-4xl md:text-5xl font-medium text-blue-800 mb-4 tracking-tight text-balance'
+      >
+        {post.title}
+      </h1>
+      <div class='text-base text-blue-800/60 flex items-center gap-2'>
+        <time datetime={post.publishedAt}>
+          {
+            new Date(post.publishedAt).toLocaleDateString(lang, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })
+          }
+        </time>
+        {
+          post.populatedAuthors?.length > 0 && (
+            <>
+              <span>by</span>
+              <span class='font-medium text-blue-800'>
+                {post.populatedAuthors[0].name}
+              </span>
+            </>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      imageUrl && (
+        <div class='relative rounded-2xl overflow-hidden mb-12 aspect-video shadow-sm border border-orange-50'>
+          <img
+            src={imageUrl}
+            alt={post.meta?.image?.alt || post.title}
+            class='w-full h-full object-cover'
+          />
+        </div>
+      )
+    }
+
+    <article
+      class='payload-content max-w-none prose prose-slate prose-a:text-blue-600 prose-img:rounded-xl'
+      transition:name='content'
+    >
+      {
+        contentBlocks.map((block) => {
+          if (block.type === 'code') {
+            return (
+              <div class='my-8'>
+                <Code
+                  code={block.code}
+                  lang={block.language}
+                  title={block.title}
+                />
+              </div>
+            );
+          }
+          return <div set:html={block.html} />;
+        })
+      }
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Match expressive-code and other global styles if needed */
+  .payload-content pre {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
