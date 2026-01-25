@@ -12,7 +12,7 @@ tags: ["ai", "open source", "workflow", "ollama", "opencode", "z.ai", "roborev"]
 
 I have been researching an alternative for an Open Source AI workflow that is efficient and easy to use. Recently, I discovered some interesting tools that can help create this workflow. In this post, I'm going to share what I've learned and how I'm using these tools.
 
-### Tools Used
+### Tools used
 
 - [Ollama](https://ollama.com/): A tool for running language models locally.
 - [OpenCode](https://opencode.ai/): The open source AI coding agent.
@@ -53,7 +53,7 @@ ollama launch
 
 I selected OpenCode and the `glm-4.7:cloud` model. Since my machine doesn't support `glm-4.7:flash`, I opted to use the cloud model.
 
-### The GLM-4.7 Model
+### The GLM-4.7 model
 
 GLM-4.7 is an advanced language model that offers excellent performance in coding tasks. It is capable of understanding and generating code in various programming languages, making it an ideal choice for OpenCode.
 
@@ -83,7 +83,7 @@ Upon finishing the plan, OpenCode showed me a list of tasks it would execute to 
 
 OpenCode was very efficient in identifying the necessary changes and applying them to the code. It updated the dependencies, adjusted the code to be compatible with the new Expo SDK version, and made other improvements.
 
-### Code Review with roborev
+### Code review with roborev
 
 [roborev](https://www.roborev.io/) is an automated review tool that helps identify code issues and suggest improvements.
 
