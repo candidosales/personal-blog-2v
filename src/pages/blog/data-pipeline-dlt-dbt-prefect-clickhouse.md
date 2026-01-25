@@ -104,14 +104,14 @@ Next, create the dbt project:
 
 ### Configure dbt
 
-O Dbt (Data Build Tool) é uma ferramenta de transformação de dados que permite aos engenheiros de dados e analistas transformar, testar e documentar dados em seus armazéns de dados. Para criar o projeto Dbt, navego até a pasta `nyc_taxi` e executo o comando:
+Dbt (Data Build Tool) is a data transformation tool that allows data engineers and analysts to transform, test, and document data in their data warehouses. To create the Dbt project, I navigate to the `nyc_taxi` folder and run the command:
 
 ```bash
 cd nyc_taxi
 dbt init nyc_taxi_dbt
 ```
 
-Meu arquivo `dbt_project.yml` ficou assim:
+My `dbt_project.yml` file looks like this:
 
 ```yaml title="dbt_project.yml"
 # Name your project! Project names should contain only lowercase characters

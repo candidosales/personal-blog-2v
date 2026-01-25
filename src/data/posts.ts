@@ -44,7 +44,7 @@ export const posts = [
   },
   {
     image: {
-      url: "/articles/post-medicina.jpeg",
+      url: "/articles/post-medicina.webp",
       alt: "O que a medicina pode aprender com a programação?",
     },
     title: "O que a medicina pode aprender com a programação?",
@@ -55,7 +55,7 @@ export const posts = [
   },
   {
     image: {
-      url: "/articles/post-1.png",
+      url: "/articles/post-1.webp",
       alt: "How I got a job offer in Canada",
     },
     title: "How I got a job offer in Canada",
@@ -66,7 +66,7 @@ export const posts = [
   },
   {
     image: {
-      url: "/articles/post-2.png",
+      url: "/articles/post-2.webp",
       alt: "Como consegui uma oferta de emprego no Canadá",
     },
     title: "Como consegui uma oferta de emprego no Canadá",
@@ -77,7 +77,7 @@ export const posts = [
   },
   {
     image: {
-      url: "/articles/post-3.png",
+      url: "/articles/post-3.webp",
       alt: "Como fiz o intercâmbio para o Canadá",
     },
     title: "Como fiz o intercâmbio para o Canadá",

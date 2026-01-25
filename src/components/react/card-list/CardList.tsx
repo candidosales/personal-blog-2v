@@ -139,7 +139,7 @@ const GAMES = [
 		longDescription:
 			"Throughout their journey, players will encounter diverse alien races, each with their own unique cultures and technologies. Engage in thrilling space combat, negotiate complex diplomatic relations, and make critical decisions that affect the balance of power in the galaxy.",
 		image:
-			"https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/how-i-code-animations/space.png",
+			"/lab/space.webp",
 	},
 	{
 		title: "Angry Rabbits",
@@ -147,7 +147,7 @@ const GAMES = [
 		longDescription:
 			"The rabbits are angry and they are coming for you. You have to defend yourself with your carrot gun. The game is not simple, you have to be fast and accurate to survive.",
 		image:
-			"https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/how-i-code-animations/rabbit.png",
+			"/lab/rabbit.webp",
 	},
 	{
 		title: "Ghost town",
@@ -155,7 +155,7 @@ const GAMES = [
 		longDescription:
 			"You are in a ghost town and you have to find the ghosts. But be careful, they are dangerous.",
 		image:
-			"https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/how-i-code-animations/ghost.webp",
+			"/lab/ghost.webp",
 	},
 	{
 		title: "Pirates in the jungle",
@@ -163,7 +163,7 @@ const GAMES = [
 		longDescription:
 			"You are a pirate and you have to find the treasure in the jungle. But be careful, there are traps and wild animals.",
 		image:
-			"https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/how-i-code-animations/pirate.png",
+			"/lab/pirate.webp",
 	},
 
 	{
@@ -172,6 +172,6 @@ const GAMES = [
 		longDescription:
 			"You are lost in the mountains and you have to find your way home. But be careful, there are dangerous animals and you can get lost.",
 		image:
-			"https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/how-i-code-animations/boy.webp",
+			"/lab/boy.webp",
 	},
 ];
