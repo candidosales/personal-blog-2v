@@ -104,7 +104,7 @@ export function TrashAnimation() {
 												layoutId={`image-${image}`}
 												className="rounded-xl"
 												alt="A guy"
-												src={`https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/why-framer-motion/${image}.webp`}
+												src={`/lab/${image}.webp`}
 												height={100}
 												width={100}
 											/>
@@ -231,7 +231,7 @@ export function TrashAnimation() {
 											layoutId={`image-${image}`}
 											alt="A guy"
 											className="rounded"
-											src={`https://animations-on-the-web-git-how-i-use-3066e1-emilkowalski-s-team.vercel.app/how-i-use-framer-motion/why-framer-motion/${image}.webp`}
+											src={`/lab/${image}.webp`}
 											height={65}
 											width={65}
 											style={{
