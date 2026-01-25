@@ -494,6 +494,8 @@ Regarding dbt, I could have used [dbt fusion](https://github.com/dbt-labs/dbt-fu
 
 The Arrow format is a better way to represent tabular data in memory than native Python objects (list of dictionaries). It allows offloading processing to Arrow's fast C++ library and avoids row-by-row processing. If you are interested in understanding more about it, I recommend this [video](https://www.youtube.com/watch?v=Hyh6QamL-Zo).
 
+You can check the repository with all the code used in this project on my GitHub, in addition to finding examples using Airflow and Dagster: [data-engineer-dlt-dbt-prefect-clickhouse](https://github.com/candidosales/data-engineer/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen)
+
 ## References:
 
 - [NYC Taxi demo data for SQL Server Python and R tutorials
