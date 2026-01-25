@@ -57,7 +57,7 @@ I selected OpenCode and the `glm-4.7:cloud` model. Since my machine doesn't supp
 
 GLM-4.7 is an advanced language model that offers excellent performance in coding tasks. It is capable of understanding and generating code in various programming languages, making it an ideal choice for OpenCode.
 
-> Code Arena: A professional coding evaluation system with millions of global users participating in blind tests. GLM-4.7 ranks first among open-source models and domestic models, outperforming GPT-5.2
+> [Code Arena](https://lmarena.ai/leaderboard): A professional coding evaluation system with millions of global users participating in blind tests. GLM-4.7 ranks first among open-source models and domestic models, outperforming GPT-5.2
 
 ![glm-4.7-code-arena](/blog/my-ai-open-source-workflow/glm-4.7-code-arena.webp)
 
