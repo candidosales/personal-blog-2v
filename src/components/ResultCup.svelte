@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { VoteResult } from 'src/env';
+  import { Toaster, toast } from 'svelte-sonner';
 
   let okBar: HTMLElement | undefined = $state();
   let uncertainBar: HTMLElement | undefined = $state();
@@ -23,6 +24,12 @@
     const res = await fetch(url, {
       method: 'GET',
     });
+
+    if (!res.ok) {
+      const data = await res.json();
+      toast.error(data.error || 'Erro ao carregar resultados');
+      return;
+    }
 
     count = await res.json();
     if (count) {
@@ -74,6 +81,7 @@
   <p class="text-sm text-center">
     Total {count?.total}
   </p>
+  <Toaster richColors position="bottom-center" />
 </div>
 
 <style lang="scss">

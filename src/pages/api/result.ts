@@ -1,25 +1,19 @@
-/* TRUNCATED */
-
-import { Redis } from "@upstash/redis";
+import { getRedisClient } from "@lib/redis";
 import type { APIRoute } from "astro";
  
 const HASHSET_KEY = "votes";
-const url = import.meta.env.UPSTASH_REDIS_REST_URL;
-const token = import.meta.env.UPSTASH_REDIS_REST_TOKEN;
- 
-const redis = new Redis({ url, token });
-
 
 export const GET: APIRoute = async function GET({ url }) {
 
 	let count = { ok: 0, uncertain: 0, stop: 0, total: 0 };
 
-	if(url.searchParams.get('delete')) {
-		await redis.del(HASHSET_KEY);
-	}
-
-	
 	try {
+		const redis = getRedisClient();
+
+		if(url.searchParams.get('delete')) {
+			await redis.del(HASHSET_KEY);
+		}
+		
 		const votes: Record<string, string> | null = await redis.hgetall(HASHSET_KEY);
 
 		if (votes) {
@@ -37,9 +31,9 @@ export const GET: APIRoute = async function GET({ url }) {
 		
 	} catch (error: unknown) {
 		console.error(`Error in /api GET method: ${error as string}`);
-		return new Response(JSON.stringify({ ...count }), {
+		return new Response(JSON.stringify({ error: (error as Error).message, ...count }), {
 		  headers: { "content-type": "application/json" },
-		  status: 200,
+		  status: 500,
 		});
 	  }
 }
@@ -66,10 +60,19 @@ function countVotes(votes: Record<string, string>) {
 
 
 export const DELETE: APIRoute = async function DELETE() {
-	await redis.hdel(HASHSET_KEY);
+	try {
+		const redis = getRedisClient();
+		await redis.hdel(HASHSET_KEY);
 
-	return new Response(JSON.stringify('deleted'), {
-		headers: { "content-type": "application/json" },
-		status: 200,
-	  });
+		return new Response(JSON.stringify('deleted'), {
+			headers: { "content-type": "application/json" },
+			status: 200,
+		});
+	} catch (error: unknown) {
+		console.error(`Error in /api DELETE method: ${error as string}`);
+		return new Response(JSON.stringify({ error: 'Failed to delete votes' }), {
+			headers: { "content-type": "application/json" },
+			status: 500,
+		});
+	}
 }

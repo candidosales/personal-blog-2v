@@ -49,18 +49,29 @@
   }
 
   async function sendVote(value: string, fingerprint: string) {
-    const response = await fetch('/api/votes', {
-      method: 'POST',
-      body: JSON.stringify({
-        room,
-        value,
-        fingerprint,
-      }),
-    });
+    try {
+      const response = await fetch('/api/votes', {
+        method: 'POST',
+        body: JSON.stringify({
+          room,
+          value,
+          fingerprint,
+        }),
+      });
 
-    toast.success('Voto registrado');
+      if (!response.ok) {
+        const data = await response.json();
+        toast.error(data.error || 'Erro ao registrar voto');
+        return;
+      }
 
-    localStorage.setItem(`vote:${room}`, value);
+      toast.success('Voto registrado');
+
+      localStorage.setItem(`vote:${room}`, value);
+    } catch (error) {
+      toast.error('Erro ao registrar voto');
+      console.error('Error sending vote:', error);
+    }
   }
 
   function updateButton(value: string): void {
@@ -97,7 +108,7 @@
         {color}
         {info}
         {selected}
-        on:click={() => vote(index)}
+        onclick={() => vote(index)}
       />
     {/each}
   {/if}

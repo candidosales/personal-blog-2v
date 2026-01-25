@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import CheckmarkSolid from './icons/CheckmarkSolid.svelte';
 
   interface Props {
@@ -7,6 +6,7 @@
     info?: string;
     color?: string;
     selected?: boolean;
+    onclick?: () => void;
   }
 
   let {
@@ -14,17 +14,13 @@
     info = 'info',
     color = 'blue',
     selected = false,
+    onclick,
   }: Props = $props();
-
-  const dispatch = createEventDispatcher();
-  const click = (): void => {
-    dispatch('click');
-  };
 </script>
 
 <div class="flex flex-col text-center w-full">
   <button
-    onclick={click}
+    {onclick}
     class={`${selected ? `${color}-selected` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal font-inclusive`}
   >
     {#if selected}
@@ -44,5 +40,15 @@
   }
   .red-selected {
     background-color: var(--color-red-700);
+  }
+
+  .bg-yellow-500 {
+    background-color: var(--color-yellow-500);
+  }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
   }
 </style>

@@ -488,7 +488,7 @@ Existem outras ferramentas de orquestração como [Dagster](https://dagster.io/)
 
 Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), mas escolhi o DLT, pois oferece uma abordagem moderna, eficiente e utiliza [Apache Arrow](https://dlthub.com/blog/how-dlt-uses-apache-arrow), especialmente quando combinado com o ClickHouse, que é conhecido por sua velocidade e capacidade de lidar com grandes volumes de dados.
 
-Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust e que utiliza [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), mas ainda está em fase beta e não possui suporte para MS SQL Server, então optei pelo Dbt tradicional.
+Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust e que utiliza [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), mas ainda está em fase beta, então optei pelo Dbt tradicional.
 
 [Apache Arrow](https://arrow.apache.org/) é uma tecnologia poderosa que está ganhando cada vez mais espaço no ecossistema de dados, e é interessante ver como ela está sendo integrada em várias ferramentas modernas de engenharia de dados. The 
 
