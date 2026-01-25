@@ -30,8 +30,9 @@ bunx skills add expo/skills
 > If you don't have `bunx` installed, you can install it by following the instructions at [https://bun.sh/](https://bun.sh/).
 
 I selected:
-- the skills: expo-api-routes, expo-dev-client, use-dom, expo-cicd-workflows, expo-deployment, upgrading-expo;
+- the skills: `expo-api-routes`, `expo-dev-client`, `use-dom`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`;
 - the agents: Antigravity, Claude Code, Cursor, Gemini CLI, GitHub Copilot, OpenCode;
+  - You can choose only OpenCode if you want to keep it simple.
 - where to install: in the current project;
 - Installation method: Symlink (Recommended)
   - This method creates symbolic links to the skills in your project, allowing for easy updates and management for all agents.
@@ -45,13 +46,17 @@ Next, I installed Ollama on my machine. Ollama allows running language models lo
 brew install ollama
 ```
 
-Ollama recently released the `launch` command where you can install and run your favorite coding tools like Claude Code, OpenCode, and Codex with local or cloud models.
+Ollama recently released the `launch` command where you can install and run your favorite coding tools like Claude Code, OpenCode, and Codex with local or cloud models. You can find more information about the `launch` command in the [official documentation](https://ollama.com/blog/launch).
 
 ```bash
 ollama launch
 ```
 
 I selected OpenCode and the `glm-4.7:cloud` model. Since my machine doesn't support `glm-4.7:flash`, I opted to use the cloud model.
+
+```bash
+ollama launch opencode --model glm-4.7:cloud
+```
 
 ### The GLM-4.7 model
 
