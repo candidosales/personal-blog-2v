@@ -87,8 +87,19 @@ const currentPath = Astro.url.pathname;
         />
         <ClientRouter />
     </head>
-    <body class={withSun ? 'sun' : ''}>
+    <body class="relative min-h-screen overflow-x-hidden">
         {withTopBarBlur && <div class='topbar-blur' aria-hidden='true' />}
+
+        <!-- Sunrise Gradient Overlay -->
+        {
+            withSun && (
+                <div class="absolute bottom-0 w-full z-0 pointer-events-none">
+                    <div class="h-[400px] md:h-[700px] lg:h-[900px] stats-animation-gradient__gradient--sunrise"/>
+                </div>
+            )
+        }
+        <!-- Sunrise Gradient Overlay -->
+
         <!--Top Gradient -->
         <div
             class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
@@ -104,6 +115,7 @@ const currentPath = Astro.url.pathname;
         <!--Bottom Gradient -->
 
         <slot />
+
         <style lang='scss' is:global>
             @utility border-orange-50 {
                 border-color: var(--color-orange-50);
@@ -129,15 +141,6 @@ const currentPath = Astro.url.pathname;
             body {
                 letter-spacing: -0.05em;
                 --main-bg-color: #fff8f1; // Orange-50
-            }
-            .sun {
-                background: var(--main-bg-color);
-                background-image: url('/sun-2.png');
-                background-repeat: no-repeat;
-                background-position: bottom;
-                background-origin: content-box;
-                background-clip: content-box;
-                background-attachment: scroll;
             }
             h1,
             h2,
@@ -197,6 +200,10 @@ const currentPath = Astro.url.pathname;
                     animation-range: contain 0% contain 50%;
                     animation-duration: 700ms;
                 }
+            }
+
+            .stats-animation-gradient__gradient--sunrise {
+                background: radial-gradient(102.68% 99.11% at 50% 104.6%, #cb83ff 0, #ff90b9 15.77%, #ffc977 30.62%, #ffd79b 38.04%, #fff1dc 50.11%, #fff 63.1%, #fcfdfe 77.95%, #fff8f100 98.81%);
             }
         </style>
     </body>
