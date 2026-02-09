@@ -94,7 +94,7 @@ const currentPath = Astro.url.pathname;
         {
             withSun && (
                 <div class="absolute bottom-0 w-full z-0 pointer-events-none">
-                    <div class="h-[400px] md:h-[700px] lg:h-[900px] xl:h-[1200px] stats-animation-gradient__gradient--sunrise"/>
+                    <div class="h-100 md:h-175 lg:h-225 xl:h-300 stats-animation-gradient__gradient--sunrise"/>
                 </div>
             )
         }
@@ -102,14 +102,14 @@ const currentPath = Astro.url.pathname;
 
         <!--Top Gradient -->
         <div
-            class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
+            class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-linear-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
         >
         </div>
         <!--Top Gradient -->
 
         <!--Bottom Gradient -->
         <div
-            class='rotate-3 fixed -inset-x-12 -bottom-4 h-20 md:h-12 bg-gradient-to-r from-red-300 to-orange-300 blur-3xl'
+            class='rotate-3 fixed -inset-x-12 -bottom-4 h-20 md:h-12 bg-linear-to-r from-red-300 to-orange-300 blur-3xl'
         >
         </div>
         <!--Bottom Gradient -->

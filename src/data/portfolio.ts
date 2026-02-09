@@ -44,6 +44,26 @@ export const portfolioData = (t: any) => {
 		// 	],
 		// 	background: 'bg-sky-100',
 		// },
+        {
+			image: {
+				url: '/portfolio/wp-agent-tool-1.webp',
+				alt: t('portifolio.12.title'),
+			},
+			title: t('portifolio.12.title'),
+			description: t('portifolio.12.description'),
+			url: 'https://github.com/candidosales/wp-agent-tool',
+			techs: [
+				{
+					icon: 'rust',
+					name: 'Rust',
+				},
+				{
+					icon: 'wordpress',
+					name: 'WordPress',
+				},
+			],
+			background: 'bg-pink-100',
+		},
 		{
 			image: {
 				url: '/portfolio/svelte-shopify-polaris-icons-1.avif',

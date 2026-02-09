@@ -54,7 +54,8 @@ export const ui = {
         "portifolio.10.description": "Landing page for your personal portfolio",
         "portifolio.11.title": "Personal Portfolio 1v",
         "portifolio.11.description": "Landing page for your personal portfolio",
-
+        "portifolio.12.title": "WP Agent Tool",
+        "portifolio.12.description": "A Rust-based CLI tool for comprehensive WordPress diagnostics and maintenance.",
         volunteer: "Volunteer",
         "volunteer.subtitle":
             "I voluntarily develop and maintain projects that align with my beliefs in education, culture, art, public health, and sustainability",
@@ -133,6 +134,7 @@ export const ui = {
             "If you aren't careful, the newspapers will have you hating the people who are being oppressed and loving the people who are doing the oppressing.",
         "quote.anthonyBourdain": "It seems that the more places I see, the bigger I realize the world to be. The more I realize how relatively little I know of it, how many places I have still to go, how much more there is to learn. Maybe that’s enlightenment enough, to know that there is no final resting place of the mind, no moment of smug clarity. Perhaps wisdom, at least for me, means realizing how small I am, and unwise, and how far I have yet to go.",
         "quote.carlSagan": "We are like butterflies who flutter for a day and think it is forever.",
+        "quote.spinoza": "I have striven not to laugh at human actions, not to weep at them, nor to hate them, but to understand them.",
         "about.title": "About",
         "about.piece1": `Hey, I'm Candido Sales, half Brazilian 🇧🇷 and half Canadian 🇨🇦.`,
         "about.piece2":
@@ -201,6 +203,8 @@ export const ui = {
         "portifolio.11.title": "Portfólio Pessoal 1v",
         "portifolio.11.description":
             "Projeto open source para seu portfólio pessoal",
+        "portifolio.12.title": "WP Agent Tool",
+        "portifolio.12.description": "A Rust-based CLI tool for comprehensive WordPress diagnostics and maintenance.", 
         volunteer: "Voluntariado",
         "volunteer.subtitle":
             "Desenvolvo e mantenho voluntariamente projectos que estão de acordo com as minhas convicções em matéria de educação, cultura, arte, saúde pública e sustentabilidade",
@@ -280,6 +284,7 @@ export const ui = {
         "quote.malcomX":
             "Se você não tomar cuidado, os jornais farão com que você odeie as pessoas que estão sendo oprimidas e ame as pessoas que estão oprimindo.",
         "quote.anthonyBourdain": "Parece que quanto mais lugares vejo, mais percebo que o mundo é grande. Quanto mais percebo o quão pouco sei sobre ele, quantos lugares ainda tenho para visitar, quanto mais tenho para aprender. Talvez isso seja iluminação suficiente, saber que não há um lugar de descanso final para a mente, nenhum momento de clareza presunçosa. Talvez sabedoria, pelo menos para mim, signifique perceber o quão pequeno e sem sabedoria eu sou, e o quanto ainda tenho que percorrer.",
+        "quote.spinoza": "Tenho-me esforçado por não rir das ações humanas, por não deplorá-las nem odiá-las, mas por entendê-las.",
         "about.title": "Sobre",
         "about.piece1": `Olá, Eu sou Cândido Sales, metade brasileiro 🇧🇷 e metade canadense 🇨🇦!`,
         "about.piece2":
