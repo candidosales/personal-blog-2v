@@ -205,6 +205,47 @@ const currentPath = Astro.url.pathname;
             .stats-animation-gradient__gradient--sunrise {
                 background: radial-gradient(102.68% 99.11% at 50% 104.6%, #cb83ff 0, #ff90b9 15.77%, #ffc977 30.62%, #ffd79b 38.04%, #fff1dc 50.11%, #fff 63.1%, #fcfdfe 77.95%, #fff8f100 98.81%);
             }
+
+    .animate-fade-in-up {
+		animation: fade-in-up 1s ease-out both;
+	}
+
+	.animate-fade-in-up:nth-child(2) {
+		animation-delay: 0.15s;
+	}
+
+    .animate-fade-in-up:nth-child(3) {
+		animation-delay: 0.30s;
+	}
+
+	@keyframes fade-in-up {
+		0% {
+			filter: blur(10px);
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			filter: blur(0);
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+    .animate-fade-in-portfolio {
+		animation: fade-in-portfolio 1s ease-out both;
+        animation-delay: 1.2s;
+	}
+
+    @keyframes fade-in-portfolio {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
         </style>
     </body>
 </html>
