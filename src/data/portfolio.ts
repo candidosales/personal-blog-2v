@@ -2,7 +2,7 @@ export const portfolioData = (t: any) => {
 	return [
 		// {
 		// 	image: {
-		// 		url: '/portfolio/cisco-chatgpt.avif',
+		// 		url: '/portfolio/cisco-chatgpt.webp',
 		// 		alt: t('portifolio.1.title'),
 		// 	},
 		// 	title: t('portifolio.1.title'),
@@ -66,7 +66,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/svelte-shopify-polaris-icons-1.avif',
+				url: '/portfolio/svelte-shopify-polaris-icons-1.webp',
 				alt: t('portifolio.2.title'),
 			},
 			title: t('portifolio.2.title'),
@@ -90,7 +90,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/material-time-picker-1.avif',
+				url: '/portfolio/material-time-picker-1.webp',
 				alt: t('portifolio.3.title'),
 			},
 			title: t('portifolio.3.title'),
@@ -110,7 +110,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/svelte-google-translate-1.avif',
+				url: '/portfolio/svelte-google-translate-1.webp',
 				alt: t('portifolio.4.title'),
 			},
 			title: t('portifolio.4.title'),
@@ -130,7 +130,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/format-code-1.avif',
+				url: '/portfolio/format-code-1.webp',
 				alt: t('portifolio.5.title'),
 			},
 			title: t('portifolio.5.title'),
@@ -145,20 +145,24 @@ export const portfolioData = (t: any) => {
 					icon: 'typescript',
 					name: 'Typescript',
 				},
-				{
+                {
 					icon: 'sass',
-					name: 'SASS',
+					name: 'Sass',
+				},
+                {
+					icon: 'shiki',
+					name: 'Shiki',
 				},
 				{
-					icon: 'webpack',
-					name: 'Webpack',
+					icon: 'vite',
+					name: 'Vite',
 				},
 			],
 			background: 'bg-blue-100',
 		},
 		{
 			image: {
-				url: '/portfolio/landing-page-book-2v-1.avif',
+				url: '/portfolio/landing-page-book-2v-1.webp',
 				alt: t('portifolio.6.title'),
 			},
 			title: t('portifolio.6.title'),
@@ -190,7 +194,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/cloud-function-go-1.avif',
+				url: '/portfolio/cloud-function-go-1.webp',
 				alt: t('portifolio.7.title'),
 			},
 			title: t('portifolio.7.title'),
@@ -210,7 +214,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/figma-plugin-svelte-vite-1.avif',
+				url: '/portfolio/figma-plugin-svelte-vite-1.webp',
 				alt: t('portifolio.8.title'),
 			},
 			title: t('portifolio.8.title'),
@@ -238,7 +242,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/dependency-report.avif',
+				url: '/portfolio/dependency-report.webp',
 				alt: t('portifolio.9.title'),
 			},
 			title: t('portifolio.9.title'),
@@ -266,7 +270,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/personal-portfolio-2v-1.avif',
+				url: '/portfolio/personal-portfolio-2v-1.webp',
 				alt: t('portifolio.10.title'),
 			},
 			title: t('portifolio.10.title'),
@@ -294,7 +298,7 @@ export const portfolioData = (t: any) => {
 		},
 		{
 			image: {
-				url: '/portfolio/personal-portfolio-1v.avif',
+				url: '/portfolio/personal-portfolio-1v.webp',
 				alt: t('portifolio.11.title'),
 			},
 			title: t('portifolio.11.title'),
