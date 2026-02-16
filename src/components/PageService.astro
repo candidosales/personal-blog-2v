@@ -1,11 +1,11 @@
 ---
 import Contact from '@components/Contact.svelte';
 import ArrowRight from '@components/icons/ArrowRight.svelte';
-import Mail from '@components/icons/Mail.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Layout from '@layouts/Layout.astro';
 import type { Service } from 'src/env';
 import Header from './Header.svelte';
+import IconAt from './icons/IconAt.svelte';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -190,7 +190,7 @@ const services: Service[] = [
 				href='mailto:candidosg@gmail.com'
 				title={t('services.contactMeByEmail')}
 				target='_blank'
-				><Mail class='h-4 w-4 mr-2' />
+				><IconAt class='h-4 w-4 mr-2' />
 				{t('services.contactMe')}
 
 				<ArrowRight class='overflow-visible ml-3 text-white' />

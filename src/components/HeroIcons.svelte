@@ -1,7 +1,7 @@
 <script lang="ts">
   import Github from './icons/Github.svelte';
   import Linkedin from './icons/Linkedin.svelte';
-  import Mail from './icons/Mail.svelte';
+  import IconAt from './icons/IconAt.svelte';
 
   const social = [
     {
@@ -17,7 +17,7 @@
     {
       url: 'mailto:candidosg@gmail.com',
       title: 'e-mail',
-      icon: Mail,
+      icon: IconAt,
     },
   ];
 </script>

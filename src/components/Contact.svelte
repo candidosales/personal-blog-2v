@@ -1,9 +1,9 @@
 <script lang="ts">
   import Github from './icons/Github.svelte';
   import Linkedin from './icons/Linkedin.svelte';
-  import Mail from './icons/Mail.svelte';
   import Twitter from './icons/Twitter.svelte';
   import Bluesky from './icons/Bluesky.svelte';
+  import IconAt from './icons/IconAt.svelte';
 
   interface Props {
     place?: 'default' | 'mobile';
@@ -22,7 +22,7 @@
       href: 'mailto:candidosg@gmail.com',
       label: 'E-mail',
       targetBlank: true,
-      icon: Mail,
+      icon: IconAt,
     },
     {
       href: 'https://bsky.app/profile/candidosales.bsky.social',

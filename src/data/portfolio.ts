@@ -64,6 +64,70 @@ export const portfolioData = (t: any) => {
 			],
 			background: 'bg-pink-100',
 		},
+        {
+			image: {
+				url: '/portfolio/format-code-1.webp',
+				alt: t('portifolio.5.title'),
+			},
+			title: t('portifolio.5.title'),
+			description: t('portifolio.5.description'),
+			url: 'https://www.figma.com/community/plugin/891351519501239645/Format-Code',
+			techs: [
+				{
+					icon: 'figma',
+					name: 'Figma',
+				},
+				{
+					icon: 'typescript',
+					name: 'Typescript',
+				},
+                {
+					icon: 'sass',
+					name: 'Sass',
+				},
+                {
+					icon: 'shiki',
+					name: 'Shiki',
+				},
+				{
+					icon: 'vite',
+					name: 'Vite',
+				},
+			],
+			background: 'bg-blue-100',
+		},
+        {
+			image: {
+				url: '/portfolio/landing-page-book-2v-1.webp',
+				alt: t('portifolio.6.title'),
+			},
+			title: t('portifolio.6.title'),
+			description: t('portifolio.6.description'),
+			url: 'https://github.com/candidosales/landing-page-book-astro-tailwind',
+			background: 'bg-amber-100',
+			techs: [
+				{
+					icon: 'astro',
+					name: 'Astro',
+				},
+				{
+					icon: 'tailwind',
+					name: 'Tailwind',
+				},
+				{
+					icon: 'partytown',
+					name: 'Partytown',
+				},
+				{
+					icon: 'typescript',
+					name: 'Typescript',
+				},
+				{
+					icon: 'vercel',
+					name: 'Vercel',
+				},
+			],
+		},
 		{
 			image: {
 				url: '/portfolio/svelte-shopify-polaris-icons-1.webp',
@@ -127,70 +191,6 @@ export const portfolioData = (t: any) => {
 				},
 			],
 			background: 'bg-orange-100',
-		},
-		{
-			image: {
-				url: '/portfolio/format-code-1.webp',
-				alt: t('portifolio.5.title'),
-			},
-			title: t('portifolio.5.title'),
-			description: t('portifolio.5.description'),
-			url: 'https://www.figma.com/community/plugin/891351519501239645/Format-Code',
-			techs: [
-				{
-					icon: 'figma',
-					name: 'Figma',
-				},
-				{
-					icon: 'typescript',
-					name: 'Typescript',
-				},
-                {
-					icon: 'sass',
-					name: 'Sass',
-				},
-                {
-					icon: 'shiki',
-					name: 'Shiki',
-				},
-				{
-					icon: 'vite',
-					name: 'Vite',
-				},
-			],
-			background: 'bg-blue-100',
-		},
-		{
-			image: {
-				url: '/portfolio/landing-page-book-2v-1.webp',
-				alt: t('portifolio.6.title'),
-			},
-			title: t('portifolio.6.title'),
-			description: t('portifolio.6.description'),
-			url: 'https://github.com/candidosales/landing-page-book-astro-tailwind',
-			background: 'bg-amber-100',
-			techs: [
-				{
-					icon: 'astro',
-					name: 'Astro',
-				},
-				{
-					icon: 'tailwind',
-					name: 'Tailwind',
-				},
-				{
-					icon: 'partytown',
-					name: 'Partytown',
-				},
-				{
-					icon: 'typescript',
-					name: 'Typescript',
-				},
-				{
-					icon: 'vercel',
-					name: 'Vercel',
-				},
-			],
 		},
 		{
 			image: {

@@ -71,10 +71,6 @@ export const volunteerData = (t: any) => {
                     name: 'Strapi',
                 },
                 {
-                    icon: 'upstash',
-                    name: 'Upstash',
-                },
-                {
                     icon: 'flyio',
                     name: 'Fly.io',
                 },
