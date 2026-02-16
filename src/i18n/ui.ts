@@ -47,7 +47,7 @@ export const ui = {
             "🐹 An API for deploying Google Cloud Functions in Go",
         "portifolio.8.title": "Figma plugin boilerplate",
         "portifolio.8.description":
-            "A boilerplate for creating Figma plugins with Svelte, Vite and Typescript",
+            "A boilerplate for creating Figma plugins with Svelte, Tailwind, Vite and Typescript",
         "portifolio.9.title": "Dependencies report",
         "portifolio.9.description": `Analyze the consistency of the dependencies in your company's frontend projects`,
         "portifolio.10.title": "Personal Portfolio 2v",
@@ -194,7 +194,7 @@ export const ui = {
             "🐹 Uma API para implantar o Google Cloud Functions em Go",
         "portifolio.8.title": "Figma plugin boilerplate",
         "portifolio.8.description":
-            "Um boilerplate para criar plugins Figma com Svelte, Vite e Typescript",
+            "Um boilerplate para criar plugins Figma com Svelte, Tailwind, Vite e Typescript",
         "portifolio.9.title": "Relatório de dependências",
         "portifolio.9.description": `Analise a consistência das dependências nos projectos front-end da sua empresa`,
         "portifolio.10.title": "Portfólio Pessoal 2v",
