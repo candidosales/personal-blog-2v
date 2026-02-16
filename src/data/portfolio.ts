@@ -152,6 +152,38 @@ export const portfolioData = (t: any) => {
 			],
 			background: 'bg-emerald-100',
 		},
+        {
+			image: {
+				url: '/portfolio/figma-plugin-svelte-vite-1.webp',
+				alt: t('portifolio.8.title'),
+			},
+			title: t('portifolio.8.title'),
+			description: t('portifolio.8.description'),
+			url: 'https://github.com/candidosales/figma-plugin-svelte-vite',
+			background: 'bg-orange-100',
+			techs: [
+				{
+					icon: 'figma',
+					name: 'Figma',
+				},
+				{
+					icon: 'svelte',
+					name: 'Svelte',
+				},
+                {
+					icon: 'tailwind',
+					name: 'Tailwind',
+				},
+				{
+					icon: 'vite',
+					name: 'Vite',
+				},
+				{
+					icon: 'typescript',
+					name: 'Typescript',
+				},
+			],
+		},
 		{
 			image: {
 				url: '/portfolio/material-time-picker-1.webp',
@@ -209,38 +241,6 @@ export const portfolioData = (t: any) => {
 				{
 					icon: 'google-cloud',
 					name: 'Google Cloud',
-				},
-			],
-		},
-		{
-			image: {
-				url: '/portfolio/figma-plugin-svelte-vite-1.webp',
-				alt: t('portifolio.8.title'),
-			},
-			title: t('portifolio.8.title'),
-			description: t('portifolio.8.description'),
-			url: 'https://github.com/candidosales/figma-plugin-svelte-vite',
-			background: 'bg-orange-100',
-			techs: [
-				{
-					icon: 'figma',
-					name: 'Figma',
-				},
-				{
-					icon: 'svelte',
-					name: 'Svelte',
-				},
-                {
-					icon: 'tailwind',
-					name: 'Tailwind',
-				},
-				{
-					icon: 'vite',
-					name: 'Vite',
-				},
-				{
-					icon: 'typescript',
-					name: 'Typescript',
 				},
 			],
 		},
