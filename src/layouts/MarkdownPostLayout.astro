@@ -2,18 +2,16 @@
 import BaseLayout from './Layout.astro';
 import Header from '@components/Header.svelte';
 import { getLangFromUrl } from '@i18n/utils';
+import type { MarkdownHeading } from 'astro';
 
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings } = Astro.props as { frontmatter: any; headings: MarkdownHeading[] };
 const lang = getLangFromUrl(Astro.url);
-
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} imageUrl={frontmatter.image.url}>
   <Header client:only='svelte' />
-  <main
-    class='relative pb-50 max-w-5xl mx-auto prose prose-h1:font-medium prose-h1:mb-2 mt-16 mb-16 px-4'
-  >
-    <header class='mb-8'>
+  <main class='relative pb-50 max-w-6xl mx-auto mt-16 mb-16 px-4'>
+    <header class='mb-8 prose prose-h1:font-medium prose-h1:mb-2 max-w-none'>
       <h1 class='text-balance mb-0 text-blue-800'>{frontmatter.title}</h1>
       <div class='text-base text-blue-800/80'>
         <time datetime={frontmatter.pubDate.toString()}
@@ -32,21 +30,21 @@ const lang = getLangFromUrl(Astro.url);
       src={frontmatter.image.url}
       alt={frontmatter.image.alt}
     />
+
+    <!-- Mobile TOC (shown only on small screens) -->
     <nav
-      id='contents'
-      class='p-4 mb-2 text-sm bg-white/40
-    prose-h3:mt-0 prose-h3:text-base prose-h3:text-slate-600
-    prose-a:no-underline
-    rounded-lg'
+      id='contents-mobile'
+      class='lg:hidden p-4 mb-6 text-sm bg-white/40 rounded-lg'
     >
-      <h3 class='mb-1/12 mt-0'>Contents</h3>
-      <ul>
+      <h3 class='mb-2 mt-0 text-base font-medium text-slate-600'>Contents</h3>
+      <ul class='list-none pl-0 space-y-1'>
         {
           headings.map((heading) => (
-            <li>
+            <li style={heading.depth > 2 ? `padding-left: ${(heading.depth - 2) * 12}px` : ''}>
               <a
                 href={`#${heading.slug}`}
-                class='py-v1/12 hover:text-theme-text-sec block'
+                class='toc-link-mobile block py-0.5 text-slate-500 hover:text-blue-600 no-underline transition-colors duration-200'
+                data-slug={heading.slug}
               >
                 {heading.text}
               </a>
@@ -55,18 +53,52 @@ const lang = getLangFromUrl(Astro.url);
         }
       </ul>
     </nav>
-    <article
-      class='prose-slate
-            prose-a:text-blue-600
-            prose-img:rounded-xl
-            prose-code:text-sm
-            prose-pre:leading-6 prose-pre:mt-0
-            prose-h2:text-blue-800
-            prose-h3:text-blue-800
-            word-break:break-all'
-    >
-      <slot />
-    </article>
+
+    <!-- Desktop: two-column layout -->
+    <div class='lg:flex lg:gap-12'>
+      <!-- Article content -->
+      <article
+        id='article-content'
+        class='prose prose-slate max-w-none
+              prose-h1:font-medium prose-h1:mb-2
+              prose-a:text-blue-600
+              prose-img:rounded-xl
+              prose-code:text-sm
+              prose-pre:leading-6 prose-pre:mt-0
+              prose-h2:text-blue-800
+              prose-h3:text-blue-800
+              flex-1 min-w-0
+              [word-break:break-word]'
+      >
+        <slot />
+      </article>
+
+      <!-- Desktop TOC sidebar (hidden on mobile) -->
+      {headings.length > 0 && (
+        <aside id='toc-wrapper' class='hidden lg:block w-56 shrink-0 self-start sticky top-24'>
+          <nav class='text-sm'>
+            <p class='mb-3 mt-0 text-xs font-semibold uppercase tracking-wider text-slate-400'>
+              On this page
+            </p>
+            <ul class='list-none pl-0 space-y-1'>
+              {
+                headings.map((heading) => (
+                  <li style={heading.depth > 2 ? `padding-left: ${(heading.depth - 2) * 12}px` : ''}>
+                    <a
+                      href={`#${heading.slug}`}
+                      class='toc-link block py-1 text-slate-400 hover:text-blue-600 no-underline leading-snug transition-colors duration-200'
+                      data-slug={heading.slug}
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </aside>
+      )}
+    </div>
   </main>
 </BaseLayout>
 
@@ -76,4 +108,85 @@ const lang = getLangFromUrl(Astro.url);
     align-items: center;
     gap: 4px;
   }
+
+  .toc-link.toc-active {
+    color: #1d4ed8; /* blue-700 */
+    font-weight: 500;
+  }
+
+  .toc-link-mobile.toc-active {
+    color: #1d4ed8;
+    font-weight: 500;
+  }
 </style>
+
+<script>
+  function initTOC() {
+    const allTocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link, .toc-link-mobile');
+    if (allTocLinks.length === 0) return;
+
+    const headingElements = Array.from(
+      document.querySelectorAll<HTMLElement>('#article-content h1, #article-content h2, #article-content h3, #article-content h4')
+    );
+    if (headingElements.length === 0) return;
+
+    let activeSlug = '';
+
+    function setActive(slug: string) {
+      if (slug === activeSlug) return;
+      activeSlug = slug;
+      allTocLinks.forEach((link) => {
+        if (link.dataset.slug === slug) {
+          link.classList.add('toc-active');
+        } else {
+          link.classList.remove('toc-active');
+        }
+      });
+    }
+
+    // Use IntersectionObserver to detect which heading is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the topmost visible heading
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          const topVisible = visible[0].target as HTMLElement;
+          setActive(topVisible.id);
+        }
+      },
+      {
+        rootMargin: '0px 0px -70% 0px',
+        threshold: 0,
+      }
+    );
+
+    headingElements.forEach((el) => observer.observe(el));
+
+    // Activate the first heading by default
+    if (headingElements[0]?.id) {
+      setActive(headingElements[0].id);
+    }
+
+    // Smooth scroll for TOC links
+    allTocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const slug = link.dataset.slug;
+        if (!slug) return;
+        const target = document.getElementById(slug);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setActive(slug);
+          history.pushState(null, '', `#${slug}`);
+        }
+      });
+    });
+  }
+
+  // Run on initial load and on Astro page transitions
+  document.addEventListener('astro:page-load', initTOC);
+  initTOC();
+</script>
