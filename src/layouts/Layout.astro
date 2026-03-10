@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import '@fontsource/inclusive-sans';
-import '@fontsource-variable/newsreader';
+import { Font } from 'astro:assets';
 
 import { SEO } from 'astro-seo';
 import { ClientRouter } from 'astro:transitions';
@@ -35,6 +34,8 @@ const currentPath = Astro.url.pathname;
         <link rel='icon' type='image/png' href='/favicon.png' />
         <meta name='generator' content={Astro.generator} />
         <link rel='sitemap' href='/sitemap-index.xml' />
+        <Font cssVariable='--font-inclusive' preload />
+        <Font cssVariable='--font-newsreader' preload />
         <script
             type='text/partytown'
             src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GTM_ID}`}

@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
 title: 'Data pipeline com DLT, Dbt, Prefect e ClickHouse'
 pubDate: 2026-01-19
 author: 'Candido Gomes'

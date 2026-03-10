@@ -2,35 +2,24 @@
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.svelte';
 import { posts } from '@data/posts';
+import { getCollection } from 'astro:content';
 
 import { getLangFromUrl } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 
-const mdPostsEn = import.meta.glob('../pages/blog/*.md', { eager: true });
-const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.md', { eager: true });
-
-const postsMap = lang === 'pt-br' ? mdPostsPt : mdPostsEn;
-const mdPosts = Object.entries(postsMap).map(([path, post]: [string, any]) => {
-	const url = path
-		.replace('../pages', '')
-		.replace('.md', '')
-		.replace('/index', '');
-	return {
-		...post,
-		url,
-	};
-});
+const mdCollectionPosts = await getCollection(lang === 'pt-br' ? 'blogPt' : 'blogEn');
+const mdPosts = mdCollectionPosts.map((post) => ({
+	title: post.data.title,
+	description: post.data.description || '',
+	href: lang === 'pt-br' ? `/pt-br/blog/${post.id}` : `/blog/${post.id}`,
+	publishDate: post.data.pubDate,
+	image: post.data.image,
+}));
 
 const allPosts = [
 	...posts,
-	...mdPosts.map((post: any) => ({
-		title: post.frontmatter.title,
-		description: post.frontmatter.description || '',
-		href: post.url,
-		publishDate: post.frontmatter.pubDate,
-		image: post.frontmatter.image,
-	})),
+	...mdPosts,
 ].sort(
 	(a, b) =>
 		new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),

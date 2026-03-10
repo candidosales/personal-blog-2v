@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'My AI Open Source Workflow'
 pubDate: 2026-01-24
 author: 'Candido Gomes'
