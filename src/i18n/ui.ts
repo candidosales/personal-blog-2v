@@ -116,6 +116,17 @@ export const ui = {
         "services.6.title": "Fast, reliable data when you need it",
         "services.6.description":
             "Complete data engineering solutions with a modern stack (DltHub, DBT, Prefect, ClickHouse, etc). Automated pipelines that transform raw information into actionable insights with speed and quality.",
+        "services.howIWork.title": "How I Work",
+        "services.howIWork.subtitle": "A transparent, iterative process built around clarity, design, and honest communication.",
+        "services.howIWork.step1.title": "Research & Scope Definition",
+        "services.howIWork.step1.description": "We start by deeply understanding what you need — scope, constraints, and priorities. The guiding principle: do more with less, but know <em>what</em> and in <em>what order</em>. Design attention is fundamental from day one. Learning always emerges along the way, and the process must be iterative enough to embrace it.",
+        "services.howIWork.step2.title": "Proposal, Budget & Deliverables",
+        "services.howIWork.step2.description": "A detailed project document is drafted and shared for review — we refine it together until fully aligned. Only then do I provide an accurate budget and timeline. Every deliverable is agreed upfront: whether a digital product, training material, or presentation, so expectations are always clear.",
+        "services.howIWork.step3.title": "We Build",
+        "services.howIWork.step3.description": "With an approved scope and timeline, work begins — focused, committed, and purposeful. If any discovery changes the scope or timeline during development, you'll be notified in advance. No hidden pivots, no surprises at the finish line.",
+        "services.howIWork.step4.title": "Delivery & Final Report",
+        "services.howIWork.step4.description": "You receive a complete report of everything delivered. In the rare case something couldn't be completed, it's clearly documented — and becomes the seed of a well-scoped future project.",
+        "services.howIWork.cta": "If this way of working resonates with you, let's talk :)",
         "quote.joseMujica":
             "Triumphing in life is not winning, it is getting up and starting over every time you fall.",
         "quote.rubemAlves":
@@ -265,6 +276,17 @@ export const ui = {
         "services.6.title": "Dados rápidos e confiáveis quando você precisa",
         "services.6.description":
             "Soluções completas de engenharia de dados com stack moderno (DltHub, DBT, Prefect, ClickHouse e etc). Pipelines automatizados que transformam informação bruta em insights acionáveis com velocidade e qualidade.",
+        "services.howIWork.title": "Como eu trabalho",
+        "services.howIWork.subtitle": "Um processo transparente e iterativo construído em torno de clareza, design e comunicação honesta.",
+        "services.howIWork.step1.title": "Pesquisa e Definição de Escopo",
+        "services.howIWork.step1.description": "Começamos entendendo profundamente o que você precisa — escopo, limitações e prioridades. O princípio central: fazer mais com menos, mas saber <em>o quê</em> e em <em>qual ordem</em>. A atenção ao design é fundamental desde o primeiro dia. O aprendizado sempre surge ao longo do caminho, e o processo precisa ser iterativo o suficiente para absorvê-lo.",
+        "services.howIWork.step2.title": "Proposta, Orçamento e Entregáveis",
+        "services.howIWork.step2.description": "Um documento de projeto detalhado é elaborado e compartilhado para revisão — juntos o refinamos até estarmos totalmente alinhados. Só então forneço orçamento e prazo precisos. Cada entregável é acordado antecipadamente — seja um produto digital, material de treinamento ou apresentação — para que as expectativas estejam sempre claras.",
+        "services.howIWork.step3.title": "Mãos à obra",
+        "services.howIWork.step3.description": "Com escopo e prazo aprovados, o trabalho começa — focado, comprometido e com propósito. Se alguma descoberta alterar o escopo ou prazo durante o desenvolvimento, você será avisado previamente. Sem mudanças ocultas, sem surpresas no final.",
+        "services.howIWork.step4.title": "Entrega e Relatório Final",
+        "services.howIWork.step4.description": "Você recebe um relatório completo de tudo o que foi entregue. No raro caso em que algo não pôde ser concluído, é documentado claramente — e se torna o ponto de partida de um próximo projeto bem definido.",
+        "services.howIWork.cta": "Se você se identifica com essa forma de trabalho, vamos conversar :)",
         "quote.joseMujica":
             "Triunfar na vida não é ganhar, é se levantar e começar de novo cada vez que cai.",
         "quote.rubemAlves":

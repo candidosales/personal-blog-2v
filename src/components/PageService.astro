@@ -106,29 +106,59 @@ const services: Service[] = [
 		description: t('services.4.description'),
 	},
 ];
+
+const workStepImages = [
+	'https://images.unsplash.com/photo-1510906594845-bc082582c8cc?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1534312527009-56c7016453e6?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1633596683562-4a47eb4983c5?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?auto=format&fit=crop&w=800&q=80',
+];
+
+const workSteps = [
+	{
+		title: t('services.howIWork.step1.title'),
+		description: t('services.howIWork.step1.description'),
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 15.803a7.5 7.5 0 0 0 10.607 0Z" /></svg>`,
+	},
+	{
+		title: t('services.howIWork.step2.title'),
+		description: t('services.howIWork.step2.description'),
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>`,
+	},
+	{
+		title: t('services.howIWork.step3.title'),
+		description: t('services.howIWork.step3.description'),
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
+	},
+	{
+		title: t('services.howIWork.step4.title'),
+		description: t('services.howIWork.step4.description'),
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" /></svg>`,
+	},
+];
 ---
 
 <Layout title={t('services.title')} noindex={true} nofollow={true}>
 	<Header client:only='svelte' />
 	<main class='relative pb-36 mx-auto max-w-5xl my-16 px-4'>
 		<h1
-			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10 animate-fade-in-up'
 		>
 			{t('services.title')}
 		</h1>
 		<p
-			class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600'
+			class='text-foreground text-md mt-2 lg:mb-0 sm:text-base lg:text-lg text-blue-600 animate-fade-in-up'
 		>
 			{t('services.subtitle')}
 		</p>
 
 		<div
-			class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-20 md:mb-32'
+			class='container relative mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 mb-20 md:mb-32 animate-fade-in-up'
 		>
 			{
 				services.map((s) => (
 					<div
-						class={`${s.cssClass} bg-white/80 pl-6 pt-6 rounded-3xl hover:bg-blue-200 ease-in duration-150  slide-fade-in`}
+						class={`${s.cssClass} bg-white/80 pl-6 pt-6 rounded-3xl hover:bg-blue-200 ease-in duration-150`}
 					>
 						<div class='flex flex-col relative h-[320px]'>
 							<div class='h-12 w-12 bg-white rounded-xl p-2 mb-4 border border-solid border-slate-200'>
@@ -174,6 +204,87 @@ const services: Service[] = [
 						</a>
 					))
 				}
+			</div>
+		</div>
+
+		<!-- How I Work -->
+		<div class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'>
+			<h2
+				class='md:w-3/4 mb-1 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
+			>
+				{t('services.howIWork.title')}
+			</h2>
+			<p class='text-center text-blue-600 mb-12 text-base md:text-lg'>
+				{t('services.howIWork.subtitle')}
+			</p>
+
+			<div class='how-i-work-grid'>
+				<!-- Sticky image panel — desktop only -->
+				<div class='sticky-col hidden md:block'>
+					<div class='sticky top-24'>
+						<div class='step-image-frame relative rounded-3xl overflow-hidden shadow-2xl bg-slate-100'>
+							{workSteps.map((step, i) => (
+								<img
+									id={`step-img-${i}`}
+									src={workStepImages[i]}
+									alt={step.title}
+									class={`step-panel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+									loading={i === 0 ? 'eager' : 'lazy'}
+								/>
+							))}
+							<div class='absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none' />
+							<div class='absolute bottom-5 left-5 right-5'>
+								<span id='step-counter' class='text-xs font-bold text-white/60 tracking-widest uppercase block mb-1'>
+									Step 01 / {String(workSteps.length).padStart(2, '0')}
+								</span>
+								<p id='step-panel-title' class='text-white font-semibold text-sm leading-snug'>
+									{workSteps[0].title}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Steps list -->
+				<div class='steps-col'>
+					{workSteps.map((step, i) => (
+						<div class='work-step mb-8 md:mb-0' data-index={String(i)}>
+							<div class='md:hidden mb-0 md:mb-3 rounded-2xl overflow-hidden step-mobile-img'>
+								<img
+									src={workStepImages[i]}
+									alt={step.title}
+									class='w-full h-full object-cover'
+									loading='lazy'
+								/>
+							</div>
+							<div class='step-card rounded-2xl px-5 py-4 transition-all duration-300'>
+								<div class='flex items-center gap-3 mb-2'>
+									<div class='step-icon-badge flex items-center justify-center h-7 w-7 rounded-full bg-blue-100 text-blue-500 shrink-0 transition-all duration-300'>
+										<span class='h-4 w-4 step-icon'><Fragment set:html={step.icon} /></span>
+									</div>
+								<h3 class='step-title text-base font-semibold text-slate-700 transition-colors duration-300'>
+									{step.title}
+								</h3>
+							</div>
+								<p class='text-sm text-slate-500 leading-relaxed'>
+									<Fragment set:html={step.description} />
+								</p>
+							</div>
+							{i < workSteps.length - 1 && (
+								<div class='h-px bg-slate-100 mx-5' />
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+
+			<div class='flex justify-center mt-16'>
+				<blockquote class='how-i-work-cta relative max-w-xl text-center px-10 py-6 rounded-3xl'>
+					<span class='quote-mark font-newsreader italic' aria-hidden='true'>“</span>
+					<p class='text-lg md:text-xl text-blue-800 font-inclusive italic leading-relaxed'>
+						{t('services.howIWork.cta')}
+					</p>
+				</blockquote>
 			</div>
 		</div>
 
@@ -309,4 +420,112 @@ const services: Service[] = [
 			filter: none;
 		}
 	}
+
+	.step-bubble {
+		box-shadow: 0 0 0 4px #dbeafe;
+	}
+
+	@keyframes step-slide-in {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.step-reveal {
+			view-timeline-name: --step-timeline;
+			animation: step-slide-in both;
+			animation-timeline: --step-timeline;
+			animation-range: contain 0% contain 40%;
+			animation-duration: 500ms;
+			animation-fill-mode: both;
+		}
+	}
+
+	.step-icon svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.quote-mark {
+		position: absolute;
+		top: -0.5rem;
+		left: 1.25rem;
+		font-size: 5rem;
+		line-height: 1;
+		color: #bfdbfe;
+		font-family: Georgia, serif;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	/* How I Work — two-column sticky layout */
+	.how-i-work-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+	@media (min-width: 768px) {
+		.how-i-work-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: start;
+		}
+	}
+	.step-image-frame {
+		aspect-ratio: 3 / 4;
+	}
+	.step-mobile-img {
+		aspect-ratio: 16 / 9;
+	}
+	.step-card.is-active {
+		background-color: rgb(239 246 255 / 0.8);
+	}
+	.step-card.is-active .step-title {
+		color: #1d4ed8;
+	}
+	.step-card.is-active .step-num-badge {
+		color: #2563eb;
+	}
+	.step-card.is-active .step-icon-badge {
+		background-color: #2563eb;
+		color: white;
+	}
 </style>
+
+<script>
+	const steps = document.querySelectorAll<HTMLElement>('.work-step');
+	const panelImgs = document.querySelectorAll<HTMLElement>('.step-panel-img');
+	const counterEl = document.getElementById('step-counter');
+	const panelTitleEl = document.getElementById('step-panel-title');
+	const total = steps.length;
+
+	function activate(index: number): void {
+		steps.forEach((step, i) => {
+			step.querySelector('.step-card')?.classList.toggle('is-active', i === index);
+		});
+		panelImgs.forEach((img, i) => {
+			img.classList.toggle('opacity-0', i !== index);
+			img.classList.toggle('opacity-100', i === index);
+		});
+		if (counterEl) {
+			counterEl.textContent = `Step ${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+		}
+		if (panelTitleEl) {
+			panelTitleEl.textContent = steps[index]?.querySelector('.step-title')?.textContent ?? '';
+		}
+	}
+
+	steps.forEach((step) => {
+		step.addEventListener('mouseenter', () => {
+			activate(Number(step.dataset.index));
+		});
+	});
+
+	activate(0);
+</script>
