@@ -16,7 +16,7 @@ Inspirations:
 ## 🎯 Features
 
 - ✅ [Tailwind 4](https://tailwindcss.com/);
-- ✅ [Astro 5v](https://astro.build/);
+- ✅ [Astro 6v](https://astro.build/);
 - ✅ [Astro/Sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/);
 - ✅ [Astro/compress](https://github.com/astro-community/astro-compress);
 - ✅ [Astro/SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo);
