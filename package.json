@@ -28,7 +28,7 @@
         "@types/react-dom": "19.2.3",
         "@upstash/redis": "1.36.1",
         "@xt0rted/expressive-code-file-icons": "^1.0.0",
-        "astro": "6.0.2",
+        "astro": "6.0.3",
         "astro-compress": "2.3.9",
         "astro-expressive-code": "^0.41.6",
         "astro-seo": "1.1.0",

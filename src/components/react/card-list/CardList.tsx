@@ -1,17 +1,24 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { motion, AnimatePresence } from "motion/react";
 import "./style.css";
 
+type Game = {
+	title: string;
+	description: string;
+	longDescription: string;
+	image: string;
+};
+
 export default function CardList() {
-	const [activeGame, setActiveGame] = useState(null);
-	const ref = useRef(null);
-	useOnClickOutside(ref, () => setActiveGame(null));
+	const [activeGame, setActiveGame] = useState<Game | null>(null);
+	const ref = useRef<HTMLDivElement>(null);
+	useOnClickOutside(ref as unknown as React.RefObject<HTMLElement>, () => setActiveGame(null));
 
 	useEffect(() => {
-		function onKeyDown(event) {
+		function onKeyDown(event: KeyboardEvent) {
 			if (event.key === "Escape") {
 				setActiveGame(null);
 			}

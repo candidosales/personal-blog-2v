@@ -1,6 +1,6 @@
 import { getRedisClient } from '@lib/redis';
 import type { APIRoute } from 'astro';
-import type { Vote } from 'src/env';
+import type { Vote } from '../../env';
 
 const HASHSET_KEY = 'votes';
 

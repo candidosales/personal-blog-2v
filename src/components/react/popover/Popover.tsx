@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import "./style.css";
 import { Spinner } from "./Spinner";
@@ -10,8 +10,8 @@ export default function Popover() {
 	const [open, setOpen] = useState(false);
 	const [formState, setFormState] = useState("idle");
 	const [feedback, setFeedback] = useState("");
-	const ref = useRef(null);
-	useOnClickOutside(ref, () => setOpen(false));
+	const ref = useRef<HTMLDivElement>(null);
+	useOnClickOutside(ref as unknown as React.RefObject<HTMLElement>, () => setOpen(false));
 
 	function submit() {
 		setFormState("loading");
@@ -25,7 +25,7 @@ export default function Popover() {
 	}
 
 	useEffect(() => {
-		const handleKeyDown = (event) => {
+		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === "Escape") {
 				setOpen(false);
 			}

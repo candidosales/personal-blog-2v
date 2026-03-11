@@ -24,7 +24,7 @@ export default function DynamicIslandWealthsimple() {
 					layout
 					transition={{
 						type: "spring",
-						bounce: BOUNCE_VARIANTS[variantKey],
+						bounce: BOUNCE_VARIANTS[variantKey as keyof typeof BOUNCE_VARIANTS],
 					}}
 					style={{ borderRadius: 32 }}
 					className="mx-auto w-fit min-w-[100px] overflow-hidden rounded-full bg-black"
@@ -32,7 +32,7 @@ export default function DynamicIslandWealthsimple() {
 					<motion.div
 						transition={{
 							type: "spring",
-							bounce: BOUNCE_VARIANTS[variantKey],
+							bounce: BOUNCE_VARIANTS[variantKey as keyof typeof BOUNCE_VARIANTS],
 						}}
 						initial={{
 							scale: 0.9,
@@ -60,7 +60,7 @@ export default function DynamicIslandWealthsimple() {
 				<div className="pointer-events-none absolute left-1/2 top-0 flex h-[200px] w-[300px] -translate-x-1/2 items-start justify-center">
 					<AnimatePresence
 						mode="popLayout"
-						custom={ANIMATION_VARIANTS[variantKey]}
+						custom={ANIMATION_VARIANTS[variantKey as keyof typeof ANIMATION_VARIANTS]}
 					>
 						<motion.div
 							initial={{ opacity: 0 }}
@@ -93,7 +93,7 @@ export default function DynamicIslandWealthsimple() {
 }
 
 const variants = {
-	exit: (transition) => {
+	exit: (transition: Record<string, unknown>) => {
 		return {
 			...transition,
 			opacity: [1, 0],

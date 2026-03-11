@@ -3,7 +3,7 @@ import satori from 'satori';
 import sharp from 'sharp';
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = async function get({ params, request }) {
+export const GET: APIRoute = async function get(_ctx) {
   const inclusiveSansData = await fs.readFile(
     './public/fonts/InclusiveSans-Regular.ttf',
   );
@@ -116,6 +116,7 @@ export const GET: APIRoute = async function get({ params, request }) {
     },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const svg = await satori(
     {
       type: 'div',
@@ -133,7 +134,7 @@ export const GET: APIRoute = async function get({ params, request }) {
           padding: 60,
         },
       },
-    },
+    } as any,
     {
       width: 1200,
       height: 600,
@@ -154,7 +155,7 @@ export const GET: APIRoute = async function get({ params, request }) {
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       'Content-Type': 'image/png',
     },
