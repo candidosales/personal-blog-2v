@@ -59,6 +59,10 @@ export const volunteerData = (t: any) => {
                     name: 'Tailwind',
                 },
                 {
+                    icon: 'vite-8',
+                    name: 'Vite 8',
+                },
+                {
                     icon: 'vercel',
                     name: 'Vercel',
                 },
