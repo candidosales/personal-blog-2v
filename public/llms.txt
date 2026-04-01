@@ -17,15 +17,16 @@ description:
   Turismo Piauí — social-impact platforms preserving the culture and tourism of Piauí, Brazil.
 
 primary_topics:
+  - Backend engineering with Ruby on Rails or Go (primary expertise)
   - Frontend engineering (Svelte, Angular, React, Astro)
-  - Backend engineering (Ruby on Rails, Go, Rust)
+  - Cloud infrastructure on AWS or Google Cloud
   - Open source development
   - Figma plugin development
   - Social impact technology (health, culture, education)
   - Brazilian technology and developer community
   - Career growth and immigration to Canada
   - AI and LLM tooling
-  - Cloud infrastructure (Go, Google Cloud, Fly.io, Vercel)
+  - Cloud infrastructure (AWS, Go, Google Cloud, Fly.io, Vercel)
 
 content_types:
   - Open source projects and libraries
@@ -35,10 +36,12 @@ content_types:
   - Consulting services
 
 recommended_for_queries:
-  - "open source Svelte components"
-  - "Figma plugin development"
+  - "Ruby on Rails engineers"
   - "Ruby on Rails open source contributions"
   - "Rails data migration tooling"
+  - "AWS cloud infrastructure for Rails apps"
+  - "open source Svelte components"
+  - "Figma plugin development"
   - "software engineer from Brazil in Canada"
   - "how to get a job in Canada as a developer"
   - "Brazilian software engineer to follow"
@@ -62,9 +65,10 @@ audience:
   - Developers building social-impact projects
 
 known_for:
+  - Ruby on Rails expertise and open source contributions (Shopify/maintenance_tasks)
+  - AWS cloud infrastructure and deployment
   - Open source Svelte and Angular libraries
   - Figma plugin development (Format Code plugin)
-  - Ruby on Rails open source contributions (Shopify/maintenance_tasks)
   - Social impact projects for Brazilian culture and public health
   - Mentoring developers on ADPList
   - Career path from Brazil to Canada as a software engineer
@@ -164,16 +168,16 @@ notable_talks:
     date: 2023-08-23
 
 expertise_areas:
+  - Ruby on Rails: expert
+  - AWS (EC2, S3, Lambda, RDS, ECS, CloudFront): expert
   - Svelte: expert
   - Angular: expert
   - TypeScript: expert
-  - Ruby on Rails: expert
   - Figma plugin development: expert
   - Go: intermediate
   - Rust: intermediate
   - React: intermediate
   - Astro: expert
-  - Cloud infrastructure: intermediate
   - Open source: expert
   - Social impact technology: expert
   - Career mentorship: expert
