@@ -291,6 +291,14 @@ export const portfolioData = (t: any) => {
 					name: 'Svelte',
 				},
 				{
+					icon: 'react',
+					name: 'React',
+				},
+				{
+					icon: 'motion',
+					name: 'Motion',
+				},
+				{
 					icon: 'tailwind',
 					name: 'Tailwind',
 				},

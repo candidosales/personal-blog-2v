@@ -23,10 +23,6 @@ export const extrasData = (t: any) => {
               name: "Chakra UI",
             },
             {
-              icon: "sass",
-              name: "SASS",
-            },
-            {
               icon: "vercel",
               name: "Vercel",
             },
@@ -47,6 +43,10 @@ export const extrasData = (t: any) => {
                     name: 'TanStack',
                 },
                 {
+                    icon: 'vite-8',
+                    name: 'Vite 8',
+                },
+                {
                     icon: 'chakra-ui-3',
                     name: 'Chakra UI',
                 },
@@ -57,10 +57,6 @@ export const extrasData = (t: any) => {
                 {
                     icon: 'vercel',
                     name: 'Vercel',
-                },
-                {
-                    icon: 'vite-8',
-                    name: 'Vite 8',
                 },
                 {
                     icon: 'pwa',
@@ -83,12 +79,12 @@ export const extrasData = (t: any) => {
                     name: 'Svelte',
                 },
                 {
-                    icon: 'tailwind',
-                    name: 'Tailwind',
+                    icon: 'vite-8',
+                    name: 'Vite 8   ',
                 },
                 {
-                    icon: 'vite',
-                    name: 'Vite',
+                    icon: 'tailwind',
+                    name: 'Tailwind',
                 },
                 {
                     icon: 'vercel',

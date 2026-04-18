@@ -51,16 +51,16 @@ export const volunteerData = (t: any) => {
                     name: 'Svelte',
                 },
                 {
+                    icon: 'vite-8',
+                    name: 'Vite 8',
+                },
+                {
                     icon: 'shadcn-svelte',
                     name: 'shadcn-svelte',
                 },
                 {
                     icon: 'tailwind',
                     name: 'Tailwind',
-                },
-                {
-                    icon: 'vite-8',
-                    name: 'Vite 8',
                 },
                 {
                     icon: 'vercel',
