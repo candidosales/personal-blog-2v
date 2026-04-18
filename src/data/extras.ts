@@ -11,12 +11,12 @@ export const extrasData = (t: any) => {
           url: "https://dyky.app/",
           techs: [
             {
-              icon: "nextjs",
-              name: "NextJS",
+              icon: "tanstack",
+              name: "TanStack",
             },
             {
-              icon: "react",
-              name: "React",
+              icon: "vite-8",
+              name: "Vite 8",
             },
             {
               icon: "chakra-ui-3",
