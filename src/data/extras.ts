@@ -59,6 +59,10 @@ export const extrasData = (t: any) => {
                     name: 'Vercel',
                 },
                 {
+                    icon: 'vite-8',
+                    name: 'Vite 8',
+                },
+                {
                     icon: 'pwa',
                     name: 'PWA',
                 },
