@@ -17,7 +17,7 @@
   let { menuItems = [] }: Props = $props();
 </script>
 
-<div class="fixed w-full bottom-6 right-8 z-10 md:hidden">
+<div class="fixed w-full bottom-6 right-8 z-10 md:hidden animate-fade-in-portfolio">
   <div class="-mr-2 flex justify-end md:hidden">
     <button
       class="text-md bg-blue-700 text-white backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 drop-shadow-xl font-inclusive"
