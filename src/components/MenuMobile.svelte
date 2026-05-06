@@ -1,14 +1,9 @@
 <script lang="ts">
-  import { Drawer, CloseButton } from 'flowbite-svelte';
-  import { sineIn } from 'svelte/easing';
+  import { Drawer } from 'flowbite-svelte';
   import type { MenuItem } from '../env';
   import Contact from './Contact.svelte';
-  let drawerHidden = $state(true);
-  let transitionParams = {
-    x: 320,
-    duration: 200,
-    easing: sineIn,
-  };
+
+  let open = $state(false);
 
   interface Props {
     menuItems?: MenuItem[];
@@ -21,19 +16,18 @@
   <div class="-mr-2 flex justify-end md:hidden">
     <button
       class="text-md bg-blue-700 text-white backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 drop-shadow-xl font-inclusive"
-      onclick={() => (drawerHidden = false)}
+      onclick={() => (open = true)}
     >
       Menu
     </button>
   </div>
 </div>
 <Drawer
-  {transitionParams}
-  bind:hidden={drawerHidden}
+  bind:open
   placement="right"
   id="sidebar2"
-  class="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 right-0"
-  client:load
+  dismissable={false}
+  class="overflow-y-auto p-4 bg-blue-100/90 backdrop-blur-md w-80"
 >
   <div class="flex items-center w-full justify-between">
     <h5
@@ -42,12 +36,17 @@
     >
       Menu
     </h5>
-    <CloseButton
-      onclick={() => (drawerHidden = true)}
-      class="mb-4 text-blue-800"
-    />
+    <button
+      onclick={() => (open = false)}
+      class="mb-4 text-blue-800 hover:text-blue-600"
+      aria-label="Close menu"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </div>
-  <div class="absolute bottom-4 w-[280px]">
+  <div class="absolute bottom-4 w-70">
     <div class="space-y-2">
       {#each menuItems as m}
         <a

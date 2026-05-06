@@ -1,5 +1,9 @@
 @import "tailwindcss";
+@import "../../node_modules/flowbite-svelte/dist/theme-selector/themes/default.css";
+@plugin 'flowbite/plugin';
 @plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.dark, .dark *));
+@source "../../node_modules/flowbite-svelte/dist";
 
 @theme {
 	--font-inclusive: 'Inclusive Sans', 'Inter', sans-serif;
