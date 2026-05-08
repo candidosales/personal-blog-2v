@@ -17,6 +17,7 @@ const {
     nofollow = false,
     withSun = true,
     withTopBarBlur = true,
+    withGradient = true,
 } = Astro.props;
 
 const host = 'https://candidosales.me';
@@ -100,6 +101,8 @@ const currentPath = Astro.url.pathname;
         }
         <!-- Sunrise Gradient Overlay -->
 
+        {
+            withGradient && (
         <!--Top Gradient -->
         <div
             class='rotate-3 absolute w-screen -inset-x-12 -top-16 h-12 bg-linear-to-r from-yellow-300 via-orange-300 to-red-500 blur-3xl'
@@ -113,6 +116,8 @@ const currentPath = Astro.url.pathname;
         >
         </div>
         <!--Bottom Gradient -->
+            )
+        }
 
         <slot />
 
