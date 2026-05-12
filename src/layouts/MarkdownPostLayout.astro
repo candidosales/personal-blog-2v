@@ -173,6 +173,10 @@ const lang = getLangFromUrl(Astro.url);
     justify-content: center;
     margin: auto;
   }
+
+  #article-content a::after {
+    content: ' ↗';
+  }
 </style>
 
 <script>
