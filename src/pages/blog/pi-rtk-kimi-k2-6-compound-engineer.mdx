@@ -6,8 +6,8 @@ author: 'Candido Gomes'
 description: 'How I combined Pi, rtk, Kimi K2.6, and Compound engineer to build a leaner AI workflow with ~80% fewer tokens and 7x lower cost.'
 image:
     url: '/blog/pi-rtk-kimi-k2-6-compound-engineer/thumbnail.webp'
-    alt: 'Pi + rtk + Kimi K2.6 + Compound engineer'
-tags: ["ai", "open source", "pi", "hugging face", "opencode", "kimi k2.6"]
+    alt: 'Pi + rtk + context-mode + Kimi K2.6 + Compound engineer'
+tags: ["ai", "open source", "pi", "context-mode" "hugging face", "opencode", "kimi k2.6"]
 ---
 
 import { YouTube } from 'astro-embed';
@@ -20,6 +20,7 @@ I've been exploring a lot of tools lately and I think I've found a great balance
 
 - [Pi agent](https://pi.dev/)
 - [rtk](https://github.com/rtk-ai/rtk)
+- [context-mode](https://github.com/mksglu/context-mode)
 - [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
 - [Kimi K2.6](https://www.kimi.com/ai-models/kimi-k2-6)
 
@@ -51,9 +52,26 @@ Running `rtk gain`, you can see how much is being saved per command, as shown be
 
 *Output of `rtk gain` showing token savings per command*
 
+## context-mode
+
+It's an MCP server that sits between your agent tool and your tools. Instead of resending the full conversation on every request, it stores the most repeated parts in a local database. Agents fetch them on demand, and only the summary re-enters the context, making it very useful for long sessions.
+
+The plugin hooks into five points in the session lifecycle:
+
+1. PreToolUse: Route tool calls. Block curl/wget, redirect large output to sandbox.
+2. PostToolUse: Capture events. File ops, git, errors, decisions → SessionDB.
+3. SessionStart: Restore state. Inject resume snapshot, reload indexed knowledge.
+4. PreCompact: Preserve state. Build snapshot before context wipe.
+5. UserPromptSubmit: Capture intent. Track decisions, corrections, session mode.
+
+With this optimization you can reach up to 30x fewer tokens for the same work and the same output.
+
+Worth [checking out](https://context-mode.com/) and integrating into your workflow.
+
 ## GitNexus
 
-It analyzes your entire repository, creates a dependency graph, and stores that information in [LadyBugDb](https://ladybugdb.com/) (think of it as DuckDB, but for graph databases using columnar storage). It then exposes that information through an MCP server. This way, whenever the LLM needs to search, it doesn't have to run regex or bash commands to find which dependencies are in a given file; it finds them easily via Graph query. This significantly reduces the number of tokens and increases search accuracy.
+It analyzes your entire repository, creates a dependency graph, and stores that information in [LadyBugDb](https://ladybugdb.com/) (think of it as DuckDB, but for graph databases using columnar storage). 
+It then exposes that information through an MCP server. This way, whenever the LLM needs to search, it doesn't have to read all files, run regex or bash commands to find which dependencies are in a given file; it finds them easily via Graph query. This significantly reduces the number of tokens and increases search accuracy.
 
 To initialize it in your project, you need to:
 
@@ -105,6 +123,9 @@ In terms of cost, you can compare the token consumption between the two approach
 
 *Token cost: Claude Code without GitNexus*
 
+Pi completed the full analysis at **17k tokens total** ($0.019), while Claude Code was already at **25.2k tokens just in context overhead**, before doing any real work. That's ~33% more tokens burned before Claude Code even starts.
+
+Another tool that has the same approach is [code-review-graph](https://github.com/tirth8205/code-review-graph), but I have not tested it yet.
 
 ## Kimi K2.6
 
@@ -175,3 +196,5 @@ If you're just getting started and want an introductory course on the full AI-as
 - [Kimi K2.6: Advancing Open-Source Coding](https://www.kimi.com/blog/kimi-k2-6)
 - [Compound Engineering - The AI-native engineering philosophy](https://every.to/guides/compound-engineering)
 - [Cursor admits its new coding model was built on top of Moonshot AI's Kimi](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/)
+- [Claude Code is Expensive. This MCP Server Fixes It (Context Mode)](https://www.youtube.com/watch?v=QUHrntlfPo4)
+- [I cut my Claude Code bill by 70% with 3 GitHub repos](https://x.com/DeRonin_/status/2050878989674119424)
