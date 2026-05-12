@@ -1,0 +1,177 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: 'Pi + rtk + Kimi K2.6 + Compound engineer'
+pubDate: 2026-05-11
+author: 'Candido Gomes'
+description: 'How I combined Pi, rtk, Kimi K2.6, and Compound engineer to build a leaner AI workflow with ~80% fewer tokens and 7x lower cost.'
+image:
+    url: '/blog/pi-rtk-kimi-k2-6-compound-engineer/thumbnail.webp'
+    alt: 'Pi + rtk + Kimi K2.6 + Compound engineer'
+tags: ["ai", "open source", "pi", "hugging face", "opencode", "kimi k2.6"]
+---
+
+import { YouTube } from 'astro-embed';
+import { LinkPreview } from 'astro-embed';
+import { Tweet } from 'astro-embed';
+
+I've been exploring a lot of tools lately and I think I've found a great balance between simplicity, efficiency, and lower token consumption. With that in mind, I split the tools into two aspects: infrastructure and workflow, and throughout this post I'll explain each one and how to integrate them into your environment.
+
+### Infrastructure
+
+- [Pi agent](https://pi.dev/)
+- [rtk](https://github.com/rtk-ai/rtk)
+- [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
+- [Kimi K2.6](https://www.kimi.com/ai-models/kimi-k2-6)
+
+### Workflow
+
+- [Compound engineer](https://github.com/EveryInc/compound-engineering-plugin)
+
+## Pi agent
+
+Imagine Claude Code, but without hardcoded MCP, without sub-agents, without plan mode, without all the context that Claude injects and modifies in your prompt with every release, and on top of that super simple and highly customizable (skills, prompt, themes, extensions). As a result: fewer unnecessary features, fewer bugs, and a more stable tool.
+
+According to the author, when you start a session, Claude Code injects ~10,000 tokens as harness.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/tokens-per-session.webp)
+
+*Comparison of tokens injected per session: Pi vs Claude Code*
+
+With Pi I have greater control over the context I want to work in and less interference from the tool. I believe the tool should adapt to my workflow, not the other way around.
+
+## rtk
+
+It works as an intermediary between bash and the HTTP request: it filters out everything that isn't useful from frequently used commands like `ls`, `cat`, and `grep`, and then compresses them, resulting in an average reduction of ~80% in tokens.
+
+It's simple to integrate into your workflow, just install its binary with `brew install rtk`.
+
+Running `rtk gain`, you can see how much is being saved per command, as shown below.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/rtk-gain.webp)
+
+*Output of `rtk gain` showing token savings per command*
+
+## GitNexus
+
+It analyzes your entire repository, creates a dependency graph, and stores that information in [LadyBugDb](https://ladybugdb.com/) (think of it as DuckDB, but for graph databases using columnar storage). It then exposes that information through an MCP server. This way, whenever the LLM needs to search, it doesn't have to run regex or bash commands to find which dependencies are in a given file; it finds them easily via Graph query. This significantly reduces the number of tokens and increases search accuracy.
+
+To initialize it in your project, you need to:
+
+1. Analyze the project and index the graph: `npx gitnexus analyze`;
+2. Start the MCP server: `npx gitnexus@latest serve`;
+3. Add `.mcp.json` to the root of your project:
+
+```json title=".mcp.json"
+{
+  "mcpServers": {
+    "gitnexus": {
+      "command": "npx",
+      "args": ["-y", "gitnexus@latest", "mcp"]
+    }
+  }
+}
+```
+
+4. Install the MCP adapter plugin in Pi so the integration works: `pi install npm:pi-mcp-adapter`;
+5. Start `pi`. Below, I ran the same query in two scenarios: one using the Hugging Face integration with Kimi K2.6 and GitNexus MCP, and another using only Claude Code.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/mcp-pi-connected.webp)
+
+*Pi with the GitNexus MCP connected*
+
+The prompt used was `explain how diagnosis api works`. In the image below, you can see that Pi already queries GitNexus before executing any bash command; it searches [LadybugDb](https://ladybugdb.com/) for all dependencies and finds all the relationships. It's much more efficient.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-1.webp)
+
+*Pi querying GitNexus via Graph query before any bash command*
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-2.webp)
+
+*All dependencies found via LadybugDb*
+
+Using Claude Code without GitNexus, with the same prompt, it starts searching the code via Bash, which is less effective.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/claude-code-1.webp)
+
+*Claude Code searching for dependencies via Bash, without GitNexus*
+
+In terms of cost, you can compare the token consumption between the two approaches:
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-costs.webp)
+
+*Token cost: Pi + Kimi K2.6 + GitNexus*
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/claude-code-costs.webp)
+
+*Token cost: Claude Code without GitNexus*
+
+
+## Kimi K2.6
+
+I believe it's a very [promising](https://www.kimi.com/blog/kimi-k2-6) open source LLM, not just for simple tasks, but also for complex and long-running ones.
+
+For better integration with `Pi`, I use Hugging Face, which offers access to Kimi K2 via Inference Provider ([Novita](https://huggingface.co/inference/models?model=moonshotai%2FKimi-K2.6)).
+
+To do this, you need to create a paid account on Hugging Face and generate an **Access Token** with the following privileges:
+- Make calls to Inference Providers;
+- Make calls to your Inference Endpoints;
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/hf-privileges.webp)
+
+*Required privileges for the Access Token on Hugging Face*
+
+Then, open `pi`, run `/login`, select **Use an API key**, choose **Hugging Face**, and add the token. From there, you'll have access to all available open source LLMs.
+
+The cost for 1M tokens is only $0.95, 7x cheaper than Claude Code.
+
+![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/kimi-k26-costs.webp)
+
+*Kimi K2.6 via Hugging Face: $0.95/1M tokens, 7x cheaper than Claude Code*
+
+Worth checking out: Cursor, for example, used Kimi 2.5 as the reinforcement learning base for [Composer 2](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/).
+
+## Compound engineer
+
+There are several tools to make your workflow more agentic, such as [superpowers](https://github.com/obra/superpowers), [OpenSpec](https://github.com/Fission-AI/OpenSpec/), [spec-kit](https://github.com/github/spec-kit), and [get-shit-done](https://github.com/gsd-build/get-shit-done). The one I've liked the most so far, and have been using for a few months, is the [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin).
+
+This [plugin](https://every.to/guides/compound-engineering) is maintained by the Every team, who are constantly improving and optimizing the skills. The philosophy behind the tool is simple: `Plan → Work → Review → Compound → Repeat`.
+
+For complex or multi-step tasks, such as new features involving multiple repositories, critical migrations, and refactors, I always use the compound-engineer. The flow I follow:
+
+- `/ce-brainstorm`: Starting point when I don't have full clarity on what to build. Explores requirements and approaches through **collaborative dialogue**. I usually add the link to the Notion RFC or Linear task at this stage, and for that **I have the Notion and Linear MCPs integrated into my environment**. At the end, it generates a markdown file that serves as memory for the next step;
+- `/ce-plan`: Transforms the idea into a blueprint. At the end of a plan, I always ask it to **review and refine**, as it often finds new caveats I hadn't noticed. Here it generates a separate file that will guide the execution. If the task involves many files, I ask it to plan in stacked PRs with a maximum of 20 files, which makes review by teammates much easier;
+- `/ce-work`: Execution follows the plan. The agent implements while the developer monitors;
+- `/ce-review`: Catches problems before they reach production. More importantly, it records learnings for the next cycle. It fires more than 14 specialized agents in parallel: security-sentinel, performance-oracle, data-integrity-guardian, architecture-strategist, pattern-recognition-specialist, code-simplicity-reviewer, and framework-specific reviewers (DHH-rails, Kieran-rails, TypeScript, Python). Everything consolidated into a single prioritized list;
+- `/ce-commit-push-pr`: Commits, pushes, opens the PR, and generates the title and description. Very useful.
+
+This flow has helped me a lot with large migrations and new architecture implementations, and it has saved me a great deal of time.
+
+> **Plans are the new code:** The plan document is now the most important artifact you produce. Instead of coding first and documenting later, start with the plan. It becomes the source of truth that agents use to generate, test, and validate code. A good plan captures decisions before they become bugs; fixing ideas on paper is much cheaper than fixing code afterward.
+
+At the end of the work, I save the files generated by the plugin in a separate folder per project, making it easy to link them when needed.
+
+## Conclusion
+
+I notice that every month, my workflow gets leaner, with better accuracy and lower cost. The combination of Pi + open source LLM has brought me a significant cost reduction without any loss of quality. The quality of the output is directly related to how much context and access you provide to the LLM, and this, during the planning phase with the compound engineer, is being resolved very efficiently.
+
+My next steps are to create a fully automated flow: in the morning, the agent checks my tasks, selects one, plans it, implements it, opens the PR, and notifies me, so when I wake up I just need to review. I want this infrastructure to run locally inside a container. For this experiment, I plan to use [Flue](https://flueframework.com/), a framework created by the [Astro](https://astro.build/) team for building autonomous agents with TypeScript. When I have a meaningful result, I'll share here how it was implemented.
+
+I hope this article provides some direction amid the sea of news that the AI ecosystem floods us with every day, and that it makes your life as a developer a little bit better. And I'll say it again: don't outsource the understanding of your own code.
+
+<Tweet id="https://x.com/karpathy/status/2049907410303865030" />
+
+### Note
+
+If you're just getting started and want an introductory course on the full AI-assisted development cycle, I recommend this workshop by Matt Pocock:
+
+<YouTube id="-QFHIoCo-Ko" posterQuality="max" />
+
+## References
+
+- [Full Walkthrough: Workflow for AI Coding — Matt Pocock](https://www.youtube.com/watch?v=-QFHIoCo-Ko)
+- [Pi Agent – Crash Course | Minimal Coding Agent](https://www.youtube.com/watch?v=N30XGyPrr6I)
+- [Building pi in a World of Slop — Mario Zechner](https://www.youtube.com/watch?v=RjfbvDXpFls)
+- [Kimi K2.6](https://x.com/kirillk_web3/status/2053210009689870535)
+- [Kimi K2.6: Advancing Open-Source Coding](https://www.kimi.com/blog/kimi-k2-6)
+- [Compound Engineering - The AI-native engineering philosophy](https://every.to/guides/compound-engineering)
+- [Cursor admits its new coding model was built on top of Moonshot AI's Kimi](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/)

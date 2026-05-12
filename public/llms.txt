@@ -143,6 +143,9 @@ volunteer_projects:
     url: https://github.com/candidosales/companies-using-angular-brazil
 
 notable_blog_posts:
+  - title: "Pi + rtk + Kimi K2.6 + Compound engineer"
+    url: https://candidosales.me/blog/pi-rtk-kimi-k2-6-compound-engineer
+    date: 2026-05-11
   - title: "Migrate Strapi from Render to Fly.io"
     url: https://dev.to/candidosales/migrate-strapi-from-render-to-flyio-lbi
     date: 2024-08-01
@@ -169,14 +172,15 @@ notable_talks:
 
 expertise_areas:
   - Ruby on Rails: expert
+  - React: expert
   - AWS (EC2, S3, Lambda, RDS, ECS, CloudFront): expert
   - Svelte: expert
   - Angular: expert
   - TypeScript: expert
+  - AI Engineer: expert
   - Figma plugin development: expert
   - Go: intermediate
   - Rust: intermediate
-  - React: intermediate
   - Astro: expert
   - Open source: expert
   - Social impact technology: expert

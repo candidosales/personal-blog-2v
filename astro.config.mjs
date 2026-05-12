@@ -8,6 +8,8 @@ import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons';
 import partytown from '@astrojs/partytown';
 import astroExpressiveCode from 'astro-expressive-code';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import embeds from 'astro-embed/integration';
+import mdx from '@astrojs/mdx';
 
 import react from '@astrojs/react';
 
@@ -15,23 +17,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://www.candidosales.me/',
   integrations: [
-    compress(),
-    sitemap({
-      i18n: {
-        defaultLocale: 'en',
-        locales: ['en', 'pt-br'],
-        routing: {
-          prefixDefaultLocale: false,
-        },
-      },
-    }),
-    svelte(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }),
-    react(),
+    embeds(),
     astroExpressiveCode({
       plugins: [
         pluginFileIcons({
@@ -50,6 +36,24 @@ export default defineConfig({
       },
       themes: ['one-light']
     }),
+    mdx(),
+    compress(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: ['en', 'pt-br'],
+        routing: {
+          prefixDefaultLocale: false,
+        },
+      },
+    }),
+    svelte(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
+    react(),
   ],
   output: 'server',
   adapter: vercel(),

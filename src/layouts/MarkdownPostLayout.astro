@@ -1,49 +1,66 @@
 ---
-import BaseLayout from './Layout.astro';
-import Header from '@components/Header.svelte';
-import { getLangFromUrl } from '@i18n/utils';
-import type { MarkdownHeading } from 'astro';
+import BaseLayout from "./Layout.astro";
+import Header from "@components/Header.svelte";
+import { getLangFromUrl } from "@i18n/utils";
+import type { MarkdownHeading } from "astro";
 
-const { frontmatter, headings } = Astro.props as { frontmatter: any; headings: MarkdownHeading[] };
+const { frontmatter, headings } = Astro.props as {
+  frontmatter: any;
+  headings: MarkdownHeading[];
+};
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<BaseLayout title={frontmatter.title} description={frontmatter.description} imageUrl={frontmatter.image.url}>
-  <Header client:only='svelte' />
-  <main class='relative pb-50 max-w-6xl mx-auto mt-16 mb-16 px-4'>
-    <header class='mb-8 prose prose-h1:font-medium prose-h1:mb-2 max-w-none'>
-      <h1 class='text-balance mb-0 text-blue-800'>{frontmatter.title}</h1>
-      <div class='text-base text-blue-800/80'>
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  imageUrl={frontmatter.image.url}
+  withSun={false}
+  withTopBarBlur={false}
+  withGradient={false}
+>
+  <Header client:only="svelte" />
+  <main class="relative pb-50 max-w-6xl mx-auto mt-16 mb-16 px-4">
+    <header class="mb-8 prose prose-h1:font-medium prose-h1:mb-2 max-w-none">
+      <h1 class="text-balance mb-0 text-blue-800">{frontmatter.title}</h1>
+      <div class="text-base text-blue-800/80">
         <time datetime={frontmatter.pubDate.toString()}
           >{
             new Date(frontmatter.pubDate).toLocaleDateString(lang, {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
+              year: "numeric",
+              month: "short",
+              day: "numeric",
             })
           }</time
         > by <span>{frontmatter.author}</span>
       </div>
     </header>
     <img
-      class='rounded-xl mb-8 w-full h-auto'
+      class="rounded-xl mb-8 h-auto"
+      width="1000px"
       src={frontmatter.image.url}
       alt={frontmatter.image.alt}
     />
 
     <!-- Mobile TOC (shown only on small screens) -->
     <nav
-      id='contents-mobile'
-      class='lg:hidden p-4 mb-6 text-sm bg-white/40 rounded-lg'
+      id="contents-mobile"
+      class="lg:hidden p-4 mb-6 text-sm bg-white/40 rounded-lg"
     >
-      <h3 class='mb-2 mt-0 text-base font-medium text-slate-600'>Contents</h3>
-      <ul class='list-none pl-0 space-y-1'>
+      <h3 class="mb-2 mt-0 text-base font-medium text-slate-600">Contents</h3>
+      <ul class="list-none pl-0 space-y-1">
         {
           headings.map((heading) => (
-            <li style={heading.depth > 2 ? `padding-left: ${(heading.depth - 2) * 12}px` : ''}>
+            <li
+              style={
+                heading.depth > 2
+                  ? `padding-left: ${(heading.depth - 2) * 12}px`
+                  : ""
+              }
+            >
               <a
                 href={`#${heading.slug}`}
-                class='toc-link-mobile block py-0.5 text-slate-500 hover:text-blue-600 no-underline transition-colors duration-200'
+                class="toc-link-mobile block py-0.5 text-slate-500 hover:text-blue-600 no-underline transition-colors duration-200"
                 data-slug={heading.slug}
               >
                 {heading.text}
@@ -55,11 +72,11 @@ const lang = getLangFromUrl(Astro.url);
     </nav>
 
     <!-- Desktop: two-column layout -->
-    <div class='lg:flex lg:gap-12'>
+    <div class="lg:flex lg:gap-12">
       <!-- Article content -->
       <article
-        id='article-content'
-        class='prose prose-slate max-w-none
+        id="article-content"
+        class="prose prose-slate max-w-none
               prose-h1:font-medium prose-h1:mb-2
               prose-a:text-blue-600
               prose-img:rounded-xl
@@ -68,36 +85,45 @@ const lang = getLangFromUrl(Astro.url);
               prose-h2:text-blue-800
               prose-h3:text-blue-800
               flex-1 min-w-0
-              [word-break:break-word]'
+              [word-break:break-word]"
       >
         <slot />
       </article>
 
       <!-- Desktop TOC sidebar (hidden on mobile) -->
-      {headings.length > 0 && (
-        <aside id='toc-wrapper' class='hidden lg:block w-56 shrink-0 self-start sticky top-24'>
-          <nav class='text-sm'>
-            <p class='mb-3 mt-0 text-xs font-semibold uppercase tracking-wider text-slate-400'>
-              On this page
-            </p>
-            <ul class='list-none pl-0 space-y-1'>
-              {
-                headings.map((heading) => (
-                  <li style={heading.depth > 2 ? `padding-left: ${(heading.depth - 2) * 12}px` : ''}>
+      {
+        headings.length > 0 && (
+          <aside
+            id="toc-wrapper"
+            class="hidden lg:block w-56 shrink-0 self-start sticky top-24"
+          >
+            <nav class="text-sm">
+              <p class="mb-3 mt-0 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                On this page
+              </p>
+              <ul class="list-none pl-0 space-y-1">
+                {headings.map((heading) => (
+                  <li
+                    style={
+                      heading.depth > 2
+                        ? `padding-left: ${(heading.depth - 2) * 12}px`
+                        : ""
+                    }
+                  >
                     <a
                       href={`#${heading.slug}`}
-                      class='toc-link block py-1 text-slate-400 hover:text-blue-600 no-underline leading-snug transition-colors duration-200'
+                      class="toc-link block py-1 text-slate-400 hover:text-blue-600 no-underline leading-snug transition-colors duration-200"
                       data-slug={heading.slug}
                     >
                       {heading.text}
                     </a>
                   </li>
-                ))
-              }
-            </ul>
-          </nav>
-        </aside>
-      )}
+                ))}
+              </ul>
+            </nav>
+          </aside>
+        )
+      }
     </div>
   </main>
 </BaseLayout>
@@ -109,6 +135,27 @@ const lang = getLangFromUrl(Astro.url);
     gap: 4px;
   }
 
+  /* Image captions: italic paragraph immediately after an image paragraph */
+  #article-content p:has(> img):has(+ p > em:only-child) {
+    margin-bottom: 0;
+  }
+
+  #article-content p:has(+ p > em:only-child) > img {
+    margin-bottom: 0.5em;
+  }
+
+  #article-content p:has(> img) + p:has(> em:only-child) {
+    margin-top: 0;
+  }
+
+  #article-content p:has(> img) + p > em:only-child {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: #94a3b8; /* slate-400 */
+  }
+
   .toc-link.toc-active {
     color: #1d4ed8; /* blue-700 */
     font-weight: 500;
@@ -118,28 +165,38 @@ const lang = getLangFromUrl(Astro.url);
     color: #1d4ed8;
     font-weight: 500;
   }
+
+  astro-embed-tweet, lite-youtube {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
 </style>
 
 <script>
   function initTOC() {
-    const allTocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link, .toc-link-mobile');
+    const allTocLinks = document.querySelectorAll<HTMLAnchorElement>(
+      ".toc-link, .toc-link-mobile",
+    );
     if (allTocLinks.length === 0) return;
 
     const headingElements = Array.from(
-      document.querySelectorAll<HTMLElement>('#article-content h1, #article-content h2, #article-content h3, #article-content h4')
+      document.querySelectorAll<HTMLElement>(
+        "#article-content h1, #article-content h2, #article-content h3, #article-content h4",
+      ),
     );
     if (headingElements.length === 0) return;
 
-    let activeSlug = '';
+    let activeSlug = "";
 
     function setActive(slug: string) {
       if (slug === activeSlug) return;
       activeSlug = slug;
       allTocLinks.forEach((link) => {
         if (link.dataset.slug === slug) {
-          link.classList.add('toc-active');
+          link.classList.add("toc-active");
         } else {
-          link.classList.remove('toc-active');
+          link.classList.remove("toc-active");
         }
       });
     }
@@ -158,9 +215,9 @@ const lang = getLangFromUrl(Astro.url);
         }
       },
       {
-        rootMargin: '0px 0px -70% 0px',
+        rootMargin: "0px 0px -70% 0px",
         threshold: 0,
-      }
+      },
     );
 
     headingElements.forEach((el) => observer.observe(el));
@@ -172,21 +229,35 @@ const lang = getLangFromUrl(Astro.url);
 
     // Smooth scroll for TOC links
     allTocLinks.forEach((link) => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener("click", (e) => {
         const slug = link.dataset.slug;
         if (!slug) return;
         const target = document.getElementById(slug);
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
           setActive(slug);
-          history.pushState(null, '', `#${slug}`);
+          history.pushState(null, "", `#${slug}`);
         }
       });
     });
   }
 
+  function initTweetEmbeds() {
+    if (!document.querySelector(".twitter-tweet")) return;
+    const w = window as any;
+    if (w.twttr?.widgets) {
+      w.twttr.widgets.load();
+    } else if (!document.querySelector('script[src*="platform.twitter.com"]')) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }
+
   // Run on initial load and on Astro page transitions
-  document.addEventListener('astro:page-load', initTOC);
+  document.addEventListener("astro:page-load", () => { initTOC(); initTweetEmbeds(); });
   initTOC();
+  initTweetEmbeds();
 </script>

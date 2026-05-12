@@ -7,14 +7,14 @@ import { getLangFromUrl } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 
-const mdPostsEn = import.meta.glob('../pages/blog/*.md', { eager: true });
-const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.md', { eager: true });
+const mdPostsEn = import.meta.glob('../pages/blog/*.mdx', { eager: true });
+const mdPostsPt = import.meta.glob('../pages/pt-br/blog/*.mdx', { eager: true });
 
 const postsMap = lang === 'pt-br' ? mdPostsPt : mdPostsEn;
 const mdPosts = Object.entries(postsMap).map(([path, post]: [string, any]) => {
 	const url = path
 		.replace('../pages', '')
-		.replace('.md', '')
+		.replace(/\.mdx?$/, '')
 		.replace('/index', '');
 	return {
 		...post,
@@ -37,7 +37,7 @@ const allPosts = [
 );
 ---
 
-<Layout title={'Blog'}>
+<Layout title={'Blog'} >
 	<Header client:only='svelte' />
 	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
 		<h1
