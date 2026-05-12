@@ -1,0 +1,130 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+
+const encodedTitle = encodeURIComponent(title);
+const encodedUrl = encodeURIComponent(url);
+
+const links = [
+  {
+    label: "Twitter",
+    href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+  },
+  {
+    label: "LinkedIn",
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  },
+  {
+    label: "Bluesky",
+    href: `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`,
+  },
+];
+---
+
+<div class="mt-12 pt-8 border-t border-slate-200">
+  <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+    Share this post
+  </p>
+  <div class="flex flex-wrap gap-3">
+    {
+      links.map(({ label, href }) => (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-500 bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 no-underline"
+        >
+          {label === "Twitter" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 1227"
+              class="w-3.5 h-3.5 shrink-0"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z" />
+            </svg>
+          )}
+          {label === "LinkedIn" && (
+            <svg
+              viewBox="0 0 448 512"
+              class="w-3.5 h-3.5 shrink-0"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+            </svg>
+          )}
+          {label === "Bluesky" && (
+            <svg
+              viewBox="0 0 64 57"
+              class="w-3.5 h-3.5 shrink-0"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z" />
+            </svg>
+          )}
+          {label}
+        </a>
+      ))
+    }
+
+    <button
+      id="copy-link-btn"
+      data-url={url}
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-500 bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        class="w-3.5 h-3.5 shrink-0"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+      <span id="copy-link-label">Copy link</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("copy-link-btn");
+  const label = document.getElementById("copy-link-label");
+
+  btn?.addEventListener("click", async () => {
+    const url = btn.dataset.url ?? window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      if (label) {
+        label.textContent = "Copied!";
+        setTimeout(() => {
+          label.textContent = "Copy link";
+        }, 2000);
+      }
+    } catch {
+      // fallback: select a temporary input
+      const input = document.createElement("input");
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      if (label) {
+        label.textContent = "Copied!";
+        setTimeout(() => {
+          label.textContent = "Copy link";
+        }, 2000);
+      }
+    }
+  });
+</script>

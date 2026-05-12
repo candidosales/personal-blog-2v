@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./Layout.astro";
 import Header from "@components/Header.svelte";
+import ShareSection from "@components/ShareSection.astro";
 import { getLangFromUrl } from "@i18n/utils";
 import type { MarkdownHeading } from "astro";
 
@@ -125,6 +126,7 @@ const lang = getLangFromUrl(Astro.url);
         )
       }
     </div>
+    <ShareSection title={frontmatter.title} url={Astro.url.href} />
   </main>
 </BaseLayout>
 
