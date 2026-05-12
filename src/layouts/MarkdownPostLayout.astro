@@ -271,7 +271,6 @@ const lang = getLangFromUrl(Astro.url);
 
     article.querySelectorAll<HTMLAnchorElement>("p > a:only-child").forEach((link) => {
       const p = link.parentElement!;
-      // Only process paragraphs that contain nothing but this link
       if (p.textContent?.trim() !== link.textContent?.trim()) return;
 
       const href = link.getAttribute("href") ?? "";
@@ -289,9 +288,7 @@ const lang = getLangFromUrl(Astro.url);
       }
 
       // Twitter / X
-      const twitterMatch = href.match(
-        /(?:twitter\.com|x\.com)\/[^/]+\/status\/(\d+)/,
-      );
+      const twitterMatch = href.match(/(?:twitter\.com|x\.com)\/[^/]+\/status\/(\d+)/);
       if (twitterMatch) {
         const wrapper = document.createElement("div");
         wrapper.className = "embed-tweet";

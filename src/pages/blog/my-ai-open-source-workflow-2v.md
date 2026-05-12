@@ -12,30 +12,30 @@ tags: ["ai", "open source", "pi", "hugging face", "opencode", "kimi k2.6"]
 
 Tenho explorado muitas ferramentas ultimamente e acho que consegui encontrar um ótimo equilíbrio entre simplicidade, eficiência e menor consumo de tokens. Com isso, dividi as ferramentas em dois aspectos: infraestrutura e workflow, e ao longo vou explicar sobre cada uma delas e como integrar em seu ambiente.
 
-## Infrastructure
+### Infrastructure
 
 - [Pi agent](https://pi.dev/)
 - [rtk](https://github.com/rtk-ai/rtk)
 - [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
 - [Kimi K2.6](https://www.kimi.com/ai-models/kimi-k2-6)
 
-## Workflow
+### Workflow
 
 - [Compound engineer](https://github.com/EveryInc/compound-engineering-plugin)
 
-### Pi agent
+## Pi agent
 
 Imagine o Claude Code, mas sem o MCP hardcoded, sem sub-agents, sem plan mode, sem um monte de contexto que o Claude injeta e altera no seu prompt a cada release, além de ser super simples e altamente customizável (skills, prompt, themes, extensions). Consequentemente: menos features desnecessárias, menos bugs e uma ferramenta mais estável.
 
 De acordo com o autor, quando você inicia uma sessão, o Claude Code injeta ~10.000 tokens como harness.
 
-![image](/blog/my-ai-open-source-workflow-2v/tokens-per-session.png)
+![image](/blog/my-ai-open-source-workflow-2v/tokens-per-session.webp)
 
 *Comparação de tokens injetados por sessão: Pi vs Claude Code*
 
 Com o Pi consigo ter maior controle sobre o contexto em que quero trabalhar e menor interferência da ferramenta. Acredito que a ferramenta deva se adaptar ao meu fluxo, e não o inverso.
 
-### rtk
+## rtk
 
 Ele funciona como um intermediário entre o bash e o request HTTP: filtra tudo que não é útil de comandos frequentemente utilizados como `ls`, `cat` e `grep`, e em seguida os comprime, resultando em uma redução média de ~80% nos tokens.
 
@@ -43,11 +43,11 @@ Ele funciona como um intermediário entre o bash e o request HTTP: filtra tudo q
 
 Executando `rtk gain`, você visualiza o quanto está sendo economizado por comando, como demonstrado abaixo.
 
-![image](/blog/my-ai-open-source-workflow-2v/rtk-gain.png)
+![image](/blog/my-ai-open-source-workflow-2v/rtk-gain.webp)
 
 *Saída do `rtk gain` mostrando a economia de tokens por comando*
 
-### GitNexus
+## GitNexus
 
 Analisa todo o seu repositório, cria um grafo de dependências e armazena essa informação no [LadyBugDb](https://ladybugdb.com/) (pense em um DuckDB, mas para banco de dados de grafos usando columnar storage). Em seguida, expõe essa informação através de um MCP server. Assim, sempre que o LLM for fazer uma pesquisa, ele não precisa fazer regex ou comandos bash para encontrar quais dependências estão em determinado arquivo, ele já encontra facilmente via Graph query. Isso reduz muito a quantidade de tokens e aumenta a acurácia da busca.
 
@@ -71,38 +71,38 @@ Para inicializar em seu projeto, você precisa:
 4. Instalar o plugin MCP adapter no Pi para que a integração funcione: `pi install npm:pi-mcp-adapter`;
 5. Inicializar o `pi`. Abaixo, fiz a mesma query em dois cenários: um utilizando a integração do Hugging Face com Kimi K2.6 e GitNexus MCP, e outro usando apenas o Claude Code.
 
-![image](/blog/my-ai-open-source-workflow-2v/mcp-pi-connected.png)
+![image](/blog/my-ai-open-source-workflow-2v/mcp-pi-connected.webp)
 
 *Pi com o MCP do GitNexus conectado*
 
 O prompt utilizado foi `explain how diagnosis api works`. Na imagem abaixo, você pode observar que o Pi já consulta o GitNexus antes de executar qualquer comando bash — ele busca no [LadybugDb](https://ladybugdb.com/) por todas as dependências e encontra todas as relações. É muito mais eficiente.
 
-![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-1.png)
+![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-1.webp)
 
 *Pi consultando o GitNexus via Graph query antes de qualquer comando bash*
 
-![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-2.png)
+![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-2.webp)
 
 *Todas as dependências encontradas via LadybugDb*
 
 Usando o Claude Code sem o GitNexus, com o mesmo prompt, ele inicia a busca no código via Bash — o que é menos eficaz.
 
-![image](/blog/my-ai-open-source-workflow-2v/claude-code-1.png)
+![image](/blog/my-ai-open-source-workflow-2v/claude-code-1.webp)
 
 *Claude Code buscando dependências via Bash, sem o GitNexus*
 
 Em relação a custo, você pode comparar o consumo de tokens entre as duas abordagens:
 
-![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-costs.png)
+![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-costs.webp)
 
 *Custo de tokens: Pi + Kimi K2.6 + GitNexus*
 
-![image](/blog/my-ai-open-source-workflow-2v/claude-code-costs.png)
+![image](/blog/my-ai-open-source-workflow-2v/claude-code-costs.webp)
 
 *Custo de tokens: Claude Code sem GitNexus*
 
 
-### Kimi K2.6
+## Kimi K2.6
 
 Acredito que é um LLM open source bastante [promissor](https://www.kimi.com/blog/kimi-k2-6), não apenas para atividades simples, mas também para tarefas complexas e de longa duração.
 
@@ -112,7 +112,7 @@ Para isso, você precisa criar uma conta paga no Hugging Face e gerar um **Acces
 - Make calls to Inference Providers;
 - Make calls to your Inference Endpoints;
 
-![image](/blog/my-ai-open-source-workflow-2v/hf-privileges.png)
+![image](/blog/my-ai-open-source-workflow-2v/hf-privileges.webp)
 
 *Privilégios necessários para o Access Token no Hugging Face*
 
@@ -120,13 +120,13 @@ Em seguida, acesse o `pi`, execute `/login`, selecione **Use an API key**, escol
 
 O custo para 1M tokens é apenas $0.95, 7x mais barato que o Claude Code.
 
-![image](/blog/my-ai-open-source-workflow-2v/kimi-k26-costs.jpeg)
+![image](/blog/my-ai-open-source-workflow-2v/kimi-k26-costs.webp)
 
 *Kimi K2.6 via Hugging Face: $0.95/1M tokens, 7x mais barato que Claude Code*
 
 Vale a pena conferir: o Cursor, por exemplo, utilizou o Kimi 2.5 como base de reinforcement learning para o [Composer 2](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/).
 
-### Compound engineer
+## Compound engineer
 
 Existem várias ferramentas para tornar o seu workflow mais agentic, como [superpowers](https://github.com/obra/superpowers), [OpenSpec](https://github.com/Fission-AI/OpenSpec/), [spec-kit](https://github.com/github/spec-kit) e [get-shit-done](https://github.com/gsd-build/get-shit-done). A que mais gostei até o momento, e que venho usando há alguns meses, é o [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin).
 
@@ -146,23 +146,23 @@ Esse fluxo tem me ajudado bastante em grandes migrações e implementações de 
 
 Ao final do trabalho, salvo os arquivos gerados pelo plugin em uma pasta separada por projeto, facilitando vinculá-los quando necessário.
 
-### Conclusion
+## Conclusion
 
 Observo que a cada mês, meu fluxo fica mais lean, com melhor acurácia e menor custo. A combinação Pi + LLM open source me trouxe uma redução de custo expressiva sem perda de qualidade. A qualidade do output está diretamente relacionada ao quanto de contexto e acesso você oferece ao LLM, e isso, na fase de planejamento com o compound engineer, está sendo resolvido de forma muito eficiente.
 
-Meus próximos passos são criar um fluxo totalmente automatizado: de manhã, ele checa minhas tarefas, seleciona uma, planeja, implementa, abre o PR e me notifica — quando eu acordar, só preciso revisar. Quero que essa infraestrutura rode localmente dentro de um container. Para esse experimento, pretendo usar o [Flue](https://flueframework.com/), um framework criado pelo time do [Astro](https://astro.build/) para criar agentes autônomos com TypeScript. Quando tiver um resultado considerável, compartilharei aqui como foi implementado.
+Meus próximos passos são criar um fluxo totalmente automatizado: de manhã, o agente checa minhas tarefas, seleciona uma, planeja, implementa, abre o PR e me notifica — quando eu acordar, só preciso revisar. Quero que essa infraestrutura rode localmente dentro de um container. Para esse experimento, pretendo usar o [Flue](https://flueframework.com/), um framework criado pelo time do [Astro](https://astro.build/) para criar agentes autônomos com TypeScript. Quando tiver um resultado considerável, compartilharei aqui como foi implementado.
 
 Espero que esse artigo traga uma direção melhor diante do mar de novidades que o ecossistema de AI nos inunda todos os dias, e que melhore um pouco o seu dia a dia como desenvolvedor. E reforço: não terceirize o entendimento do seu código.
 
-[Tweet do Karpathy sobre isso](https://x.com/karpathy/status/2049907410303865030)
+https://x.com/karpathy/status/2049907410303865030
 
 ### Note
 
 Se você está iniciando e quer um curso introdutório sobre o ciclo completo de desenvolvimento assistido por IA, recomendo esse workshop do Matt Pocock:
 
-[Full Walkthrough: Workflow for AI Coding — Matt Pocock](https://www.youtube.com/watch?v=-QFHIoCo-Ko)
+https://www.youtube.com/watch?v=-QFHIoCo-Ko
 
-### References
+## References
 
 - [Full Walkthrough: Workflow for AI Coding — Matt Pocock](https://www.youtube.com/watch?v=-QFHIoCo-Ko)
 - [Pi Agent – Crash Course | Minimal Coding Agent](https://www.youtube.com/watch?v=N30XGyPrr6I)

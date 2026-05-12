@@ -30,6 +30,7 @@
         "@xt0rted/expressive-code-file-icons": "^1.0.0",
         "astro": "6.2.2",
         "astro-compress": "2.4.1",
+        "astro-embed": "^0.13.0",
         "astro-expressive-code": "^0.42.0",
         "astro-seo": "1.1.0",
         "clsx": "^2.1.1",

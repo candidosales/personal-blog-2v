@@ -8,7 +8,6 @@ import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons';
 import partytown from '@astrojs/partytown';
 import astroExpressiveCode from 'astro-expressive-code';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
-
 import react from '@astrojs/react';
 
 // https://astro.build/config

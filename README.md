@@ -61,6 +61,10 @@ If you want to say thank you and/or support the active development this project:
 
 If you want to support Personal Portfolio, you can ☕ [**buy a coffee here**](https://buymeacoff.ee/candidosales)
 
+## Utils
+
+- https://github.com/hoipo/webp-converter-cli: a cli tool to convert images to webp format
+
 ## ✨ Acknowledgment
 
 ## Author
