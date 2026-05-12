@@ -10,7 +10,7 @@ image:
 tags: ["ai", "open source", "pi", "hugging face", "opencode", "kimi k2.6"]
 ---
 
-Eu tenho explorado muitas ferramentas ultimamente, e acho que consegui encontrar um ótimo equilíbrio entre simplicidade, eficiência e menor consumo de tokens. Com isso divide as ferramentas em dois aspectos, infraestrutura e workflow.
+Tenho explorado muitas ferramentas ultimamente e acho que consegui encontrar um ótimo equilíbrio entre simplicidade, eficiência e menor consumo de tokens. Com isso, dividi as ferramentas em dois aspectos: infraestrutura e workflow, e ao longo vou explicar sobre cada uma delas e como integrar em seu ambiente.
 
 ## Infrastructure
 
@@ -25,28 +25,37 @@ Eu tenho explorado muitas ferramentas ultimamente, e acho que consegui encontrar
 
 ### Pi agent
 
-Imagina o Claude Code, mas sem o hardcoded MCP, sem sub-agents, sem plan mode, sem um monte de context que o Claude injeta e altera no seu prompt a cada release, além de ser super simples e altamente customizável (skills, prompt, themes, extensions). Consequentemente, menos features, menos bugs e uma ferramenta mais estável.
+Imagine o Claude Code, mas sem o MCP hardcoded, sem sub-agents, sem plan mode, sem um monte de contexto que o Claude injeta e altera no seu prompt a cada release, além de ser super simples e altamente customizável (skills, prompt, themes, extensions). Consequentemente: menos features desnecessárias, menos bugs e uma ferramenta mais estável.
 
-De acordo com o autor, quando você inicia uma sessão, por exemplo, o Claude Code injeta ~10000 tokens como harness.
+De acordo com o autor, quando você inicia uma sessão, o Claude Code injeta ~10.000 tokens como harness.
 
 ![image](/blog/my-ai-open-source-workflow-2v/tokens-per-session.png)
 
-Com o Pi consigo ter maior controle sobre o contexto em que quero trabalhar e menor interferência da ferramenta, onde acredito que a ferramenta deva se adaptar ao meu fluxo e não o inverso.
+*Comparação de tokens injetados por sessão: Pi vs Claude Code*
+
+Com o Pi consigo ter maior controle sobre o contexto em que quero trabalhar e menor interferência da ferramenta. Acredito que a ferramenta deva se adaptar ao meu fluxo, e não o inverso.
 
 ### rtk
 
-Ele funciona como um intermediário entre o bash e o request HTTP onde ele filtra tudo que não é útil de comandos que são frequentemente utilizados como `ls`, `cat`, `grep`, e em seguida os comprime tendo uma redução em média ~80% de tokens.
+Ele funciona como um intermediário entre o bash e o request HTTP: filtra tudo que não é útil de comandos frequentemente utilizados como `ls`, `cat` e `grep`, e em seguida os comprime, resultando em uma redução média de ~80% nos tokens.
 
-É bem simples de integrar no seu workflow, e executando `rtk gain`, você visualiza o quanto está sendo economizado por comando.
+É simples de integrar ao seu workflow, bastar instalar seu binário `brew install rtk`. 
+
+Executando `rtk gain`, você visualiza o quanto está sendo economizado por comando, como demonstrado abaixo.
+
+![image](/blog/my-ai-open-source-workflow-2v/rtk-gain.png)
+
+*Saída do `rtk gain` mostrando a economia de tokens por comando*
 
 ### GitNexus
 
-Analiza todo seu repositório, cria um grafo de depedências e armazena essa info no LadyBugDb (seria um DuckDb, mas para banco de dados de grafos), em seguida expôs essa informação através de um MCP server, assim sempre que o LLM for fazer uma pesquisa, ele não precisa ir fazendo um regex e tenta adivinha quais dependências estão naquele arquivo, ele já encontra facilmente via Graph query e esse reduz muito a quantidade de tokens além da acurácia da busca.
+Analisa todo o seu repositório, cria um grafo de dependências e armazena essa informação no [LadyBugDb](https://ladybugdb.com/) (pense em um DuckDB, mas para banco de dados de grafos usando columnar storage). Em seguida, expõe essa informação através de um MCP server. Assim, sempre que o LLM for fazer uma pesquisa, ele não precisa fazer regex ou comandos bash para encontrar quais dependências estão em determinado arquivo, ele já encontra facilmente via Graph query. Isso reduz muito a quantidade de tokens e aumenta a acurácia da busca.
 
 Para inicializar em seu projeto, você precisa:
-1. Analizar o projeto e indexar o grafo usando: `npx gitnexus analyze`;
-2. Em seguida, inicializa o servidor MCP: `npx gitnexus@latest serve`;
-3. Adicionar o .mcp.json na raiz do seu projeto contendo:
+
+1. Analisar o projeto e indexar o grafo: `npx gitnexus analyze`;
+2. Inicializar o servidor MCP: `npx gitnexus@latest serve`;
+3. Adicionar o `.mcp.json` na raiz do seu projeto:
 
 ```json title=".mcp.json"
 {
@@ -59,83 +68,99 @@ Para inicializar em seu projeto, você precisa:
 }
 ```
 
-3. Instale o plugin de MCP adapter no Pi para que a integração entre as duas ferramentas funcione: `pi install npm:pi-mcp-adapter`;
-4. Inicialize o `pi`, e abaixo fez a mesma query onde uma utilizando a integração do Hugging Face com Kimi K2.6 usando o GitNexus MCP, e na outra apenas o Claude Code.
+4. Instalar o plugin MCP adapter no Pi para que a integração funcione: `pi install npm:pi-mcp-adapter`;
+5. Inicializar o `pi`. Abaixo, fiz a mesma query em dois cenários: um utilizando a integração do Hugging Face com Kimi K2.6 e GitNexus MCP, e outro usando apenas o Claude Code.
 
 ![image](/blog/my-ai-open-source-workflow-2v/mcp-pi-connected.png)
 
-O prompt que utilizei foi `explain how diagnosis api works`, você pode observar na imagem abaixo que o Pi já consulta o GitNexus antes de executar qualquer comando bash, assim ele busca no banco de dados [LadybugDb](https://ladybugdb.com/) por todas as dependências e encontra todas as relações, é muito mais eficiente.
+*Pi com o MCP do GitNexus conectado*
+
+O prompt utilizado foi `explain how diagnosis api works`. Na imagem abaixo, você pode observar que o Pi já consulta o GitNexus antes de executar qualquer comando bash — ele busca no [LadybugDb](https://ladybugdb.com/) por todas as dependências e encontra todas as relações. É muito mais eficiente.
 
 ![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-1.png)
 
+*Pi consultando o GitNexus via Graph query antes de qualquer comando bash*
+
 ![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-2.png)
 
-Já usando o Claude Code, sem GitNexus, você observa com o mesmo prompt e sem a conexão com o GitNexus, ele inicia a busca no código usando o Bash, onde não é tão eficaz.
+*Todas as dependências encontradas via LadybugDb*
+
+Usando o Claude Code sem o GitNexus, com o mesmo prompt, ele inicia a busca no código via Bash — o que é menos eficaz.
 
 ![image](/blog/my-ai-open-source-workflow-2v/claude-code-1.png)
 
-Em relação a custo, você pode avaliar o baixo consumo de tokens entre as duas abordagens.
+*Claude Code buscando dependências via Bash, sem o GitNexus*
+
+Em relação a custo, você pode comparar o consumo de tokens entre as duas abordagens:
 
 ![image](/blog/my-ai-open-source-workflow-2v/pi-gitnexus-costs.png)
 
+*Custo de tokens: Pi + Kimi K2.6 + GitNexus*
+
 ![image](/blog/my-ai-open-source-workflow-2v/claude-code-costs.png)
+
+*Custo de tokens: Claude Code sem GitNexus*
 
 
 ### Kimi K2.6
 
-Acredito que um LLM open source bastante [promissor](https://www.kimi.com/blog/kimi-k2-6) não só apenas para atividades simples, mas para atividades complexas e de longa duração.
+Acredito que é um LLM open source bastante [promissor](https://www.kimi.com/blog/kimi-k2-6), não apenas para atividades simples, mas também para tarefas complexas e de longa duração.
 
-Para melhor integração com o `Pi`, eu utilizo o Hugging Face que oferece via Inference Provider ([Novita](https://huggingface.co/inference/models?model=moonshotai%2FKimi-K2.6)) o acesso ao Kimi K2.
+Para melhor integração com o `Pi`, utilizo o Hugging Face, que oferece via Inference Provider ([Novita](https://huggingface.co/inference/models?model=moonshotai%2FKimi-K2.6)) o acesso ao Kimi K2.
 
-Para isso você precisar criar uma conta paga no Hugging Face, criar um **Access Token** com os privilégios:
+Para isso, você precisa criar uma conta paga no Hugging Face e gerar um **Access Token** com os seguintes privilégios:
 - Make calls to Inference Providers;
 - Make calls to your Inference Endpoints;
 
 ![image](/blog/my-ai-open-source-workflow-2v/hf-privileges.png)
 
-Em seguida, acessar o `pi` e `/login`, "Use an API key", selecione "Hugging Face" e adicione o token. Agora você terá acesso a todos os LLM open source. 
+*Privilégios necessários para o Access Token no Hugging Face*
 
-O custo para 1M tokens é apenas $0.95, é 7x mais barato que Claude Code.
+Em seguida, acesse o `pi`, execute `/login`, selecione **Use an API key**, escolha **Hugging Face** e adicione o token. A partir daí, você terá acesso a todos os LLMs open source disponíveis.
+
+O custo para 1M tokens é apenas $0.95, 7x mais barato que o Claude Code.
 
 ![image](/blog/my-ai-open-source-workflow-2v/kimi-k26-costs.jpeg)
 
-Vale a pena conferir, por exemplo, Cursor utilizou o Kimi 2.5 como reinforcement learning para o [Composer 2](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/).
+*Kimi K2.6 via Hugging Face: $0.95/1M tokens, 7x mais barato que Claude Code*
+
+Vale a pena conferir: o Cursor, por exemplo, utilizou o Kimi 2.5 como base de reinforcement learning para o [Composer 2](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/).
 
 ### Compound engineer
 
-Existem vários ferramentas para tornar o seu workflow mais agentic possível como [superpowers](https://github.com/obra/superpowers), [OpenSpec](https://github.com/Fission-AI/OpenSpec/), [spec-kit](https://github.com/github/spec-kit), [get-shit-done](https://github.com/gsd-build/get-shit-done), e o que mais gostei até o momento e que venho usando há alguns meses é o [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin).
+Existem várias ferramentas para tornar o seu workflow mais agentic, como [superpowers](https://github.com/obra/superpowers), [OpenSpec](https://github.com/Fission-AI/OpenSpec/), [spec-kit](https://github.com/github/spec-kit) e [get-shit-done](https://github.com/gsd-build/get-shit-done). A que mais gostei até o momento, e que venho usando há alguns meses, é o [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin).
 
-Esse [plugin](https://every.to/guides/compound-engineering) é mantido pelo time da Every, onde eles estão constantemente aprimorando e otimizando as skills, onde a filosofia por trás da ferramenta é simples, `Plan → Work → Review → Compound → Repeat`. 
+Esse [plugin](https://every.to/guides/compound-engineering) é mantido pelo time da Every, que está constantemente aprimorando e otimizando as skills. A filosofia por trás da ferramenta é simples: `Plan → Work → Review → Compound → Repeat`.
 
-Atualmente, para tarefas que identifico que serão complexas ou que vão requerer várias etapas, como novas features que envolvam múltiples repositórios, migrações críticas, refatorações sempre um o compound-engineer, onde começo por:
+Para tarefas complexas ou de múltiplas etapas — como novas features que envolvam múltiplos repositórios, migrações críticas e refatorações, sempre utilizo o compound-engineer. O fluxo que sigo:
 
-- `/ce-brainstorm`: - When you're not sure what to build, start here. This command helps you brainstorm answers about what to build and plan answers for how to build them. Explore requirements and approaches through **collaborative dialogue**. Geralmente adiciono o link do RFC do Notion ou link da task do Linear nessa etapa, com isso **tenho o MCP do Notion e Linear integrados ao meu ambiente**. Ao final dessa etapa ele cria um arquivo markdown que servirá de memória para o passo seguinte;
-- `/ce-plan`: Planning transforms an idea into a blueprint, and better plans produce better results. Sempre ao final de um plan, eu pergunto para **revisar e refinar**, pois ele sempre encontra novos cavets que ainda não tinha observado; Aqui também ele é cria um arquivo, mas separado, que irá conduzir a execução das tarefas. Se for uma task que vai envolver muitos arquivos, peço para planejar de uma forma que quebre a task in stacked PRs com no máximo 20 arquivos, assim fica melhor para os nossos teammates revisarem.
-- `/ce-work`: Execution follows the plan. The agent implements while the developer monitors.
-- `/ce-review`: This step catches issues before they ship. More importantly, it captures learnings for the next cycle, which becomes the basis for compound engineering. spawns more than 14 specialized agents in parallel that run simultaneously: security-sentinel, performance-oracle, data-integrity-guardian, architecture-strategist, pattern-recognition-specialist, code-simplicity-reviewer, and framework-specific reviewers (DHH-rails, Kieran-rails, TypeScript, Python). Everything gets combined into a single, prioritized list.
-- `/ce-commit-push-pr`: Commit, push, abri um PR e adiciona um título e descrição. Muito útil.
+- `/ce-brainstorm`: Ponto de partida quando não tenho clareza total do que construir. Explora requisitos e abordagens através de **diálogo colaborativo**. Geralmente adiciono o link do RFC do Notion ou da task do Linear nessa etapa, para isso **tenho os MCPs do Notion e do Linear integrados ao meu ambiente**. Ao final, ele gera um arquivo markdown que serve de memória para o próximo passo;
+- `/ce-plan`: Transforma a ideia em um blueprint. Sempre ao final de um plan, peço para **revisar e refinar**, pois ele costuma encontrar novos caveats que não tinha observado. Aqui ele gera um arquivo separado que vai conduzir a execução. Se a task envolver muitos arquivos, peço para planejar em stacked PRs com no máximo 20 arquivos — facilita bastante a revisão pelos teammates;
+- `/ce-work`: Execução segue o plano. O agente implementa enquanto o desenvolvedor monitora;
+- `/ce-review`: Captura problemas antes de chegar à produção. Mais importante ainda, registra aprendizados para o próximo ciclo. Dispara mais de 14 agentes especializados em paralelo: security-sentinel, performance-oracle, data-integrity-guardian, architecture-strategist, pattern-recognition-specialist, code-simplicity-reviewer, e revisores específicos por framework (DHH-rails, Kieran-rails, TypeScript, Python). Tudo consolidado em uma única lista priorizada;
+- `/ce-commit-push-pr`: Faz o commit, push, abre o PR e gera título e descrição. Muito útil.
 
-Esse fluxo tem me ajudado bastante em grandes migrações, implementação de novas arquiteturas, foi um grande time consuming.
+Esse fluxo tem me ajudado bastante em grandes migrações e implementações de novas arquiteturas, é uma ferramenta que me trouxe muita economia de tempo.
 
-Plans are the new code: The plan document is now the most important thing you produce. Instead of coding first and documenting later, as you might have traditionally, start with a plan. This becomes the source of truth your agents use to generate, test, and validate code. Having a plan helps capture decisions before they become bugs. Fixing ideas on paper is cheaper than fixing code later.
+> **Plans are the new code:** O documento de plano é agora o artefato mais importante que você produz. Em vez de codar primeiro e documentar depois, comece pelo plano. Ele se torna a fonte da verdade que os agentes usam para gerar, testar e validar código. Um bom plano captura decisões antes que elas se tornem bugs, corrigir ideias no papel é muito mais barato do que corrigir código depois.
 
-Ao final do trabalho, você pode salvar esses arquivos que são gerados pelo plugin como referência. Eu os salvo é uma pasta separada por projeto, assim fica fácil de eu linká-los quando preciso.
+Ao final do trabalho, salvo os arquivos gerados pelo plugin em uma pasta separada por projeto, facilitando vinculá-los quando necessário.
 
 ### Conclusion
 
-Observo que a cada mês que passa, venho tornando meu fluxo mais lean, com melhor acurácia e menor custo. A utilização do Pi + LLM Open source me trouxe uma redução de custo grande, sem perder a qualidade. Onde a qualidade do seu output está diretamente relacionado o quanto de contexto e acesso você oferece ao seu LLM, e isso na fase de planning usando o compound engineer está sendo resolvido brilhantemente.
+Observo que a cada mês, meu fluxo fica mais lean, com melhor acurácia e menor custo. A combinação Pi + LLM open source me trouxe uma redução de custo expressiva sem perda de qualidade. A qualidade do output está diretamente relacionada ao quanto de contexto e acesso você oferece ao LLM, e isso, na fase de planejamento com o compound engineer, está sendo resolvido de forma muito eficiente.
 
-Meu próximos passos é criar um fluxo totalmente automatizado, onde pela manhã ele checa minhas tarefas, seleciona uma, planeja, implementa, abre o PR, me notifica, e quando acordar, apenas reviso, onde essa infraestrutura rode localmente dentro de um container. Quero utilizar para esse experimento o [Flue](https://flueframework.com/), um framework criado pelo time do [Astro](https://astro.build/) para criar agentes autonomos com Typescript. Quando tiver um resultado considerável, compartilharei aqui como foi implementado :)
+Meus próximos passos são criar um fluxo totalmente automatizado: de manhã, ele checa minhas tarefas, seleciona uma, planeja, implementa, abre o PR e me notifica — quando eu acordar, só preciso revisar. Quero que essa infraestrutura rode localmente dentro de um container. Para esse experimento, pretendo usar o [Flue](https://flueframework.com/), um framework criado pelo time do [Astro](https://astro.build/) para criar agentes autônomos com TypeScript. Quando tiver um resultado considerável, compartilharei aqui como foi implementado.
 
-Espero que esse artigo traga uma melhor direção diante do mar de novidades que o ecossistema de AI nos enunda todos os dias, e que melhore um pouco mais o seu dia-a-dia como desenvolvedor. E ressalto, não terceirize o entendimento do seu código.
+Espero que esse artigo traga uma direção melhor diante do mar de novidades que o ecossistema de AI nos inunda todos os dias, e que melhore um pouco o seu dia a dia como desenvolvedor. E reforço: não terceirize o entendimento do seu código.
 
-https://x.com/karpathy/status/2049907410303865030
+[Tweet do Karpathy sobre isso](https://x.com/karpathy/status/2049907410303865030)
 
 ### Note
 
-Se você está iniciando e quer um curso introdutório sobre criar ufull lifecycle of AI-assisted development recomendo esse workshop do Matt Pocock
+Se você está iniciando e quer um curso introdutório sobre o ciclo completo de desenvolvimento assistido por IA, recomendo esse workshop do Matt Pocock:
 
-https://www.youtube.com/watch?v=-QFHIoCo-Ko
+[Full Walkthrough: Workflow for AI Coding — Matt Pocock](https://www.youtube.com/watch?v=-QFHIoCo-Ko)
 
 ### References
 
@@ -145,4 +170,4 @@ https://www.youtube.com/watch?v=-QFHIoCo-Ko
 - [Kimi K2.6](https://x.com/kirillk_web3/status/2053210009689870535)
 - [Kimi K2.6: Advancing Open-Source Coding](https://www.kimi.com/blog/kimi-k2-6)
 - [Compound Engineering - The AI-native engineering philosophy](https://every.to/guides/compound-engineering)
-- [Cursor admits its new coding model was built on top of Moonshot AI’s Kimi](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/)
+- [Cursor admits its new coding model was built on top of Moonshot AI's Kimi](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/)
