@@ -10,12 +10,18 @@ import astroExpressiveCode from 'astro-expressive-code';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import embeds from 'astro-embed/integration';
 import mdx from '@astrojs/mdx';
+import { satteri } from '@astrojs/markdown-satteri';
 
 import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.candidosales.me/',
+  markdown: {
+    processor: satteri({
+      features: { directive: true },
+    }),
+  },
   integrations: [
     embeds(),
     astroExpressiveCode({
