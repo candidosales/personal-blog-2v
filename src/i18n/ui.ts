@@ -182,7 +182,7 @@ export const ui = {
         "hero.title2": "experiências digitais",
         portfolio: "Portfólio",
         "portfolio.subtitle":
-            "Aqui são alguns projectos de código aberto que criei e continuo a manter",
+            "Aqui estão alguns projetos de código aberto que criei e continuo a manter",
         "portifolio.1.title": "Cisco ChatGPT Avisos de segurança",
         "portifolio.1.description":
             "Chatbot IA que utiliza os dados dos avisos de segurança para interagir com a linguagem natural",
@@ -207,7 +207,7 @@ export const ui = {
         "portifolio.8.description":
             "Um boilerplate para criar plugins Figma com Svelte, Tailwind, Vite e Typescript",
         "portifolio.9.title": "Relatório de dependências",
-        "portifolio.9.description": `Analise a consistência das dependências nos projectos front-end da sua empresa`,
+        "portifolio.9.description": `Analise a consistência das dependências nos projetos front-end da sua empresa`,
         "portifolio.10.title": "Portfólio Pessoal 2v",
         "portifolio.10.description":
             "Projeto open source para seu portfólio pessoal",
@@ -215,13 +215,13 @@ export const ui = {
         "portifolio.11.description":
             "Projeto open source para seu portfólio pessoal",
         "portifolio.12.title": "WP Agent Tool",
-        "portifolio.12.description": "A Rust-based CLI tool for comprehensive WordPress diagnostics and maintenance.", 
+        "portifolio.12.description": "Uma ferramenta CLI em Rust para diagnósticos e manutenção abrangentes do WordPress.",
         volunteer: "Voluntariado",
         "volunteer.subtitle":
-            "Desenvolvo e mantenho voluntariamente projectos que estão de acordo com as minhas convicções em matéria de educação, cultura, arte, saúde pública e sustentabilidade",
+            "Desenvolvo e mantenho voluntariamente projetos que se alinham com meus valores em educação, cultura, arte, saúde pública e sustentabilidade",
         "volunteer.1.title": "Turismo Piauí",
         "volunteer.1.description":
-            "Preservar e descobra nossa Gastronomia, História, Ecoturismo no Piauí - 🇧🇷",
+            "Preserve e descubra nossa Gastronomia, História, Ecoturismo no Piauí - 🇧🇷",
         "volunteer.2.title": "Geleia Total",
         "volunteer.2.description":
             "Promover a cultura e a arte do estado do Piauí - 🇧🇷",
@@ -239,7 +239,7 @@ export const ui = {
             "O guia de saúde mental para você e sua família",
         extras: "Extra",
         "extras.subtitle":
-            "No meu tempo livre, trabalho em vários projectos para explorar novos recursos e tecnologias",
+            "No meu tempo livre, trabalho em vários projetos para explorar novos recursos e tecnologias",
         "extras.1.title": "Receituário Médico SUS",
         "extras.1.description":
             "Ajuda os médicos do sistema público de saúde brasileiro a fazer prescrições médicas",
@@ -316,9 +316,9 @@ export const ui = {
         "about.piece8": `Além disso, fundei`,
         "about.and": "e",
         "about.piece9":
-            "e prestar serviços de consultoria a entidades públicas e privadas. Uma das minhas maiores alegrias é mentorar outras pessoas e ajudá-las nas suas carreiras de TI através de",
+            "e ofereço serviços de consultoria a entidades públicas e privadas. Uma das minhas maiores alegrias é mentorar outras pessoas e ajudá-las em suas carreiras de TI através de",
         "about.piece10": `Sou um grande fã do`,
-        "about.piece11": `e de projetos paralelos. Quando não estou a trabalhar, gosto de cozinhar, jogar, ler livros não relacionados a tecnologia e fazer caminhadas.`,
+        "about.piece11": `e de projetos paralelos. Quando não estou trabalhando, gosto de cozinhar, jogar, ler livros não relacionados a tecnologia e fazer caminhadas.`,
         "about.title2": "Experiência profissional",
         "about.seeMoreLinkedin": "Veja mais no meu Linkedin",
         "presentations.title": "Apresentações",
