@@ -3,11 +3,10 @@ export const extrasData = (t: any) => {
         {
           image: {
             url: "/extras/do-you-know-yourself.webp",
-            alt: "Do you know yourself",
+            alt: t('extras.0.title'),
           },
-          title: "Do you know yourself",
-          description:
-            "A new way to explore self-knowledge through interactive questionnaires.",
+          title: t('extras.0.title'),
+          description: t('extras.0.description'),
           url: "https://dyky.app/",
           techs: [
             {

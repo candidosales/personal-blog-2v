@@ -80,6 +80,9 @@ export const ui = {
         extras: "Extras",
         "extras.subtitle":
             "In my free time, I work on various projects to explore new resources and technologies",
+        "extras.0.title": "Do you know yourself",
+        "extras.0.description":
+            "A new way to explore self-knowledge through interactive questionnaires.",
         "extras.1.title": "SUS Medical Prescription",
         "extras.1.description":
             "It helps doctors from the Brazilian public health system make medical prescriptions",
@@ -240,6 +243,9 @@ export const ui = {
         extras: "Extra",
         "extras.subtitle":
             "No meu tempo livre, trabalho em vários projetos para explorar novos recursos e tecnologias",
+        "extras.0.title": "Você se conhece?",
+        "extras.0.description":
+            "Uma nova forma de explorar o autoconhecimento por meio de questionários interativos.",
         "extras.1.title": "Receituário Médico SUS",
         "extras.1.description":
             "Ajuda os médicos do sistema público de saúde brasileiro a fazer prescrições médicas",
