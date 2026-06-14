@@ -6,6 +6,7 @@ export interface MenuItem {
   label: string;
   targetBlank: boolean;
   icon: any;
+  action?: 'navigate' | 'search';
 }
 
 export interface Service {
