@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte';
   import { tick } from 'svelte';
+  import { fade, fly } from 'svelte/transition';
   import type { MenuItem } from '../env';
   import Search from './icons/Search.svelte';
   import { getLangFromUrl, useTranslations } from '@i18n/utils';
@@ -86,6 +87,7 @@
   const openSearch = async () => {
     trackEvent('mobile_search_open');
     isSearchOpen = true;
+    document.body.classList.add('mobile-search-open');
     await tick();
     searchInputRef?.focus();
   };
@@ -98,6 +100,7 @@
     selectedIndex = 0;
     isLoading = false;
     abortController?.abort();
+    document.body.classList.remove('mobile-search-open');
   };
 
   const searchNow = async (text: string) => {
@@ -196,6 +199,7 @@
   onDestroy(() => {
     if (debounceTimer) clearTimeout(debounceTimer);
     abortController?.abort();
+    document.body.classList.remove('mobile-search-open');
   });
 </script>
 
@@ -248,9 +252,20 @@
 </div>
 
 {#if isSearchOpen}
-  <div class="fixed inset-0 z-60 bg-white/95 p-4 backdrop-blur-sm md:hidden">
-    <div class="mx-auto flex h-full w-full max-w-xl flex-col">
-      <div class="mb-3 flex items-center gap-2">
+  <div class="fixed inset-0 z-60 md:hidden" transition:fade={{ duration: 160 }}>
+    <button
+      type="button"
+      class="absolute inset-0 bg-blue-900/20 backdrop-blur-[2px]"
+      aria-label={t('search.close')}
+      onclick={closeSearch}
+    ></button>
+
+    <section
+      class="search-overlay-panel absolute inset-0 flex h-full w-full flex-col bg-white/98"
+      transition:fly={{ y: 24, duration: 240 }}
+      aria-label={t('menu.search')}
+    >
+      <div class="mb-3 flex items-center gap-2 px-4 pt-[max(env(safe-area-inset-top),1rem)]">
         <input
           bind:this={searchInputRef}
           type="text"
@@ -268,7 +283,7 @@
         </button>
       </div>
 
-      <div class="min-h-0 flex-1 overflow-auto rounded-2xl border border-blue-200 bg-white">
+      <div class="min-h-0 flex-1 overflow-auto border-y border-blue-200 bg-white">
         {#if !query.trim()}
           <p class="p-4 text-sm text-blue-800/80">{t('search.hint')}</p>
         {:else if isLoading}
@@ -314,10 +329,15 @@
         {/if}
       </div>
 
-      <a href={searchPath} class="mt-3 text-center text-sm font-medium text-blue-700 underline">
-        {t('menu.search')}
-      </a>
-    </div>
+      <div class="px-4 py-3 pb-[max(env(safe-area-inset-bottom),0.75rem)]">
+        <a
+          href={searchPath}
+          class="block rounded-xl bg-blue-100 px-3 py-2 text-center text-sm font-medium text-blue-700 underline"
+        >
+          {t('menu.search')}
+        </a>
+      </div>
+    </section>
   </div>
 {/if}
 
@@ -329,6 +349,15 @@
 
     .mobile-nav-shell {
       padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    :global(body.mobile-search-open) {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .search-overlay-panel {
+      background-image: radial-gradient(circle at 50% -20%, #fff, #f5f9ff 45%, #eef5ff 100%);
     }
   }
 </style>
