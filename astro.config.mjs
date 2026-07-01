@@ -43,13 +43,16 @@ export default defineConfig({
       themes: ['one-light']
     }),
     mdx(),
-    compress(),
+    // CSS disabled: astro-compress's csso strips Tailwind v4 range media
+    // queries (@media (width>=40rem)), breaking responsive in prod builds.
+    // Astro/Vite already minify CSS via Lightning CSS.
+    compress({ CSS: false }),
     sitemap({
       i18n: {
         defaultLocale: 'en',
-        locales: ['en', 'pt-br'],
-        routing: {
-          prefixDefaultLocale: false,
+        locales: {
+          en: 'en',
+          'pt-br': 'pt-BR',
         },
       },
     }),
