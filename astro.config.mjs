@@ -47,7 +47,10 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: 'en',
-        locales: ['en', 'pt-br'],
+        locales: {
+          en: 'en',
+          'pt-br': 'pt-BR',
+        },
         routing: {
           prefixDefaultLocale: false,
         },
@@ -65,5 +68,10 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      // flowbite-svelte ships .svelte files with TS syntax. Excluding it from
+      // Rolldown's dep prebundle lets vite-plugin-svelte preprocess them first.
+      exclude: ['flowbite-svelte'],
+    },
   },
 });

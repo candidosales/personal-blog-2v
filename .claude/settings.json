@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:astro.build)",
+      "Bash(timeout 90 npm run build)",
+      "Bash(rtk npm *)",
+      "WebFetch(domain:www.google.com)"
+    ]
+  }
+}
