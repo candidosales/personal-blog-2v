@@ -82,9 +82,15 @@ const services: Service[] = [
 	},
 	{
 		iconUrl: '/services/ai-tools.svg',
-		cssClass: 'col-span-12 md:col-span-12 bg-ai-tools',
+		cssClass: 'col-span-12 md:col-span-6 bg-ai-tools',
 		title: t('services.5.title'),
 		description: t('services.5.description'),
+	},
+	{
+		iconUrl: '/services/mobile-apps.svg',
+		cssClass: 'col-span-12 md:col-span-6 bg-mobile-apps',
+		title: t('services.7.title'),
+		description: t('services.7.description'),
 	},
 	{
 		iconUrl: '/services/wordpress-liferay.svg',
@@ -402,13 +408,23 @@ const workSteps = [
 			background-position: 50% 200px;
 		}
 
-        .bg-ai-tools, .bg-data-engineer {
+		.bg-data-engineer {
             background-position: 100% 0;
 		    background-size: 60%;
-            p {
-                width: 50%;
-            }
         }
+
+        .bg-ai-tools {
+            background-position: 100% 190%;
+		    background-size: 80%;
+        }
+
+		.bg-data-engineer p {
+            width: 50%;
+        }
+
+		.bg-ai-tools p {
+			width: 100%;
+		}
 
         .bg-google-analytics {
             background-position: 100% 220px;

@@ -119,6 +119,9 @@ export const ui = {
         "services.6.title": "Fast, reliable data when you need it",
         "services.6.description":
             "Complete data engineering solutions with a modern stack (DltHub, DBT, Prefect, ClickHouse, etc). Automated pipelines that transform raw information into actionable insights with speed and quality.",
+        "services.7.title": "Mobile apps for iOS and Android",
+        "services.7.description":
+            "Put your service in your customers' hands. Custom mobile apps on iOS and Android that keep your brand a tap away — boosting engagement, loyalty, and reach. Built with Expo and React Native for native performance, smooth animations, and instant updates without waiting on app-store reviews.",
         "services.howIWork.title": "How I Work",
         "services.howIWork.subtitle": "A transparent, iterative process built around clarity, design, and honest communication.",
         "services.howIWork.step1.title": "Research & Scope Definition",
@@ -282,6 +285,9 @@ export const ui = {
         "services.6.title": "Dados rápidos e confiáveis quando você precisa",
         "services.6.description":
             "Soluções completas de engenharia de dados com stack moderno (DltHub, DBT, Prefect, ClickHouse e etc). Pipelines automatizados que transformam informação bruta em insights acionáveis com velocidade e qualidade.",
+        "services.7.title": "Apps mobile para iOS e Android",
+        "services.7.description":
+            "Coloque seu serviço na mão dos seus clientes. Apps mobile sob medida para iOS e Android que mantêm sua marca a um toque de distância — aumentando engajamento, fidelização e alcance. Feitos com Expo e React Native para performance nativa, animações fluidas e atualizações instantâneas sem esperar aprovação das lojas.",
         "services.howIWork.title": "Como eu trabalho",
         "services.howIWork.subtitle": "Um processo transparente e iterativo construído em torno de clareza, design e comunicação honesta.",
         "services.howIWork.step1.title": "Pesquisa e Definição de Escopo",
