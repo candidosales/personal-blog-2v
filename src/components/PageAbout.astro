@@ -1,280 +1,413 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import Header from '@components/Header.svelte';
-import ArrowRight from '@components/icons/ArrowRight.svelte';
-import Contact from '@components/Contact.svelte';
-import Linkedin from '@components/icons/Linkedin.svelte';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import Header from "@components/Header.svelte";
+import ArrowRight from "@components/icons/ArrowRight.svelte";
+import Contact from "@components/Contact.svelte";
+import Linkedin from "@components/icons/Linkedin.svelte";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 const experience = [
-    {
-        company: {
-            name: 'Smile.io',
-            image: '/companies/smileio.png',
-            url: 'https://www.smile.io/',
-        },
-        style: 'smileio',
-        period: 'Sep 2025 - Current',
-        title: 'Senior Software Engineer',
-        country: '🇨🇦',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  {
+    company: {
+      name: "Smile.io",
+      image: "/companies/smileio.png",
+      url: "https://www.smile.io/",
     },
-    {
-        company: {
-            name: 'Wealthsimple',
-            image: '/companies/wealthsimple.jpg',
-            url: 'https://www.wealthsimple.com/',
-        },
-        style: 'wealthsimple',
-        period: 'Nov 2024 - Jul 2025',
-        title: 'Intermediate Software Engineer',
-        country: '🇨🇦',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    style: "smileio",
+    period: "Sep 2025 - Current",
+    title: "Senior Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: {
+      name: "Wealthsimple",
+      image: "/companies/wealthsimple.jpg",
+      url: "https://www.wealthsimple.com/",
     },
-    {
-        company: {
-            name: 'Cisco',
-            image: '/companies/cisco.jpeg',
-            url: 'https://www.cisco.com/',
-        },
-        style: 'cisco',
-        period: 'Feb 2022 - Oct 2024',
-        title: 'Senior Software Engineer',
-        country: '🇨🇦',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    style: "wealthsimple",
+    period: "Nov 2024 - Jul 2025",
+    title: "Intermediate Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: {
+      name: "Cisco",
+      image: "/companies/cisco.jpeg",
+      url: "https://www.cisco.com/",
     },
-    {
-        company: {
-            name: 'Vendasta',
-            image: '/companies/vendasta.jpeg',
-            url: 'https://www.vendasta.com/',
-        },
-        style: 'vendasta',
-        period: 'Sep 2019 - Feb 2022',
-        title: 'Senior Software Engineer',
-        country: '🇨🇦',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    style: "cisco",
+    period: "Feb 2022 - Oct 2024",
+    title: "Senior Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: {
+      name: "Vendasta",
+      image: "/companies/vendasta.jpeg",
+      url: "https://www.vendasta.com/",
     },
-    {
-        company: {
-            name: 'GR1D',
-            image: '/companies/gr1d.jpeg',
-            url: 'https://gr1d.io/',
-        },
-        style: 'gr1d',
-        period: 'Dec 2017 - Sep 2019',
-        title: 'Tech Lead / Senior Software Engineer',
-        country: '🇧🇷',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    style: "vendasta",
+    period: "Sep 2019 - Feb 2022",
+    title: "Senior Software Engineer",
+    country: "🇨🇦",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: {
+      name: "GR1D",
+      image: "/companies/gr1d.jpeg",
+      url: "https://gr1d.io/",
     },
-    {
-        company: {
-            name: 'VC+',
-            image: '/companies/vc+.png',
-            url: '',
-        },
-        style: 'vc',
-        period: 'Aug 2016 - Nov 2017',
-        title: 'Co-founder, Android Developer and Frontend Developer',
-        country: '🇧🇷',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    style: "gr1d",
+    period: "Dec 2017 - Sep 2019",
+    title: "Tech Lead / Senior Software Engineer",
+    country: "🇧🇷",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    company: {
+      name: "VC+",
+      image: "/companies/vc+.png",
+      url: "",
     },
+    style: "vc",
+    period: "Aug 2016 - Nov 2017",
+    title: "Co-founder, Android Developer and Frontend Developer",
+    country: "🇧🇷",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
 ];
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('about.title')}>
-    <Header client:only='svelte' />
-    <main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
-        <h1
-            class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
-            transition:name='hero'
-        >
-            {t('about.title')}
-        </h1>
-        <div
-            class='gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10'
-            transition:name='content'
-        >
-            <div class='space-y-8 flex mb-8'>
-                <Image
-                    class='rounded-3xl'
-                    alt='Candido'
-                    width={400}
-                    height={400}
-                    src='/me-500.png'
-                    loading={'eager'}
-                />
-            </div>
-            <div class='space-y-4 text-blue-800 text-lg'>
-                <p>
-                    {t('about.piece1')}{' '}
-                    {t('about.piece2')}
-                </p>
-                <p>
-                    {t('about.piece6')}{' '}
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://www.smile.io/'
-                        title='Visit Smile.io'
-                        target='_blank'>Smile.io</a
-                    >
-                    {' '}{t('about.piece7')}{' '}
-                </p>
+<Layout title={t("about.title")}>
+  <Header client:only="svelte" />
+  <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
+    <h1
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10"
+      transition:name="hero"
+    >
+      {t("about.title")}
+    </h1>
+    <div
+      class="gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10"
+      transition:name="content"
+    >
+      <div class="flex items-center justify-center mb-8 py-6">
+        <div class="polaroid-stack relative w-full max-w-md h-96 sm:h-115">
+          <div
+            class="polaroid-slot pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+          >
+            <figure
+              data-role="back"
+              class="polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-xl"
+            >
+              <Image
+                class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-sm"
+                alt="Banff National Park, Canada"
+                width={400}
+                height={400}
+                src="/me-500.png"
+                loading={"eager"}
+              />
+              <figcaption
+                class="polaroid-caption mt-2 text-center text-slate-600"
+              >
+                Banff National Park, Canada
+              </figcaption>
+            </figure>
+          </div>
+          <div
+            class="polaroid-slot pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
+          >
+            <figure
+              data-role="front"
+              class="polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-2xl"
+            >
+              <Image
+                class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-sm"
+                alt="Amazon rainforest, Brazil"
+                width={400}
+                height={400}
+                src="/me-amazon-500.webp"
+                loading={"eager"}
+              />
+              <figcaption
+                class="polaroid-caption mt-2 text-center text-slate-600"
+              >
+                Amazon rainforest, Brazil
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4 text-blue-800 text-lg">
+        <p>
+          {t("about.piece1")}{" "}
+          {t("about.piece2")}
+        </p>
+        <p>
+          {t("about.piece6")}{" "}
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://www.smile.io/"
+            title="Visit Smile.io"
+            target="_blank">Smile.io</a
+          >
+          {" "}{t("about.piece7")}{" "}
+        </p>
 
-                <p>
-                    {t('about.piece8')}{' '}
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://geleiatotal.com.br/'
-                        title='Visit Geleia Total'
-                        target='_blank'>Geleia Total</a
-                    >
-                    {' '}{t('about.and')}{' '}
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://www.turismopiaui.com/'
-                        title='Visit Turismo Piauí'
-                        target='_blank'>Turismo Piauí</a
-                    >
-                    {' '}{t('about.piece9')}{' '}
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://adplist.org/mentors/candido-sales-gomes'
-                        title='Visit my ADPList profile'
-                        target='_blank'>ADPList</a
-                    >.
-                </p>
-                <p>
-                    {t('about.piece10')}{' '}
-                    <a
-                        class="underline underline-offset-4 after:content-['_↗']"
-                        href='https://github.com/candidosales'
-                        title='Visit my Github profile'
-                        target='_blank'>open-source</a
-                    >
-                   {' '} {t('about.piece11')}
-                </p>
-            </div>
-        </div>
-        <h2
-            class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in'
-        >
-            {t('about.title2')}
-        </h2>
-        <div
-            class='md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mt-10 text-blue-800 slide-fade-in'
-        >
-            {
-                experience.map((e) => (
-                    <>
-                        <div class='col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]'>
-                            <p class='opacity-70 text-md'>{e.period}</p>
-                        </div>
-                        <div class='col-span-4 mb-8 md:mb-0 flex flex-row align-middle justify-start items-center'>
-                            <p class='wrap-break-word text-md max-w-lg flex-1'>
-                                {e.title} at
-                            </p>
-                            <a
-                                href={e.company.url}
-                                title={e.company.name}
-                                target='_blank'
-                                class={` text-md cursor-pointer ml-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium mr-2`}
-                            >
-                                <img
-                                    class='rounded-full w-6 h-6 mr-2'
-                                    src={e.company.image}
-                                    alt={e.company.name}
-                                    title={e.company.name}
-                                />
-                                {e.company.name}
-                            </a>
-                            {e.country}
-                        </div>
-                    </>
-                ))
-            }
-        </div>
-        <div class='flex justify-center mt-10 mb-16 slide-fade-in'>
-            <a
-                class='max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive'
-                href='https://www.linkedin.com/in/candidosales/'
-                title='See more about my experiences in my Linkedin'
-                target='_blank'
-                ><Linkedin class='h-4 w-4 mr-2' />{t('about.seeMoreLinkedin')}
-
-                <ArrowRight class='overflow-visible ml-3 text-white' />
-            </a>
-        </div>
-        <div class="my-16 mx-auto max-w-6xl slide-fade-in">
-    <div class="p-6">
-        <div
-            class="flex flex-col md:flex-row mx-auto justify-center items-center md:items-start"
-        >
-            <Image
-                src="/quotes/anthony-bourdain.webp"
-                width={56}
-                height={56}
-                alt=""
-                class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
-                loading="lazy"
-                decoding="async"
-            />
-            <blockquote class="text-center md:text-left font-inclusive">
-                <p class="text-blue-800 mb-2 md:mb-0">
-                    Anthony Bourdain
-                </p>
-                <p
-                    class=" max-w-[480px] mx-auto text-xl font-medium text-blue-600"
-                >
-                    “<Fragment set:html={t("quote.anthonyBourdain")} />”
-                </p>
-            </blockquote>
-        </div>
+        <p>
+          {t("about.piece8")}{" "}
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://geleiatotal.com.br/"
+            title="Visit Geleia Total"
+            target="_blank">Geleia Total</a
+          >
+          {" "}{t("about.and")}{" "}
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://www.turismopiaui.com/"
+            title="Visit Turismo Piauí"
+            target="_blank">Turismo Piauí</a
+          >
+          {" "}{t("about.piece9")}{" "}
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://adplist.org/mentors/candido-sales-gomes"
+            title="Visit my ADPList profile"
+            target="_blank">ADPList</a
+          >.
+        </p>
+        <p>
+          {t("about.piece10")}{" "}
+          <a
+            class="underline underline-offset-4 after:content-['_↗']"
+            href="https://github.com/candidosales"
+            title="Visit my Github profile"
+            target="_blank">open-source</a
+          >
+          {" "}
+          {t("about.piece11")}
+        </p>
+      </div>
     </div>
-</div>
-        <Contact />
-    </main>
+    <h2
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in"
+    >
+      {t("about.title2")}
+    </h2>
+    <div
+      class="md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mt-10 text-blue-800 slide-fade-in"
+    >
+      {
+        experience.map((e) => (
+          <>
+            <div class="col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]">
+              <p class="opacity-70 text-md">{e.period}</p>
+            </div>
+            <div class="col-span-4 mb-8 md:mb-0 flex flex-row align-middle justify-start items-center">
+              <p class="wrap-break-word text-md max-w-lg flex-1">
+                {e.title} at
+              </p>
+              <a
+                href={e.company.url}
+                title={e.company.name}
+                target="_blank"
+                class={` text-md cursor-pointer ml-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium mr-2`}
+              >
+                <img
+                  class="rounded-full w-6 h-6 mr-2"
+                  src={e.company.image}
+                  alt={e.company.name}
+                  title={e.company.name}
+                />
+                {e.company.name}
+              </a>
+              {e.country}
+            </div>
+          </>
+        ))
+      }
+    </div>
+    <div class="flex justify-center mt-10 mb-16 slide-fade-in">
+      <a
+        class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 font-inclusive"
+        href="https://www.linkedin.com/in/candidosales/"
+        title="See more about my experiences in my Linkedin"
+        target="_blank"
+        ><Linkedin class="h-4 w-4 mr-2" />{t("about.seeMoreLinkedin")}
+
+        <ArrowRight class="overflow-visible ml-3 text-white" />
+      </a>
+    </div>
+    <div class="my-16 mx-auto max-w-6xl slide-fade-in">
+      <div class="p-6">
+        <div
+          class="flex flex-col md:flex-row mx-auto justify-center items-center md:items-start"
+        >
+          <Image
+            src="/quotes/anthony-bourdain.webp"
+            width={56}
+            height={56}
+            alt=""
+            class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
+            loading="lazy"
+            decoding="async"
+          />
+          <blockquote class="text-center md:text-left font-inclusive">
+            <p class="text-blue-800 mb-2 md:mb-0">Anthony Bourdain</p>
+            <p class="max-w-120 mx-auto text-xl font-medium text-blue-600">
+              “<Fragment set:html={t("quote.anthonyBourdain")} />”
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div class="p-6 max-w-150 mx-auto">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1pz0KD8By0ydKRDB3VFycG?utm_source=generator&si=28ceadfdec244b0b" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <Contact />
+  </main>
 </Layout>
 
-<style lang='scss' is:global>
-    .wealthsimple {
-        border-color: var(--color-slate-200);
-        background-color: var(--color-slate-100);
-        color: var(--color-slate-700);
-    }
-    .vendasta {
-        border-color: var(--color-green-200);
-        background-color: var(--color-green-100);
-        color: var(--color-green-700);
-    }
-    .cisco {
-        border-color: var(--color-blue-200);
-        background-color: var(--color-blue-100);
-        color: var(--color-blue-700);
-    }
-    .gr1d {
-        border-color: var(--color-gray-200);
-        background-color: var(--color-gray-100);
-        color: var(--color-gray-700);
-    }
-    .vc {
-        border-color: var(--color-slate-200);
-        background-color: var(--color-slate-100);
-        color: var(--color-slate-700);
-    }
-    .smileio {
-        border-color: var(--color-yellow-200);
-        background-color: var(--color-yellow-100);
-        color: var(--color-yellow-700);
-    }
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+
+  .polaroid-caption {
+    font-family: "Caveat", cursive;
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  .polaroid-stack {
+    perspective: 1000px;
+  }
+
+  /* Resting transforms — kept in sync with the keyframes in the script below.
+     Declared here so the stack renders correctly before JS hydrates (no FOUC). */
+  .polaroid {
+    transform-origin: center;
+    will-change: transform;
+  }
+  .polaroid[data-role="front"] {
+    transform: translateX(40px) rotate(3deg) scale(1);
+  }
+  .polaroid[data-role="back"] {
+    transform: translateX(-40px) translateY(18px) rotate(-6deg) scale(0.9);
+  }
 </style>
+
+<style lang="scss" is:global>
+  .wealthsimple {
+    border-color: var(--color-slate-200);
+    background-color: var(--color-slate-100);
+    color: var(--color-slate-700);
+  }
+  .vendasta {
+    border-color: var(--color-green-200);
+    background-color: var(--color-green-100);
+    color: var(--color-green-700);
+  }
+  .cisco {
+    border-color: var(--color-blue-200);
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-700);
+  }
+  .gr1d {
+    border-color: var(--color-gray-200);
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+  }
+  .vc {
+    border-color: var(--color-slate-200);
+    background-color: var(--color-slate-100);
+    color: var(--color-slate-700);
+  }
+  .smileio {
+    border-color: var(--color-yellow-200);
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-700);
+  }
+</style>
+
+<script>
+  import { animate } from "motion";
+
+  // Circular arc keyframes. Animating individual transform components (instead
+  // of a raw transform string) lets Motion interpolate cleanly. rotateY adds a
+  // 3D tilt against the stack's perspective so the swap reads as depth.
+  // The incoming card swings up-and-over from the back slot to the front slot.
+  const ARC_TO_FRONT = {
+    x: [-40, -95, -10, 40],
+    y: [18, -35, -45, 0],
+    rotate: [-6, -2, 6, 3],
+    scale: [0.9, 0.98, 1.07, 1],
+    rotateY: [0, 22, -6, 0],
+  };
+
+  // The outgoing card sinks back along a shallower inward arc.
+  const ARC_TO_BACK = {
+    x: [40, 55, -40],
+    y: [0, -10, 18],
+    rotate: [3, 4, -6],
+    scale: [1, 1, 0.9],
+    rotateY: [0, -14, 0],
+  };
+
+  let animating = false;
+
+  function bringToFront(clicked: HTMLElement) {
+    if (animating || clicked.dataset.role === "front") return;
+    const stack = clicked.closest(".polaroid-stack");
+    const other = stack?.querySelector<HTMLElement>(
+      '.polaroid[data-role="front"]',
+    );
+    if (!other) return;
+
+    const clickedSlot = clicked.parentElement as HTMLElement;
+    const otherSlot = other.parentElement as HTMLElement;
+
+    animating = true;
+    // Raise the incoming card above during the swing.
+    clickedSlot.style.zIndex = "30";
+    otherSlot.style.zIndex = "20";
+
+    animate(clicked, ARC_TO_FRONT, {
+      duration: 0.7,
+      ease: [0.34, 1.2, 0.64, 1],
+    });
+
+    const back = animate(other, ARC_TO_BACK, {
+      duration: 0.7,
+      ease: [0.4, 0, 0.2, 1],
+    });
+
+    back.finished.then(() => {
+      clicked.dataset.role = "front";
+      other.dataset.role = "back";
+      clickedSlot.style.zIndex = "20";
+      otherSlot.style.zIndex = "10";
+      animating = false;
+    });
+  }
+
+  // Event delegation on document survives Astro view transitions.
+  document.addEventListener("click", (e) => {
+    const fig = (e.target as HTMLElement)?.closest<HTMLElement>(".polaroid");
+    if (fig) bringToFront(fig);
+  });
+</script>
