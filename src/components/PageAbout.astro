@@ -105,17 +105,17 @@ const t = useTranslations(lang);
       class="gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10"
       transition:name="content"
     >
-      <div class="flex items-center justify-center mb-8 py-6">
+      <div class="flex items-center justify-center mb-8">
         <div class="polaroid-stack relative w-full max-w-md h-96 sm:h-115">
           <div
             class="polaroid-slot pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
           >
             <figure
               data-role="back"
-              class="polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-xl"
+              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-xl"
             >
               <Image
-                class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-sm"
+                class="w-72 h-72 object-cover rounded-sm"
                 alt="Banff National Park, Canada"
                 width={400}
                 height={400}
@@ -134,10 +134,10 @@ const t = useTranslations(lang);
           >
             <figure
               data-role="front"
-              class="polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-2xl"
+              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-2xl"
             >
               <Image
-                class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-sm"
+                class="w-72 h-72 object-cover rounded-sm"
                 alt="Amazon rainforest, Brazil"
                 width={400}
                 height={400}
