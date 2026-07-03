@@ -1,12 +1,12 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
-title: 'Data pipeline com DLT, Dbt, Prefect e ClickHouse'
+title: "Data pipeline com DLT, Dbt, Prefect e ClickHouse"
 pubDate: 2026-01-19
-author: 'Candido Gomes'
-description: 'Ultimamente, tenho estudado Engenharia de Dados e Pipelines de Dados. Achei que seria interessante compartilhar um pouco do que estou aprendendo.'
+author: "Candido Gomes"
+description: "Ultimamente, tenho estudado Engenharia de Dados e Pipelines de Dados. Achei que seria interessante compartilhar um pouco do que estou aprendendo."
 image:
-    url: '/blog/data-pipeline-dlt-dbt-prefect-clickhouse/thumbnail.webp'
-    alt: 'Pipeline da dados usando Dlthub, Dbt, Prefect e Clickhouse'
+  url: "/blog/data-pipeline-dlt-dbt-prefect-clickhouse/thumbnail.webp"
+  alt: "Pipeline da dados usando Dlthub, Dbt, Prefect e Clickhouse"
 tags: ["dlthub", "dbt", "prefect", "clickhouse", "data engineering", "data pipeline"]
 ---
 
@@ -32,10 +32,10 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver
     environment:
-      ACCEPT_EULA: 'Y'
-      MSSQL_SA_PASSWORD: 'YourStrong!Passw0rd'
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
     ports:
-      - '1433:1433'
+      - "1433:1433"
     volumes:
       - sqlserverdata:/var/opt/mssql
 ```
@@ -50,7 +50,6 @@ docker-compose up -d
 
 Fiz o download dos dados do [NYC Taxi & Limousine Commission (TLC) Trip Record Data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) através desse [link](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak), e salvei o arquivo na pasta `dataset` do meu projeto.
 
-
 Para importar o arquivo de backup `.bak` para dentro do container do SQL Server, uso o seguinte comando:
 
 ```bash
@@ -58,6 +57,7 @@ docker cp ./dataset/NYCTaxi_Sample.bak sqlserver:/var/opt/mssql/data/NYCTaxi_Sam
 ```
 
 Em seguida, executo o comando de restauração do banco de dados:
+
 ```bash
 docker exec -it sqlserver /opt/mssql-tools18/bin/sqlcmd \
    -S localhost -U sa -P 'YourStrong!Passw0rd' -C \
@@ -117,25 +117,25 @@ Meu arquivo `dbt_project.yml` ficou assim:
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'nyc_taxi_dbt'
-version: '1.0.0'
+name: "nyc_taxi_dbt"
+version: "1.0.0"
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'nyc_taxi_clickhouse'
+profile: "nyc_taxi_clickhouse"
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ['models']
-analysis-paths: ['analyses']
-test-paths: ['tests']
-seed-paths: ['seeds']
-macro-paths: ['macros']
-snapshot-paths: ['snapshots']
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
 
 clean-targets: # directories to be removed by `dbt clean`
-  - 'target'
-  - 'dbt_packages'
+  - "target"
+  - "dbt_packages"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -302,8 +302,8 @@ services:
       CLICKHOUSE_DB: nyc_taxi
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
     ports:
-      - '8123:8123'
-      - '9000:9000'
+      - "8123:8123"
+      - "9000:9000"
     volumes:
       - clickhousedata:/var/lib/clickhouse
   prefect:
@@ -313,7 +313,7 @@ services:
       PREFECT_SERVER_API_HOST: 0.0.0.0
     command: prefect server start --no-services
     ports:
-      - '4200:4200'
+      - "4200:4200"
     volumes:
       - prefectdata:/var/lib/prefect
 volumes:
@@ -391,7 +391,7 @@ def load_sql_server_to_clickhouse():
     # Configure logging to see what's happening
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)
-    
+
     logger.info("Starting SQL Server to ClickHouse extraction...")
     # Configure the destination: ClickHouse
     # dlt will automatically pick up credentials from .dlt/secrets.toml
@@ -399,11 +399,11 @@ def load_sql_server_to_clickhouse():
         pipeline_name="sql_server_to_clickhouse",
         destination="clickhouse"
     )
-    
+
     # Define the source with incremental logic
     # dlt will automatically pick up credentials for sql_database from .dlt/secrets.toml
     source = sql_database().with_resources("nyctaxi_sample")
-    
+
     # Configure incremental loading and primary keys for the resource
     # To use ReplacingMergeTree in ClickHouse, we need a primary key.
     # medallion + hack_license + pickup_datetime seem like a good candidate for a unique key in this sample.
@@ -411,11 +411,11 @@ def load_sql_server_to_clickhouse():
         incremental=dlt.sources.incremental("pickup_datetime"),
         primary_key=["medallion", "hack_license", "pickup_datetime"]
     )
-    
+
     # Run the pipeline
     # Use 'merge' to support updates/CDC and trigger ReplacingMergeTree.
     info = pipeline.run(source, write_disposition="merge")
-    
+
     print(info)
 
 if __name__ == "__main__":
@@ -425,9 +425,10 @@ if __name__ == "__main__":
 Com isso vamos executar o fluxo de orquestração dentro da pasta `nyc_taxi` onde contém o ambiente virtual do UV:
 
 ```bash
-cd nyc_taxi 
+cd nyc_taxi
 uv run python main_flow.py
 ```
+
 Você pode monitorar a execução do fluxo acessando o dashboard do Prefect em `http://localhost:4200`.
 
 ![prefect-runs](/blog/data-pipeline-dlt-dbt-prefect-clickhouse/prefect-runs.webp)
@@ -450,24 +451,24 @@ Para facilitar a visualização dos dados no ClickHouse, você pode usar o [Clic
 Vamos adicionar o serviço do ClickHouse UI no arquivo `docker-compose.yml`:
 
 ```yaml title="docker-compose.yml"
-  ch-ui:
-    image: ghcr.io/caioricciuti/ch-ui:latest
-    restart: always
-    ports:
-      - '5521:5521'
-    environment:
-      # Core ClickHouse Configuration
-      VITE_CLICKHOUSE_URL: 'http://localhost:8123'
-      VITE_CLICKHOUSE_USER: 'default'
-      VITE_CLICKHOUSE_PASS: 'password'
+ch-ui:
+  image: ghcr.io/caioricciuti/ch-ui:latest
+  restart: always
+  ports:
+    - "5521:5521"
+  environment:
+    # Core ClickHouse Configuration
+    VITE_CLICKHOUSE_URL: "http://localhost:8123"
+    VITE_CLICKHOUSE_USER: "default"
+    VITE_CLICKHOUSE_PASS: "password"
 
-      # Optional: Advanced Features
-      VITE_CLICKHOUSE_USE_ADVANCED: 'false'
-      VITE_CLICKHOUSE_CUSTOM_PATH: ''
-      VITE_CLICKHOUSE_REQUEST_TIMEOUT: '30000'
+    # Optional: Advanced Features
+    VITE_CLICKHOUSE_USE_ADVANCED: "false"
+    VITE_CLICKHOUSE_CUSTOM_PATH: ""
+    VITE_CLICKHOUSE_REQUEST_TIMEOUT: "30000"
 
-      # Optional: Reverse Proxy Support
-      VITE_BASE_PATH: '/'
+    # Optional: Reverse Proxy Support
+    VITE_BASE_PATH: "/"
 ```
 
 Em seguida, subo o container do ClickHouse UI:
@@ -490,23 +491,23 @@ Além disso, para ingestão de dados, existe o [Airbyte](https://airbyte.com/), 
 
 Em relação ao Dbt, eu poderia ter usado o [Dbt fusion](https://github.com/dbt-labs/dbt-fusion), que é uma nova versão desenvolvida em Rust e que utiliza [Apache Arrow](https://docs.getdbt.com/blog/dbt-fusion-engine-components), mas ainda está em fase beta, então optei pelo Dbt tradicional.
 
-[Apache Arrow](https://arrow.apache.org/) é uma tecnologia poderosa que está ganhando cada vez mais espaço no ecossistema de dados, e é interessante ver como ela está sendo integrada em várias ferramentas modernas de engenharia de dados. The 
+[Apache Arrow](https://arrow.apache.org/) é uma tecnologia poderosa que está ganhando cada vez mais espaço no ecossistema de dados, e é interessante ver como ela está sendo integrada em várias ferramentas modernas de engenharia de dados. The
 
 O formato Arrow é uma maneira melhor de representar dados tabulares na memória do que objetos nativos do Python (lista de dicionários). Ele permite descarregar o processamento para a biblioteca C++ rápida do Arrow e evita o processamento de linhas uma a uma. Se você se interessa em entender mais sobre, recomendo esse [vídeo](https://www.youtube.com/watch?v=Hyh6QamL-Zo).
 
 ## Referências:
 
 - [NYC Taxi demo data for SQL Server Python and R tutorials
-](https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17)
+  ](https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/demo-data-nyctaxi-in-sql?view=sql-server-ver17)
 - [Code along - build an ELT Pipeline in 1 Hour (dbt, Snowflake, Airflow)
-](https://www.youtube.com/watch?v=OLXkGB7krGo)
+  ](https://www.youtube.com/watch?v=OLXkGB7krGo)
 - [Dbt docs](https://docs.getdbt.com/docs/build/documentation)
 - [Dlthub docs](https://dlthub.com/docs/intro)
 - [Moving away from Segment to a cost-effective do-it-yourself event streaming pipeline with Cloud Pub/Sub and dlt.
-](https://dlthub.com/blog/dlt-segment-migration)
+  ](https://dlthub.com/blog/dlt-segment-migration)
 - [The Hidden Costs of Running Apache Airflow
-](https://www.prefect.io/blog/hidden-costs-apache-airflow)
+  ](https://www.prefect.io/blog/hidden-costs-apache-airflow)
 - [Airflow Local Development Sucks
-](https://www.prefect.io/blog/airflow-local-development)
+  ](https://www.prefect.io/blog/airflow-local-development)
 - [Prefect docs](https://docs.prefect.io/)
 - [ClickHouse docs](https://clickhouse.com/docs/)

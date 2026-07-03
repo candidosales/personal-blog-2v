@@ -2,10 +2,7 @@ import "./spinner.css";
 
 const bars = Array(12).fill(0);
 
-export function Spinner({
-  color,
-  size = 20,
-}) {
+export function Spinner({ color, size = 20 }) {
   return (
     <div
       className="wrapper"

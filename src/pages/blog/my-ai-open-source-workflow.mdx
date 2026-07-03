@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'My AI Open Source Workflow'
+title: "My AI Open Source Workflow"
 pubDate: 2026-01-24
-author: 'Candido Gomes'
-description: 'Lately, I have been studying AI and Open Source Workflows. I thought it would be interesting to share a bit of what I am learning.'
+author: "Candido Gomes"
+description: "Lately, I have been studying AI and Open Source Workflows. I thought it would be interesting to share a bit of what I am learning."
 image:
-    url: '/blog/my-ai-open-source-workflow/thumbnail.webp'
-    alt: 'My AI Open Source Workflow'
+  url: "/blog/my-ai-open-source-workflow/thumbnail.webp"
+  alt: "My AI Open Source Workflow"
 tags: ["ai", "open source", "workflow", "ollama", "opencode", "z.ai", "roborev"]
 ---
 
@@ -30,6 +30,7 @@ bunx skills add expo/skills
 > If you don't have `bunx` installed, you can install it by following the instructions at [https://bun.sh/](https://bun.sh/).
 
 I selected:
+
 - the skills: `expo-api-routes`, `expo-dev-client`, `use-dom`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`;
 - the agents: Antigravity, Claude Code, Cursor, Gemini CLI, GitHub Copilot, OpenCode;
   - You can choose only OpenCode if you want to keep it simple.
@@ -38,7 +39,6 @@ I selected:
   - This method creates symbolic links to the skills in your project, allowing for easy updates and management for all agents.
 
 ![bunx-add-skill](/blog/my-ai-open-source-workflow/bunx-add-skill.webp)
-
 
 Next, I installed Ollama on my machine. Ollama allows running language models locally, which is great for privacy and control.
 
@@ -93,6 +93,7 @@ OpenCode was very efficient in identifying the necessary changes and applying th
 [roborev](https://www.roborev.io/) is an automated review tool that helps identify code issues and suggest improvements.
 
 So, I installed roborev on my machine and used it to review the changes made by OpenCode.
+
 ```bash
 curl -fsSL https://roborev.io/install.sh | bash
 ```

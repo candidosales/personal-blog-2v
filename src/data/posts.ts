@@ -27,8 +27,7 @@ export const posts = [
       alt: "Deploying Strapi 4 to Digital Ocean App",
     },
     title: "Deploying Strapi 4 to Digital Ocean App",
-    description:
-      "Step by step on how to deploying Strapi 4 to Digital Ocean App",
+    description: "Step by step on how to deploying Strapi 4 to Digital Ocean App",
     href: "https://dev.to/candidosales/deploying-strapi-4-to-digital-ocean-app-1d8d",
     publishDate: "2022-08-15",
   },
@@ -81,8 +80,7 @@ export const posts = [
       alt: "Como fiz o intercâmbio para o Canadá",
     },
     title: "Como fiz o intercâmbio para o Canadá",
-    description:
-      "Vou contar a minha experiência de como me mudei para o Canadá",
+    description: "Vou contar a minha experiência de como me mudei para o Canadá",
     href: "https://medium.com/@candidosales/como-fiz-o-interc%C3%A2mbio-para-o-canad%C3%A1-d8d5c2e11783",
     publishDate: "2019-08-18",
   },

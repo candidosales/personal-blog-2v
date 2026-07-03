@@ -1,18 +1,18 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'Pi + rtk + Kimi K2.6 + Compound engineer'
+title: "Pi + rtk + Kimi K2.6 + Compound engineer"
 pubDate: 2026-05-11
-author: 'Candido Gomes'
-description: 'How I combined Pi, rtk, Kimi K2.6, and Compound engineer to build a leaner AI workflow with ~70% fewer tokens and 7x lower cost.'
+author: "Candido Gomes"
+description: "How I combined Pi, rtk, Kimi K2.6, and Compound engineer to build a leaner AI workflow with ~70% fewer tokens and 7x lower cost."
 image:
-    url: '/blog/pi-rtk-kimi-k2-6-compound-engineer/thumbnail.webp'
-    alt: 'Pi + rtk + context-mode + Kimi K2.6 + Compound engineer'
+  url: "/blog/pi-rtk-kimi-k2-6-compound-engineer/thumbnail.webp"
+  alt: "Pi + rtk + context-mode + Kimi K2.6 + Compound engineer"
 tags: ["ai", "open source", "pi", "context-mode", "hugging face", "opencode", "kimi k2.6"]
 ---
 
-import { YouTube } from 'astro-embed';
-import { LinkPreview } from 'astro-embed';
-import { Tweet } from 'astro-embed';
+import { YouTube } from "astro-embed";
+import { LinkPreview } from "astro-embed";
+import { Tweet } from "astro-embed";
 
 I've been exploring a lot of tools lately and I think I've found a great balance between simplicity, efficiency, and lower token consumption. With that in mind, I split the tools into two aspects: infrastructure and workflow, and throughout this post I'll explain each one and how to integrate them into your environment.
 
@@ -36,7 +36,7 @@ According to the author, when you start a session, Claude Code injects ~10,000 t
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/tokens-per-session.webp)
 
-*Comparison of tokens injected per session: Pi vs Claude Code*
+_Comparison of tokens injected per session: Pi vs Claude Code_
 
 With Pi I have greater control over the context I want to work in and less interference from the tool. I believe the tool should adapt to my workflow, not the other way around.
 
@@ -50,7 +50,7 @@ Running `rtk gain`, you can see how much is being saved per command, as shown be
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/rtk-gain.webp)
 
-*Output of `rtk gain` showing token savings per command*
+_Output of `rtk gain` showing token savings per command_
 
 ## context-mode
 
@@ -70,7 +70,7 @@ Worth [checking out](https://context-mode.com/) and integrating into your workfl
 
 ## GitNexus
 
-It analyzes your entire repository, creates a dependency graph, and stores that information in [LadyBugDb](https://ladybugdb.com/) (think of it as DuckDB, but for graph databases using columnar storage). 
+It analyzes your entire repository, creates a dependency graph, and stores that information in [LadyBugDb](https://ladybugdb.com/) (think of it as DuckDB, but for graph databases using columnar storage).
 It then exposes that information through an MCP server. This way, whenever the LLM needs to search, it doesn't have to read all files, run regex or bash commands to find which dependencies are in a given file; it finds them easily via Graph query. This significantly reduces the number of tokens and increases search accuracy.
 
 To initialize it in your project, you need to:
@@ -95,28 +95,28 @@ To initialize it in your project, you need to:
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/mcp-pi-connected.webp)
 
-*Pi with the GitNexus MCP connected*
+_Pi with the GitNexus MCP connected_
 
 The prompt used was `explain how diagnosis api works`. In the image below, you can see that **Pi already queries GitNexus before executing any bash command**; it searches [LadybugDb](https://ladybugdb.com/) for all dependencies and finds all the relationships. It's much more efficient.
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-1.webp)
 
-*Pi querying GitNexus via Graph query before any bash command*
+_Pi querying GitNexus via Graph query before any bash command_
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-2.webp)
 
-*All dependencies found via LadybugDb*
+_All dependencies found via LadybugDb_
 
 Using Claude Code without GitNexus, with the same prompt, it starts searching the code via Bash, which is less effective.
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/claude-code-1.webp)
 
-*Claude Code searching for dependencies via Bash, without GitNexus*
+_Claude Code searching for dependencies via Bash, without GitNexus_
 
 In terms of cost, you can compare the token consumption between the two approaches:
 
-| Pi + Kimi K2.6 + GitNexus | Claude Code without GitNexus |
-|---|---|
+| Pi + Kimi K2.6 + GitNexus                                                                                 | Claude Code without GitNexus                                                                                 |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | ![Token cost: Pi + Kimi K2.6 + GitNexus](/blog/pi-rtk-kimi-k2-6-compound-engineer/pi-gitnexus-costs.webp) | ![Token cost: Claude Code without GitNexus](/blog/pi-rtk-kimi-k2-6-compound-engineer/claude-code-costs.webp) |
 
 Pi completed the full analysis at **17k tokens total** ($0.019), while Claude Code was already at **25.2k tokens just in context overhead**, before doing any real work. That's ~33% more tokens burned before Claude Code even starts.
@@ -130,12 +130,13 @@ I believe it's a very [promising](https://www.kimi.com/blog/kimi-k2-6) open sour
 For better integration with `Pi`, I use Hugging Face, which offers access to Kimi K2 via Inference Provider ([Novita](https://huggingface.co/inference/models?model=moonshotai%2FKimi-K2.6)).
 
 To do this, you need to create a paid account on Hugging Face and generate an **Access Token** with the following privileges:
+
 - Make calls to Inference Providers;
 - Make calls to your Inference Endpoints;
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/hf-privileges.webp)
 
-*Required privileges for the Access Token on Hugging Face*
+_Required privileges for the Access Token on Hugging Face_
 
 Then, open `pi`, run `/login`, select **Use an API key**, choose **Hugging Face**, and add the token. From there, you'll have access to all available open source LLMs.
 
@@ -143,7 +144,7 @@ The cost for 1M tokens is only $0.95, 7x cheaper than Claude Code.
 
 ![image](/blog/pi-rtk-kimi-k2-6-compound-engineer/kimi-k26-costs.webp)
 
-*Kimi K2.6 via Hugging Face: $0.95/1M tokens, 7x cheaper than Claude Code*
+_Kimi K2.6 via Hugging Face: $0.95/1M tokens, 7x cheaper than Claude Code_
 
 Worth checking out: Cursor, for example, used Kimi 2.5 as the reinforcement learning base for [Composer 2](https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/).
 

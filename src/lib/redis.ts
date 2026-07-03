@@ -1,4 +1,4 @@
-import { Redis } from '@upstash/redis';
+import { Redis } from "@upstash/redis";
 
 export function getRedisClient() {
   const url = import.meta.env.UPSTASH_REDIS_REST_URL;
@@ -6,7 +6,7 @@ export function getRedisClient() {
 
   if (!url || !token) {
     throw new Error(
-      'Missing Upstash Redis environment variables. Please set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.'
+      "Missing Upstash Redis environment variables. Please set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.",
     );
   }
 

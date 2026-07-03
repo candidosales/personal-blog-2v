@@ -1,27 +1,21 @@
-import fs from 'fs/promises';
-import satori from 'satori';
-import sharp from 'sharp';
-import type { APIRoute } from 'astro';
+import fs from "fs/promises";
+import satori from "satori";
+import sharp from "sharp";
+import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async function get({ params, request }) {
-  const inclusiveSansData = await fs.readFile(
-    './public/fonts/InclusiveSans-Regular.ttf',
-  );
+  const inclusiveSansData = await fs.readFile("./public/fonts/InclusiveSans-Regular.ttf");
 
-  const newsReaderItalic = await fs.readFile(
-    './public/fonts/Newsreader_14pt-MediumItalic.ttf',
-  );
+  const newsReaderItalic = await fs.readFile("./public/fonts/Newsreader_14pt-MediumItalic.ttf");
 
-  const imageBase64 = (await fs.readFile('./public/me-2.png')).toString(
-    'base64',
-  );
+  const imageBase64 = (await fs.readFile("./public/me-2.png")).toString("base64");
 
   const pHello = {
-    type: 'p',
+    type: "p",
     props: {
       children: "Hello! I'm Candido Sales",
       style: {
-        color: '#1c64f2',
+        color: "#1c64f2",
         fontSize: 35,
         marginBottom: 40,
         marginTop: 0,
@@ -31,11 +25,11 @@ export const GET: APIRoute = async function get({ params, request }) {
   };
 
   const pMain1 = {
-    type: 'p',
+    type: "p",
     props: {
-      children: 'A multidisciplinary engineer',
+      children: "A multidisciplinary engineer",
       style: {
-        color: '#1e429f',
+        color: "#1e429f",
         fontSize: 60,
         fontWeight: 700,
         marginBottom: 0,
@@ -46,11 +40,11 @@ export const GET: APIRoute = async function get({ params, request }) {
     },
   };
   const spanMain1 = {
-    type: 'span',
+    type: "span",
     props: {
-      children: 'focusing on',
+      children: "focusing on",
       style: {
-        color: '#1e429f',
+        color: "#1e429f",
         fontSize: 60,
         fontWeight: 700,
         marginBottom: 0,
@@ -62,25 +56,25 @@ export const GET: APIRoute = async function get({ params, request }) {
   };
 
   const spanMain2 = {
-    type: 'span',
+    type: "span",
     props: {
-      children: 'digital experiences',
+      children: "digital experiences",
       style: {
-        color: '#1e429f',
+        color: "#1e429f",
         fontSize: 60,
         fontWeight: 700,
         marginBottom: 0,
         marginTop: 5,
         marginLeft: 10,
         letterSpacing: -4,
-        fontFamily: 'Newsreader',
+        fontFamily: "Newsreader",
         paddingBottom: 0,
       },
     },
   };
 
   const pMain2 = {
-    type: 'p',
+    type: "p",
     props: {
       children: [spanMain1, spanMain2],
       style: {
@@ -91,22 +85,22 @@ export const GET: APIRoute = async function get({ params, request }) {
   };
 
   const divText = {
-    type: 'div',
+    type: "div",
     props: {
       children: [pHello, pMain1, pMain2],
       style: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
       },
     },
   };
 
   const image = {
-    type: 'div',
+    type: "div",
     props: {
       style: {
         backgroundImage: `url('data:image/png;base64,${imageBase64}')`,
-        backgroundClip: 'border-box',
+        backgroundClip: "border-box",
         backgroundSize: `250px 250px`,
         marginRight: 40,
         borderRadius: 200,
@@ -118,18 +112,18 @@ export const GET: APIRoute = async function get({ params, request }) {
 
   const svg = await satori(
     {
-      type: 'div',
+      type: "div",
       props: {
         children: [image, divText],
         style: {
           fontSize: 60,
-          background: '#fff8f1',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
+          background: "#fff8f1",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
           padding: 60,
         },
       },
@@ -139,14 +133,14 @@ export const GET: APIRoute = async function get({ params, request }) {
       height: 600,
       fonts: [
         {
-          name: 'Inclusive Sans',
+          name: "Inclusive Sans",
           data: inclusiveSansData,
-          style: 'normal',
+          style: "normal",
         },
         {
-          name: 'Newsreader',
+          name: "Newsreader",
           data: newsReaderItalic,
-          style: 'italic',
+          style: "italic",
         },
       ],
     },
@@ -156,7 +150,7 @@ export const GET: APIRoute = async function get({ params, request }) {
 
   return new Response(png, {
     headers: {
-      'Content-Type': 'image/png',
+      "Content-Type": "image/png",
     },
   });
 };

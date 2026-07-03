@@ -18,8 +18,7 @@ export const presentations = [
       url: "/presentations/dominando-angular-frontend.png",
       alt: "Dominando o Angular para Frontends Corporativos: Uma Jornada na Cisco",
     },
-    title:
-      "Dominando o Angular para Frontends Corporativos: Uma Jornada na Cisco",
+    title: "Dominando o Angular para Frontends Corporativos: Uma Jornada na Cisco",
     description:
       "Apresentação sobre como usamos o Angular nos sistemas da Cisco, as decisões de arquitetura, bibliotecas, como organizamos os times",
     href: "https://docs.google.com/presentation/d/1oiLBXmukjzKL6nvO98YF6Ln3cA8fL4cGxt5qRPuwP7w/edit?usp=sharing",
@@ -75,8 +74,7 @@ export const presentations = [
       url: "/presentations/vc+-app-seguro.jpg",
       alt: "Como tornar seguro um aplicativo mobile payment sem penalizar a experiência do usuário",
     },
-    title:
-      "Como tornar seguro um aplicativo mobile payment sem penalizar a experiência do usuário",
+    title: "Como tornar seguro um aplicativo mobile payment sem penalizar a experiência do usuário",
     description: "",
     href: "https://speakerdeck.com/candidosales/como-tornar-seguro-um-aplicativo-mobile-payment-sem-penalizar-a-experiencia-do-usuario",
     publishDate: "2018-07-19",
