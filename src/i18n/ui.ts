@@ -10,7 +10,8 @@ export const ui = {
   en: {
     checkItOut: "Check it out",
     "seo.title": "Candido Sales - Software Engineer",
-    "seo.description": "A multidisciplinary engineer focusing on digital experiences",
+    "seo.description":
+      "A multidisciplinary engineer focusing on digital experiences",
     "menu.home": "Home",
     "menu.blog": "Blog",
     "menu.lab": "Lab",
@@ -28,9 +29,11 @@ export const ui = {
     "portifolio.1.description":
       "This is an AI chatbot that uses Security Advisories data to interact with the natural language",
     "portifolio.2.title": "Svelte Shopify Polaris Icons",
-    "portifolio.2.description": "A set of Shopify Polaris Icons to use in your Svelte project",
+    "portifolio.2.description":
+      "A set of Shopify Polaris Icons to use in your Svelte project",
     "portifolio.3.title": "Material Time Picker",
-    "portifolio.3.description": "A simple time picker component using Angular Material",
+    "portifolio.3.description":
+      "A simple time picker component using Angular Material",
     "portifolio.4.title": "Svelte Google Translate",
     "portifolio.4.description": "Google Translate component for Svelte",
     "portifolio.5.title": "Format Code",
@@ -40,7 +43,8 @@ export const ui = {
     "portifolio.6.description":
       "Landing page for advertising and sales of books to independent authors",
     "portifolio.7.title": "API in GO to create Cloud Function",
-    "portifolio.7.description": "🐹 An API for deploying Google Cloud Functions in Go",
+    "portifolio.7.description":
+      "🐹 An API for deploying Google Cloud Functions in Go",
     "portifolio.8.title": "Figma plugin boilerplate",
     "portifolio.8.description":
       "A boilerplate for creating Figma plugins with Svelte, Tailwind, Vite and Typescript",
@@ -60,16 +64,20 @@ export const ui = {
     "volunteer.1.description":
       "Preserve and discover our Cuisine, History, Ecotourism in Piauí - 🇧🇷",
     "volunteer.2.title": "Geleia Total",
-    "volunteer.2.description": "Promote the culture and art of the state of Piauí - 🇧🇷",
+    "volunteer.2.description":
+      "Promote the culture and art of the state of Piauí - 🇧🇷",
     "volunteer.3.title": "Legal Abortion Map",
     "volunteer.3.description":
       "All about legal abortion in 🇧🇷 - What situations are allowed, what is needed",
     "volunteer.4.title": "CELPIP Speaking Countdown",
-    "volunteer.4.description": "Tool to help training for the CELPIP speaking test",
+    "volunteer.4.description":
+      "Tool to help training for the CELPIP speaking test",
     "volunteer.5.title": "Companies using Angular in Brazil",
-    "volunteer.5.description": "Repository of companies in 🇧🇷 that use Angular in their projects",
+    "volunteer.5.description":
+      "Repository of companies in 🇧🇷 that use Angular in their projects",
     "volunteer.6.title": "Megui",
-    "volunteer.6.description": "The mental health guide for you and your family",
+    "volunteer.6.description":
+      "The mental health guide for you and your family",
     extras: "Extras",
     "extras.subtitle":
       "In my free time, I work on various projects to explore new resources and technologies",
@@ -83,10 +91,12 @@ export const ui = {
     "extras.2.description":
       "Tool that helps you generate images for Instagram and Facebook from a link",
     "extras.3.title": "My Cultural Agenda",
-    "extras.3.description": "PWA website that helps you organize your agenda at large events",
+    "extras.3.description":
+      "PWA website that helps you organize your agenda at large events",
     "home.title": "Home",
     "services.title": "Digital solutions",
-    "services.subtitle": "Enhancing your online presence with personalized and efficient services",
+    "services.subtitle":
+      "Enhancing your online presence with personalized and efficient services",
     "services.subtitle.2":
       "<strong>Commitment to excellence</strong>: customized technological solutions for scalability, performance and economy",
     "services.subtitle.3": "<strong>Together we achieve results</strong>",
@@ -96,7 +106,8 @@ export const ui = {
     "services.1.description":
       "Elevate your brand with customized websites and portals. <br /> My portfolio includes several projects that attract thousands of visits every day.",
     "services.2.title": "Optimization with Google Analytics and Search",
-    "services.2.description": "Transform your online presence and attract the right audience.",
+    "services.2.description":
+      "Transform your online presence and attract the right audience.",
     "services.3.title": "Efficient integrations with Retool",
     "services.3.description":
       "Connections between systems, creation of dashboards to optimize your processes, increasing productivity and operational efficiency.",
@@ -124,12 +135,15 @@ export const ui = {
     "services.howIWork.step4.title": "Delivery & Final Report",
     "services.howIWork.step4.description":
       "You receive a complete report of everything delivered. In the rare case something couldn't be completed, it's clearly documented — and becomes the seed of a well-scoped future project.",
-    "services.howIWork.cta": "If this way of working resonates with you, let's talk :)",
+    "services.howIWork.cta":
+      "If this way of working resonates with you, let's talk :)",
     "quote.joseMujica":
       "Triumphing in life is not winning, it is getting up and starting over every time you fall.",
-    "quote.rubemAlves": "It is those who suffer who produce beauty, to stop suffering.",
+    "quote.rubemAlves":
+      "It is those who suffer who produce beauty, to stop suffering.",
     "quote.jotaMombaca": `Escape only happens because it's impossible.`,
-    "quote.fernandoPessoa": "The right way to live is something we can teach only the dead.",
+    "quote.fernandoPessoa":
+      "The right way to live is something we can teach only the dead.",
     "quote.khalilGibran": `And your body is the harp of your soul, and it's up to you to make it play beautiful music or a mess of noise.`,
     "quote.sobonfuSome": `It's never enough to say yes once.`,
     "quote.yoda":
@@ -141,12 +155,15 @@ export const ui = {
       "If you aren't careful, the newspapers will have you hating the people who are being oppressed and loving the people who are doing the oppressing.",
     "quote.anthonyBourdain":
       "It seems that the more places I see, the bigger I realize the world to be. The more I realize how relatively little I know of it, how many places I have still to go, how much more there is to learn. Maybe that’s enlightenment enough, to know that there is no final resting place of the mind, no moment of smug clarity. Perhaps wisdom, at least for me, means realizing how small I am, and unwise, and how far I have yet to go.",
-    "quote.carlSagan": "We are like butterflies who flutter for a day and think it is forever.",
+    "quote.carlSagan":
+      "We are like butterflies who flutter for a day and think it is forever.",
     "quote.spinoza":
       "I have striven not to laugh at human actions, not to weep at them, nor to hate them, but to understand them.",
+    "quote.freud": "We must begin to love in order not to fall ill...",
     "about.title": "About",
     "about.piece1": `Hey, I'm Candido Sales, half Brazilian 🇧🇷 and half Canadian 🇨🇦.`,
-    "about.piece2": "I started working as a software engineer in 2011, focusing on PHP.",
+    "about.piece2":
+      "I started working as a software engineer in 2011, focusing on PHP.",
     "about.piece6": "Currently, I work at",
     "about.piece7": `where I'm dedicated to building accessible and human-centred products.`,
     "about.piece8": `In addition to that, I've founded`,
@@ -165,7 +182,8 @@ export const ui = {
   "pt-br": {
     checkItOut: "Confira",
     "seo.title": "Cândido Sales - Engenheiro de Software",
-    "seo.description": "Engenheiro multidisciplinar focado em experiências digitais",
+    "seo.description":
+      "Engenheiro multidisciplinar focado em experiências digitais",
     "menu.home": "Início",
     "menu.blog": "Blog",
     "menu.lab": "Laboratório",
@@ -186,7 +204,8 @@ export const ui = {
     "portifolio.2.description":
       "Um conjunto de ícones Polaris do Shopify para utilizar no seu projeto Svelte",
     "portifolio.3.title": "Material Time Picker",
-    "portifolio.3.description": "Um componente simples de seleção de tempo usando Angular Material",
+    "portifolio.3.description":
+      "Um componente simples de seleção de tempo usando Angular Material",
     "portifolio.4.title": "Svelte Google Translate",
     "portifolio.4.description": "Componente do Google Translate para o Svelte",
     "portifolio.5.title": "Format Code",
@@ -196,16 +215,19 @@ export const ui = {
     "portifolio.6.description":
       "Landing page para publicidade e venda de livros a autores independentes",
     "portifolio.7.title": "API em GO para criar Cloud Function",
-    "portifolio.7.description": "🐹 Uma API para implantar o Google Cloud Functions em Go",
+    "portifolio.7.description":
+      "🐹 Uma API para implantar o Google Cloud Functions em Go",
     "portifolio.8.title": "Figma plugin boilerplate",
     "portifolio.8.description":
       "Um boilerplate para criar plugins Figma com Svelte, Tailwind, Vite e Typescript",
     "portifolio.9.title": "Relatório de dependências",
     "portifolio.9.description": `Analise a consistência das dependências nos projetos front-end da sua empresa`,
     "portifolio.10.title": "Portfólio Pessoal 2v",
-    "portifolio.10.description": "Projeto open source para seu portfólio pessoal",
+    "portifolio.10.description":
+      "Projeto open source para seu portfólio pessoal",
     "portifolio.11.title": "Portfólio Pessoal 1v",
-    "portifolio.11.description": "Projeto open source para seu portfólio pessoal",
+    "portifolio.11.description":
+      "Projeto open source para seu portfólio pessoal",
     "portifolio.12.title": "WP Agent Tool",
     "portifolio.12.description":
       "Uma ferramenta CLI em Rust para diagnósticos e manutenção abrangentes do WordPress.",
@@ -216,7 +238,8 @@ export const ui = {
     "volunteer.1.description":
       "Preserve e descubra nossa Gastronomia, História, Ecoturismo no Piauí - 🇧🇷",
     "volunteer.2.title": "Geleia Total",
-    "volunteer.2.description": "Promover a cultura e a arte do estado do Piauí - 🇧🇷",
+    "volunteer.2.description":
+      "Promover a cultura e a arte do estado do Piauí - 🇧🇷",
     "volunteer.3.title": "Mapa do Aborto Legal",
     "volunteer.3.description":
       "Tudo sobre o aborto legal em 🇧🇷 - Quais situações são permitidas, o que é necessário",
@@ -241,10 +264,12 @@ export const ui = {
     "extras.2.description":
       "Ferramenta que ajuda a gerar imagens para o Instagram e o Facebook a partir de um link",
     "extras.3.title": "Minha Agenda Cultural",
-    "extras.3.description": "Site em PWA que ajuda a organizar a agenda em grandes eventos",
+    "extras.3.description":
+      "Site em PWA que ajuda a organizar a agenda em grandes eventos",
     "home.title": "Início",
     "services.title": "Soluções digitais",
-    "services.subtitle": "Elevando sua presença online com serviços personalizados e eficientes",
+    "services.subtitle":
+      "Elevando sua presença online com serviços personalizados e eficientes",
     "services.subtitle.2":
       "<strong>Compromisso com a excelência</strong>: soluções tecnológicas customizadas para escalabilidade, performance e economia",
     "services.subtitle.3": "<strong>Juntos alcançamos resultados</strong>",
@@ -254,14 +279,16 @@ export const ui = {
     "services.1.description":
       "Eleve sua marca com sites e portais customizados. <br /> Meu portfólio inclui vários projetos que atraem milhares de visitas diariamente.",
     "services.2.title": "Otimização com Google Analytics e Search",
-    "services.2.description": "Transforme sua presença online e atraia o público certo.",
+    "services.2.description":
+      "Transforme sua presença online e atraia o público certo.",
     "services.3.title": "Integrações Eficientes com Retool",
     "services.3.description":
       "Conexões entre sistemas, criação de dashboards para otimizar seus processos, aumentando a produtividade e a eficácia operacional.",
     "services.4.title": "Criação de Scripts Sob Medida",
     "services.4.description":
       "Automatize processos, extraia dados online.<br /> Scripts personalizados para eficiência e economia de tempo.",
-    "services.5.title": "Soluções personalizadas de IA e integração de plataformas",
+    "services.5.title":
+      "Soluções personalizadas de IA e integração de plataformas",
     "services.5.description":
       "Acelere seus fluxos de trabalho com automação inteligente que se conecta perfeitamente com suas plataformas integrando com OpenAI, Claude AI ou Gemini.",
     "services.6.title": "Dados rápidos e confiáveis quando você precisa",
@@ -282,18 +309,22 @@ export const ui = {
     "services.howIWork.step4.title": "Entrega e Relatório Final",
     "services.howIWork.step4.description":
       "Você recebe um relatório completo de tudo o que foi entregue. No raro caso em que algo não pôde ser concluído, é documentado claramente — e se torna o ponto de partida de um próximo projeto bem definido.",
-    "services.howIWork.cta": "Se você se identifica com essa forma de trabalho, vamos conversar :)",
+    "services.howIWork.cta":
+      "Se você se identifica com essa forma de trabalho, vamos conversar :)",
     "quote.joseMujica":
       "Triunfar na vida não é ganhar, é se levantar e começar de novo cada vez que cai.",
-    "quote.rubemAlves": "São os que sofrem que produzem a beleza, para deixar de sofrer.",
+    "quote.rubemAlves":
+      "São os que sofrem que produzem a beleza, para deixar de sofrer.",
     "quote.jotaMombaca": `A fuga só acontece porque é impossível.`,
-    "quote.fernandoPessoa": "A maneira correta de viver é algo que só podemos ensinar aos mortos.",
+    "quote.fernandoPessoa":
+      "A maneira correta de viver é algo que só podemos ensinar aos mortos.",
     "quote.sobonfuSome": `Nunca é suficiente dizer sim uma única vez.`,
     "quote.khalilGibran":
       "E seu corpo é a harpa de sua alma, E cabe a você fazê-lo tocar uma linda música ou uma confusão de ruídos.",
     "quote.yoda":
       "O maior professor, o fracasso é. Nós somos aquilo que eles superam. Esse é o verdadeiro fardo de todos os mestres.",
-    "quote.carlSagan": "Somos como borboletas que voam por um dia e pensam que será para sempre.",
+    "quote.carlSagan":
+      "Somos como borboletas que voam por um dia e pensam que será para sempre.",
     "quote.alexandrePatricio":
       "Quem nunca para, nunca se escuta. Quem nunca se escuta, nunca se encontra.",
     "quote.aiWeiwei": "Se você desviar o olhar, você é conivente.",
@@ -303,9 +334,11 @@ export const ui = {
       "Parece que quanto mais lugares vejo, mais percebo que o mundo é grande. Quanto mais percebo o quão pouco sei sobre ele, quantos lugares ainda tenho para visitar, quanto mais tenho para aprender. Talvez isso seja iluminação suficiente, saber que não há um lugar de descanso final para a mente, nenhum momento de clareza presunçosa. Talvez sabedoria, pelo menos para mim, signifique perceber o quão pequeno e sem sabedoria eu sou, e o quanto ainda tenho que percorrer.",
     "quote.spinoza":
       "Tenho-me esforçado por não rir das ações humanas, por não deplorá-las nem odiá-las, mas por entendê-las.",
+    "quote.freud": "Devemos começar a amar para não adoecer...",
     "about.title": "Sobre",
     "about.piece1": `Olá, Eu sou Cândido Sales, metade brasileiro 🇧🇷 e metade canadense 🇨🇦!`,
-    "about.piece2": "Comecei a trabalhar como engenheiro de software em 2011, com foco em PHP.",
+    "about.piece2":
+      "Comecei a trabalhar como engenheiro de software em 2011, com foco em PHP.",
     "about.piece6": "Atualmente, trabalho na",
     "about.piece7": `onde me dedico a criar produtos acessíveis e centrados no ser humano.`,
     "about.piece8": `Além disso, fundei`,
