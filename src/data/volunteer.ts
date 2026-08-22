@@ -156,21 +156,5 @@ export const volunteerData = (t: any) => {
         },
       ],
     },
-    {
-      image: {
-        url: "/volunteer/empresas-angular.png",
-        alt: t("volunteer.5.title"),
-      },
-      title: t("volunteer.5.title"),
-      description: t("volunteer.5.description"),
-      url: "https://github.com/candidosales/empresas-que-usam-angular-no-brasil",
-      background: "bg-red-100",
-      techs: [
-        {
-          icon: "github",
-          name: "Github",
-        },
-      ],
-    },
   ];
 };

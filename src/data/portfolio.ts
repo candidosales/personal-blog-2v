@@ -1,49 +1,5 @@
 export const portfolioData = (t: any) => {
   return [
-    // {
-    // 	image: {
-    // 		url: '/portfolio/cisco-chatgpt.webp',
-    // 		alt: t('portifolio.1.title'),
-    // 	},
-    // 	title: t('portifolio.1.title'),
-    // 	description: t('portifolio.1.description'),
-    // 	url: 'https://cisco-chat-frontend.vercel.app/',
-    // 	techs: [
-    // 		{
-    // 			icon: 'svelte',
-    // 			name: 'Svelte',
-    // 		},
-    // 		{
-    // 			icon: 'tailwind',
-    // 			name: 'Tailwind',
-    // 		},
-    // 		{
-    // 			icon: 'upstash',
-    // 			name: 'Upstash',
-    // 		},
-    // 		{
-    // 			icon: 'fastapi',
-    // 			name: 'FastAPI',
-    // 		},
-    // 		{
-    // 			icon: 'langchain',
-    // 			name: 'LangChain',
-    // 		},
-    // 		{
-    // 			icon: 'openai',
-    // 			name: 'OpenAI',
-    // 		},
-    // 		{
-    // 			icon: 'chromadb',
-    // 			name: 'ChromaDB',
-    // 		},
-    // 		{
-    // 			icon: 'modal',
-    // 			name: 'Modal',
-    // 		},
-    // 	],
-    // 	background: 'bg-sky-100',
-    // },
     {
       image: {
         url: "/portfolio/wp-agent-tool-1.webp",
@@ -255,16 +211,16 @@ export const portfolioData = (t: any) => {
       background: "bg-red-100",
       techs: [
         {
-          icon: "angular",
-          name: "Angular",
+          icon: "tanstack",
+          name: "TanStack",
+        },
+        {
+          icon: "shadcn",
+          name: "shadcn/ui",
         },
         {
           icon: "go",
           name: "Go",
-        },
-        {
-          icon: "firebase",
-          name: "Firebase",
         },
         {
           icon: "docker",
