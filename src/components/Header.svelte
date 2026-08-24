@@ -14,6 +14,7 @@
   } from '@i18n/utils';
   import Presentation from './icons/Presentation.svelte';
   import Sparkles from './icons/Sparkles.svelte';
+  import Book from './icons/Book.svelte';
   const lang = getLangFromUrl(new URL(window.location.href));
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
@@ -42,6 +43,12 @@
       label: t('menu.presentations'),
       targetBlank: false,
       icon: Presentation,
+    },
+    {
+      href: translatePath('/reading'),
+      label: t('menu.reading'),
+      targetBlank: false,
+      icon: Book,
     },
     {
       href: translatePath('/about'),

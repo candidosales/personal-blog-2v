@@ -1,0 +1,39 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.svelte';
+import ReadingGrid from './react/reading/ReadingGrid';
+import { books } from '@data/reading';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('reading.title')}>
+	<Header client:only='svelte' />
+	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+		<h1
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+			transition:name='hero'
+		>
+			{t('reading.title')}
+		</h1>
+		<p class='text-md md:text-lg text-blue-800 mb-8'>
+			{t('reading.subtitle')}
+		</p>
+		<div class='mt-10'>
+			<ReadingGrid
+				client:only='react'
+				books={books}
+				lang={lang}
+				labels={{
+					currentlyReading: t('reading.currentlyReading'),
+					finished: t('reading.finished'),
+					wantToRead: t('reading.wantToRead'),
+					stopped: t('reading.stopped'),
+					close: t('reading.close'),
+				}}
+			/>
+		</div>
+	</main>
+</Layout>
