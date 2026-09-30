@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import satori from "satori";
 import sharp from "sharp";
 import type { APIRoute } from "astro";
+import type { ReactNode } from "react";
 
 export const GET: APIRoute = async function get({ params, request }) {
   const inclusiveSansData = await fs.readFile("./public/fonts/InclusiveSans-Regular.ttf");
@@ -127,7 +128,7 @@ export const GET: APIRoute = async function get({ params, request }) {
           padding: 60,
         },
       },
-    },
+    } as unknown as ReactNode,
     {
       width: 1200,
       height: 600,

@@ -88,7 +88,7 @@ export default function DynamicIsland() {
 }
 
 const variants = {
-  exit: (transition) => {
+  exit: (transition: Record<string, number>) => {
     return {
       ...transition,
       opacity: [1, 0],
@@ -97,7 +97,7 @@ const variants = {
   },
 };
 
-const ANIMATION_VARIANTS = {
+const ANIMATION_VARIANTS: Record<string, Record<string, number>> = {
   "ring-idle": {
     scale: 0.9,
     scaleX: 0.9,
@@ -120,7 +120,7 @@ const ANIMATION_VARIANTS = {
   },
 };
 
-const BOUNCE_VARIANTS = {
+const BOUNCE_VARIANTS: Record<string, number> = {
   idle: 0.5,
   "ring-idle": 0.5,
   "timer-ring": 0.35,
