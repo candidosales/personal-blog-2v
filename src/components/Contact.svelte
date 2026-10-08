@@ -61,7 +61,7 @@
           title={l.label}
           target="_blank"
           ><div
-            class="w-5 h-5 md:w-4 md:h-4 mr-0 md:mr-2 flex items-center align-middle"
+            class="w-5 h-5 md:w-4 md:h-4 me-0 md:me-2 flex items-center align-middle"
           >
             <l.icon />
           </div>

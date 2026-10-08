@@ -94,25 +94,25 @@ const t = useTranslations(lang);
 
 <Layout title={t("about.title")}>
   <Header client:only="svelte" />
-  <main class="relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4">
+  <main class="relative pbe-36 mx-auto max-w-5xl mbs-16 mbe-16 px-4">
     <h1
-      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10"
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mbs-10"
       transition:name="hero"
     >
       {t("about.title")}
     </h1>
     <div
-      class="gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mt-10"
+      class="gap-6 md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 mbs-10"
       transition:name="content"
     >
-      <div class="flex items-center justify-center mb-8">
+      <div class="flex items-center justify-center mbe-8">
         <div class="polaroid-stack relative w-full max-w-md h-96 sm:h-115">
           <div
-            class="polaroid-slot pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+            class="polaroid-slot pointer-events-none absolute inset-s-1/2 inset-bs-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
           >
             <figure
               data-role="back"
-              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-xl"
+              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pbe-2 rounded-md shadow-xl"
             >
               <Image
                 class="w-72 h-72 object-cover rounded-sm"
@@ -123,18 +123,18 @@ const t = useTranslations(lang);
                 loading={"eager"}
               />
               <figcaption
-                class="polaroid-caption mt-2 text-center text-slate-600"
+                class="polaroid-caption mbs-2 text-center text-slate-600"
               >
                 Banff National Park, Canada
               </figcaption>
             </figure>
           </div>
           <div
-            class="polaroid-slot pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
+            class="polaroid-slot pointer-events-none absolute inset-s-1/2 inset-bs-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
           >
             <figure
               data-role="front"
-              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pb-2 rounded-md shadow-2xl"
+              class="w-72 h-85 polaroid pointer-events-auto cursor-pointer bg-white p-3 pbe-2 rounded-md shadow-2xl"
             >
               <Image
                 class="w-72 h-72 object-cover rounded-sm"
@@ -145,7 +145,7 @@ const t = useTranslations(lang);
                 loading={"eager"}
               />
               <figcaption
-                class="polaroid-caption mt-2 text-center text-slate-600"
+                class="polaroid-caption mbs-2 text-center text-slate-600"
               >
                 Amazon rainforest, Brazil
               </figcaption>
@@ -206,12 +206,12 @@ const t = useTranslations(lang);
       </div>
     </div>
     <h2
-      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-20 slide-fade-in"
+      class="text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mbs-20 slide-fade-in"
     >
       {t("about.title2")}
     </h2>
     <div
-      class="md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mt-10 text-blue-800 slide-fade-in"
+      class="md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mbs-10 text-blue-800 slide-fade-in"
     >
       {
         experience.map((e) => (
@@ -219,7 +219,7 @@ const t = useTranslations(lang);
             <div class="col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]">
               <p class="opacity-70 text-md">{e.period}</p>
             </div>
-            <div class="col-span-4 mb-8 md:mb-0 flex flex-row align-middle justify-start items-center">
+            <div class="col-span-4 mbe-8 md:mbe-0 flex flex-row align-middle justify-start items-center">
               <p class="wrap-break-word text-md max-w-lg flex-1">
                 {e.title} at
               </p>
@@ -227,10 +227,10 @@ const t = useTranslations(lang);
                 href={e.company.url}
                 title={e.company.name}
                 target="_blank"
-                class={` text-md cursor-pointer ml-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium mr-2`}
+                class={` text-md cursor-pointer ms-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium me-2`}
               >
                 <img
-                  class="rounded-full w-6 h-6 mr-2"
+                  class="rounded-full w-6 h-6 me-2"
                   src={e.company.image}
                   alt={e.company.name}
                   title={e.company.name}
@@ -243,15 +243,15 @@ const t = useTranslations(lang);
         ))
       }
     </div>
-    <div class="flex justify-center mt-10 mb-16 slide-fade-in">
+    <div class="flex justify-center mbs-10 mbe-16 slide-fade-in">
       <a
         class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 font-inclusive"
         href="https://www.linkedin.com/in/candidosales/"
         title="See more about my experiences in my Linkedin"
         target="_blank"
-        ><Linkedin class="h-4 w-4 mr-2" />{t("about.seeMoreLinkedin")}
+        ><Linkedin class="h-4 w-4 me-2" />{t("about.seeMoreLinkedin")}
 
-        <ArrowRight class="overflow-visible ml-3 text-white" />
+        <ArrowRight class="overflow-visible ms-3 text-white" />
       </a>
     </div>
     <div class="my-16 mx-auto max-w-6xl slide-fade-in">
@@ -264,12 +264,12 @@ const t = useTranslations(lang);
             width={56}
             height={56}
             alt=""
-            class="w-14 h-14 rounded-full mb-2 md:mb-0 mr-0 md:mr-4"
+            class="w-14 h-14 rounded-full mbe-2 md:mbe-0 me-0 md:me-4"
             loading="lazy"
             decoding="async"
           />
           <blockquote class="text-center md:text-left font-inclusive">
-            <p class="text-blue-800 mb-2 md:mb-0">Anthony Bourdain</p>
+            <p class="text-blue-800 mbe-2 md:mbe-0">Anthony Bourdain</p>
             <p class="max-w-120 mx-auto text-xl font-medium text-blue-600">
               “<Fragment set:html={t("quote.anthonyBourdain")} />”
             </p>

@@ -64,7 +64,7 @@
 </script>
 
 <div class="graph">
-  <div class="bar-graph mb-8">
+  <div class="bar-graph mbe-8">
     <div class="bar green-bar" bind:this={okBar}>
       <div class="label">Ok</div>
       <div class="value" bind:this={okBarLabel}>0</div>

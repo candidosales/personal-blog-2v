@@ -23,7 +23,7 @@ const extras = extrasData(t);
 
 <Layout title={t('home.title')}>
 	<Header client:only='svelte' />
-	<main class='relative pb-36 mx-auto max-w-6xl'>
+	<main class='relative pbe-36 mx-auto max-w-6xl'>
 		<Hero />
 
 		<div class='my-16 px-4 portfolio animate-fade-in-portfolio'>
@@ -32,7 +32,7 @@ const extras = extrasData(t);
 				subtitle={t('portfolio.subtitle')}
 			/>
 			<div
-				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
+				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mbe-16'
 			>
 				{
 					portfolio.map((p, index) => (
@@ -54,7 +54,7 @@ const extras = extrasData(t);
 				subtitle={t('volunteer.subtitle')}
 			/>
 			<div
-				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
+				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mbe-16'
 			>
 				{
 					volunteer.map((p) => (
@@ -73,7 +73,7 @@ const extras = extrasData(t);
 			</div>
 			<TitleSection title={t('extras')} subtitle={t('extras.subtitle')} />
 			<div
-				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mb-16'
+				class='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mbe-16'
 			>
 				{
 					extras.map((p) => (

@@ -39,15 +39,15 @@ const allPosts = [
 
 <Layout title={'Blog'} >
 	<Header client:only='svelte' />
-	<main class='relative pb-36 mx-auto max-w-5xl mt-16 mb-16 px-4'>
+	<main class='relative pbe-36 mx-auto max-w-5xl mbs-16 mbe-16 px-4'>
 		<h1
-			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mt-10'
+			class='text-3xl leading-8 font-medium tracking-tight text-blue-800 sm:text-4xl mbs-10'
 			transition:name='hero'
 		>
 			Blog
 		</h1>
 		<div
-			class='md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mt-10'
+			class='md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 gap-6 mbs-10'
 			transition:name='content'
 		>
 			{
@@ -56,19 +56,19 @@ const allPosts = [
 						href={p.href}
 						title={p.title}
 						target={p.href?.startsWith('http') ? '_blank' : '_self'}
-						class='card-link bg-white/50 block h-420px relative overflow-clip cursor-pointer mb-8 p-2 md:p-4 rounded-lg'
+						class='card-link bg-white/50 block h-420px relative overflow-clip cursor-pointer mbe-8 p-2 md:p-4 rounded-lg'
 					>
-						<div class='relative rounded-lg overflow-clip w-full mx-auto mb-4 h-36 md:h-48'>
+						<div class='relative rounded-lg overflow-clip w-full mx-auto mbe-4 h-36 md:h-48'>
 							<div
 								class={`relative w-full h-36 md:h-48 bg-cover bg-no-repeat bg-center`}
 								style={`background-image: url(${p.image.url});`}
 							/>
 						</div>
 
-						<h3 class='text-blue-800 text-lg font-medium leading-6 mb-1 line-clamp-2'>
+						<h3 class='text-blue-800 text-lg font-medium leading-6 mbe-1 line-clamp-2'>
 							{p.title}
 						</h3>
-						<p class='text-blue-800/80 text-md font-normal mb-4 line-clamp-2'>
+						<p class='text-blue-800/80 text-md font-normal mbe-4 line-clamp-2'>
 							{p.description}
 						</p>
 						<p class='text-blue-800/80 text-xs font-normal'>

@@ -7,7 +7,7 @@ export function Timer() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="flex w-[284px] items-center gap-2 pr-5 pl-3.5 py-3">
+    <div className="flex w-[284px] items-center gap-2 pe-5 ps-3.5 py-3">
       <motion.button
         aria-label="Pause timer"
         onClick={() => setIsPaused((p) => !p)}
@@ -62,7 +62,7 @@ export function Timer() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </motion.button>
-      <div className="flex items-baseline gap-1.5 text-[#F7A815] ml-auto pr-0.5">
+      <div className="flex items-baseline gap-1.5 text-[#F7A815] ms-auto pe-0.5">
         <span className="text-sm font-medium leading-none text-inherit">Timer</span>
         <Counter paused={isPaused} />
       </div>
