@@ -27,7 +27,7 @@ export default function DynamicIslandWealthsimple() {
             bounce: BOUNCE_VARIANTS[variantKey],
           }}
           style={{ borderRadius: 32 }}
-          className="mx-auto w-fit min-w-[100px] overflow-hidden rounded-full bg-black"
+          className="mx-auto w-fit min-w-[100px] overflow-clip rounded-full bg-black"
         >
           <motion.div
             transition={{

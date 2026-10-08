@@ -93,7 +93,7 @@ function Counter({ paused }: { paused?: boolean }) {
   const countArray = count.toString().padStart(2, "0").split("");
 
   return (
-    <div className="relative w-[64px] overflow-hidden whitespace-nowrap text-3xl font-light">
+    <div className="relative w-[64px] overflow-clip whitespace-nowrap text-3xl font-light">
       0:
       <AnimatePresence initial={false} mode="popLayout">
         {countArray.map((n, i) => (

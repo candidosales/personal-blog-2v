@@ -16,7 +16,11 @@
   background: white;
   padding: 0 12px;
   font-weight: 500;
-  outline: none;
+}
+
+.feedback-button:focus-visible {
+  outline: 2px solid #1994ff;
+  outline-offset: 2px;
 }
 
 .feedback-button span {
@@ -28,14 +32,14 @@
   position: absolute;
   height: 192px;
   width: 364px;
-  overflow: hidden;
+  overflow: clip;
   border-radius: 12px;
   background: #f5f6f7;
   padding: 4px;
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.04);
-  outline: none;
+  outline: 2px solid transparent;
 }
 
 .placeholder {
@@ -88,7 +92,12 @@
   border-radius: 8px 0;
   padding: 12px;
   font-size: 14px;
-  outline: none;
+  outline: 2px solid transparent;
+}
+
+.feedback-form:has(.textarea:focus-visible) {
+  outline: 2px solid #1994ff;
+  outline-offset: 1px;
 }
 
 .textarea::placeholder {
@@ -134,7 +143,7 @@
   font-size: 12px;
   height: 24px;
   width: 104px;
-  overflow: hidden;
+  overflow: clip;
   background: linear-gradient(180deg, #1994ff 0%, #157cff 100%);
   box-shadow:
     0px 0px 1px 1px rgba(255, 255, 255, 0.08) inset,
