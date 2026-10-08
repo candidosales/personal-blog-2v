@@ -21,9 +21,9 @@ const lang = getLangFromUrl(Astro.url);
   withGradient={false}
 >
   <Header client:only="svelte" />
-  <main class="relative pb-50 max-w-6xl mx-auto mt-16 mb-16 px-4">
-    <header class="mb-8 prose prose-h1:font-medium prose-h1:mb-2 max-w-none">
-      <h1 class="text-balance mb-0 text-blue-800">{frontmatter.title}</h1>
+  <main class="relative pbe-50 max-w-6xl mx-auto mbs-16 mbe-16 px-4">
+    <header class="mbe-8 prose prose-h1:font-medium prose-h1:mbe-2 max-w-none">
+      <h1 class="text-balance mbe-0 text-blue-800">{frontmatter.title}</h1>
       <div class="text-base text-blue-800/80">
         <time datetime={frontmatter.pubDate.toString()}
           >{
@@ -37,7 +37,7 @@ const lang = getLangFromUrl(Astro.url);
       </div>
     </header>
     <img
-      class="rounded-xl mb-8 h-auto"
+      class="rounded-xl mbe-8 h-auto"
       width="1000px"
       src={frontmatter.image.url}
       alt={frontmatter.image.alt}
@@ -46,10 +46,10 @@ const lang = getLangFromUrl(Astro.url);
     <!-- Mobile TOC (shown only on small screens) -->
     <nav
       id="contents-mobile"
-      class="lg:hidden p-4 mb-6 text-sm bg-white/40 rounded-lg"
+      class="lg:hidden p-4 mbe-6 text-sm bg-white/40 rounded-lg"
     >
-      <h3 class="mb-2 mt-0 text-base font-medium text-slate-600">Contents</h3>
-      <ul class="list-none pl-0 space-y-1">
+      <h3 class="mbe-2 mbs-0 text-base font-medium text-slate-600">Contents</h3>
+      <ul class="list-none ps-0 space-y-1">
         {
           headings.map((heading) => (
             <li
@@ -78,11 +78,11 @@ const lang = getLangFromUrl(Astro.url);
       <article
         id="article-content"
         class="prose prose-slate max-w-none
-              prose-h1:font-medium prose-h1:mb-2
+              prose-h1:font-medium prose-h1:mbe-2
               prose-a:text-blue-600
               prose-img:rounded-xl
               prose-code:text-sm
-              prose-pre:leading-6 prose-pre:mt-0
+              prose-pre:leading-6 prose-pre:mbs-0
               prose-h2:text-blue-800
               prose-h3:text-blue-800
               flex-1 min-w-0
@@ -96,13 +96,13 @@ const lang = getLangFromUrl(Astro.url);
         headings.length > 0 && (
           <aside
             id="toc-wrapper"
-            class="hidden lg:block w-56 shrink-0 self-start sticky top-24"
+            class="hidden lg:block w-56 shrink-0 self-start sticky inset-bs-24"
           >
             <nav class="text-sm">
-              <p class="mb-3 mt-0 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <p class="mbe-3 mbs-0 text-xs font-semibold uppercase tracking-wider text-slate-400">
                 On this page
               </p>
-              <ul class="list-none pl-0 space-y-1">
+              <ul class="list-none ps-0 space-y-1">
                 {headings.map((heading) => (
                   <li
                     style={
@@ -155,16 +155,16 @@ const lang = getLangFromUrl(Astro.url);
     text-align: center;
     font-size: 0.8rem;
     font-style: normal;
-    color: #94a3b8; /* slate-400 */
+    color: var(--color-slate-400);
   }
 
   .toc-link.toc-active {
-    color: #1d4ed8; /* blue-700 */
+    color: var(--color-blue-700);
     font-weight: 500;
   }
 
   .toc-link-mobile.toc-active {
-    color: #1d4ed8;
+    color: var(--color-blue-700);
     font-weight: 500;
   }
 

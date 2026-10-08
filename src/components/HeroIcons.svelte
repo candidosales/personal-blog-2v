@@ -22,7 +22,7 @@
   ];
 </script>
 
-<div class="flex flex-row mt-5 md:mt-6 gap-4 social-icons animate-fade-in-up">
+<div class="flex flex-row mbs-5 md:mbs-6 gap-4 social-icons animate-fade-in-up">
   {#each social as s}
     {#if s.icon}
       <a

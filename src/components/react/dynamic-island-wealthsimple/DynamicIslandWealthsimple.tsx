@@ -27,7 +27,7 @@ export default function DynamicIslandWealthsimple() {
             bounce: BOUNCE_VARIANTS[variantKey],
           }}
           style={{ borderRadius: 32 }}
-          className="mx-auto w-fit min-w-[100px] overflow-hidden rounded-full bg-black"
+          className="mx-auto w-fit min-w-[100px] overflow-clip rounded-full bg-black"
         >
           <motion.div
             transition={{
@@ -57,7 +57,7 @@ export default function DynamicIslandWealthsimple() {
           </motion.div>
         </motion.div>
 
-        <div className="pointer-events-none absolute left-1/2 top-0 flex h-[200px] w-[300px] -translate-x-1/2 items-start justify-center">
+        <div className="pointer-events-none absolute inset-s-1/2 inset-bs-0 flex h-[200px] w-[300px] -translate-x-1/2 items-start justify-center">
           <AnimatePresence mode="popLayout" custom={ANIMATION_VARIANTS[variantKey]}>
             <motion.div initial={{ opacity: 0 }} exit="exit" variants={variants} key={view}>
               {content}

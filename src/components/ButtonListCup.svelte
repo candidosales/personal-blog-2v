@@ -100,7 +100,7 @@
   });
 </script>
 
-<div class="cup-buttons h-[80svh] grid grid-rows-3 place-items-center mt-4">
+<div class="cup-buttons h-[80svh] grid grid-rows-3 place-items-center mbs-4">
   {#if !blockUser}
     {#each buttons as { label, color, info, selected }, index}
       <ButtonCup

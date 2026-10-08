@@ -7,7 +7,7 @@
 </script>
 
 <svg
-    class="overflow-visible ml-3 text-slate-800 group-hover:text-slate-400"
+    class="overflow-visible ms-3 text-slate-800 group-hover:text-slate-400"
     width="3"
     height="6"
     viewBox="0 0 3 6"

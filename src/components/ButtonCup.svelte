@@ -21,10 +21,10 @@
 <div class="flex flex-col text-center w-full">
   <button
     {onclick}
-    class={`${selected ? `${color}-selected` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mb-2 transition-all tracking-normal font-inclusive`}
+    class={`${selected ? `${color}-selected` : `bg-${color}-500`} hover:bg-${color}-800 text-center text-white font-bold py-4 px-6 rounded-full mbe-2 transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 tracking-normal font-inclusive`}
   >
     {#if selected}
-      <CheckmarkSolid class="mr-4 size-6 absolute" />
+      <CheckmarkSolid class="me-4 size-6 absolute" />
     {/if}
     {label}
   </button>

@@ -16,7 +16,7 @@ export function TransactionPayment({ amount }: { amount: number }) {
   }, [amount]);
 
   return (
-    <div className="flex w-[284px] items-center gap-2 pr-5 pl-3.5 py-3">
+    <div className="flex w-[284px] items-center gap-2 pe-5 ps-3.5 py-3">
       <motion.img
         key={"image-card"}
         className="rounded-xl"
@@ -53,7 +53,7 @@ export function TransactionPayment({ amount }: { amount: number }) {
             delay: 0.25,
           },
         }}
-        className="flex items-baseline gap-1.5 text-white ml-auto pr-0.5"
+        className="flex items-baseline gap-1.5 text-white ms-auto pe-0.5"
       >
         <motion.p className="text-base font-normal">You paid</motion.p>
         <NumberFlow

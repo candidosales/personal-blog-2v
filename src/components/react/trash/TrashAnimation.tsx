@@ -65,7 +65,7 @@ export function TrashAnimation() {
                     <motion.div
                       exit={{ opacity: 0, transition: { duration: 0 } }}
                       className={clsx(
-                        "pointer-events-none absolute right-2 top-2 flex h-4 w-4 items-center justify-center rounded-full border border-white/60",
+                        "pointer-events-none absolute inset-e-2 inset-bs-2 flex h-4 w-4 items-center justify-center rounded-full border border-white/60",
                       )}
                     >
                       {isSelected ? (
@@ -119,10 +119,10 @@ export function TrashAnimation() {
               animate={{ y: "0", opacity: 1, filter: "blur(0px)" }}
               exit={{ y: "20", opacity: 0, filter: "blur(4px)" }}
               transition={{ type: "spring", duration: 0.3, bounce: 0 }}
-              className="absolute bottom-8 flex gap-1 rounded-xl p-1 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_8px_8px_-8px_rgba(0,0,0,0.16)] will-change-transform"
+              className="absolute inset-be-8 flex gap-1 rounded-xl p-1 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_8px_8px_-8px_rgba(0,0,0,0.16)] will-change-transform"
             >
               <div className="flex w-full justify-between gap-1">
-                <button className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pb-1 pt-[6px] text-[10px] font-medium text-[#8D8D86]">
+                <button className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pbe-1 pbs-[6px] text-[10px] font-medium text-[#8D8D86]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 flex-shrink-0"
@@ -146,7 +146,7 @@ export function TrashAnimation() {
                       setReadyToRemove(true);
                     }
                   }}
-                  className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pb-1 pt-[6px] text-[10px] font-medium text-[#8D8D86] hover:bg-[#FFF7F7] hover:text-[#E5484D]"
+                  className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pbe-1 pbs-[6px] text-[10px] font-medium text-[#8D8D86] hover:bg-[#FFF7F7] hover:text-[#E5484D]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ export function TrashAnimation() {
                   </svg>
                   Trash
                 </button>
-                <button className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pb-1 pt-[6px] text-[10px] font-medium text-[#8D8D86]">
+                <button className="flex w-12 flex-col items-center gap-[1px] rounded-lg bg-[#F9F9F8] pbe-1 pbs-[6px] text-[10px] font-medium text-[#8D8D86]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
@@ -184,7 +184,7 @@ export function TrashAnimation() {
           ) : null}
         </AnimatePresence>
         {readyToRemove ? (
-          <div className="absolute bottom-10 flex flex-col gap-2">
+          <div className="absolute inset-be-10 flex flex-col gap-2">
             <button
               onClick={() => {
                 if (readyToRemove) {
@@ -201,7 +201,7 @@ export function TrashAnimation() {
         ) : null}
         <AnimatePresence>
           {readyToRemove ? (
-            <div className="absolute top-1/2 z-10 h-[114px] w-24 -translate-y-1/2">
+            <div className="absolute inset-bs-1/2 z-10 h-[114px] w-24 -translate-y-1/2">
               <motion.div
                 initial={{ scale: 1.2, filter: "blur(4px)", opacity: 0 }}
                 animate={{ scale: 1, filter: "blur(0px)", opacity: 1 }}
@@ -219,7 +219,7 @@ export function TrashAnimation() {
                 transition={
                   removed ? { duration: 0.3, type: "spring", bounce: 0 } : { delay: 0.13 }
                 }
-                className="absolute top-[-60px] flex w-full flex-col-reverse items-center"
+                className="absolute inset-bs-[-60px] flex w-full flex-col-reverse items-center"
               >
                 {imagesToRemove.map((image, index) => (
                   <li key={image} className="flex h-1 items-center gap-2">
@@ -245,7 +245,7 @@ export function TrashAnimation() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.175, duration: 0 }}
-                className="absolute bottom-[0] left-[3px] h-full w-[90px]"
+                className="absolute inset-be-[0] inset-s-[3px] h-full w-[90px]"
               >
                 <TrashFront />
               </motion.div>

@@ -26,7 +26,7 @@ export function Ring() {
             animate={{ width: 40, opacity: 1, filter: "blur(0px)" }}
             exit={{ width: 0, opacity: 0, filter: "blur(4px)" }}
             transition={{ type: "spring", bounce: 0.35 }}
-            className="absolute left-[5px] h-[18px] w-10 rounded-full bg-[#FD4F30]"
+            className="absolute inset-s-[5px] h-[18px] w-10 rounded-full bg-[#FD4F30]"
           />
         ) : null}
       </AnimatePresence>
@@ -69,7 +69,7 @@ export function Ring() {
           </div>
         ) : null}
       </motion.div>
-      <div className="ml-auto flex items-center">
+      <div className="ms-auto flex items-center">
         <AnimatePresence mode="popLayout" initial={false}>
           {isSilent ? (
             <motion.span

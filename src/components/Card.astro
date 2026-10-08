@@ -29,8 +29,25 @@ const {
 ---
 
 <style lang='scss'>
-  .card {
-    &:hover {
+  .card-button {
+    opacity: 0;
+    bottom: 0;
+    transition: opacity 300ms ease-out 0.2s;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card-button {
+      transition-property: opacity, bottom;
+    }
+  }
+
+  .card:focus-within .card-button {
+    opacity: 1;
+    bottom: 32px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover {
       .card-button {
         opacity: 1;
         bottom: 32px;
@@ -44,18 +61,6 @@ const {
           var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
         transform: scale(1.015);
       }
-    }
-  }
-
-  .card-button {
-    opacity: 0;
-    bottom: 0;
-    transition: all 300ms ease-in-out 0.2s;
-  }
-
-  .card {
-    a {
-      transition: all 300ms ease-in-out;
     }
   }
 
@@ -86,7 +91,7 @@ const {
     href={href}
     title={title}
     target='_blank'
-    class={`card-link block rounded-3xl h-420px relative overflow-hidden cursor-pointer ${background}`}
+    class={`card-link block rounded-3xl h-420px relative overflow-clip cursor-pointer ${background}`}
   >
     <Image
       src={image.url}
@@ -98,9 +103,9 @@ const {
     />
   </a>
 
-  <div class='absolute top-6 left-6 md:top-8 md:left-8 max-w-xs'>
+  <div class='absolute inset-bs-6 inset-s-6 md:inset-bs-8 md:inset-s-8 max-w-xs'>
     <div
-      class='text-lg leading-6 font-medium space-y-1 mb-2 md:mb-4 pr-6 md:pr-8'
+      class='text-lg leading-6 font-medium space-y-1 mbe-2 md:mbe-4 pe-6 md:pe-8'
     >
       <h3 class='text-slate-800'>{title}</h3>
       <p class='text-slate-800/80 text-sm font-normal'>{description}</p>
@@ -110,7 +115,7 @@ const {
         {
           techs.map((t) => (
             <Image
-              class='mr-2 h-5'
+              class='me-2 h-5'
               src={`/devicon/${t.icon}.svg`}
               title={t.name}
               alt={t.name}
@@ -123,14 +128,14 @@ const {
       </div>
     </div>
   </div>
-  <div class='absolute right-8 card-button'>
+  <div class='absolute inset-e-8 card-button'>
     <a
-      class='backdrop-blur-md bg-blue-100/80 text-blue-800 hover:text-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 border border-solid border-blue-200 font-inclusive cursor-pointer'
+      class='backdrop-blur-md bg-blue-100/80 text-blue-800 hover:text-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 border border-solid border-blue-200 font-inclusive cursor-pointer'
       href={href}
       title={title}
       >{linkLabel}
 
-      <ArrowRight class='ml-3 overflow-visible' />
+      <ArrowRight class='ms-3 overflow-visible' />
     </a>
   </div>
 </div>
