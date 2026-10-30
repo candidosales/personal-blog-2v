@@ -13,8 +13,6 @@
         "@astrojs/svelte": "9.0.1",
         "@astrojs/vercel": "11.0.7",
         "@expressive-code/plugin-line-numbers": "0.44.1",
-        "@fontsource-variable/newsreader": "5.2.0",
-        "@fontsource/inclusive-sans": "5.2.0",
         "@number-flow/react": "0.6.2",
         "@popperjs/core": "2.11.8",
         "@tailwindcss/typography": "0.5.20",
@@ -298,10 +296,6 @@
     "@floating-ui/dom": ["@floating-ui/dom@1.7.6", "", { "dependencies": { "@floating-ui/core": "^1.7.5", "@floating-ui/utils": "^0.2.11" } }, "sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
-
-    "@fontsource-variable/newsreader": ["@fontsource-variable/newsreader@5.2.0", "", {}, "sha512-XtEiHTQIE+BwnNXAq1euAyjNZCQGbRMPuuSzhPu3q6ACoP0AV/jZNgSLzjLlJ1OusB9uRaPneD2NQuDjyg22rQ=="],
-
-    "@fontsource/inclusive-sans": ["@fontsource/inclusive-sans@5.2.0", "", {}, "sha512-1swpe6aC9gAKAXZCzMh0D0NHqhithR3E9fceMlZ2yeVoadm4akRBGQCAFyiKH2nBovx1c6sQ5zyEwTt1qWvnPQ=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 
