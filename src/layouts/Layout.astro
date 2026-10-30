@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-import '@fontsource/inclusive-sans';
-import '@fontsource-variable/newsreader';
+import '../styles/fonts.css';
+import inclusiveSansCore from '../assets/fonts/inclusive-sans-core.woff2?no-inline';
 
 import { SEO } from 'astro-seo';
 import { ClientRouter } from 'astro:transitions';
@@ -34,6 +34,7 @@ const currentPath = Astro.url.pathname;
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width' />
         <link rel='icon' type='image/png' href='/favicon.png' />
+        <link rel='preload' href={inclusiveSansCore} as='font' type='font/woff2' crossorigin />
         <meta name='generator' content={Astro.generator} />
         <link rel='sitemap' href='/sitemap-index.xml' />
         <script

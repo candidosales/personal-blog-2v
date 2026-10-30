@@ -24,8 +24,6 @@
     "@astrojs/svelte": "9.0.1",
     "@astrojs/vercel": "11.0.7",
     "@expressive-code/plugin-line-numbers": "0.44.1",
-    "@fontsource-variable/newsreader": "5.2.0",
-    "@fontsource/inclusive-sans": "5.2.0",
     "@number-flow/react": "0.6.2",
     "@popperjs/core": "2.11.8",
     "@tailwindcss/typography": "0.5.20",
