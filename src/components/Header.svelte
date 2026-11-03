@@ -60,7 +60,7 @@
 
 <div class="relative max-w-6xl mx-auto px-4 sm:px-6 mbs-20">
   <nav
-    class="w-full flex items-center justify-end sm:h-10"
+    class="w-full flex items-center justify-end sm:h-10 font-inclusive"
     aria-label="navigation"
   >
     <div class="flex items-center flex-1">
@@ -93,9 +93,3 @@
   </nav>
 </div>
 <MenuMobile {menuItems} client:load />
-
-<style lang="scss">
-  nav a {
-    font-family: 'Inclusive Sans', sans-serif;
-  }
-</style>
