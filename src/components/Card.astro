@@ -31,26 +31,28 @@ const {
 <style lang='scss'>
   .card-button {
     opacity: 0;
-    bottom: 0;
-    transition: opacity 300ms ease-out 0.2s;
+    bottom: 32px;
+    transition: opacity 300ms var(--ease-out);
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .card-button {
-      transition-property: opacity, bottom;
+      translate: 0 32px;
+      transition-property: opacity, translate;
     }
   }
 
   .card:focus-within .card-button {
     opacity: 1;
-    bottom: 32px;
+    translate: 0 0;
   }
 
   @media (hover: hover) and (pointer: fine) {
     .card:hover {
       .card-button {
         opacity: 1;
-        bottom: 32px;
+        translate: 0 0;
+        transition-delay: 0.2s;
       }
       a.card-link {
         --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),

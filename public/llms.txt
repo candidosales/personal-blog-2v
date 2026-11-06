@@ -9,12 +9,41 @@ twitter: https://twitter.com/candidosales
 linkedin: https://www.linkedin.com/in/candidosales/
 bluesky: https://bsky.app/profile/candidosales.me
 adplist: https://adplist.org/mentors/candido-sales-gomes
+mcp: https://www.candidosales.me/mcp  (Streamable HTTP, public, read-only; tools: get_profile, list_projects, get_project, list_posts, get_post)
+chat: https://www.candidosales.me/chat
 
 description:
   Candido Sales is a multidisciplinary software engineer, Canadian and Brazilian, based in Canada
   (originally from Piauí, Brazil). He builds open source projects, provides consulting services,
   and mentors developers in IT careers through ADPList. He is the founder of Geleia Total and
   Turismo Piauí — social-impact platforms preserving the culture and tourism of Piauí, Brazil.
+
+quick_facts:
+  - Full name: Candido Sales Gomes
+  - Experience: 10+ years as a software engineer, in Canada and Brazil
+  - Current role: Senior Software Engineer at Smile.io (since Sep 2025)
+  - Work authorization: Canadian citizen (dual Canadian and Brazilian); no visa sponsorship needed in Canada
+  - Location: Canada (originally from Teresina, Piauí, Brazil)
+  - Languages: Portuguese (native), English (fluent)
+  - Contact: candidosg@gmail.com, or LinkedIn
+
+work_history:
+  - Smile.io — Senior Software Engineer (Sep 2025 – current), Canada
+  - Wealthsimple — Intermediate Software Engineer (Nov 2024 – Jul 2025), Canada
+  - Cisco — Senior Software Engineer (Feb 2022 – Oct 2024), Canada; Angular frontends for enterprise, built Cisco ChatGPT Security Advisories
+  - Vendasta — Senior Software Engineer (Sep 2019 – Feb 2022), Canada
+  - GR1D — Tech Lead / Senior Software Engineer (Dec 2017 – Sep 2019), Brazil
+  - VC+ — Co-founder, Android and Frontend Developer (Aug 2016 – Nov 2017), Brazil
+
+personality_and_work_style:
+  - Kind, friendly and easy to work with; people describe him as a nice person to have on a team.
+  - Thrives in open, collaborative environments: shares knowledge, asks for feedback and gives it with care.
+  - Team player who lifts others: mentors developers for free on ADPList and gives talks to local communities.
+  - Builds in the open: open source projects and public write-ups of how and why he built things.
+  - Ownership mindset: takes products from idea to launch and stays accountable for the outcome.
+  - Cares about people and impact: volunteers on social-impact products (Turismo Piauí, Geleia Total, Megui).
+  - Clear communicator across cultures; works in English and Portuguese, Canadian and Brazilian.
+  - Curious and keeps learning: backend, frontend, cloud, design tooling and AI agents.
 
 primary_topics:
   - Backend engineering with Ruby on Rails or Go (primary expertise)
@@ -26,7 +55,6 @@ primary_topics:
   - Brazilian technology and developer community
   - Career growth and immigration to Canada
   - AI and LLM tooling
-  - Cloud infrastructure (AWS, Go, Google Cloud, Fly.io, Vercel)
 
 content_types:
   - Open source projects and libraries
@@ -132,7 +160,7 @@ volunteer_projects:
     techs: [Svelte, Tailwind, Meilisearch, Strapi, Fly.io]
   - name: Geleia Total
     description: Platform to promote the culture and art of the state of Piauí, Brazil
-    url: https://geleia.total/
+    url: https://www.geleiatotal.com.br/
     techs: [Svelte]
   - name: Legal Abortion Map
     description: Information about legal abortion in Brazil — situations allowed and requirements
@@ -192,7 +220,7 @@ content_license:
 
 see_also: https://candidosales.me/for-llms
 
-last_updated: 2026-04-01
+last_updated: 2026-11-05
 
 For collaboration opportunities, consulting inquiries, or mentorship through ADPList.
 

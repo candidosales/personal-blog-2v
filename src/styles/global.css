@@ -2,6 +2,24 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+  /* shadcn tokens mapped to the site's blue palette */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-blue-950);
+  --color-primary: var(--color-blue-700);
+  --color-primary-foreground: var(--color-white);
+  --color-secondary: var(--color-blue-100);
+  --color-secondary-foreground: var(--color-blue-800);
+  --color-muted: var(--color-blue-50);
+  --color-muted-foreground: var(--color-blue-400);
+  --color-accent: var(--color-blue-100);
+  --color-accent-foreground: var(--color-blue-800);
+  --color-destructive: var(--color-red-600);
+  --color-border: var(--color-blue-200);
+  --color-input: var(--color-blue-200);
+  --color-ring: var(--color-blue-700);
+  --color-card: var(--color-white);
+  /* Strong ease-out for UI entrances; overrides Tailwind's default `ease-out`. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --font-inclusive: "Inclusive Sans", "Inter", sans-serif;
   --font-newsreader: "Newsreader", serif;
 }
@@ -14,5 +32,18 @@
   .prose code::before,
   .prose code::after {
     content: "" !important;
+  }
+}
+
+/* New chat messages rise in; streaming updates don't re-trigger it. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-slot="message"] {
+    transition:
+      opacity 200ms var(--ease-out),
+      translate 200ms var(--ease-out);
+    @starting-style {
+      opacity: 0;
+      translate: 0 8px;
+    }
   }
 }

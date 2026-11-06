@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import HeroIcons from './HeroIcons.svelte';
+import HeroSwap from './HeroSwap.svelte';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -17,11 +18,9 @@ const t = useTranslations(lang);
 			class='subtitle mbs-3 md:mbs-5 text-blue-800 text-4xl sm:text-4xl md:text-6xl lg:text-7xl hero-title font-inclusive  animate-fade-in-up'
 		>
 			{t('hero.title1')}{' '}
-			<span class='lg:text-7xl font-newsreader italic tracking-normal'
-				>{t('hero.title2')}</span
-			>
+			<HeroSwap client:load human={t('hero.title2')} agent={t('hero.title2.alt')} />
 		</p>
-		<HeroIcons />
+		<HeroIcons client:load />
 	</div>
 </div>
 

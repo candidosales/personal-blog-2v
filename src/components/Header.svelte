@@ -14,6 +14,7 @@
   } from '@i18n/utils';
   import Presentation from './icons/Presentation.svelte';
   import Sparkles from './icons/Sparkles.svelte';
+  import ChatBubble from './icons/ChatBubble.svelte';
   const lang = getLangFromUrl(new URL(window.location.href));
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
@@ -24,6 +25,12 @@
       label: t('menu.home'),
       targetBlank: false,
       icon: Home,
+    },
+    {
+      href: translatePath('/chat'),
+      label: t('menu.chat'),
+      targetBlank: false,
+      icon: ChatBubble,
     },
     {
       href: translatePath('/blog'),
@@ -92,4 +99,4 @@
     </div>
   </nav>
 </div>
-<MenuMobile {menuItems} client:load />
+<MenuMobile {menuItems} chat={{ href: translatePath('/chat'), label: t('menu.chat') }} />
