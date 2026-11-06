@@ -16,6 +16,8 @@
     "prepare": "vp config"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "4.0.97",
+    "@ai-sdk/svelte": "5.0.163",
     "@astrojs/markdown-satteri": "0.3.7",
     "@astrojs/mdx": "7.0.7",
     "@astrojs/partytown": "2.1.7",
@@ -24,6 +26,7 @@
     "@astrojs/svelte": "9.0.1",
     "@astrojs/vercel": "11.0.7",
     "@expressive-code/plugin-line-numbers": "0.44.1",
+    "@modelcontextprotocol/sdk": "1.32.2",
     "@number-flow/react": "0.6.2",
     "@popperjs/core": "2.11.8",
     "@tailwindcss/typography": "0.5.20",
@@ -31,6 +34,7 @@
     "@types/react-dom": "19.2.3",
     "@upstash/redis": "1.38.0",
     "@xt0rted/expressive-code-file-icons": "1.0.0",
+    "ai": "7.0.163",
     "astro": "7.2.4",
     "astro-compress": "2.4.3",
     "astro-embed": "0.13.1",
@@ -48,10 +52,15 @@
     "svelte-sonner": "1.2.1",
     "tailwind-merge": "3.6.0",
     "tailwindcss": "4.3.2",
-    "usehooks-ts": "3.1.1"
+    "usehooks-ts": "3.1.1",
+    "zod": "4.6.7"
   },
   "devDependencies": {
+    "@lucide/svelte": "1.69.0",
+    "@playwright/test": "1.65.0",
+    "@shadcn-svelte/primitives": "0.0.1",
     "@types/react": "19.2.14",
+    "tailwind-variants": "3.3.0",
     "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0",
     "vite-plus": "1.0.0"
   },

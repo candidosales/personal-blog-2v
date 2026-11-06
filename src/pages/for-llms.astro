@@ -30,6 +30,16 @@ import Header from '@components/Header.svelte';
 
 		<hr class='my-8 border-blue-100' />
 
+		<h2 class='text-2xl font-medium text-blue-800 mbs-8'>MCP server</h2>
+		<p class='text-blue-800'>
+			Agents can query my profile, projects and posts at <code>https://www.candidosales.me/mcp</code>
+			(Streamable HTTP, public, read-only). Tools: get_profile, list_projects, get_project, list_posts,
+			get_post. People can ask at <a href='/chat' class='text-blue-600 underline'>/chat</a>.
+		</p>
+		<pre><code>claude mcp add --transport http candidosales https://www.candidosales.me/mcp</code></pre>
+
+		<hr class='my-8 border-blue-100' />
+
 		<h2 class='text-2xl font-medium text-blue-800 mbs-8'>What I do</h2>
 		<p class='text-blue-800'>
 			I am a backend-focused engineer specializing in <strong>Ruby on Rails</strong> and <strong>AWS</strong>,

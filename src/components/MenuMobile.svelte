@@ -1,24 +1,33 @@
 <script lang="ts">
   import { Drawer, CloseButton } from 'flowbite-svelte';
-  import { sineIn } from 'svelte/easing';
+  import { quintOut } from 'svelte/easing';
   import type { MenuItem } from '../env';
   import Contact from './Contact.svelte';
+  import ChatBubble from './icons/ChatBubble.svelte';
   let drawerHidden = $state(true);
   let transitionParams = {
     x: 320,
-    duration: 200,
-    easing: sineIn,
+    duration: 300,
+    easing: quintOut,
   };
 
   interface Props {
     menuItems?: MenuItem[];
+    chat: { href: string; label: string };
   }
 
-  let { menuItems = [] }: Props = $props();
+  let { menuItems = [], chat }: Props = $props();
 </script>
 
-<div class="fixed w-full inset-be-6 inset-e-8 z-10 md:hidden animate-fade-in-portfolio">
-  <div class="-me-2 flex justify-end md:hidden">
+<div class="fixed w-full inset-be-6 inset-e-8 z-10 md:hidden">
+  <div class="-me-2 flex justify-end gap-3 md:hidden">
+    <a
+      href={chat.href}
+      aria-label={chat.label}
+      class="size-12 bg-blue-700 text-white rounded-full inline-flex items-center justify-center transition-[scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 drop-shadow-xl"
+    >
+      <ChatBubble />
+    </a>
     <button
       class="text-md bg-blue-700 text-white backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 drop-shadow-xl font-inclusive"
       onclick={() => (drawerHidden = false)}

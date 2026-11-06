@@ -1,0 +1,32 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Chat from '@components/chat/Chat.svelte';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const q = Astro.url.searchParams.get('q')?.slice(0, 500) || undefined;
+---
+
+<Layout title={t('chat.title')}>
+	<a
+		href={translatePath('/')}
+		aria-label={t('menu.home')}
+		class='fixed z-10 inset-bs-4 inset-s-4 flex items-center justify-center gap-1 rounded-full max-sm:size-10 max-sm:p-0 border border-border bg-white/70 backdrop-blur px-3 py-1.5 text-sm text-foreground hover:bg-muted active:scale-97 focus-visible:outline-2 focus-visible:outline-ring'
+	>
+		<span aria-hidden='true'>‹</span><span class='max-sm:sr-only'>{t('menu.home')}</span>
+	</a>
+	<main class='relative flex h-dvh flex-col text-foreground'>
+		<Chat
+			client:only='svelte'
+			initialQuestion={q}
+			labels={{
+				placeholder: t('chat.placeholder'),
+				send: t('chat.send'),
+				stop: t('chat.stop'),
+				error: t('chat.error'),
+			}}
+		/>
+	</main>
+</Layout>

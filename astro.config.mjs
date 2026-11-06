@@ -68,5 +68,19 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
+    // Playwright writes artifacts during runs; a watched write reloads every open page.
+    // Only /ui-lab imports these; prebundle at startup so a first visit doesn't re-optimize and 504 its islands.
+    optimizeDeps: {
+      include: [
+        "motion/react",
+        "usehooks-ts",
+        "@number-flow/react",
+        "astro/virtual-modules/transitions-router.js",
+        "astro/virtual-modules/transitions-events.js",
+        "astro/virtual-modules/transitions-swap-functions.js",
+        "astro/virtual-modules/transitions-types.js",
+      ],
+    },
+    server: { watch: { ignored: ["**/e2e/**", "**/test-results/**", "**/playwright-report/**"] } },
   },
 });
