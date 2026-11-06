@@ -16,9 +16,11 @@ const ask = async (page: import("@playwright/test").Page, question: string) => {
   await expect(page.locator('[data-role="assistant"]')).toHaveCount(before + 1, {
     timeout: 45_000,
   });
+  // The orb hands over to the answer at the first token, not when the stream ends.
+  await expect(page.locator('[data-role="assistant"]').last()).not.toBeEmpty({ timeout: 45_000 });
+  await expect(thinking).toBeHidden({ timeout: 300 });
   // The stop button shows while streaming and swaps back to "Ask" when done.
   await expect(page.getByRole("button", { name: "Stop" })).toBeHidden({ timeout: 45_000 });
-  await expect(thinking).toBeHidden();
   const answer = (await page.locator('[data-role="assistant"]').last().innerText()).trim();
   transcript.push({ question, answer });
   return answer;
