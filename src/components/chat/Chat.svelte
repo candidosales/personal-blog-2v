@@ -7,19 +7,47 @@
 	import * as Message from '@components/ui/message';
 	import * as Bubble from '@components/ui/bubble';
 	import * as InputGroup from '@components/ui/input-group';
+	import { MODE_FRAMES, paintFrame, resolvePreset } from 'thinking-orbs/engine';
 
 	type Props = {
 		initialQuestion?: string;
-		labels: { placeholder: string; send: string; stop: string; error: string };
+		labels: { placeholder: string; send: string; stop: string; error: string; thinking: string };
 	};
 	let { initialQuestion, labels }: Props = $props();
 
 	const chat = new Chat({ transport: new DefaultChatTransport({ api: '/api/chat' }) });
 	const busy = $derived(chat.status === 'submitted' || chat.status === 'streaming');
 	let input = $state('');
+	// Shimmer until the first answer token lands.
+	const thinking = $derived.by(() => {
+		const last = chat.messages.at(-1);
+		return busy && !(last?.role === 'assistant' && last.parts.some((p) => p.type === 'text' && p.text));
+	});
 
 	// Question typed on the home page arrives as ?q=; this island mounts once, so it sends once.
 	if (initialQuestion) chat.sendMessage({ text: initialQuestion });
+
+	// Svelte port of the thinking-orbs React wrapper: the "Agent planning" orb (weaving, 20px) in the site blue.
+	const orb = (canvas: HTMLCanvasElement) => {
+		const size = 20;
+		const dpr = Math.min(2, devicePixelRatio || 1);
+		canvas.width = canvas.height = size * dpr;
+		const ctx = canvas.getContext('2d')!;
+		const { mode, speed, opts } = resolvePreset('weaving', size);
+		const draw = (t: number) => {
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, size, size);
+			paintFrame(ctx, MODE_FRAMES[mode](size, t, opts), false, { r: 30, g: 64, b: 175 });
+		};
+		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return draw(0.6);
+		let raf = 0;
+		const loop = () => {
+			draw((performance.now() / 1000) * speed);
+			raf = requestAnimationFrame(loop);
+		};
+		loop();
+		return () => cancelAnimationFrame(raf);
+	};
 
 	const URL_RE = /(https?:\/\/[^\s)]+[^\s).,;:!?])/g;
 
@@ -58,6 +86,12 @@
 						</Message.Root>
 					</MessageScroller.Item>
 				{/each}
+				{#if thinking}
+					<div role="status" class="flex items-center gap-2 py-2">
+						<canvas {@attach orb} aria-hidden="true" class="size-5"></canvas>
+						<span class="shimmer text-base font-medium">{labels.thinking}</span>
+					</div>
+				{/if}
 				{#if chat.error}
 					<p role="alert" class="text-destructive">{labels.error}</p>
 				{/if}
@@ -109,3 +143,26 @@
 		</InputGroup.Addon>
 	</InputGroup.Root>
 </form>
+
+<style>
+	.shimmer {
+		width: fit-content;
+		color: transparent;
+		background: linear-gradient(110deg, rgb(30 64 175 / 0.4) 30%, #1e40af 50%, rgb(30 64 175 / 0.4) 70%) 0 0 / 200% 100%;
+		background-clip: text;
+		animation: shimmer 1.8s linear infinite;
+	}
+	@keyframes shimmer {
+		from {
+			background-position: 200% 0;
+		}
+		to {
+			background-position: -200% 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.shimmer {
+			animation: none;
+		}
+	}
+</style>

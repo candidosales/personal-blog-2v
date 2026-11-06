@@ -8,9 +8,17 @@ const ask = async (page: import("@playwright/test").Page, question: string) => {
   const before = await page.locator('[data-role="assistant"]').count();
   await input.fill(question);
   await input.press("Enter");
+  const thinking = page.getByRole("status").filter({ hasText: "Thinking…" });
+  if (before === 0) {
+    await expect(thinking).toBeVisible();
+    await page.screenshot({ path: "e2e/artifacts/chat-thinking.png" });
+  }
   await expect(page.locator('[data-role="assistant"]')).toHaveCount(before + 1, {
     timeout: 45_000,
   });
+  // The orb hands over to the answer at the first token, not when the stream ends.
+  await expect(page.locator('[data-role="assistant"]').last()).not.toBeEmpty({ timeout: 45_000 });
+  await expect(thinking).toBeHidden({ timeout: 300 });
   // The stop button shows while streaming and swaps back to "Ask" when done.
   await expect(page.getByRole("button", { name: "Stop" })).toBeHidden({ timeout: 45_000 });
   const answer = (await page.locator('[data-role="assistant"]').last().innerText()).trim();
