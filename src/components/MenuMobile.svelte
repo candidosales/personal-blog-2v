@@ -4,7 +4,7 @@
   import type { MenuItem } from '../env';
   import Contact from './Contact.svelte';
   import ChatBubble from './icons/ChatBubble.svelte';
-  let drawerHidden = $state(true);
+  let drawerOpen = $state(false);
   let transitionParams = {
     x: 320,
     duration: 300,
@@ -30,7 +30,7 @@
     </a>
     <button
       class="text-md bg-blue-700 text-white backdrop-blur-md rounded-full px-4 py-3 inline-flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 drop-shadow-xl font-inclusive"
-      onclick={() => (drawerHidden = false)}
+      onclick={() => (drawerOpen = true)}
     >
       Menu
     </button>
@@ -38,10 +38,11 @@
 </div>
 <Drawer
   {transitionParams}
-  bind:hidden={drawerHidden}
+  bind:open={drawerOpen}
+  dismissable={false}
   placement="right"
   id="sidebar2"
-  class="overflow-y-auto z-50 p-4 bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 inset-e-0"
+  class="overflow-y-auto z-50 p-4 border-0 max-h-none backdrop:bg-transparent bg-blue-100/90 backdrop-blur-md w-80 fixed inset-y-0 inset-e-0"
   client:load
 >
   <div class="flex items-center w-full justify-between">
@@ -52,7 +53,7 @@
       Menu
     </h5>
     <CloseButton
-      onclick={() => (drawerHidden = true)}
+      onclick={() => (drawerOpen = false)}
       class="mbe-4 text-blue-800"
     />
   </div>
