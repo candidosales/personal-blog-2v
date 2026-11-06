@@ -7,6 +7,7 @@
   let glitching = $state(false);
   let text = $state(agent);
   let raf = 0;
+  let timer = 0;
 
   const decode = () => {
     cancelAnimationFrame(raf);
@@ -27,7 +28,8 @@
     on = next;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     glitching = true;
-    setTimeout(() => (glitching = false), 280);
+    clearTimeout(timer);
+    timer = setTimeout(() => (glitching = false), 280);
     if (on) decode();
   };
 </script>

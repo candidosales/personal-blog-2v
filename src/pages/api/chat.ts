@@ -7,10 +7,19 @@ import {
   toUIMessageStream,
   type UIMessage,
 } from "ai";
+import { Ratelimit } from "@upstash/ratelimit";
 import { corpus } from "@lib/knowledge";
+import { getRedisClient } from "@lib/redis";
 
 // Astro puts .env in import.meta.env, not process.env, so pass the key explicitly.
 const anthropic = createAnthropic({ apiKey: import.meta.env.ANTHROPIC_API_KEY });
+
+// Every request is billed to the Anthropic key, so cap each visitor.
+const ratelimit = new Ratelimit({
+  redis: getRedisClient(),
+  limiter: Ratelimit.slidingWindow(20, "10 m"),
+  prefix: "chat",
+});
 
 // No dates or per-request values here: the prompt must stay byte-identical for the cache to hit.
 const PERSONA = `You answer visitors' questions about Candido Sales on his website, https://www.candidosales.me.
@@ -24,12 +33,32 @@ const PERSONA = `You answer visitors' questions about Candido Sales on his websi
 
 # Knowledge`;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+  const { success } = await ratelimit.limit(clientAddress);
+  if (!success) return new Response("Too many requests", { status: 429 });
+
   const raw = await request.text();
   if (raw.length > 50_000) return new Response("Too large", { status: 413 });
-  const { messages } = JSON.parse(raw) as { messages: UIMessage[] };
-  if (!Array.isArray(messages) || messages.length === 0)
+  let body: { messages?: Partial<UIMessage>[] };
+  try {
+    body = JSON.parse(raw);
+  } catch {
     return new Response("Bad request", { status: 400 });
+  }
+  // Keep only what the UI sends: user and assistant text. Crafted files, tools or system turns are dropped.
+  const messages = (Array.isArray(body?.messages) ? body.messages : [])
+    .filter((m) => m?.role === "user" || m?.role === "assistant")
+    .map((m) => ({
+      ...m,
+      parts: (Array.isArray(m.parts) ? m.parts : []).filter(
+        (p) => p?.type === "text" && typeof p.text === "string",
+      ),
+    }))
+    .filter((m) => m.parts.length > 0)
+    .slice(-9) as UIMessage[];
+  // A stopped stream can leave two user turns in a row; the history must still open with the user.
+  while (messages[0]?.role === "assistant") messages.shift();
+  if (messages.length === 0) return new Response("Bad request", { status: 400 });
 
   const result = streamText({
     model: anthropic("claude-haiku-5-5"),
@@ -40,7 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
         providerOptions: { anthropic: { cacheControl: { type: "ephemeral" } } },
       },
     ],
-    messages: await convertToModelMessages(messages.slice(-9)),
+    messages: await convertToModelMessages(messages),
     maxOutputTokens: 800,
   });
   return createUIMessageStreamResponse({ stream: toUIMessageStream({ stream: result.stream }) });

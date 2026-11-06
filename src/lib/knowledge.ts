@@ -29,6 +29,9 @@ type Project = {
   story?: string;
 };
 
+// Featured items carry a slug and story; the other lists don't.
+type Source = Omit<Project, "slug" | "techs"> & { slug?: string; techs: { name: string }[] };
+
 const PROJECTS: Project[] = [
   ...featuredData(t).map((p) => ({ ...p, group: "featured" })),
   ...portfolioData(t).map((p) => ({ ...p, group: "open source" })),
@@ -36,13 +39,13 @@ const PROJECTS: Project[] = [
   ...extrasData(t).map((p) => ({ ...p, group: "extras" })),
 ]
   .filter((p, i, all) => all.findIndex((x) => x.url === p.url) === i)
-  .map((p: any) => ({
+  .map((p: Source) => ({
     slug: p.slug ?? slugify(p.title),
     title: p.title,
     description: p.description,
     url: p.url,
     group: p.group,
-    techs: p.techs.map((x: { name: string }) => x.name),
+    techs: p.techs.map((x) => x.name),
     story: p.story,
   }));
 
