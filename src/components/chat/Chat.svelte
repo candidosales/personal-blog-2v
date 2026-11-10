@@ -11,7 +11,7 @@
 
 	type Props = {
 		initialQuestion?: string;
-		labels: { placeholder: string; send: string; stop: string; error: string; thinking: string };
+		labels: { placeholder: string; send: string; stop: string; error: string; thinking: string; contact: string };
 	};
 	let { initialQuestion, labels }: Props = $props();
 
@@ -91,6 +91,16 @@
 						<canvas {@attach orb} aria-hidden="true" class="size-5"></canvas>
 						<span class="shimmer text-base font-medium">{labels.thinking}</span>
 					</div>
+				{/if}
+				{#if !busy && chat.messages.filter((m) => m.role === 'assistant').length >= 2}
+					<a
+						href="https://www.linkedin.com/in/candidosales/"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-flex w-fit items-center rounded-full border border-border bg-white/70 px-4 py-2 text-sm text-foreground hover:bg-muted active:scale-97 focus-visible:outline-2 focus-visible:outline-ring"
+					>
+						{labels.contact}
+					</a>
 				{/if}
 				{#if chat.error}
 					<p role="alert" class="text-destructive">{labels.error}</p>

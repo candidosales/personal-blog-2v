@@ -66,6 +66,11 @@ test("chat declines off-topic requests and answers in Portuguese", async ({ page
   expect(work).toMatch(/Cisco/);
   expect(work).toMatch(/citizen/i);
 
+  await expect(page.getByRole("link", { name: "Say hi to Candido →" })).toBeVisible();
+
+  const hire = await ask(page, "Is he available for a contract and what are his rates?");
+  expect(hire).toMatch(/linkedin\.com\/in\/candidosales/);
+
   const pt = await ask(page, "Onde o Candido mora?");
   expect(pt).toMatch(/Canadá/);
 
