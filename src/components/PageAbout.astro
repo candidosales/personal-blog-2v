@@ -193,18 +193,18 @@ const t = useTranslations(lang);
       {t("about.title2")}
     </h2>
     <ol
-      class="relative mbs-10 slide-fade-in before:absolute before:inset-y-5 before:start-5 before:w-0.5 before:bg-blue-100"
+      class="relative mbs-10 slide-fade-in before:absolute before:inset-y-8 before:start-6 before:w-0.5 before:bg-blue-100"
     >
       {
         experience.map((e, i) => (
-          <li class="relative flex gap-5 py-3">
+          <li class="relative flex gap-6 py-5">
             <img
               src={e.company.image}
               alt=""
-              class={`size-10 flex-none rounded-full object-cover border-3 border-white ${i === 0 ? "ring-2 ring-blue-600" : "ring-1 ring-blue-200"}`}
+              class={`size-12 flex-none rounded-full object-cover border-3 border-white ${i === 0 ? "ring-2 ring-blue-600" : "ring-1 ring-blue-200"}`}
             />
-            <div>
-              <p class="text-slate-700">
+            <div class="flex flex-col gap-1 pbs-0.5">
+              <p class="text-lg">
                 {e.company.url ? (
                   <a
                     href={e.company.url}
@@ -216,8 +216,9 @@ const t = useTranslations(lang);
                 ) : (
                   <span class="font-medium text-slate-900">{e.company.name}</span>
                 )}{" "}
-                {e.country} · {e.title}
+                {e.country}
               </p>
+              <p class="text-slate-700">{e.title}</p>
               <p class="text-sm text-slate-500 tabular-nums">{e.period}</p>
             </div>
           </li>
