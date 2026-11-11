@@ -14,12 +14,9 @@ const experience = [
       image: "/companies/smileio.png",
       url: "https://www.smile.io/",
     },
-    style: "smileio",
     period: "Sep 2025 - Current",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -27,12 +24,9 @@ const experience = [
       image: "/companies/wealthsimple.jpg",
       url: "https://www.wealthsimple.com/",
     },
-    style: "wealthsimple",
     period: "Nov 2024 - Jul 2025",
     title: "Intermediate Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -40,12 +34,9 @@ const experience = [
       image: "/companies/cisco.jpeg",
       url: "https://www.cisco.com/",
     },
-    style: "cisco",
     period: "Feb 2022 - Oct 2024",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -53,12 +44,9 @@ const experience = [
       image: "/companies/vendasta.jpeg",
       url: "https://www.vendasta.com/",
     },
-    style: "vendasta",
     period: "Sep 2019 - Feb 2022",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -66,12 +54,9 @@ const experience = [
       image: "/companies/gr1d.jpeg",
       url: "https://gr1d.io/",
     },
-    style: "gr1d",
     period: "Dec 2017 - Sep 2019",
     title: "Tech Lead / Senior Software Engineer",
     country: "🇧🇷",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -79,12 +64,9 @@ const experience = [
       image: "/companies/vc+.png",
       url: "",
     },
-    style: "vc",
     period: "Aug 2016 - Nov 2017",
     title: "Co-founder, Android Developer and Frontend Developer",
     country: "🇧🇷",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
 ];
 
@@ -210,39 +192,39 @@ const t = useTranslations(lang);
     >
       {t("about.title2")}
     </h2>
-    <div
-      class="md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mbs-10 text-blue-800 slide-fade-in"
+    <ol
+      class="timeline relative mbs-10"
     >
       {
-        experience.map((e) => (
-          <>
-            <div class="col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]">
-              <p class="opacity-70 text-md">{e.period}</p>
-            </div>
-            <div class="col-span-4 mbe-8 md:mbe-0 flex flex-row align-middle justify-start items-center">
-              <p class="wrap-break-word text-md max-w-lg flex-1">
-                {e.title} at
+        experience.map((e, i) => (
+          <li class="relative z-1 flex gap-6 py-5">
+            <img
+              src={e.company.image}
+              alt=""
+              class={`size-12 flex-none rounded-full object-cover border-3 border-white ${i === 0 ? "ring-2 ring-blue-600" : "ring-1 ring-blue-200"}`}
+            />
+            <div class="flex flex-col gap-1 pbs-0.5">
+              <p class="text-lg">
+                {e.company.url ? (
+                  <a
+                    href={e.company.url}
+                    target="_blank"
+                    class="font-medium text-slate-900 hover:text-blue-700"
+                  >
+                    {e.company.name}
+                  </a>
+                ) : (
+                  <span class="font-medium text-slate-900">{e.company.name}</span>
+                )}{" "}
+                {e.country}
               </p>
-              <a
-                href={e.company.url}
-                title={e.company.name}
-                target="_blank"
-                class={` text-md cursor-pointer ms-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium me-2`}
-              >
-                <img
-                  class="rounded-full w-6 h-6 me-2"
-                  src={e.company.image}
-                  alt={e.company.name}
-                  title={e.company.name}
-                />
-                {e.company.name}
-              </a>
-              {e.country}
+              <p class="text-slate-700">{e.title}</p>
+              <p class="text-sm text-slate-500 tabular-nums">{e.period}</p>
             </div>
-          </>
+          </li>
         ))
       }
-    </div>
+    </ol>
     <div class="flex justify-center mbs-10 mbe-16 slide-fade-in">
       <a
         class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 font-inclusive"
@@ -285,6 +267,40 @@ const t = useTranslations(lang);
 </Layout>
 
 <style>
+  /* Line draws down as you scroll; each job fades in when the line's tip reaches it (30% above the screen bottom). */
+  .timeline::before,
+  .timeline::after {
+    content: "";
+    position: absolute;
+    inset-block: 2rem;
+    inset-inline-start: 1.5rem;
+    inline-size: 2px;
+    background: var(--color-blue-100);
+  }
+  .timeline::after {
+    background: var(--color-blue-500);
+    transform-origin: top;
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .timeline::after {
+        animation: grow linear both;
+        animation-timeline: view(block 0% 30%);
+        animation-range: entry-crossing 0% entry-crossing 100%;
+      }
+      .timeline li {
+        animation: reveal linear both;
+        animation-timeline: view(block 0% 30%);
+        animation-range: entry 0% entry 100%;
+      }
+    }
+  }
+  @keyframes grow {
+    from { scale: 1 0; }
+  }
+  @keyframes reveal {
+    from { opacity: 0; translate: 0 1rem; }
+  }
   @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
 
   .polaroid-caption {
@@ -311,38 +327,6 @@ const t = useTranslations(lang);
   }
 </style>
 
-<style lang="scss" is:global>
-  .wealthsimple {
-    border-color: var(--color-slate-200);
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
-  }
-  .vendasta {
-    border-color: var(--color-green-200);
-    background-color: var(--color-green-100);
-    color: var(--color-green-700);
-  }
-  .cisco {
-    border-color: var(--color-blue-200);
-    background-color: var(--color-blue-100);
-    color: var(--color-blue-700);
-  }
-  .gr1d {
-    border-color: var(--color-gray-200);
-    background-color: var(--color-gray-100);
-    color: var(--color-gray-700);
-  }
-  .vc {
-    border-color: var(--color-slate-200);
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
-  }
-  .smileio {
-    border-color: var(--color-yellow-200);
-    background-color: var(--color-yellow-100);
-    color: var(--color-yellow-700);
-  }
-</style>
 
 <script>
   import { animate } from "motion";
