@@ -42,6 +42,7 @@
       <a
         href={m.href}
         class:hidden-tab={minimized && m !== (activeTab ?? tabs[0])}
+        inert={minimized && m !== (activeTab ?? tabs[0])}
         aria-current={m === activeTab ? 'page' : undefined}
         aria-label={m.label}
       >
@@ -51,6 +52,7 @@
     {/each}
     <button
       class:hidden-tab={minimized}
+      inert={minimized}
       class:current={moreActive}
       aria-haspopup="dialog"
       onclick={() => dialog.showModal()}

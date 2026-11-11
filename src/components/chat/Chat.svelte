@@ -108,7 +108,7 @@
 					</div>
 				{/if}
 				{#if followUps.length}
-					<div class="border-bs border-slate-200 pbs-2">{@render suggestions(followUps)}</div>
+					<div class="pbs-2">{@render suggestions(followUps)}</div>
 				{/if}
 				{#if !busy && chat.messages.filter((m) => m.role === 'assistant').length >= 2}
 					<a
@@ -130,15 +130,15 @@
 </MessageScroller.Provider>
 
 {#snippet suggestions(qs: string[])}
-	<ul>
+	<ul class="flex flex-col items-start gap-2">
 		{#each qs as q (q)}
 			<li>
 				<button
 					type="button"
 					onclick={() => ask(q)}
-					class="flex w-full gap-2 rounded-xl px-1 py-2 text-start text-slate-600 hover:bg-slate-900/4 hover:text-slate-900 active:scale-99 focus-visible:outline-2 focus-visible:outline-blue-700"
+					class="glass flex gap-2 rounded-3xl px-4 py-2.5 text-start text-slate-900 transition-[scale,background-color] hover:bg-white active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
 				>
-					<span aria-hidden="true" class="text-slate-400">↳</span>{q}
+					<span aria-hidden="true" class="text-slate-500">↳</span>{q}
 				</button>
 			</li>
 		{/each}
@@ -150,7 +150,7 @@
 {/if}
 
 <form onsubmit={send} class="mx-auto w-full max-w-2xl px-3 pbe-[max(1rem,env(safe-area-inset-bottom))]">
-	<InputGroup.Root class="glass min-h-15.5 rounded-[31px] ps-3 pe-2.5 has-[[data-slot=input-group-control]:focus-visible]:border-slate-900/10 has-[[data-slot=input-group-control]:focus-visible]:ring-0">
+	<InputGroup.Root class="glass min-h-15.5 rounded-[31px] ps-3 pe-2.5 has-[[data-slot=input-group-control]:focus-visible]:border-slate-900/6 has-[[data-slot=input-group-control]:focus-visible]:ring-0">
 		<InputGroup.Textarea
 			bind:value={input}
 			placeholder={labels.placeholder}
