@@ -90,7 +90,6 @@
     >
       <span class="size-6"><m.icon /></span>
       {m.label}
-      {#if m.targetBlank}<span aria-hidden="true">↗</span>{/if}
     </a>
   {/each}
   <div class="contact">
