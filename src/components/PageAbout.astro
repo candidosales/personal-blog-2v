@@ -14,12 +14,9 @@ const experience = [
       image: "/companies/smileio.png",
       url: "https://www.smile.io/",
     },
-    style: "smileio",
     period: "Sep 2025 - Current",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -27,12 +24,9 @@ const experience = [
       image: "/companies/wealthsimple.jpg",
       url: "https://www.wealthsimple.com/",
     },
-    style: "wealthsimple",
     period: "Nov 2024 - Jul 2025",
     title: "Intermediate Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -40,12 +34,9 @@ const experience = [
       image: "/companies/cisco.jpeg",
       url: "https://www.cisco.com/",
     },
-    style: "cisco",
     period: "Feb 2022 - Oct 2024",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -53,12 +44,9 @@ const experience = [
       image: "/companies/vendasta.jpeg",
       url: "https://www.vendasta.com/",
     },
-    style: "vendasta",
     period: "Sep 2019 - Feb 2022",
     title: "Senior Software Engineer",
     country: "🇨🇦",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -66,12 +54,9 @@ const experience = [
       image: "/companies/gr1d.jpeg",
       url: "https://gr1d.io/",
     },
-    style: "gr1d",
     period: "Dec 2017 - Sep 2019",
     title: "Tech Lead / Senior Software Engineer",
     country: "🇧🇷",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     company: {
@@ -79,12 +64,9 @@ const experience = [
       image: "/companies/vc+.png",
       url: "",
     },
-    style: "vc",
     period: "Aug 2016 - Nov 2017",
     title: "Co-founder, Android Developer and Frontend Developer",
     country: "🇧🇷",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
 ];
 
@@ -210,39 +192,38 @@ const t = useTranslations(lang);
     >
       {t("about.title2")}
     </h2>
-    <div
-      class="md:grid md:grid-cols-5 lg:grid lg:grid-cols-5 gap-6 mbs-10 text-blue-800 slide-fade-in"
+    <ol
+      class="relative mbs-10 slide-fade-in before:absolute before:inset-y-5 before:start-5 before:w-0.5 before:bg-blue-100"
     >
       {
-        experience.map((e) => (
-          <>
-            <div class="col-span-1 flex flex-row align-middle justify-start items-center font-sans h-[36px]">
-              <p class="opacity-70 text-md">{e.period}</p>
-            </div>
-            <div class="col-span-4 mbe-8 md:mbe-0 flex flex-row align-middle justify-start items-center">
-              <p class="wrap-break-word text-md max-w-lg flex-1">
-                {e.title} at
+        experience.map((e, i) => (
+          <li class="relative flex gap-5 py-3">
+            <img
+              src={e.company.image}
+              alt=""
+              class={`size-10 flex-none rounded-full object-cover border-3 border-white ${i === 0 ? "ring-2 ring-blue-600" : "ring-1 ring-blue-200"}`}
+            />
+            <div>
+              <p class="text-slate-700">
+                {e.company.url ? (
+                  <a
+                    href={e.company.url}
+                    target="_blank"
+                    class="font-medium text-slate-900 hover:text-blue-700"
+                  >
+                    {e.company.name}
+                  </a>
+                ) : (
+                  <span class="font-medium text-slate-900">{e.company.name}</span>
+                )}{" "}
+                {e.country} · {e.title}
               </p>
-              <a
-                href={e.company.url}
-                title={e.company.name}
-                target="_blank"
-                class={` text-md cursor-pointer ms-2 px-2 py-1 ${e.style} border-1 rounded-lg flex items-center justify-center font-medium me-2`}
-              >
-                <img
-                  class="rounded-full w-6 h-6 me-2"
-                  src={e.company.image}
-                  alt={e.company.name}
-                  title={e.company.name}
-                />
-                {e.company.name}
-              </a>
-              {e.country}
+              <p class="text-sm text-slate-500 tabular-nums">{e.period}</p>
             </div>
-          </>
+          </li>
         ))
       }
-    </div>
+    </ol>
     <div class="flex justify-center mbs-10 mbe-16 slide-fade-in">
       <a
         class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 font-inclusive"
@@ -311,38 +292,6 @@ const t = useTranslations(lang);
   }
 </style>
 
-<style lang="scss" is:global>
-  .wealthsimple {
-    border-color: var(--color-slate-200);
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
-  }
-  .vendasta {
-    border-color: var(--color-green-200);
-    background-color: var(--color-green-100);
-    color: var(--color-green-700);
-  }
-  .cisco {
-    border-color: var(--color-blue-200);
-    background-color: var(--color-blue-100);
-    color: var(--color-blue-700);
-  }
-  .gr1d {
-    border-color: var(--color-gray-200);
-    background-color: var(--color-gray-100);
-    color: var(--color-gray-700);
-  }
-  .vc {
-    border-color: var(--color-slate-200);
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
-  }
-  .smileio {
-    border-color: var(--color-yellow-200);
-    background-color: var(--color-yellow-100);
-    color: var(--color-yellow-700);
-  }
-</style>
 
 <script>
   import { animate } from "motion";
