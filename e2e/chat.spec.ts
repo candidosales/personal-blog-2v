@@ -53,6 +53,7 @@ test("home MCP button copies the install command; /chat?q= streams an answer", a
 
 test("chat declines off-topic requests and answers in Portuguese", async ({ page }) => {
   await page.goto("/chat", { waitUntil: "networkidle" });
+  await expect(page.getByRole("button", { name: "What has he built?" })).toBeVisible();
   const poem = await ask(page, "Write me a poem about the ocean.");
   expect(poem.split("\n").length).toBeLessThan(5);
   expect(poem).toMatch(/Candido/);
@@ -70,6 +71,15 @@ test("chat declines off-topic requests and answers in Portuguese", async ({ page
 
   const hire = await ask(page, "Is he available for a contract and what are his rates?");
   expect(hire).toMatch(/linkedin\.com\/in\/candidosales/);
+
+  // Each answer ends with model-written follow-ups; the ">>" line never shows in the answer.
+  expect(hire).not.toMatch(/>>/);
+  const followUps = page.getByRole("listitem").getByRole("button");
+  await expect(followUps).toHaveCount(3);
+  const followUp = (await followUps.first().innerText()).replace("↳", "").trim();
+  await followUps.first().click();
+  await expect(page.locator('[data-role="user"]').last()).toHaveText(followUp);
+  await expect(page.getByRole("button", { name: "Stop" })).toBeHidden({ timeout: 45_000 });
 
   const pt = await ask(page, "Onde o Candido mora?");
   expect(pt).toMatch(/Canadá/);

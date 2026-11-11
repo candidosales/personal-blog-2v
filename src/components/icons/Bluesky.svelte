@@ -9,8 +9,7 @@
 <svg
   fill="none"
   viewBox="0 0 64 57"
-  width="30"
-  style="width: 30px; height: 26.7188px;"
+  class="size-full"
   {...rest}
   ><path
     fill="currentColor"

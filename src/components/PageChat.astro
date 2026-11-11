@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Chat from '@components/chat/Chat.svelte';
+import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -13,14 +14,15 @@ const q = Astro.url.searchParams.get('q')?.slice(0, 500) || undefined;
 	<a
 		href={translatePath('/')}
 		aria-label={t('menu.home')}
-		class='fixed z-10 inset-bs-4 inset-s-4 flex items-center justify-center gap-1 rounded-full max-sm:size-10 max-sm:p-0 border border-border bg-white/70 backdrop-blur px-3 py-1.5 text-sm text-foreground hover:bg-muted active:scale-97 focus-visible:outline-2 focus-visible:outline-ring'
+		class='glass fixed z-10 inset-bs-4 inset-s-4 grid size-12 place-items-center rounded-full text-slate-600 transition-[scale,color] hover:text-slate-900 active:scale-94 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700'
 	>
-		<span aria-hidden='true'>‹</span><span class='max-sm:sr-only'>{t('menu.home')}</span>
+		<ChevronLeft class='size-6' strokeWidth={1.5} aria-hidden='true' />
 	</a>
 	<main class='relative flex h-dvh flex-col text-foreground'>
 		<Chat
 			client:only='svelte'
 			initialQuestion={q}
+			starters={[t('chat.starter1'), t('chat.starter2'), t('chat.starter3')]}
 			labels={{
 				placeholder: t('chat.placeholder'),
 				send: t('chat.send'),
