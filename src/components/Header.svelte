@@ -19,10 +19,10 @@
   const tabs = [
     { href: translatePath('/'), label: t('menu.home'), targetBlank: false, icon: Home },
     { href: translatePath('/blog'), label: t('menu.blog'), targetBlank: false, icon: PencilSquare },
-    { href: translatePath('/ui-lab'), label: t('menu.lab'), targetBlank: false, icon: Sparkles },
     { href: translatePath('/about'), label: t('menu.about'), targetBlank: false, icon: User },
   ];
   const more = [
+    { href: translatePath('/ui-lab'), label: t('menu.lab'), targetBlank: false, icon: Sparkles },
     { href: translatePath('/presentations'), label: t('menu.presentations'), targetBlank: false, icon: Presentation },
     { href: 'https://adplist.org/mentors/candido-sales-gomes', label: t('menu.mentorship'), targetBlank: true, icon: AdpList },
   ];

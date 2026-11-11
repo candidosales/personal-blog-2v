@@ -3,9 +3,19 @@ import { expect, test } from "@playwright/test";
 test("tab bar marks the current page, opens More, and shrinks on scroll", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/blog", { waitUntil: "networkidle" });
+  // Astro's dev-only toolbar sits over the bar at phone width.
+  await page.addStyleTag({ content: "astro-dev-toolbar { display: none }" });
   const nav = page.getByRole("navigation", { name: "navigation" });
   await expect(nav.getByRole("link", { name: "Blog" })).toHaveAttribute("aria-current", "page");
   await expect(nav.getByRole("link", { name: "Home" })).not.toHaveAttribute("aria-current");
+
+  // The bar and the Ask button fit an iPhone-width screen.
+  const right = async (name: string) => {
+    const box = (await page.getByRole("link", { name, exact: true }).boundingBox())!;
+    return box.x + box.width;
+  };
+  expect(await right("Ask")).toBeLessThanOrEqual(390);
+  expect((await nav.boundingBox())!.x).toBeGreaterThan(0);
 
   await nav.getByRole("button", { name: "More" }).click();
   const sheet = page.getByRole("dialog", { name: "More" });

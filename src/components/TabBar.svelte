@@ -37,7 +37,7 @@
 
 <div class="fade" aria-hidden="true"></div>
 <div class="bar-wrap font-inclusive">
-  <nav class="tabs glass" class:min={minimized} aria-label="navigation">
+  <nav class="tabs glass" class:min={minimized} style:--n={tabs.length + 1} aria-label="navigation">
     {#each tabs as m}
       <a
         href={m.href}
@@ -90,7 +90,6 @@
     >
       <span class="size-6"><m.icon /></span>
       {m.label}
-      {#if m.targetBlank}<span aria-hidden="true">↗</span>{/if}
     </a>
   {/each}
   <div class="contact">
@@ -143,7 +142,8 @@
     align-items: center;
     justify-content: center;
     gap: 2px;
-    inline-size: 4.25rem;
+    /* Share the screen left after wrap padding, gap, Ask button and bar padding; cap at 68px. */
+    inline-size: min(4.25rem, (100vw - 1.5rem - 0.5rem - 3.875rem - 8px) / var(--n));
     block-size: 3.375rem;
     border-radius: 999px;
     font-size: 11px;
@@ -154,12 +154,6 @@
       opacity 0.25s,
       background-color 0.2s,
       scale 0.15s;
-  }
-  @media (max-width: 360px) {
-    .tabs a,
-    .tabs button {
-      inline-size: 3.75rem;
-    }
   }
   .tabs [aria-current='page'],
   .tabs .current {
