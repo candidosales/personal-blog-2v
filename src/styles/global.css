@@ -47,3 +47,14 @@
     }
   }
 }
+
+/* Frosted surface shared by the bottom tab bar, chat input and chat back button. */
+@utility glass {
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgb(15 23 42 / 0.06);
+  /* Through Tailwind's shadow vars so ring-* utilities (InputGroup focus) compose with it instead of wiping it. */
+  --tw-shadow: 0 8px 32px rgb(15 23 42 / 0.1);
+  --tw-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 0.8);
+  box-shadow: var(--tw-inset-shadow), var(--tw-shadow);
+}

@@ -11,9 +11,10 @@
 
 	type Props = {
 		initialQuestion?: string;
+		starters: string[];
 		labels: { placeholder: string; send: string; stop: string; error: string; thinking: string; contact: string };
 	};
-	let { initialQuestion, labels }: Props = $props();
+	let { initialQuestion, starters, labels }: Props = $props();
 
 	const chat = new Chat({ transport: new DefaultChatTransport({ api: '/api/chat' }) });
 	const busy = $derived(chat.status === 'submitted' || chat.status === 'streaming');
@@ -49,12 +50,26 @@
 		return () => cancelAnimationFrame(raf);
 	};
 
+	// The model ends each answer with ">> Q1 | Q2 | Q3"; cut at the first ">" line so it never flashes while streaming.
+	const splitAnswer = (text: string): [string, string[]] => {
+		const i = text.search(/(^|\n)>/);
+		if (i < 0) return [text, []];
+		const qs = text.slice(i).replace(/^\n?>+/, '').split('|');
+		return [text.slice(0, i).trimEnd(), qs.map((q) => q.trim()).filter(Boolean).slice(0, 3)];
+	};
+	const followUps = $derived.by(() => {
+		const last = chat.messages.at(-1);
+		if (busy || last?.role !== 'assistant') return [];
+		return splitAnswer(last.parts.map((p) => (p.type === 'text' ? p.text : '')).join(''))[1];
+	});
+	const ask = (text: string) => !busy && chat.sendMessage({ text });
+
 	const URL_RE = /(https?:\/\/[^\s)]+[^\s).,;:!?])/g;
 
 	const send = (e: SubmitEvent) => {
 		e.preventDefault();
 		if (!input.trim() || busy) return;
-		chat.sendMessage({ text: input });
+		ask(input);
 		input = '';
 	};
 </script>
@@ -73,7 +88,7 @@
 									>
 										{#each m.parts as p, i (i)}
 											{#if p.type === 'text'}
-												{#each p.text.split(URL_RE) as part, j (j)}
+												{#each (m.role === 'assistant' ? splitAnswer(p.text)[0] : p.text).split(URL_RE) as part, j (j)}
 													{#if j % 2}
 														<a href={part} target="_blank" rel="noreferrer" class="underline break-all">{part}</a>
 													{:else}{part}{/if}
@@ -91,6 +106,9 @@
 						<canvas {@attach orb} aria-hidden="true" class="size-5"></canvas>
 						<span class="shimmer text-base font-medium">{labels.thinking}</span>
 					</div>
+				{/if}
+				{#if followUps.length}
+					<div class="pbs-2">{@render suggestions(followUps)}</div>
 				{/if}
 				{#if !busy && chat.messages.filter((m) => m.role === 'assistant').length >= 2}
 					<a
@@ -111,8 +129,28 @@
 	</MessageScroller.Root>
 </MessageScroller.Provider>
 
-<form onsubmit={send} class="mx-auto w-full max-w-2xl px-4 pbe-6">
-	<InputGroup.Root class="rounded-3xl bg-white/80 backdrop-blur px-2 shadow-sm has-[[data-slot=input-group-control]:focus-visible]:ring-0">
+{#snippet suggestions(qs: string[])}
+	<ul class="flex flex-col items-start gap-2">
+		{#each qs as q (q)}
+			<li>
+				<button
+					type="button"
+					onclick={() => ask(q)}
+					class="glass flex gap-2 rounded-3xl px-4 py-2.5 text-start text-slate-900 transition-[scale,background-color] hover:bg-white active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+				>
+					<span aria-hidden="true" class="text-slate-500">↳</span>{q}
+				</button>
+			</li>
+		{/each}
+	</ul>
+{/snippet}
+
+{#if chat.messages.length === 0}
+	<div class="mx-auto w-full max-w-2xl px-4 pbe-2">{@render suggestions(starters)}</div>
+{/if}
+
+<form onsubmit={send} class="mx-auto w-full max-w-2xl px-3 pbe-[max(1rem,env(safe-area-inset-bottom))]">
+	<InputGroup.Root class="glass min-h-15.5 rounded-[31px] ps-3 pe-2.5 has-[[data-slot=input-group-control]:focus-visible]:border-slate-900/6 has-[[data-slot=input-group-control]:focus-visible]:ring-0">
 		<InputGroup.Textarea
 			bind:value={input}
 			placeholder={labels.placeholder}
@@ -120,7 +158,7 @@
 			maxlength={500}
 			rows={1}
 			autofocus
-			class="min-h-0 max-h-40 px-3 py-3 text-base md:text-base"
+			class="min-h-0 max-h-40 px-2 py-4 text-base md:text-base text-slate-900 placeholder:text-slate-500"
 			onkeydown={(e: KeyboardEvent) => {
 				if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
 					e.preventDefault();
@@ -133,7 +171,7 @@
 				<InputGroup.Button
 					size="icon-sm"
 					variant="secondary"
-					class="rounded-full"
+					class="size-10 rounded-full bg-slate-900/6 text-slate-700 hover:bg-slate-900/10"
 					aria-label={labels.stop}
 					onclick={() => chat.stop()}
 				>
@@ -144,7 +182,8 @@
 					type="submit"
 					size="icon-sm"
 					variant="default"
-					class="rounded-full"
+					aria-disabled={!input.trim()}
+					class={['size-10 rounded-full', !input.trim() && 'bg-slate-900/6 text-slate-500 hover:bg-slate-900/6']}
 					aria-label={labels.send}
 				>
 					<ArrowUp />
