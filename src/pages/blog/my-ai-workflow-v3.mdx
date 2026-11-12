@@ -1,0 +1,267 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: "My AI Workflow v3: Skills, Bots, and Verification"
+pubDate: 2026-11-11
+author: "Candido Gomes"
+description: "How my AI workflow changed since my last post: a reusable CLAUDE.md, skills for every repetitive step, verification over tests, and bots that run 24/7."
+image:
+  url: "/blog/my-ai-workflow-v3/thumbnail.webp"
+  alt: "Plan, Develop, Review steps ending in a check, with the Grok bot and Claude Code mascots"
+tags: ["ai", "claude code", "skills", "evals", "grokbot", "workflow", "code review"]
+---
+
+import { YouTube } from "astro-embed";
+import { Tweet } from "astro-embed";
+
+Since I published my [last post](/blog/pi-rtk-kimi-k2-6-compound-engineer), my workflow has changed, so I'll describe how other tools are helping reduce toil and free up time and attention for product improvement.
+
+I've kept my workflow with Claude Code because it has improved performance, reduced token consumption, and kept the harness simple.
+
+### A reusable CLAUDE.md
+
+During this time, I've improved my general `CLAUDE.md` so it can be reused in any kind of project:
+
+```markdown
+Write plain declarative sentences: state the fact, skip rhetorical framing.
+
+- NEVER write unit tests after you write code.
+- Highly prefer E2E tests as the sole testing mechanism. Use them to verify complex features work. At the end of E2E tests, produce a verifiable and repeatable artifact.
+- If you must test a system in isolation, FIRST write all the ways it could fail, THEN write the code.
+- Tautological tests considered harmful.
+- Change-detector tests considered harmful.
+- Do not create regression tests for bug fixes without a genuine gap in behavior testing.
+- Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout.
+- Make the best decision that will elevate all three: the user experience (UX), developer experience (DX), and agent experience (AX) always, without breaking anything.
+- Before you add code for a race condition or security edge case that is unlikely or purely hypothetical, tell me exactly what would go wrong, how likely that is, and how much complexity the extra code adds, in words a 10-year-old could understand. Then wait for my OK. Don't quietly widen the scope to guard against problems that only exist in theory.
+
+1. validate outside data once at the entry point, then trust the types everywhere else.
+2. inline one-time logic and skip try/catch unless the failure is real and you can handle it.
+3. keep functions whole unless splitting makes them reused or easier to read.
+```
+
+### Context: roles are blending
+
+So many workplaces are changing how PMs, designers and engineers are working, and it is pretty often we see diagrams demonstrating that the shapes of functions are becoming amorphous or intertwining with other functions.
+
+As Claude's [SDLC playbook](https://claude.com/resources/articles/the-ai-native-sdlc-playbook) mentions, the build step is now almost free, now anyone can code.
+
+![SDLC before and after agents: the build stage shrinks to almost nothing](/blog/my-ai-workflow-v3/sdlc-diagram.webp)
+
+_Build is no longer the constraint, the human-speed steps around it are_
+
+In Meaghan Choi's presentation, you can see how much company workflows have changed.
+
+<YouTube id="na1OyJ3E7Kc" posterQuality="max" />
+
+![Meaghan Choi's slide: PM, design, and engineering each own separate stages from Discover to Ship](/blog/my-ai-workflow-v3/meaghan-choi-1.webp)
+
+_Shifts in the design process._
+
+![Meaghan Choi's slide: PM, design, and engineering lines intertwine across Build and Ship](/blog/my-ai-workflow-v3/meaghan-choi-2.webp)
+
+This is also happening in my current work. Before, our workflow was generally the same as the first slide, and now we have shifted to be more systematic, less process-driven, and more focused on customer and business value.
+
+FigJam has become our primary tool for everything because it is completely flexible and collaborative. We decide all the discovery steps: benchmarking, flow diagramming, roadmap, and versioning in the FigJam board. We don't write any full-detail product spec in Notion.
+
+To build a ubiquitous language for the new features or modules we develop, we use [`/domain-modeling`](https://www.aihero.dev/skills-domain-modeling), which helps determine the boundaries of the implementation. After this, we feel more confident implementing the spec/plan and helping the AI work on it.
+
+### Coding workflow
+
+For coding, the main changes were using skills and Grokbot.
+
+#### Skills
+
+For any repetitive step, I'm creating skills with [`/skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) from Anthropic skills. It already handles converting agent steps into Python scripts and adding evals to improve execution quality.
+
+Consider evals as unit tests for code. Evals are a fundamental part of skills, so you can track how much they have improved. If you want to learn more about evals, I really recommend these two resources:
+
+- [Why are evals important?](https://www.braintrust.dev/foundations/why-are-evals-important) (Braintrust)
+- [Building eval systems that improve](https://www.lennysnewsletter.com/p/building-eval-systems-that-improve) (Lenny's Newsletter)
+
+So, my current workflow is:
+
+1. **Plan**: [`/grill-with-docs`](https://www.aihero.dev/skills-grill-with-docs).
+2. **Development**: I created my own skill for each repository to implement, considering:
+   - Read the standards/patterns from `CLAUDE.md`;
+   - Verify the implementation locally or in the cloud;
+   - Add screenshots or video for real verification with [`before-and-after`](https://github.com/vercel-labs/before-and-after).
+3. **Review**: I also created specific skills for each repository or language (for example: `/code-review-preact`, `/code-review-emberjs`, etc.):
+   - I get all best practices from [skills.sh](https://www.skills.sh/) for each language or framework;
+   - Also includes [`/code-review-and-quality`](https://skills.addy.ie/skills/code-review-and-quality/) from Addy Osmani;
+   - Runs [`/ponytail-review`](https://github.com/DietrichGebert/ponytail/blob/main/skills/ponytail-review/SKILL.md) to find ways to simplify the code;
+   - In the end, we have a self-improvement section: "if you find any gap that we can improve to speed the execution of verification, review or reduce token consumption, please improve the skills";
+   - Run [`/merge-risk`](https://www.warp.dev/merge-risk);
+   - Run [`/security-review`](https://github.com/getsentry/skills/tree/main/skills/security-review).
+
+Verification is crucial to maintain quality and also increase how much you trust your agent workflow, because tests alone aren't enough. If you aren't familiar with this concept, check out Poteto's articles [here](https://x.com/poteto/article/2097732320606507506) and [here](https://x.com/poteto/status/2111926622278521253).
+
+#### A review queue mod
+
+I'm pretty satisfied with the quality level I've reached. Besides that, I created a [Claude mod](https://claude.dev/blog/getting-started-with-claude-code-mods/) where I can easily see which PRs my teammates are asking me to review, and I can review them with a click. This mod already identifies, based on the repository or file extensions, what the best code review skills are and calls them in a separate session.
+
+![Claude Code mod showing a queue of pull requests to review](/blog/my-ai-workflow-v3/claude-mod.webp)
+
+If you want to recreate this Claude mod, you can copy and paste this prompt in your Claude session:
+
+<details>
+<summary>Review queue mod prompt</summary>
+
+```markdown
+/plugin-authoring Make a mod called "review-queue": a pane listing open GitHub PRs that request my review, with a launcher that starts a review skill on a PR.
+
+Config (userConfig options, with these defaults)
+
+- projectsRoot: "~/code". Local clones live at <projectsRoot>/<repo-name>.
+- defaultSkill: "code-review". Always offered last, labelled "general review".
+- rules: a list of { skill, why, repo?, files?, dependency?, dependencyUpdate? }. A rule suggests its skill when all its set fields match:
+  - repo: the repo name ends with this string
+  - files: a regex that matches at least one changed file
+  - dependency: the clone's package.json contains this package name
+  - dependencyUpdate: true when the PR is a dependency update (author is renovate or dependabot, title starts with "Update dependency" or "Bump", or package.json or a lockfile changed)
+    Default rules: .tsx/.jsx changed and package.json has "react" → a React review skill; .vue changed → a Vue review skill. Leave the list easy to edit.
+- reviewPrompt: text appended after "/<skill> <url> ". Default: "After the review, post every blocking finding and nit as inline comments on their diff lines in one GitHub review with event COMMENT."
+- Each rule can have its own prompt that replaces reviewPrompt for that skill.
+
+Data
+
+- Source: `gh search prs --review-requested=@me --state=open --draft=false --sort=updated --limit=50 --json=url,number,title,repository,author,updatedAt`.
+- Strip a trailing "[bot]" from author logins.
+- Refresh on session start, every 5 minutes, when the pane opens, and from a "↻ refresh" button.
+- If gh fails, keep the last good list and show the error in red above it.
+
+Entry points
+
+- Slash command /reviews: opens the pane, refreshes, replies "N PR(s) waiting for your review."
+- Footer button next to the engine's mode labels (keep them). Shows "reviews · N" in cyan when N > 0 and a dimmed "reviews" when N = 0. Clicking it toggles the pane.
+- Pane id "review-queue", title "PRs to review", transparent background.
+
+Pane layout
+
+- Header: "N to review" (or "Review queue"), then the refresh button.
+- PRs grouped by repo (bold cyan short repo name), keeping gh's updated order.
+- One row per PR, fixed columns: "#num title… author · age". Truncate the title with "…" so a row never wraps. Age is shown as m/h/d.
+- Only show as many rows as fit the viewport. Under them, add "+N more".
+- States: "Loading…" before the first check. "Nothing waiting for you." when the list is empty. When there are PRs, a hint: "Click a PR (or Tab + Enter) to pick a review skill."
+
+Expanding a PR (click toggles; opening one collapses the others; cache results per URL so a second open doesn't refetch)
+
+- Show "Finding review skills…" while it loads, then a button per suggested skill: "▸ /skill why".
+- Get changed files from `gh pr view <url> --json files` and read package.json from the clone if one exists, then apply the rules.
+- If gh pr view fails, show the error and still offer defaultSkill.
+- Also show "↗ open in browser" (use the platform's opener: `open` on macOS, `xdg-open` on Linux), then the last launch status and command.
+
+Launching a skill
+
+- Run claude with the prompt in the PR's clone, or in projectsRoot if there's no clone.
+- Prompts must not contain quotes or `$`, because they are shown inside a double-quoted shell command.
+- Show the command to run, `cd <dir> && claude "<prompt>"`, with a "copy" button. Don't try to open a terminal.
+
+Tests (the mod test harness, stubbing gh and fs), named "when X, it does Y":
+grouping and expand/browser; no wrap in a narrow pane; gh failure keeps the last list; footer count, mode labels and toggle; each rule field matching and not matching; second press collapses without refetch; expanding another PR collapses the first; uncloned repo uses projectsRoot; a rule's own prompt overrides reviewPrompt; gh pr view failure still offers defaultSkill.
+```
+
+</details>
+
+#### Status line
+
+Another small thing that helps me track how much context I've consumed in my session is the status line. You can customize it too.
+
+![Claude Code status line with model, context bar, cost, and rate limits](/blog/my-ai-workflow-v3/statusline.webp)
+
+The dumb zone concept is when the context reaches a level where it starts to lose attention, which is called [attention degradation](https://arxiv.org/abs/2607.20524), and it's losing quality. The attention mechanism is the system for understanding relationships between tokens, gets worse as it has more to handle.
+
+![Smart zone and dumb zone of a context window](/blog/my-ai-workflow-v3/smart-dumb-zone.webp)
+
+_Smart Zone / Dumb Zone concept from the [AI Hero](https://www.aihero.dev/) AI coding crash course._
+
+As I'm looking to optimize for quality, this indicator helps me to see when I need to `/compact` the session to add a new input.
+
+To build the same status line, copy and paste the prompt below.
+
+<details>
+<summary>Status line prompt</summary>
+
+```markdown
+Make a Claude Code status line: a bash script at ~/.claude/hooks/statusline.sh, set in
+settings.json as {"type":"command","command":"bash \"~/.claude/hooks/statusline.sh\""}.
+Read the stdin JSON once with a single jq call that outputs tab-separated fields.
+Separate segments with a dim "│".
+
+Line 1:
+
+- Model display_name in bold blue.
+- effort.level in magenta, only when present.
+- Context bar: 10 cells of █/░ plus a percentage, from context_window.used_percentage.
+  Color: green under 50%, yellow under 80%, red at 80% and above. After the bar, show
+  dim "used/size" in k units. Used = input_tokens + cache_creation_input_tokens +
+  cache_read_input_tokens from context_window.current_usage. Size = context_window_size,
+  default 200000.
+- Session cost as $X.XX, from cost.total_cost_usd.
+- Dim "⏱ duration" from cost.total_duration_ms, shown as Nm, or XhYm at 60 minutes and up.
+- Green +lines_added and red -lines_removed.
+
+Line 2:
+
+- Current dir in cyan, with $HOME shown as ~. When the path has more than 2 slashes,
+  shorten it to "…/parent/dir".
+- Git branch in yellow with a ⎇ prefix, only inside a repo.
+- Rate limits, only when present: "5h" and "7d" labels, each with a 6-cell bar in the
+  same colors and a dim "↻ reset time". Reset times come from resets_at epochs:
+  5h as "3:45pm", 7d as "Mon 3pm" (lowercase am/pm, macOS `date -r`).
+```
+
+</details>
+
+#### Skills as institutional knowledge
+
+The solution we found as a team is to share our skills in experimental and official repos, separated by team, in specific GitHub repositories. That way, any team member can create their own skills and share them in our experimental repository; if the team decides it's a good standard, we move it into our official repository. Simple, and it's working pretty well.
+
+### Grokbot
+
+You might ask yourself, "Why not automate the code review?" Yeah, I did it using Grokbot; actually, I could automate many workflows. The beautiful thing about it is the architecture: imagine a bot running on your own server with durable workflows with saved state.
+
+So you can have a fully autonomous bot that can run 24h, with routines, integrated with your computer and the bot server; you can clone your full stack into it with your skills and ask the bot to work on anything.
+
+![Grokbot architecture: three parts of the system](/blog/my-ai-workflow-v3/grokbot-architecture.webp)
+
+_The Grokbot architecture presented by Lee Robinson. [Check it out](https://www.youtube.com/watch?v=L1OBRtfPS34)_
+
+I'll list some bots that I've created so far.
+
+First of all, I installed the [Dr. Eggbot](https://x.ai/bot/marketplace/bots/dr-eggbot-v2), also created by [Poteto](https://x.com/poteto), which is responsible for creating high-quality bots; after this, I asked it to create:
+
+- **Review queue**: a bot that runs every 30 min, only during work hours, on PRs tagged for my team. It chooses the best skills to review them and posts inline comments only for critical/high/nit suggestions.
+- **Feedback planner**: a bot that reads our customers' feedback and tries to find quick wins; if so, it writes a plan so we can evaluate it later as a team and turn it into a project plan.
+- **Escalation fixer**: a bot that evaluates escalations by reading our repository and verifying the issue; if it is confirmed and not planned by design, it creates a fix for it.
+- **Shopify updates**: reads the Shopify updates RSS to try to find any new feature that will impact our features; if so, it creates a plan explaining why it matters.
+- **Dr egg bot**: one routine that is quite important is to check weekly for any repetitive code smell and turn it into lint rules to prevent it in deterministic mode.
+- **[Routinizer](https://x.ai/bot/QIxjmlkTZr7SJbS599gWe)**: checks all my bots every day to find repetitive steps that can be turned into Python scripts to reduce token consumption.
+
+![Grok Bot app listing my bots, with the Routinizer chat open](/blog/my-ai-workflow-v3/routinizer.webp)
+
+I hope these ideas inspire you to find processes you can automate.
+
+Overall, keep your skills simple and your bots specialized; you will see how useful it is.
+
+### Culture
+
+We're witnessing a big shift in our industry, where developers will interact more and more with sales, customer support, marketing and research to have a better picture of the business context and define the next steps to work; because of that, we have to think of strategies to keep our attention more deeply immersed in the product and UX, and reduce distractions from other aspects where AI workflows can help us.
+
+Besides, critical thinking is still one of the most relevant skills that we need at this time. I really recommend reading this article by Addy Osmani: [Critical thinking when agents do the work](https://x.com/addyosmani/status/2117512471930167377).
+
+To finish, focus on this:
+
+<Tweet id="https://x.com/poteto/status/2118613050462728659" />
+
+### References
+
+- [The AI-native SDLC playbook](https://claude.com/resources/articles/the-ai-native-sdlc-playbook) (Anthropic)
+- [After Waterfall, Agile, and DevOps: Anthropic's AI-native SDLC playbook](https://vateo.medium.com/after-waterfall-agile-and-devops-anthropics-ai-native-sdlc-playbook-0131a3a9156e)
+- [Formal verification](https://www.anthropic.com/research/formal-verification) (Anthropic)
+- [arXiv 2606.05608](https://arxiv.org/html/2606.05608v1)
+- [Getting started with Claude Code mods](https://claude.dev/blog/getting-started-with-claude-code-mods/)
+- [Grokbot architecture, Lee Robinson](https://www.youtube.com/watch?v=L1OBRtfPS34&t=2092s)
+- Addy Osmani on X: [1](https://x.com/addyosmani/status/2115688494865465370), [2](https://x.com/addyosmani/status/2117512471930167377)
+- Ben Holmes on X: [1](https://x.com/BHolmesDev/status/2117285613766414542), [2](https://x.com/BHolmesDev/status/2116224247056273893)
+- [Cory House on X](https://x.com/housecor/status/2115482034906800200)
+- [Poteto on X](https://x.com/poteto/status/2118613050462728659)
