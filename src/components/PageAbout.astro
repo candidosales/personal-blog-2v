@@ -101,7 +101,7 @@ const t = useTranslations(lang);
                 alt="Banff National Park, Canada"
                 width={400}
                 height={400}
-                src="/me-500.png"
+                src="/me-banff-500.webp"
                 loading={"eager"}
               />
               <figcaption
@@ -301,7 +301,13 @@ const t = useTranslations(lang);
   @keyframes reveal {
     from { opacity: 0; translate: 0 1rem; }
   }
-  @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+  @font-face {
+    font-family: "Caveat";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../assets/fonts/caveat-600-latin.woff2?no-inline") format("woff2");
+  }
 
   .polaroid-caption {
     font-family: "Caveat", cursive;
