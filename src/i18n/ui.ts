@@ -160,6 +160,7 @@ export const ui = {
     "quote.spinoza":
       "I have striven not to laugh at human actions, not to weep at them, nor to hate them, but to understand them.",
     "quote.freud": "We must begin to love in order not to fall ill...",
+    "quote.ritaVonHunty": "The impossible is a matter of organization.",
     "about.title": "About",
     "about.piece1": `Hey, I'm Candido Sales, half Brazilian 🇧🇷 and half Canadian 🇨🇦.`,
     "about.piece2": "I started working as a software engineer in 2011, focusing on PHP.",
@@ -335,6 +336,7 @@ export const ui = {
     "quote.spinoza":
       "Tenho-me esforçado por não rir das ações humanas, por não deplorá-las nem odiá-las, mas por entendê-las.",
     "quote.freud": "Devemos começar a amar para não adoecer...",
+    "quote.ritaVonHunty": "O impossível é uma questão de organização.",
     "about.title": "Sobre",
     "about.piece1": `Olá, Eu sou Cândido Sales, metade brasileiro 🇧🇷 e metade canadense 🇨🇦!`,
     "about.piece2": "Comecei a trabalhar como engenheiro de software em 2011, com foco em PHP.",
