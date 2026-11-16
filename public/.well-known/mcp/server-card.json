@@ -1,0 +1,23 @@
+{
+  "serverInfo": { "name": "candidosales", "title": "Candido Sales", "version": "1.0.0" },
+  "description": "Public, read-only MCP server with Candido Sales' profile, projects and blog posts.",
+  "transport": { "type": "streamable-http", "endpoint": "https://www.candidosales.me/mcp" },
+  "capabilities": { "tools": { "listChanged": false } },
+  "authentication": { "required": false },
+  "tools": [
+    {
+      "name": "get_profile",
+      "description": "Candido Sales: bio, experience, skills, contact links."
+    },
+    {
+      "name": "list_projects",
+      "description": "All of Candido's projects with slug, summary, URL and stack."
+    },
+    {
+      "name": "get_project",
+      "description": "One project in depth: what it is, stack, design decisions, MCP tools."
+    },
+    { "name": "list_posts", "description": "Candido's blog posts and articles, newest first." },
+    { "name": "get_post", "description": "Full markdown of one blog post." }
+  ]
+}
