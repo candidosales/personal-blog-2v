@@ -2,7 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 import Header from "@components/Header.svelte";
-import ArrowRight from "@components/icons/ArrowRight.svelte";
 import Contact from "@components/Contact.svelte";
 import Linkedin from "@components/icons/Linkedin.svelte";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
@@ -17,6 +16,7 @@ const experience = [
     period: "Sep 2025 - Current",
     title: "Senior Software Engineer",
     country: "🇨🇦",
+    place: "kit",
   },
   {
     company: {
@@ -27,6 +27,7 @@ const experience = [
     period: "Nov 2024 - Jul 2025",
     title: "Intermediate Software Engineer",
     country: "🇨🇦",
+    place: "tor",
   },
   {
     company: {
@@ -37,6 +38,7 @@ const experience = [
     period: "Feb 2022 - Oct 2024",
     title: "Senior Software Engineer",
     country: "🇨🇦",
+    place: "tor",
   },
   {
     company: {
@@ -47,6 +49,7 @@ const experience = [
     period: "Sep 2019 - Feb 2022",
     title: "Senior Software Engineer",
     country: "🇨🇦",
+    place: "ssk",
   },
   {
     company: {
@@ -57,6 +60,7 @@ const experience = [
     period: "Dec 2017 - Sep 2019",
     title: "Tech Lead / Senior Software Engineer",
     country: "🇧🇷",
+    place: "sp",
   },
   {
     company: {
@@ -67,8 +71,16 @@ const experience = [
     period: "Aug 2016 - Nov 2017",
     title: "Co-founder, Android Developer and Frontend Developer",
     country: "🇧🇷",
+    place: "sp",
   },
 ];
+
+const places = {
+  kit: { city: "Kitchener", loc: [43.45, -80.49] },
+  tor: { city: "Toronto", loc: [43.65, -79.38] },
+  ssk: { city: "Saskatoon", loc: [52.13, -106.67] },
+  sp: { city: "São Paulo", loc: [-23.55, -46.63] },
+};
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -192,17 +204,43 @@ const t = useTranslations(lang);
     >
       {t("about.title2")}
     </h2>
+    <div
+      class="grid gap-8 md:grid-cols-[1fr_1.25fr] md:items-start mbs-10"
+      data-globe
+      data-places={JSON.stringify(places)}
+    >
+    <div class="globe-stage relative hidden md:block aspect-square w-full md:order-last md:sticky md:inset-bs-24">
+      <canvas class="size-full cursor-grab active:cursor-grabbing touch-pan-y"></canvas>
+      {
+        Object.entries(places).map(([id, p]) => (
+          <span
+            class="globe-pill"
+            data-pin={id}
+            style={`position-anchor:--cobe-${id};opacity:var(--cobe-visible-${id},0)`}
+          >
+            {p.city}
+          </span>
+        ))
+      }
+    </div>
     <ol
-      class="timeline relative mbs-10"
+      class="timeline relative"
     >
       {
         experience.map((e, i) => (
-          <li class="relative z-1 flex gap-6 py-5">
-            <img
-              src={e.company.image}
-              alt=""
-              class={`size-12 flex-none rounded-full object-cover border-3 border-white ${i === 0 ? "ring-2 ring-blue-600" : "ring-1 ring-blue-200"}`}
-            />
+          <li class="job relative z-1 flex gap-6 py-5 cursor-pointer" data-place={e.place}>
+            <button
+              type="button"
+              aria-label={`${e.company.name}, ${places[e.place as keyof typeof places].city}`}
+              aria-pressed={i === 0 ? "true" : "false"}
+              class="flex-none self-start rounded-full cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+            >
+              <img
+                src={e.company.image}
+                alt=""
+                class="size-12 rounded-full object-cover bg-white border-3 border-white"
+              />
+            </button>
             <div class="flex flex-col gap-1 pbs-0.5">
               <p class="text-lg">
                 {e.company.url ? (
@@ -224,17 +262,17 @@ const t = useTranslations(lang);
           </li>
         ))
       }
+      <li class="relative z-1 py-5">
+        <a
+          href="https://www.linkedin.com/in/candidosales/"
+          target="_blank"
+          class="flex items-center gap-6 text-lg font-medium text-blue-700 hover:text-blue-900"
+        >
+          <span class="size-12 flex-none grid place-items-center rounded-full bg-blue-700 text-white"><Linkedin class="size-4" /></span>
+          <span class="underline underline-offset-4 after:content-['_↗']">{t("about.seeMoreLinkedin")}</span>
+        </a>
+      </li>
     </ol>
-    <div class="flex justify-center mbs-10 mbe-16 slide-fade-in">
-      <a
-        class="max:w-1/4 bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 font-inclusive"
-        href="https://www.linkedin.com/in/candidosales/"
-        title="See more about my experiences in my Linkedin"
-        target="_blank"
-        ><Linkedin class="h-4 w-4 me-2" />{t("about.seeMoreLinkedin")}
-
-        <ArrowRight class="overflow-visible ms-3 text-white" />
-      </a>
     </div>
     <div class="my-16 mx-auto max-w-6xl slide-fade-in">
       <div class="p-6">
@@ -285,18 +323,76 @@ const t = useTranslations(lang);
     @media (prefers-reduced-motion: no-preference) {
       .timeline::after {
         animation: grow linear both;
-        animation-timeline: view(block 0% 30%);
         animation-range: entry-crossing 0% entry-crossing 100%;
       }
-      .timeline li {
+      /* Text fades in; the logo stays opaque so the line never shows through it. */
+      .timeline li > div {
         animation: reveal linear both;
-        animation-timeline: view(block 0% 30%);
         animation-range: entry 0% entry 100%;
+      }
+      .timeline li > button {
+        animation: fill linear both;
+        animation-range: entry 0% entry 100%;
+      }
+      /* Separate block: lightningcss otherwise folds the timeline into the
+         animation shorthand, which Chrome rejects, dropping the animation. */
+      @media (min-width: 0) {
+        .timeline::after,
+        .timeline li > div,
+        .timeline li > button {
+          animation-timeline: view(block 0% 30%);
+        }
       }
     }
   }
+
+  /* Ring fills from the top down both sides, meeting the line at the bottom. */
+  @property --fill {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+  }
+  .timeline li > button { position: relative; }
+  .timeline li > button::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--color-blue-500) calc(var(--fill) * 180deg),
+      var(--color-blue-100) 0 calc(360deg - var(--fill) * 180deg),
+      var(--color-blue-500) 0
+    );
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+  .timeline li > button[aria-pressed="true"] { box-shadow: 0 0 0 6px rgb(59 130 246 / .2); }
+
+  /* Anchored to cobe's marker divs via CSS anchor positioning. */
+  .globe-pill {
+    position: absolute;
+    left: anchor(center);
+    bottom: anchor(top);
+    translate: -50% 0;
+    margin-bottom: 14px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--color-blue-700);
+    color: white;
+    font-size: .875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgb(29 78 216 / .3);
+    scale: .6;
+    transition: opacity .3s, scale .3s;
+  }
+  .globe-pill:not([data-on]) { visibility: hidden; }
+  .globe-pill[data-on] { scale: 1; }
   @keyframes grow {
     from { scale: 1 0; }
+  }
+  @keyframes fill {
+    from { --fill: 0; }
   }
   @keyframes reveal {
     from { opacity: 0; translate: 0 1rem; }
@@ -336,6 +432,121 @@ const t = useTranslations(lang);
 
 <script>
   import { animate } from "motion";
+  import createGlobe from "cobe";
+
+  type LatLon = [number, number];
+  // cobe's "focus on location" conversion.
+  const angles = ([lat, lon]: LatLon) => [
+    Math.PI - ((lon * Math.PI) / 180 - Math.PI / 2),
+    (lat * Math.PI) / 180,
+  ];
+  const journey = ["sp", "ssk", "tor", "kit"];
+  const blue: [number, number, number] = [0.15, 0.35, 0.9];
+
+  let destroyGlobe = () => {};
+
+  function initGlobe() {
+    const root = document.querySelector<HTMLElement>("[data-globe]");
+    if (!root) return;
+    const places: Record<string, { loc: LatLon }> = JSON.parse(root.dataset.places!);
+    const canvas = root.querySelector("canvas")!;
+    if (!canvas.offsetWidth) return; // globe hidden on phones
+    const size = canvas.offsetWidth * 2;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const markers = (active: string) =>
+      Object.entries(places).map(([id, p]) => ({
+        location: p.loc,
+        size: id === active ? 0.08 : 0.035,
+        id,
+      }));
+
+    // Start rotated away so the first selection spins in.
+    let [phi, theta] = angles(places.kit.loc);
+    phi -= 1.4;
+    let target = { phi, theta };
+
+    const globe = createGlobe(canvas, {
+      width: size,
+      height: size,
+      devicePixelRatio: 2,
+      phi,
+      theta,
+      dark: 0,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: [1, 1, 1],
+      markerColor: blue,
+      glowColor: [0.9, 0.93, 1],
+      markerElevation: 0.01,
+      markers: markers("kit"),
+      arcs: journey.slice(1).map((id, i) => ({ from: places[journey[i]].loc, to: places[id].loc })),
+      arcColor: blue,
+      arcWidth: 0.6,
+      arcHeight: 0.3,
+    });
+
+    let raf = 0;
+    const tick = () => {
+      const dPhi = ((((target.phi - phi + Math.PI) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2)) - Math.PI;
+      phi += dPhi * 0.07;
+      theta += (target.theta - theta) * 0.07;
+      globe.update({ phi, theta });
+      raf = Math.abs(dPhi) + Math.abs(target.theta - theta) > 1e-4 ? requestAnimationFrame(tick) : 0;
+    };
+    const run = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+    const select = (job: HTMLElement) => {
+      const place = job.dataset.place!;
+      const [p, t] = angles(places[place].loc);
+      target = { phi: p, theta: t };
+      if (reduce) ({ phi, theta } = target);
+      globe.update({ markers: markers(place) });
+      for (const pin of root.querySelectorAll<HTMLElement>("[data-pin]")) pin.toggleAttribute("data-on", pin.dataset.pin === place);
+      for (const j of root.querySelectorAll<HTMLElement>(".job")) j.querySelector("button")!.setAttribute("aria-pressed", String(j === job));
+      run();
+    };
+
+    root.addEventListener("click", (e) => {
+      const el = e.target as HTMLElement;
+      if (el.closest("a")) return;
+      const job = el.closest<HTMLElement>(".job");
+      if (job) select(job);
+    });
+
+    // Drag spins the globe; the next job click recenters it.
+    let last: PointerEvent | null = null;
+    canvas.addEventListener("pointerdown", (e) => {
+      last = e;
+      canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!last) return;
+      const k = 3 / canvas.offsetWidth;
+      target.phi += (e.clientX - last.clientX) * k;
+      target.theta = Math.max(-1.2, Math.min(1.2, target.theta + (e.clientY - last.clientY) * k));
+      ({ phi, theta } = target);
+      last = e;
+      run();
+    });
+    const release = () => (last = null);
+    canvas.addEventListener("pointerup", release);
+    canvas.addEventListener("pointercancel", release);
+
+    select(root.querySelector<HTMLElement>(".job")!);
+    destroyGlobe = () => {
+      cancelAnimationFrame(raf);
+      globe.destroy();
+    };
+  }
+
+  document.addEventListener("astro:page-load", initGlobe);
+
+  document.addEventListener("astro:before-swap", () => {
+    destroyGlobe();
+    destroyGlobe = () => {};
+  });
 
   // Circular arc keyframes. Animating individual transform components (instead
   // of a raw transform string) lets Motion interpolate cleanly. rotateY adds a
