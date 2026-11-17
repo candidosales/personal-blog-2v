@@ -323,19 +323,25 @@ const t = useTranslations(lang);
     @media (prefers-reduced-motion: no-preference) {
       .timeline::after {
         animation: grow linear both;
-        animation-timeline: view(block 0% 30%);
         animation-range: entry-crossing 0% entry-crossing 100%;
       }
       /* Text fades in; the logo stays opaque so the line never shows through it. */
       .timeline li > div {
         animation: reveal linear both;
-        animation-timeline: view(block 0% 30%);
         animation-range: entry 0% entry 100%;
       }
       .timeline li > button {
         animation: fill linear both;
-        animation-timeline: view(block 0% 30%);
         animation-range: entry 0% entry 100%;
+      }
+      /* Separate block: lightningcss otherwise folds the timeline into the
+         animation shorthand, which Chrome rejects, dropping the animation. */
+      @media (min-width: 0) {
+        .timeline::after,
+        .timeline li > div,
+        .timeline li > button {
+          animation-timeline: view(block 0% 30%);
+        }
       }
     }
   }
