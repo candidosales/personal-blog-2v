@@ -80,6 +80,7 @@ const places = {
   tor: { city: "Toronto", loc: [43.65, -79.38] },
   ssk: { city: "Saskatoon", loc: [52.13, -106.67] },
   sp: { city: "São Paulo", loc: [-23.55, -46.63] },
+  the: { city: "Teresina", loc: [-5.09, -42.8] },
 };
 
 const lang = getLangFromUrl(Astro.url);
@@ -262,7 +263,7 @@ const t = useTranslations(lang);
           </li>
         ))
       }
-      <li class="relative z-1 py-5">
+      <li class="job relative z-1 py-5" data-place="the">
         <a
           href="https://www.linkedin.com/in/candidosales/"
           target="_blank"
@@ -427,6 +428,23 @@ const t = useTranslations(lang);
   .polaroid[data-role="back"] {
     transform: translateX(-40px) translateY(18px) rotate(-6deg) scale(0.9);
   }
+
+  /* Entrance: cards fade up, back then front. Individual translate composes
+     with the resting transform and with Motion's swap animation. */
+  @media (prefers-reduced-motion: no-preference) {
+    .polaroid {
+      animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .polaroid[data-role="front"] {
+      animation-delay: 0.12s;
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 12px;
+    }
+  }
 </style>
 
 
@@ -440,7 +458,7 @@ const t = useTranslations(lang);
     Math.PI - ((lon * Math.PI) / 180 - Math.PI / 2),
     (lat * Math.PI) / 180,
   ];
-  const journey = ["sp", "ssk", "tor", "kit"];
+  const journey = ["the", "sp", "ssk", "tor", "kit"];
   const blue: [number, number, number] = [0.15, 0.35, 0.9];
 
   let destroyGlobe = () => {};
@@ -497,14 +515,17 @@ const t = useTranslations(lang);
     };
     const run = () => { if (!raf) raf = requestAnimationFrame(tick); };
 
+    const jobs = [...root.querySelectorAll<HTMLElement>(".job")];
+    let active: HTMLElement | undefined;
     const select = (job: HTMLElement) => {
+      active = job;
       const place = job.dataset.place!;
       const [p, t] = angles(places[place].loc);
       target = { phi: p, theta: t };
       if (reduce) ({ phi, theta } = target);
       globe.update({ markers: markers(place) });
       for (const pin of root.querySelectorAll<HTMLElement>("[data-pin]")) pin.toggleAttribute("data-on", pin.dataset.pin === place);
-      for (const j of root.querySelectorAll<HTMLElement>(".job")) j.querySelector("button")!.setAttribute("aria-pressed", String(j === job));
+      for (const j of jobs) j.querySelector("button")?.setAttribute("aria-pressed", String(j === job));
       run();
     };
 
@@ -515,10 +536,38 @@ const t = useTranslations(lang);
       if (job) select(job);
     });
 
-    // Drag spins the globe; the next job click recenters it.
+    // Scrolling selects the last job the timeline line has reached (70% down, same as its CSS view() inset).
+    const reach = () => innerHeight * 0.7;
+    const ac = new AbortController();
+    const spy = () => {
+      const job = jobs.findLast((j) => j.getBoundingClientRect().top < reach()) ?? jobs[0];
+      if (job !== active) select(job);
+    };
+    addEventListener("scroll", spy, { passive: true, signal: ac.signal });
+
+    // Clicking a city scrolls to its job; clicking again cycles through jobs there.
+    // Nearby cities (Kitchener/Toronto) share one hit area.
+    const pickCity = (x: number, y: number) => {
+      const visible = getComputedStyle(canvas);
+      const pins = [...canvas.parentElement!.querySelectorAll<HTMLElement>(":scope > div")].flatMap((m) => {
+        const id = m.style.cssText.match(/--cobe-([\w-]+)/)?.[1];
+        const r = m.getBoundingClientRect();
+        return id && visible.getPropertyValue(`--cobe-visible-${id}`) ? [{ id, x: r.x, y: r.y }] : [];
+      });
+      const near = pins.toSorted((a, b) => Math.hypot(a.x - x, a.y - y) - Math.hypot(b.x - x, b.y - y))[0];
+      if (!near || Math.hypot(near.x - x, near.y - y) > 32) return;
+      const hit = new Set(pins.filter((p) => Math.hypot(p.x - near.x, p.y - near.y) < 8).map((p) => p.id));
+      const here = jobs.filter((j) => hit.has(j.dataset.place!));
+      const job = here[(here.indexOf(active!) + 1) % here.length];
+      select(job);
+      scrollBy({ top: job.getBoundingClientRect().top - reach() + job.offsetHeight - 8, behavior: reduce ? "auto" : "smooth" });
+    };
+
+    // Drag spins the globe; a press without movement is a click.
+    let start: PointerEvent | null = null;
     let last: PointerEvent | null = null;
     canvas.addEventListener("pointerdown", (e) => {
-      last = e;
+      start = last = e;
       canvas.setPointerCapture(e.pointerId);
     });
     canvas.addEventListener("pointermove", (e) => {
@@ -530,13 +579,16 @@ const t = useTranslations(lang);
       last = e;
       run();
     });
-    const release = () => (last = null);
-    canvas.addEventListener("pointerup", release);
-    canvas.addEventListener("pointercancel", release);
+    canvas.addEventListener("pointerup", (e) => {
+      if (start && Math.hypot(e.clientX - start.clientX, e.clientY - start.clientY) < 5) pickCity(e.clientX, e.clientY);
+      start = last = null;
+    });
+    canvas.addEventListener("pointercancel", () => (start = last = null));
 
-    select(root.querySelector<HTMLElement>(".job")!);
+    spy();
     destroyGlobe = () => {
       cancelAnimationFrame(raf);
+      ac.abort();
       globe.destroy();
     };
   }
