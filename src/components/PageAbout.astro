@@ -212,6 +212,10 @@ const t = useTranslations(lang);
     >
     <div class="globe-stage relative hidden md:block aspect-square w-full md:order-last md:sticky md:inset-bs-24">
       <canvas class="size-full cursor-grab active:cursor-grabbing touch-pan-y"></canvas>
+      <svg class="pointer-events-none absolute inset-0 size-full overflow-visible fill-none stroke-blue-600 [stroke-linecap:round]">
+        <path data-track stroke-width="1.5" stroke-dasharray="2 5" opacity=".4" />
+        <path data-fill stroke-width="2" />
+      </svg>
       {
         Object.entries(places).map(([id, p]) => (
           <span
@@ -499,19 +503,59 @@ const t = useTranslations(lang);
       glowColor: [0.9, 0.93, 1],
       markerElevation: 0.01,
       markers: markers("kit"),
-      arcs: journey.slice(1).map((id, i) => ({ from: places[journey[i]].loc, to: places[id].loc })),
-      arcColor: blue,
-      arcWidth: 0.6,
-      arcHeight: 0.3,
     });
+
+    // Arcs are drawn in SVG (cobe can't dash or partially fill them), using cobe's own
+    // math: a quadratic Bézier lifted above the globe, projected orthographically.
+    const R = 0.81; // cobe globe radius 0.8 + markerElevation
+    const vec = ([lat, lon]: LatLon) => {
+      const a = (lat * Math.PI) / 180, o = (lon * Math.PI) / 180 - Math.PI;
+      return [-Math.cos(a) * Math.cos(o), Math.sin(a), Math.cos(a) * Math.sin(o)];
+    };
+    const legs = journey.slice(1).map((id, i) => {
+      const a = vec(places[journey[i]].loc), b = vec(places[id].loc);
+      const m = a.map((v, k) => v + b[k]);
+      const lift = (R + 0.3) / Math.hypot(...m); // + cobe arcHeight
+      return [a.map((v) => v * R), m.map((v) => v * lift), b.map((v) => v * R)];
+    });
+    // u runs 0..legs.length along the journey; returns [x, y, visible] in canvas fractions.
+    const at = (u: number) => {
+      const l = Math.min(Math.floor(u), legs.length - 1), t = u - l;
+      const [a, c, b] = legs[l];
+      const [x, y, z] = a.map((v, k) => (1 - t) ** 2 * v + 2 * (1 - t) * t * c[k] + t * t * b[k]);
+      const cp = Math.cos(phi), sp = Math.sin(phi), ct = Math.cos(theta), st = Math.sin(theta);
+      const px = cp * x + sp * z, py = sp * st * x + ct * y - cp * st * z;
+      const front = -sp * ct * x + st * y + cp * ct * z >= 0 || px * px + py * py >= 0.64;
+      return [(px + 1) / 2, (1 - py) / 2, front] as const;
+    };
+    const [track, fillPath] = root.querySelectorAll<SVGPathElement>("svg path");
+    const line = (from: number, to: number) => {
+      const w = canvas.offsetWidth;
+      let d = "", pen = false;
+      const n = Math.ceil((to - from) * 50);
+      for (let i = 0; i <= n; i++) {
+        const [x, y, front] = at(from + ((to - from) * i) / n);
+        if (front) d += `${pen ? "L" : "M"}${(x * w).toFixed(1)} ${(y * w).toFixed(1)}`;
+        pen = front;
+      }
+      return d;
+    };
+    // Fill grows from Kitchener back along the journey as you scroll down the timeline.
+    let fill = 0, fillTarget = 0;
+    const draw = () => {
+      track.setAttribute("d", line(0, legs.length));
+      fillPath.setAttribute("d", fill > 1e-3 ? line(legs.length - fill, legs.length) : "");
+    };
 
     let raf = 0;
     const tick = () => {
       const dPhi = ((((target.phi - phi + Math.PI) % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2)) - Math.PI;
       phi += dPhi * 0.07;
       theta += (target.theta - theta) * 0.07;
+      fill += (fillTarget - fill) * 0.07;
       globe.update({ phi, theta });
-      raf = Math.abs(dPhi) + Math.abs(target.theta - theta) > 1e-4 ? requestAnimationFrame(tick) : 0;
+      draw();
+      raf = Math.abs(dPhi) + Math.abs(target.theta - theta) + Math.abs(fillTarget - fill) > 1e-4 ? requestAnimationFrame(tick) : 0;
     };
     const run = () => { if (!raf) raf = requestAnimationFrame(tick); };
 
@@ -522,7 +566,8 @@ const t = useTranslations(lang);
       const place = job.dataset.place!;
       const [p, t] = angles(places[place].loc);
       target = { phi: p, theta: t };
-      if (reduce) ({ phi, theta } = target);
+      fillTarget = legs.length - journey.indexOf(place);
+      if (reduce) ({ phi, theta, fill } = { ...target, fill: fillTarget });
       globe.update({ markers: markers(place) });
       for (const pin of root.querySelectorAll<HTMLElement>("[data-pin]")) pin.toggleAttribute("data-on", pin.dataset.pin === place);
       for (const j of jobs) j.querySelector("button")?.setAttribute("aria-pressed", String(j === job));
