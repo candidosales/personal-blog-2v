@@ -1,0 +1,312 @@
+---
+import ArrowRight from '@components/icons/ArrowRight.svelte';
+import IconAt from '@components/icons/IconAt.svelte';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<div class='contact-modal font-inclusive' data-error={t('services.contact.error')} data-sent={t('services.contact.sent')}>
+	<button
+		class='cursor-pointer bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700'
+		type='button'
+		aria-haspopup='dialog'
+		><IconAt class='h-4 w-4 me-2' />
+		{t('services.contactMe')}
+		<ArrowRight class='overflow-visible ms-3 text-white' />
+	</button>
+	<dialog aria-label={t('services.contactMe')}>
+		<button class='close' type='button' aria-label={t('services.contact.close')}>
+			<svg viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='1.75' stroke-linecap='round' aria-hidden='true'
+				><path d='M5 5l10 10M15 5L5 15'></path></svg
+			>
+		</button>
+		<div class='flex items-end gap-3 pe-8'>
+			<img src='/me-2.webp' alt='' class='size-9 rounded-full object-cover flex-none' />
+			<p class='bubble'>{t('services.contact.greeting')}</p>
+		</div>
+		<div class='thread' hidden>
+			<p class='bubble mine' data-mine></p>
+			<div class='flex items-end gap-3 pe-8'>
+				<img src='/me-2.webp' alt='' class='size-9 rounded-full object-cover flex-none' />
+				<p class='bubble' data-reply role='status'></p>
+			</div>
+		</div>
+		<form class='composer mbs-4'>
+			<textarea name='message' rows='4' maxlength='1000' placeholder={t('services.contact.message')} required></textarea>
+			<input name='email' type='email' maxlength='254' placeholder='you@email.com' autocomplete='email' required />
+			<footer>
+				<span data-count>0 / 1,000</span>
+				<button type='submit' disabled>
+					<span class='spinner' aria-hidden='true'></span>
+					<span data-idle>{t('services.contact.send')}</span>
+					<span data-busy>{t('services.contact.sending')}</span>
+				</button>
+			</footer>
+			<p class='status' role='status' hidden></p>
+		</form>
+	</dialog>
+</div>
+
+<script>
+	for (const root of document.querySelectorAll<HTMLElement>('.contact-modal')) {
+		const dialog = root.querySelector('dialog')!;
+		const form = dialog.querySelector('form')!;
+		const msg = form.elements.namedItem('message') as HTMLTextAreaElement;
+		const count = form.querySelector('[data-count]')!;
+		const send = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+		const status = form.querySelector<HTMLElement>('.status')!;
+		const thread = dialog.querySelector<HTMLElement>('.thread')!;
+		const mine = thread.querySelector<HTMLElement>('[data-mine]')!;
+		const reply = thread.querySelector<HTMLElement>('[data-reply]')!;
+
+		root.querySelector(':scope > button')!.addEventListener('click', () => {
+			dialog.showModal();
+			msg.focus();
+		});
+		dialog.querySelector('.close')!.addEventListener('click', () => dialog.close());
+		// Backdrop click: the dialog element itself is the target only outside its content box.
+		dialog.addEventListener('click', (e) => e.target === dialog && dialog.close());
+		dialog.addEventListener('close', () => {
+			if (form.dataset.state !== 'sent') return;
+			form.reset();
+			form.dataset.state = '';
+			form.hidden = false;
+			thread.hidden = true;
+			status.hidden = true;
+			count.textContent = '0 / 1,000';
+			send.disabled = true;
+		});
+
+		form.addEventListener('input', () => {
+			count.textContent = `${msg.value.length.toLocaleString('en')} / 1,000`;
+			send.disabled = !form.checkValidity();
+			status.hidden = true;
+		});
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+			const body = JSON.stringify(data);
+			form.dataset.state = 'sending';
+			form.setAttribute('aria-busy', 'true');
+			send.disabled = true;
+			const res = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body,
+			}).catch(() => null);
+			form.removeAttribute('aria-busy');
+			if (res?.ok) {
+				form.dataset.state = 'sent';
+				form.hidden = true;
+				mine.textContent = data.message;
+				reply.textContent = '';
+				reply.dataset.typing = '';
+				thread.hidden = false;
+				// Short "typing…" pause so the reply reads like a chat answer.
+				setTimeout(() => {
+					delete reply.dataset.typing;
+					reply.textContent = root.dataset.sent!.replace('{email}', data.email);
+				}, 900);
+			} else {
+				form.dataset.state = '';
+				send.disabled = false;
+				status.textContent = root.dataset.error!;
+				status.hidden = false;
+			}
+		});
+	}
+</script>
+
+<style>
+	dialog {
+		inline-size: min(32rem, calc(100vw - 2rem));
+		margin: auto;
+		padding: 1.5rem;
+		border-radius: 1.5rem;
+		background: white;
+		color: var(--color-slate-900);
+		box-shadow: 0 24px 64px -16px rgb(15 23 42 / 0.35);
+		opacity: 0;
+		translate: 0 0.75rem;
+		scale: 0.97;
+		transition:
+			opacity 200ms,
+			translate 250ms cubic-bezier(0.2, 0, 0, 1),
+			scale 250ms cubic-bezier(0.2, 0, 0, 1),
+			display 250ms allow-discrete,
+			overlay 250ms allow-discrete;
+		&[open] {
+			opacity: 1;
+			translate: 0;
+			scale: 1;
+			@starting-style {
+				opacity: 0;
+				translate: 0 0.75rem;
+				scale: 0.97;
+			}
+		}
+		&::backdrop {
+			background: rgb(15 23 42 / 0);
+			backdrop-filter: blur(0);
+			transition:
+				background 250ms,
+				backdrop-filter 250ms,
+				display 250ms allow-discrete,
+				overlay 250ms allow-discrete;
+		}
+		&[open]::backdrop {
+			background: rgb(15 23 42 / 0.4);
+			backdrop-filter: blur(4px);
+			@starting-style {
+				background: rgb(15 23 42 / 0);
+				backdrop-filter: blur(0);
+			}
+		}
+		@media (prefers-reduced-motion: reduce) {
+			translate: 0;
+			scale: 1;
+		}
+	}
+	.close {
+		position: absolute;
+		inset-block-start: 1rem;
+		inset-inline-end: 1rem;
+		display: grid;
+		place-items: center;
+		inline-size: 2rem;
+		block-size: 2rem;
+		border-radius: 999px;
+		color: var(--color-slate-400);
+		cursor: pointer;
+		transition: background-color 150ms, color 150ms;
+		&:hover {
+			background: var(--color-slate-100);
+			color: var(--color-slate-800);
+		}
+		svg {
+			inline-size: 1.125rem;
+		}
+	}
+	.thread {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-block-start: 0.75rem;
+		&[hidden] {
+			display: none;
+		}
+	}
+	.bubble.mine {
+		align-self: flex-end;
+		max-inline-size: 85%;
+		border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+		background: var(--color-blue-700);
+		color: white;
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+	.bubble[data-typing]::after {
+		content: '•••';
+		letter-spacing: 0.15em;
+		animation: typing 1s steps(2) infinite;
+	}
+	@keyframes typing {
+		50% {
+			opacity: 0.35;
+		}
+	}
+	.bubble {
+		padding: 0.625rem 0.875rem;
+		border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+		background: var(--color-slate-100);
+		color: var(--color-slate-800);
+		line-height: 1.45;
+	}
+	.composer {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--color-slate-200);
+		border-radius: 1rem;
+		&[hidden] {
+			display: none;
+		}
+		&:focus-within {
+			border-color: var(--color-blue-700);
+		}
+		textarea,
+		input {
+			padding: 0.875rem 1rem;
+			background: transparent;
+			outline: none;
+			resize: none;
+			color: var(--color-slate-900);
+		}
+		input {
+			border-block: 1px solid var(--color-slate-100);
+		}
+		footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.5rem 0.5rem 0.5rem 1rem;
+			font-size: 0.875rem;
+			color: var(--color-slate-400);
+			font-variant-numeric: tabular-nums;
+		}
+		footer button {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			border-radius: 999px;
+			padding: 0.5rem 1.25rem;
+			background: var(--color-blue-700);
+			color: white;
+			font-weight: 500;
+			cursor: pointer;
+			transition: opacity 150ms;
+			&:disabled {
+				opacity: 0.4;
+				cursor: not-allowed;
+			}
+		}
+		.spinner,
+		[data-busy] {
+			display: none;
+		}
+		&[data-state='sending'] {
+			footer button {
+				opacity: 1;
+				cursor: progress;
+			}
+			.spinner,
+			[data-busy] {
+				display: inline-block;
+			}
+			[data-idle] {
+				display: none;
+			}
+		}
+		.spinner {
+			inline-size: 0.875rem;
+			block-size: 0.875rem;
+			border: 2px solid rgb(255 255 255 / 0.35);
+			border-block-start-color: white;
+			border-radius: 999px;
+			animation: spin 700ms linear infinite;
+		}
+		[hidden] {
+			display: none;
+		}
+		.status {
+			padding: 1rem;
+			text-align: center;
+			color: var(--color-blue-800);
+		}
+	}
+	@keyframes spin {
+		to {
+			rotate: 1turn;
+		}
+	}
+</style>
