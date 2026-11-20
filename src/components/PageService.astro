@@ -113,10 +113,10 @@ const services: Service[] = [
 ];
 
 const workStepImages = [
-	'https://images.unsplash.com/photo-1510906594845-bc082582c8cc?auto=format&fit=crop&w=800&q=80',
-	'https://images.unsplash.com/photo-1534312527009-56c7016453e6?auto=format&fit=crop&w=800&q=80',
-	'https://images.unsplash.com/photo-1633596683562-4a47eb4983c5?auto=format&fit=crop&w=800&q=80',
-	'https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1741943092501-f892ec133a2c?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1676731820551-4b2988ae4e29?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1671869203911-cdaab14b9811?auto=format&fit=crop&w=800&q=80',
+	'https://images.unsplash.com/photo-1739346070480-ed95076f7bd3?auto=format&fit=crop&w=800&q=80',
 ];
 
 const workSteps = [
@@ -213,19 +213,19 @@ const workSteps = [
 		</div>
 
 		<!-- How I Work -->
-		<div class='flex flex-col justify-center items-center my-16 md:my-32 slide-fade-in'>
+		<div class='flex flex-col justify-center items-center my-16 md:my-32'>
 			<h2
-				class='md:w-3/4 mbe-1 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
+				class='step-reveal md:w-3/4 mbe-1 text-center text-lg md:text-2xl text-blue-800 font-inclusive'
 			>
 				{t('services.howIWork.title')}
 			</h2>
-			<p class='text-center text-blue-600 mbe-12 text-base md:text-lg'>
+			<p class='step-reveal text-center text-blue-600 mbe-12 text-base md:text-lg'>
 				{t('services.howIWork.subtitle')}
 			</p>
 
 			<div class='how-i-work-grid'>
 				<!-- Sticky image panel — desktop only -->
-				<div class='sticky-col hidden md:block'>
+				<div class='sticky-col step-reveal hidden md:block'>
 					<div class='sticky inset-bs-24'>
 						<div class='step-image-frame relative rounded-3xl overflow-clip shadow-2xl bg-slate-100'>
 							{workSteps.map((step, i) => (
@@ -239,7 +239,7 @@ const workSteps = [
 							))}
 							<div class='absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none' />
 							<div class='absolute inset-be-5 inset-s-5 inset-e-5'>
-								<span id='step-counter' class='text-xs font-bold text-white/60 tracking-widest uppercase block mbe-1'>
+								<span id='step-counter' class='text-xs font-bold text-white/80 tracking-widest uppercase block mbe-1'>
 									Step 01 / {String(workSteps.length).padStart(2, '0')}
 								</span>
 								<p id='step-panel-title' class='text-white font-semibold text-sm leading-snug'>
@@ -253,7 +253,7 @@ const workSteps = [
 				<!-- Steps list -->
 				<div class='steps-col'>
 					{workSteps.map((step, i) => (
-						<div class='work-step mbe-8 md:mbe-0' data-index={String(i)}>
+						<div class='work-step step-reveal mbe-8 md:mbe-0' data-index={String(i)}>
 							<div class='md:hidden mbe-0 md:mbe-3 rounded-2xl overflow-clip step-mobile-img'>
 								<img
 									src={workStepImages[i]}
@@ -271,7 +271,7 @@ const workSteps = [
 									{step.title}
 								</h3>
 							</div>
-								<p class='text-sm text-slate-500 leading-relaxed'>
+								<p class='text-base text-slate-600 leading-relaxed'>
 									<Fragment set:html={step.description} />
 								</p>
 							</div>
@@ -283,7 +283,7 @@ const workSteps = [
 				</div>
 			</div>
 
-			<div class='flex justify-center mbs-16'>
+			<div class='step-reveal flex justify-center mbs-16'>
 				<blockquote class='how-i-work-cta relative max-w-xl text-center px-10 py-6 rounded-3xl'>
 					<span class='quote-mark font-newsreader italic' aria-hidden='true'>“</span>
 					<p class='text-lg md:text-xl text-blue-800 font-inclusive italic leading-relaxed'>
@@ -442,13 +442,11 @@ const workSteps = [
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
+		/* Each block rises in as it enters the viewport, so the section reveals step by step. */
 		.step-reveal {
-			view-timeline-name: --step-timeline;
-			animation: step-slide-in both;
-			animation-timeline: --step-timeline;
-			animation-range: contain 0% contain 40%;
-			animation-duration: 500ms;
-			animation-fill-mode: both;
+			animation: step-slide-in linear both;
+			animation-timeline: view();
+			animation-range: entry 10% entry 90%;
 		}
 	}
 
