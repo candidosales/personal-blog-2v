@@ -25,6 +25,13 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 			<img src='/me-2.webp' alt='' class='size-9 rounded-full object-cover flex-none' />
 			<p class='bubble'>{t('services.contact.greeting')}</p>
 		</div>
+		<div class='thread' hidden>
+			<p class='bubble mine' data-mine></p>
+			<div class='flex items-end gap-3 pe-8'>
+				<img src='/me-2.webp' alt='' class='size-9 rounded-full object-cover flex-none' />
+				<p class='bubble' data-reply role='status'></p>
+			</div>
+		</div>
 		<form class='composer mbs-4'>
 			<textarea name='message' rows='4' maxlength='1000' placeholder={t('services.contact.message')} required></textarea>
 			<input name='email' type='email' maxlength='254' placeholder='you@email.com' autocomplete='email' required />
@@ -49,7 +56,9 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 		const count = form.querySelector('[data-count]')!;
 		const send = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
 		const status = form.querySelector<HTMLElement>('.status')!;
-		const fields = form.querySelectorAll<HTMLElement>('textarea, input, footer');
+		const thread = dialog.querySelector<HTMLElement>('.thread')!;
+		const mine = thread.querySelector<HTMLElement>('[data-mine]')!;
+		const reply = thread.querySelector<HTMLElement>('[data-reply]')!;
 
 		root.querySelector(':scope > button')!.addEventListener('click', () => {
 			dialog.showModal();
@@ -62,7 +71,8 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 			if (form.dataset.state !== 'sent') return;
 			form.reset();
 			form.dataset.state = '';
-			for (const el of fields) el.hidden = false;
+			form.hidden = false;
+			thread.hidden = true;
 			status.hidden = true;
 			count.textContent = '0 / 1,000';
 			send.disabled = true;
@@ -75,7 +85,8 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 		});
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-			const body = JSON.stringify(Object.fromEntries(new FormData(form)));
+			const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+			const body = JSON.stringify(data);
 			form.dataset.state = 'sending';
 			form.setAttribute('aria-busy', 'true');
 			send.disabled = true;
@@ -87,14 +98,22 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 			form.removeAttribute('aria-busy');
 			if (res?.ok) {
 				form.dataset.state = 'sent';
-				for (const el of fields) el.hidden = true;
-				status.textContent = root.dataset.sent!;
+				form.hidden = true;
+				mine.textContent = data.message;
+				reply.textContent = '';
+				reply.dataset.typing = '';
+				thread.hidden = false;
+				// Short "typing…" pause so the reply reads like a chat answer.
+				setTimeout(() => {
+					delete reply.dataset.typing;
+					reply.textContent = root.dataset.sent!.replace('{email}', data.email);
+				}, 900);
 			} else {
 				form.dataset.state = '';
 				send.disabled = false;
 				status.textContent = root.dataset.error!;
+				status.hidden = false;
 			}
-			status.hidden = false;
 		});
 	}
 </script>
@@ -168,6 +187,34 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 			inline-size: 1.125rem;
 		}
 	}
+	.thread {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-block-start: 0.75rem;
+		&[hidden] {
+			display: none;
+		}
+	}
+	.bubble.mine {
+		align-self: flex-end;
+		max-inline-size: 85%;
+		border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+		background: var(--color-blue-700);
+		color: white;
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+	.bubble[data-typing]::after {
+		content: '•••';
+		letter-spacing: 0.15em;
+		animation: typing 1s steps(2) infinite;
+	}
+	@keyframes typing {
+		50% {
+			opacity: 0.35;
+		}
+	}
 	.bubble {
 		padding: 0.625rem 0.875rem;
 		border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
@@ -180,6 +227,9 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 		flex-direction: column;
 		border: 1px solid var(--color-slate-200);
 		border-radius: 1rem;
+		&[hidden] {
+			display: none;
+		}
 		&:focus-within {
 			border-color: var(--color-blue-700);
 		}
