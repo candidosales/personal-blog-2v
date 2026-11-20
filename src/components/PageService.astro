@@ -1,12 +1,11 @@
 ---
 import Contact from '@components/Contact.svelte';
-import ArrowRight from '@components/icons/ArrowRight.svelte';
+import ContactMorph from '@components/ContactMorph.astro';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Layout from '@layouts/Layout.astro';
 import PhoneFrame from '@components/PhoneFrame.astro';
 import type { Service } from 'src/env';
 import Header from './Header.svelte';
-import IconAt from './icons/IconAt.svelte';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -324,16 +323,7 @@ const workSteps = [
 			>
 				<Fragment set:html={t('services.subtitle.2')} />
 			</p>
-			<a
-				class='bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium transition-colors motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 font-inclusive'
-				href='mailto:candidosg@gmail.com'
-				title={t('services.contactMeByEmail')}
-				target='_blank'
-				><IconAt class='h-4 w-4 me-2' />
-				{t('services.contactMe')}
-
-				<ArrowRight class='overflow-visible ms-3 text-white' />
-			</a>
+			<ContactMorph />
 		</div>
 		<Contact />
 	</main>

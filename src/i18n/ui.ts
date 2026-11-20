@@ -106,7 +106,12 @@ export const ui = {
       "<strong>Commitment to excellence</strong>: customized technological solutions for scalability, performance and economy",
     "services.subtitle.3": "<strong>Together we achieve results</strong>",
     "services.contactMe": "Contact me",
-    "services.contactMeByEmail": "Contact me by e-mail",
+    "services.contact.greeting":
+      "Hi, thanks for stopping by. Tell me what you want to build and I will reply by e-mail.",
+    "services.contact.message": "Write a message…",
+    "services.contact.send": "Send",
+    "services.contact.sent": "Sent. I will reply soon.",
+    "services.contact.error": "Could not send. Try again or e-mail candidosg@gmail.com.",
     "services.1.title": "Sites and Portals in WordPress or Liferay",
     "services.1.description":
       "Elevate your brand with customized websites and portals. <br /> My portfolio includes several projects that attract thousands of visits every day.",
@@ -284,7 +289,13 @@ export const ui = {
       "<strong>Compromisso com a excelência</strong>: soluções tecnológicas customizadas para escalabilidade, performance e economia",
     "services.subtitle.3": "<strong>Juntos alcançamos resultados</strong>",
     "services.contactMe": "Entre em contato",
-    "services.contactMeByEmail": "Entre em contato por e-mail",
+    "services.contact.greeting":
+      "Oi, obrigado pela visita. Conte o que você quer construir e eu respondo por e-mail.",
+    "services.contact.message": "Escreva uma mensagem…",
+    "services.contact.send": "Enviar",
+    "services.contact.sent": "Enviado. Respondo em breve.",
+    "services.contact.error":
+      "Não foi possível enviar. Tente de novo ou mande e-mail para candidosg@gmail.com.",
     "services.1.title": "Sites e Portais em WordPress ou Liferay",
     "services.1.description":
       "Eleve sua marca com sites e portais customizados. <br /> Meu portfólio inclui vários projetos que atraem milhares de visitas diariamente.",
