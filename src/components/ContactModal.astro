@@ -8,7 +8,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 
 <div class='contact-modal font-inclusive' data-error={t('services.contact.error')} data-sent={t('services.contact.sent')}>
 	<button
-		class='bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700'
+		class='cursor-pointer bg-blue-700 text-white hover:bg-blue-900 rounded-full py-3 px-6 flex items-center justify-center font-medium motion-safe:transition-[color,background-color,scale] active:scale-97 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700'
 		type='button'
 		aria-haspopup='dialog'
 		><IconAt class='h-4 w-4 me-2' />
@@ -178,6 +178,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 		block-size: 2rem;
 		border-radius: 999px;
 		color: var(--color-slate-400);
+		cursor: pointer;
 		transition: background-color 150ms, color 150ms;
 		&:hover {
 			background: var(--color-slate-100);
@@ -262,9 +263,11 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 			background: var(--color-blue-700);
 			color: white;
 			font-weight: 500;
+			cursor: pointer;
 			transition: opacity 150ms;
 			&:disabled {
 				opacity: 0.4;
+				cursor: not-allowed;
 			}
 		}
 		.spinner,
