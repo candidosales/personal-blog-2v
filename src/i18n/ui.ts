@@ -133,7 +133,7 @@ export const ui = {
       "Complete data engineering solutions with a modern stack (DltHub, DBT, Prefect, ClickHouse, etc). Automated pipelines that transform raw information into actionable insights with speed and quality.",
     "services.7.title": "Mobile apps for iOS and Android",
     "services.7.description":
-      "I build React Native and Expo apps from the first screen to the store release.",
+      "Put your business in the hands of your customers and your team. <br /> iOS and Android apps for customers or internal workflows, built with React Native and Expo from the first screen to launch.",
     "services.howIWork.title": "How I Work",
     "services.howIWork.subtitle":
       "Clear steps, good design, and honest updates from start to finish.",
@@ -319,7 +319,7 @@ export const ui = {
       "Soluções completas de engenharia de dados com stack moderno (DltHub, DBT, Prefect, ClickHouse e etc). Pipelines automatizados que transformam informação bruta em insights acionáveis com velocidade e qualidade.",
     "services.7.title": "Apps mobile para iOS e Android",
     "services.7.description":
-      "Crio apps em React Native e Expo, da primeira tela até a publicação nas lojas.",
+      "Coloque seu negócio nas mãos dos seus clientes e da sua equipe. <br /> Apps iOS e Android para clientes ou fluxos internos, feitos com React Native e Expo da primeira tela ao lançamento.",
     "services.howIWork.title": "Como eu trabalho",
     "services.howIWork.subtitle":
       "Etapas claras, design bem cuidado e conversa honesta do começo ao fim.",
