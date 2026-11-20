@@ -13,6 +13,7 @@ export interface Service {
   cssClass: string;
   title: string;
   description: string;
+  phones?: { src: string; alt: string; device: "iphone" | "android" }[];
 }
 
 export type Vote = {

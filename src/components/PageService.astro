@@ -3,6 +3,7 @@ import Contact from '@components/Contact.svelte';
 import ArrowRight from '@components/icons/ArrowRight.svelte';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Layout from '@layouts/Layout.astro';
+import PhoneFrame from '@components/PhoneFrame.astro';
 import type { Service } from 'src/env';
 import Header from './Header.svelte';
 import IconAt from './icons/IconAt.svelte';
@@ -74,6 +75,17 @@ const customers = [
 ];
 
 const services: Service[] = [
+	{
+		iconUrl: '/services/mobile-apps.svg',
+		cssClass: 'col-span-12 md:col-span-12',
+		title: t('services.7.title'),
+		description: t('services.7.description'),
+		phones: [
+			{ src: '/services/mobile/wealthsimple-home.webp', alt: 'Wealthsimple home screen', device: 'iphone' },
+			{ src: '/services/mobile/megui-home.webp', alt: 'Megui home screen', device: 'iphone' },
+			{ src: '/services/mobile/pesqbr-home.webp', alt: 'PesqBr home screen', device: 'android' },
+		],
+	},
     {
 		iconUrl: '/services/data-engineer-tools.svg',
 		cssClass: 'col-span-12 md:col-span-12 bg-data-engineer',
@@ -163,9 +175,9 @@ const workSteps = [
 			{
 				services.map((s) => (
 					<div
-						class={`${s.cssClass} bg-white/80 ps-6 pbs-6 rounded-3xl hover:bg-blue-200 transition-colors ease-out duration-150`}
+						class={`${s.cssClass} group relative overflow-hidden bg-white/80 ps-6 pbs-6 rounded-3xl hover:bg-blue-200 transition-colors ease-out duration-150`}
 					>
-						<div class='flex flex-col relative h-[320px]'>
+						<div class={`flex flex-col relative ${s.phones ? 'md:h-[320px] md:w-1/2' : 'h-[320px]'}`}>
 							<div class='h-12 w-12 bg-white rounded-xl p-2 mbe-4 border border-solid border-slate-200'>
 								<img src={s.iconUrl} width='200' height='200' />
 							</div>
@@ -176,6 +188,17 @@ const workSteps = [
 								<Fragment set:html={s.description} />
 							</p>
 						</div>
+						{s.phones && (
+							<div class='relative h-64 mbs-6 me-6 md:absolute md:mbs-0 md:me-0 md:h-auto md:inset-be-0 md:end-6 md:inset-bs-10 md:w-[44%]'>
+								{s.phones.map((p, i) => (
+									<PhoneFrame
+										{...p}
+										class='absolute w-[34%] transition-transform duration-500 group-hover:-translate-y-3'
+										style={`inset-inline-start:${i * 31}%; inset-block-start:${[18, 0, 24][i]}%; rotate:${[-8, 0, 8][i]}deg; z-index:${i === 1 ? 2 : 1}`}
+									/>
+								))}
+							</div>
+						)}
 					</div>
 				))
 			}
