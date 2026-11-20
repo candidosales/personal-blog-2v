@@ -110,6 +110,8 @@ export const ui = {
       "Hi, thanks for stopping by. Tell me what you want to build and I will reply by e-mail.",
     "services.contact.message": "Write a message…",
     "services.contact.send": "Send",
+    "services.contact.sending": "Sending…",
+    "services.contact.close": "Close",
     "services.contact.sent": "Sent. I will reply soon.",
     "services.contact.error": "Could not send. Try again or e-mail candidosg@gmail.com.",
     "services.1.title": "Sites and Portals in WordPress or Liferay",
@@ -293,6 +295,8 @@ export const ui = {
       "Oi, obrigado pela visita. Conte o que você quer construir e eu respondo por e-mail.",
     "services.contact.message": "Escreva uma mensagem…",
     "services.contact.send": "Enviar",
+    "services.contact.sending": "Enviando…",
+    "services.contact.close": "Fechar",
     "services.contact.sent": "Enviado. Respondo em breve.",
     "services.contact.error":
       "Não foi possível enviar. Tente de novo ou mande e-mail para candidosg@gmail.com.",

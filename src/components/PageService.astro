@@ -1,6 +1,6 @@
 ---
 import Contact from '@components/Contact.svelte';
-import ContactMorph from '@components/ContactMorph.astro';
+import ContactModal from '@components/ContactModal.astro';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import Layout from '@layouts/Layout.astro';
 import PhoneFrame from '@components/PhoneFrame.astro';
@@ -323,7 +323,7 @@ const workSteps = [
 			>
 				<Fragment set:html={t('services.subtitle.2')} />
 			</p>
-			<ContactMorph />
+			<ContactModal />
 		</div>
 		<Contact />
 	</main>
