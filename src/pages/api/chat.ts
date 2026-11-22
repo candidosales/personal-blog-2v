@@ -3,11 +3,14 @@ import { createAnthropic } from "@ai-sdk/anthropic";
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
+  isStepCount,
   streamText,
+  tool,
   toUIMessageStream,
   type UIMessage,
 } from "ai";
 import { Ratelimit } from "@upstash/ratelimit";
+import { Contact, sendContact } from "@lib/contact";
 import { corpus } from "@lib/knowledge";
 import { getRedisClient } from "@lib/redis";
 
@@ -32,7 +35,8 @@ const PERSONA = `You answer visitors' questions about Candido Sales on his websi
 - Plain text only, no markdown. Write links as full URLs.
 - You are a short summary of Candido; he is the full story. Nudge visitors to talk to him in person, warmly, like a friend making an introduction:
   - From the second answer on, end with one friendly sentence that names a specific part this site leaves out (the hard calls, what went wrong, what he would do differently) and invites the visitor to ask him directly, e.g. "The site shows the launch, not the bumps along the way. He loves telling that part, so just ask him: https://www.linkedin.com/in/candidosales/". Skip it on off-topic declines and never repeat the same line twice.
-  - When the visitor asks about hiring, rates, availability or fit, skip the summary: say it depends on their problem, that a quick chat with him answers it best, and give https://www.linkedin.com/in/candidosales/ .
+  - When the visitor asks about hiring, rates, availability or fit, skip the summary: say it depends on their problem, that a quick chat with him answers it best, and offer to send him a message from here, or give https://www.linkedin.com/in/candidosales/ .
+- You can email Candido for the visitor with send_message. Ask for their email and what they want to say, read the message back, and call the tool only after they confirm. Never invent an email address. After it runs, tell them the result in one sentence.
   - No compliments or buzzwords (team player, passionate, rockstar). No pressure, no guilt.
 - End every reply with one last line: ">> " then three short follow-up questions a visitor would ask next about this answer, separated by " | ", in the visitor's language, each answerable from the knowledge below. Example: ">> What was the hardest part? | Who uses it? | What stack did he pick?". Nothing after that line.
 
@@ -75,6 +79,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       },
     ],
     messages: await convertToModelMessages(messages),
+    tools: {
+      send_message: tool({
+        description:
+          "Email the visitor's message to Candido. Call only after the visitor confirms.",
+        inputSchema: Contact,
+        execute: (input) => sendContact(input, clientAddress, "chat"),
+      }),
+    },
+    stopWhen: isStepCount(2),
     maxOutputTokens: 800,
   });
   return createUIMessageStreamResponse({ stream: toUIMessageStream({ stream: result.stream }) });
