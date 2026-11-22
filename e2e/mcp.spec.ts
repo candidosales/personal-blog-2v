@@ -6,13 +6,20 @@ const rpc = (method: string, params: object = {}) => ({
   data: { jsonrpc: "2.0", id: 1, method, params },
 });
 
-test("MCP lists five tools", async ({ request }) => {
+test("MCP lists six tools", async ({ request }) => {
   const res = await request.post("/mcp", rpc("tools/list"));
   const { result } = await res.json();
   mkdirSync("e2e/artifacts", { recursive: true });
   writeFileSync("e2e/artifacts/mcp-tools.json", JSON.stringify(result.tools, null, 2));
   const names = result.tools.map((t: { name: string }) => t.name).sort();
-  expect(names).toEqual(["get_post", "get_profile", "get_project", "list_posts", "list_projects"]);
+  expect(names).toEqual([
+    "get_post",
+    "get_profile",
+    "get_project",
+    "list_posts",
+    "list_projects",
+    "send_message",
+  ]);
 });
 
 test("MCP get_project returns the Converte Extrato story", async ({ request }) => {
@@ -45,4 +52,13 @@ test("MCP get_post returns a full blog post body", async ({ request }) => {
   const text: string = (await res.json()).result.content[0].text;
   expect(text.length).toBeGreaterThan(2000);
   expect(text).not.toContain("import {");
+});
+
+test("MCP send_message rejects a bad email before sending", async ({ request }) => {
+  const res = await request.post(
+    "/mcp",
+    rpc("tools/call", { name: "send_message", arguments: { email: "nope", message: "Hi" } }),
+  );
+  const { result } = await res.json();
+  expect(result.isError).toBe(true);
 });
